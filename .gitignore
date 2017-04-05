@@ -2,5 +2,6 @@ app/etc/env.php
 pub/media/*
 pub/static/*
 pub/staticbkp/*
+pub/ub-tool/protected/runtime/cache/*
 var/*
 media/*
