@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel><title>Inventory data feed</title>
+<link>http://shop3.kintec.net</link>
+<description>Submit this feed throughout the day to update your price, availability and/or sale price information for specific items already submitted in your full product feed.</description>
+<item>
+<g:id><![CDATA[Hoka One One Men's Clifton 3]]></g:id>
+<g:link><![CDATA[https://shop3.kintec.net/index.php/mens/outdoor/asics-men-s-cumulus-19.html]]></g:link>
+<g:availability><![CDATA[in stock]]></g:availability>
+<g:price><![CDATA[49.00]]></g:price>
+<g:sale_price><![CDATA[49.00]]></g:sale_price>
+
+</item>
+<item>
+<g:id><![CDATA[columbia men ventrailia outdry]]></g:id>
+<g:link><![CDATA[https://shop3.kintec.net/index.php/mens/gym/asics-men-s-cumulus-25.html]]></g:link>
+<g:availability><![CDATA[in stock]]></g:availability>
+<g:price><![CDATA[49.00]]></g:price>
+<g:sale_price><![CDATA[49.00]]></g:sale_price>
+
+</item>
+</channel>
+</rss>

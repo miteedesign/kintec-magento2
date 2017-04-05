@@ -1,0 +1,28 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<?php $position = 1;?>
+<span class="breadcrumbsbefore"></span>
+<div class="breadcrumbs">
+    <div class="page-main">
+        <ul class="items" itemscope itemtype="http://schema.org/BreadcrumbList">
+            <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+                <li class="item <?php echo $crumbName ?>" style ="display: inline-block;" <?php if (!$crumbInfo['last']) { ?>itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"<?php } ?>>
+                <?php if ($crumbInfo['link']) : ?>
+                    <a href="<?php echo $crumbInfo['link'] ?>" title="<?php echo $block->escapeHtml($crumbInfo['title']) ?>" itemprop="item">
+                        <span itemprop="name"><?php echo $block->escapeHtml($crumbInfo['label']) ?></span>
+                    </a>
+                    <meta itemprop="position" content="<?php echo $position++; ?>" />
+                <?php elseif ($crumbInfo['last']) : ?>
+                    <strong><?php echo $block->escapeHtml($crumbInfo['label']) ?></strong>
+                <?php else: ?>
+                    <?php echo $block->escapeHtml($crumbInfo['label']) ?>
+                <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<span class="breadcrumbsafter"></span>
+<?php endif; ?>

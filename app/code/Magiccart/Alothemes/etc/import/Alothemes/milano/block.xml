@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <block>
+    <item>
+      <title><![CDATA[Block Map Contacts]]></title>
+      <identifier><![CDATA[block_map_contacts]]></identifier>
+      <content><![CDATA[<div><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.8277911385558!2d-0.13108129999999998!3d51.51637529999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2d183f5ea3%3A0x8e1c5b00f1b16579!2zMTIgT3hmb3JkIFN0LCBTb2hvLCBMb25kb24gVzFELCBWxrDGoW5nIFF14buRYyBBbmg!5e0!3m2!1svi!2s!4v1434261501432" height="350" width="600"></iframe></div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+  </block>
+</root>

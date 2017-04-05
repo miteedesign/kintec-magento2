@@ -1,0 +1,430 @@
+2016/12/06 16:54:43 [info] [ub_data_migration] Start running step #2
+2016/12/06 16:54:43 [info] [ub_data_migration] Migrated data in step #2 ok with 2 Websites
+2016/12/06 16:54:43 [info] [ub_data_migration] Continue running step #2
+2016/12/06 16:54:44 [info] [ub_data_migration] (Continued) migrated data in step #2 ok with 2 Store Groups
+2016/12/06 16:54:44 [info] [ub_data_migration] Continue running step #2
+2016/12/06 16:54:44 [info] [ub_data_migration] (Continued) migrated data in step #2 ok with 2 Stores
+2016/12/06 16:54:44 [info] [ub_data_migration] Continue running step #2
+2016/12/06 16:54:44 [info] [ub_data_migration] Step #2 was finished.
+2016/12/06 16:54:44 [info] [ub_data_migration] --------------------
+2016/12/06 16:54:49 [info] [ub_data_migration] Start running step #3
+2016/12/06 16:54:49 [info] [ub_data_migration] Migrated data in step #3 ok with 1 Attribute Sets
+2016/12/06 16:54:49 [info] [ub_data_migration] Continue running step #3
+2016/12/06 16:54:50 [info] [ub_data_migration] (Continued) migrated data in step #3 ok with 9 Attribute Groups
+2016/12/06 16:54:50 [info] [ub_data_migration] Continue running step #3
+2016/12/06 16:58:49 [info] [ub_data_migration] (Continued) migrated data in step #3 ok with 84 Attributes
+2016/12/06 16:58:49 [info] [ub_data_migration] Continue running step #3
+2016/12/06 16:58:52 [info] [ub_data_migration] Step #3 was finished.
+2016/12/06 16:58:52 [info] [ub_data_migration] --------------------
+2016/12/06 17:01:57 [info] [ub_data_migration] Start running step #4
+2016/12/06 17:01:57 [info] [ub_data_migration] Migrated data in step #4 ok with 100 Catalog Categories
+2016/12/06 17:03:26 [info] [ub_data_migration] Continue running step #4
+2016/12/06 17:03:26 [info] [ub_data_migration] (Continued) migrated data in step #4 ok with 100 Catalog Categories
+2016/12/06 17:03:49 [info] [ub_data_migration] Continue running step #4
+2016/12/06 17:03:49 [info] [ub_data_migration] (Continued) migrated data in step #4 ok with 25 Catalog Categories
+2016/12/06 17:03:49 [info] [ub_data_migration] Continue running step #4
+2016/12/06 17:03:49 [info] [ub_data_migration] Step #4 was finished.
+2016/12/06 17:03:49 [info] [ub_data_migration] --------------------
+2016/12/06 17:07:56 [info] [ub_data_migration] Start running step #5
+2016/12/06 17:07:56 [info] [ub_data_migration] Migrated data in step #5 ok with 100 Products.
+2016/12/06 17:09:31 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:09:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:11:19 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:11:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:12:49 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:12:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:14:25 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:14:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:16:49 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:16:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:19:09 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:19:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:20:38 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:20:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:22:08 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:22:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:23:39 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:23:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:25:40 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:25:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:27:53 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:27:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:30:38 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:30:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:32:04 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:32:04 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:33:29 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:33:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:34:51 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:34:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:36:18 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:36:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:37:39 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:37:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:39:00 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:39:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:40:23 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:40:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:41:45 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:41:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:43:14 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:43:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:44:42 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:44:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:46:34 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:46:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:48:29 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:48:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:49:56 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:49:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:51:23 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:51:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:52:49 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:52:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:54:12 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:54:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:55:36 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:55:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:56:57 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:56:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:58:14 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:58:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 17:59:34 [info] [ub_data_migration] Continue running step #5
+2016/12/06 17:59:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:40:51 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:40:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:42:09 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:42:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:43:33 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:43:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:47:57 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:47:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:49:21 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:49:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:50:48 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:50:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:52:12 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:52:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:53:36 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:53:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:55:01 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:55:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:56:20 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:56:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:57:42 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:57:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 20:59:03 [info] [ub_data_migration] Continue running step #5
+2016/12/06 20:59:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:00:26 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:00:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:01:52 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:01:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:03:19 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:03:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:04:43 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:04:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:06:08 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:06:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:10:13 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:10:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:11:36 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:11:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:13:01 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:13:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:14:28 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:14:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:16:11 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:16:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:18:18 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:18:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:20:11 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:20:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:23:00 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:23:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:24:22 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:24:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:25:51 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:25:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:27:13 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:27:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:28:41 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:28:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:30:08 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:30:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:31:32 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:31:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/06 21:33:28 [info] [ub_data_migration] Continue running step #5
+2016/12/06 21:33:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/07 21:52:14 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:52:23 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:52:31 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:52:38 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:52:46 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:52:53 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:01 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:07 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:16 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:23 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:31 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:39 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:46 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:53:54 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:01 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:10 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:17 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:24 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:32 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:40 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:47 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:54:55 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:03 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:14 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:22 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:29 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:37 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:44 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:55:52 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:01 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:07 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:14 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:22 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:29 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:37 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:44 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:52 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:56:59 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:06 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:13 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:21 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:28 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:35 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:43 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:51 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:57:58 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:05 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:11 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:19 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:26 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:34 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:41 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:49 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:58:58 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:05 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:12 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:19 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:26 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:34 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:41 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:49 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 21:59:57 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 22:00:05 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 22:00:15 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 22:00:23 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 22:00:31 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 22:00:31 [info] [ub_data_migration] Start resetting data migration in step #5...
+2016/12/07 22:00:31 [info] [ub_data_migration] Step #5 was reset successfully.
+2016/12/09 00:37:07 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:37:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:39:54 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:39:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:42:56 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:42:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:46:11 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:46:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:48:44 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:48:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:50:53 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:50:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:52:21 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:52:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:54:08 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:54:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/09 00:56:18 [info] [ub_data_migration] Continue running step #5
+2016/12/09 00:56:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/10 00:06:16 [info] [ub_data_migration] Continue running step #5
+2016/12/10 00:06:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 11:54:59 [info] [ub_data_migration] Continue running step #5
+2016/12/11 11:54:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 11:56:40 [info] [ub_data_migration] Continue running step #5
+2016/12/11 11:56:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 11:58:18 [info] [ub_data_migration] Continue running step #5
+2016/12/11 11:58:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 11:59:56 [info] [ub_data_migration] Continue running step #5
+2016/12/11 11:59:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 12:01:45 [info] [ub_data_migration] Continue running step #5
+2016/12/11 12:01:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 12:03:21 [info] [ub_data_migration] Continue running step #5
+2016/12/11 12:03:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 12:04:52 [info] [ub_data_migration] Continue running step #5
+2016/12/11 12:04:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/11 12:06:26 [info] [ub_data_migration] Continue running step #5
+2016/12/11 12:06:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2016/12/12 17:55:14 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2016/12/12 17:55:18 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2016/12/12 17:55:25 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 23 Product Relations.
+2016/12/12 17:55:29 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links.
+2016/12/12 17:55:32 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links.
+2016/12/12 17:55:36 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links.
+2016/12/12 17:55:39 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 6 Product Super Links.
+2016/12/12 17:55:40 [info] [ub_data_migration] Continue running step #5
+2016/12/12 17:55:40 [info] [ub_data_migration] Step #5 was finished.
+2016/12/12 17:55:40 [info] [ub_data_migration] --------------------
+2016/12/13 00:25:36 [info] [ub_data_migration] Start running step #6
+2016/12/13 00:25:37 [info] [ub_data_migration] Migrated data in step #6 ok with 4 Customer Groups.
+2016/12/13 00:25:37 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:27:58 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:27:58 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:30:01 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:30:01 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:32:02 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:32:02 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:34:07 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:34:07 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:36:03 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:36:03 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:38:08 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:38:09 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:39:59 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:39:59 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:41:57 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:41:57 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:44:01 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:44:01 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:46:12 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:46:12 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:48:07 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:48:07 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:49:15 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:49:15 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:50:19 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:50:19 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:51:25 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:51:25 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:52:31 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:52:31 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:53:39 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:53:39 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:54:44 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:54:44 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:56:01 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:56:01 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:57:03 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:57:03 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:58:08 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:58:08 [info] [ub_data_migration] Continue running step #6
+2016/12/13 00:59:15 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 00:59:16 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:00:29 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:00:29 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:01:34 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:01:34 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:02:31 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:02:31 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:03:24 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:03:25 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:04:07 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:04:07 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:04:41 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:04:42 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:05:12 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:05:12 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:05:42 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:05:42 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:06:08 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:06:08 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:06:34 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:06:35 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:07:03 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:07:03 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:07:37 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 100 Customers.
+2016/12/13 01:07:37 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:08:06 [info] [ub_data_migration] (Continued) migrated data in step #6 ok with 77 Customers.
+2016/12/13 01:08:06 [info] [ub_data_migration] Continue running step #6
+2016/12/13 01:08:06 [info] [ub_data_migration] Step #6 was finished.
+2016/12/13 01:08:06 [info] [ub_data_migration] --------------------
+2016/12/13 01:14:11 [info] [ub_data_migration] Start running step #7
+2016/12/13 01:14:11 [info] [ub_data_migration] Migrated data in step #7 ok with 100 Sales Rules.
+2016/12/13 23:32:49 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:32:49 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Rules.
+2016/12/13 23:34:09 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:34:10 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Rules.
+2016/12/13 23:34:40 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:34:41 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 38 Sales Rules.
+2016/12/13 23:34:41 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:34:42 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 16 Sales Order Statuses.
+2016/12/13 23:34:42 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:37:26 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:37:27 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:40:16 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:40:16 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:42:42 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:42:42 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:44:48 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:44:48 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:47:59 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:47:59 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:50:17 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:50:18 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:52:29 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:52:30 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:54:40 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/13 23:54:40 [info] [ub_data_migration] Continue running step #7
+2016/12/13 23:56:47 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 22:48:42 [info] [ub_data_migration] Continue running step #7
+2016/12/15 22:51:04 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 22:51:05 [info] [ub_data_migration] Continue running step #7
+2016/12/15 22:53:16 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 22:53:16 [info] [ub_data_migration] Continue running step #7
+2016/12/15 22:55:34 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 22:55:34 [info] [ub_data_migration] Continue running step #7
+2016/12/15 22:57:55 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 22:57:55 [info] [ub_data_migration] Continue running step #7
+2016/12/15 23:00:03 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 23:00:03 [info] [ub_data_migration] Continue running step #7
+2016/12/15 23:02:17 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 23:02:17 [info] [ub_data_migration] Continue running step #7
+2016/12/15 23:04:29 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 23:04:29 [info] [ub_data_migration] Continue running step #7
+2016/12/15 23:06:38 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 23:06:38 [info] [ub_data_migration] Continue running step #7
+2016/12/15 23:08:43 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2016/12/15 23:08:43 [info] [ub_data_migration] Continue running step #7
+2016/12/15 23:12:05 [info] [ub_data_migration] (Continued) migrated data in step #7 ok with 100 Sales Orders.
+2017/02/19 20:28:43 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:28:51 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:28:58 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:05 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:11 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:18 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:25 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:32 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:39 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:46 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:29:53 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:01 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:12 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:19 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:27 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:35 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:42 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:48 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:30:55 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:31:03 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:31:11 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:31:25 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:31:33 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:32:38 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:33:05 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:33:23 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:33:30 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:33:43 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:34:02 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:34:20 [info] [ub_data_migration] Start resetting data migration in step #6...
+2017/02/19 20:34:39 [info] [ub_data_migration] Start resetting data migration in step #6...

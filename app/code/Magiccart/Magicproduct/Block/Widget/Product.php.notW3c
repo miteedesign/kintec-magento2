@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magiccart 
+ * @category 	Magiccart 
+ * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license 	http://www.magiccart.net/license-agreement.html
+ * @Author: DOng NGuyen<nguyen@dvn.com>
+ * @@Create Date: 2016-01-05 10:40:51
+ * @@Modify Date: 2016-04-25 18:33:40
+ * @@Function:
+ */
+
+namespace Magiccart\Magicproduct\Block\Widget;
+
+class Product extends \Magento\Framework\View\Element\Template implements \Magento\Widget\Block\BlockInterface
+{
+
+	protected $_magicproduct;
+	protected $_types;
+    protected $_typeId = '1';
+
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Magiccart\Magicproduct\Model\Magicproduct $magicproduct,
+		\Magiccart\Magicproduct\Model\System\Config\Types $types,
+        array $data = []
+    ) {
+        $this->_magicproduct = $magicproduct;
+		$this->_types = $types;
+
+        parent::__construct($context, $data);
+    }
+
+    protected function _construct()
+    {
+		$identifier = $this->getIdentifier();
+		$item = $this->_magicproduct->getCollection()
+						->addFieldToFilter('type_id', $this->_typeId)
+						->addFieldToFilter('identifier', $identifier)
+						->getFirstItem();
+		$tmp = $item->getConfig();
+		$data = @unserialize($tmp);
+		//$dataConvert = array('infinite', 'vertical', 'autoplay', 'centerMode');
+		if($data['slide']){
+			$data['vertical-Swiping'] = $data['vertical'];
+            $breakpoints = $this->getResponsiveBreakpoints();
+            $responsive = '[';
+            $num = count($breakpoints);
+            foreach ($breakpoints as $size => $opt) {
+            	$item = (int) $data[$opt];
+            	$responsive .= '{"breakpoint": "'.$size.'", "settings": {"slidesToShow": "'.$item.'"}}';
+                $num--;
+            	if($num) $responsive .= ', ';
+            }
+            $responsive .= ']';
+            $data['slides-To-Show'] = $data['visible'];
+            $data['swipe-To-Slide'] = 'true';
+			$data['responsive'] = $responsive;
+		}
+
+        $this->addData($data);
+        parent::_construct();
+    }
+
+    public function getTabs()
+    {
+        $cfg = $this->getTypes();
+        // $cfg = explode(',', $cfg);
+        $tabs = array();
+        $types = $this->_types->toOptionArray();
+        foreach ($types as $type) {
+            if(in_array($type['value'], $cfg)) $tabs[$type['value']] = $type['label'];
+        }
+
+        return $tabs;
+    }
+
+    public function getTabActivated()
+    {
+        $activated = $this->getActivated(); // get form Widget
+        $tabs = $this->getTabs();
+        $types = array_keys($tabs);
+        if(!in_array($activated, $types)){
+            $activated = $types[0];            
+        }
+        return $activated;
+    }
+
+    public function getContent($template)
+    {
+        $content = '';    
+        $tabs = ($this->getAjax()) ? $tabs = array($this->getTabActivated() => 'Activated') : $this->getTabs();
+        foreach ($tabs as $type => $name) {
+            $content .= $this->getLayout()->createBlock('Magiccart\Magicproduct\Block\Product\GridProduct') // , "magicproduct.product.$type"
+            ->setActivated($type) //or ->setData('activated', $this->getTabActivated())
+            ->setCfg($this->getData())
+            ->setTemplate($template)
+            ->toHtml();
+        }
+        return $content;
+    }
+
+    public function getAjaxCfg()
+    {
+    	if(!$this->getAjax()) return 0;
+        $options = array('limit', 'speed', 'timer', 'cart', 'compare', 'wishlist', 'review'); //'widthImages', 'heightImages'
+        $ajax = array();
+        foreach ($options as $option) {
+            $ajax[$option] = $this->getData($option);
+        }
+        return json_encode($ajax);
+    }
+
+    public function getPrcents()
+    {
+        return array(1 => '100%', 2 => '50%', 3 => '33.333333333%', 4 => '25%', 5 => '20%', 6 => '16.666666666%', 7 => '14.285714285%', 8 => '12.5%');
+    }
+
+    public function getResponsiveBreakpoints()
+    {
+        return array(1200=>'visible', 992=>'desktop', 768=>'tablet', 640=>'landscape', 480=>'portrait', 361=>'mobile', 0=>'mobile');
+    }
+
+    public function getSlideOptions()
+    {
+        return array('autoplay', 'arrows', 'autoplay-Speed', 'dots', 'infinite', 'padding', 'vertical', 'vertical-Swiping', 'responsive', 'rows', 'slides-To-Show', 'swipe-To-Slide');
+    }
+
+    public function getFrontendCfg($selector)
+    { 
+        if($this->getSlide()) return $this->getSlideOptions();
+        $styles = '';
+        $listCfg = $this->getData();
+        $padding = $listCfg['padding'];
+        $prcents = $this->getPrcents();
+        $breakpoints = $this->getResponsiveBreakpoints(); ksort($breakpoints);
+        $total= count($breakpoints);
+        $i = $tmp = 1;
+        foreach ($breakpoints as $key => $value) {
+            $tmpKey = ( $i == 1 || $i == $total ) ? $value : current($breakpoints);
+            if($i >1){
+                $styles .= ' @media (min-width: '. $tmp .'px) and (max-width: ' . ($key-1) . 'px) {' .$selector. '{padding: 0 '.$padding.'px; width: '.$prcents[$listCfg[$value]] .'} ' .$selector. ':nth-child(' .$listCfg[$value]. 'n+1){clear: left;}}';
+                next($breakpoints);
+            }
+            if( $i == $total) $styles .= ' @media (min-width: ' . $key . 'px) {' .$selector. '{padding: 0 '.$padding.'px; width: '.$prcents[$listCfg[$value]] .'} ' .$selector. ':nth-child(' .$listCfg[$value]. 'n+1){clear: left;}}';
+            $tmp = $key;
+            $i++;
+        }
+        return '<style type="text/css">' .$styles. '</style>';
+    }
+
+}

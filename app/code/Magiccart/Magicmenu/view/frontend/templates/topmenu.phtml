@@ -1,0 +1,77 @@
+<?php
+/**
+ * Magiccart 
+ * @category 	Magiccart 
+ * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license 	http://www.magiccart.net/license-agreement.html
+ * @Author: DOng NGuyen<nguyen@dvn.com>
+ * @@Create Date: 2016-02-08 22:57:12
+ * @@Modify Date: 2016-04-27 23:25:00
+ * @@Function:
+ */
+ ?>
+<?php
+
+// $_aloHelper = $this->helper('Magiccart\Magicmenu\Helper\Data');
+// var_dump($_aloHelper->getConfig('magicmenu'));
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$isLoggedIn = $customerSession->isLoggedIn();
+
+$menu = $this->_sysCfg->topmenu;
+if(!$menu['enabled']) return;
+
+// drawMainMenu vs DrowMobileMenu
+$menuHtml = $this->drawMainMenu();
+$mobileMenu = $menuHtml['mobile'];
+$desktop 	= $menuHtml['desktop'];
+$ids  = explode(',', $menu['notIncludeNav']);
+foreach ($ids as $id) { unset($desktop[$id]); }
+// drawHomeMenu
+$drawHomeMenu = $menu['home'] ? $this->drawHomeMenu() : '';
+// drawMainMenu
+$drawMainMenu = $menu['mainCat'] ? implode("\n", $desktop) : '';
+// drawExtMenu ExtraMenu
+$drawExtraMenu = $menu['extraCat'] ? $this->drawExtraMenu() : '';
+
+?>
+
+<div class="magicmenu clearfix">
+	<ul class="nav-desktop <?php echo $menu['sticker'] ? 'sticker' : '' ?>">
+		<?php echo $drawHomeMenu ?>
+		<?php echo $drawMainMenu ?>
+		<?php echo $drawExtraMenu ?>
+	</ul>
+</div>
+<nav class="navigation" role="navigation">
+	<ul class="nav-mobile" data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+		<?php if( $isLoggedIn ) { ?>
+		    <li>
+				<a href="<?php echo $this->getUrl('customer/account/'); ?>" title="<?php echo __('My account') ?>"><?php echo __('My account') ?>
+				</a>
+			</li>
+		    <li class="logout">
+				<a href="<?php echo $this->getUrl('customer/account/logout'); ?>" title="<?php echo __('Sign Out') ?>"><?php echo __('Sign Out') ?>
+				</a>
+			</li>
+		 <?php } else { ?>
+			<li class="login">
+			  <a href="<?php echo $this->getUrl('customer/account/login'); ?>" title="<?php echo __('Sign In') ?>"><?php echo __('Sign In') ?>
+			  </a>
+			</li>
+			
+			<li class="first">
+				<a id="quick_sigup_link" style="positon:relative;" href="<?php echo $this->getUrl('customer/account/create'); ?>" title="<?php echo __('Create an account') ?>"><?php echo __('Register') ?>
+				</a>
+			</li>
+		 <?php }  ?>
+		<?php echo $mobileMenu ?>
+		<?php echo $drawExtraMenu ?>
+	</ul>
+</nav>
+
+<script type="text/javascript">
+	require(['jquery','magicmenu']);
+</script>
+

@@ -1,0 +1,38 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+$request = $block->getRequest();
+$action = $request->getFrontName() . '_' . $request->getControllerName() . '_' . $request->getActionName();
+$lastCrumbInfo = false;
+if ($action == 'blog_category_index') {
+    $lastCrumbInfo = true;
+}
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<?php $position = 1;?>
+<span class="breadcrumbsbefore"></span>
+<div class="breadcrumbs">
+    <ul class="items" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <?php foreach ($crumbs as $crumbName => $crumbInfo) : ?>
+            <li class="item <?php echo $crumbName ?>" style ="display: inline-block;" <?php if (!$crumbInfo['last'] || $lastCrumbInfo) { ?>itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"<?php } ?>>
+            <?php if ($crumbInfo['link']) : ?>
+                <a href="<?php echo $crumbInfo['link'] ?>" title="<?php echo $block->escapeHtml($crumbInfo['title']) ?>" itemprop="item">
+                    <span itemprop="name"><?php echo $block->escapeHtml($crumbInfo['label']) ?></span>
+                </a>
+                <meta itemprop="position" content="<?php echo $position++; ?>" />
+            <?php elseif ($crumbInfo['last']) : ?>
+                <strong><?php echo $block->escapeHtml($crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?php echo $block->escapeHtml($crumbInfo['label']) ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<span class="breadcrumbsafter"></span>
+<?php endif; ?>

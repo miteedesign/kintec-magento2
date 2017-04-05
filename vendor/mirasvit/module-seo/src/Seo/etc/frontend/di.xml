@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\CurrentPageProducts" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Snippet\Breadcrumbs" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Theme\Block\Html\Pager">
+        <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\Pager" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Framework\Event\Invoker\InvokerDefault">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\Dispatch" sortOrder="1000"/>
+    </type>
+    <type name="Magento\PageCache\Model\App\FrontController\BuiltinPlugin">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\BuiltinPlugin" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Framework\App\PageCache\Kernel">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\Kernel" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="change-title-before-cache" type="Mirasvit\Seo\Plugin\ChangeResult\Title"/>
+    </type>
+</config>

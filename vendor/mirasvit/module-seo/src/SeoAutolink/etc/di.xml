@@ -1,0 +1,14 @@
+<config>
+    <type name="Magento\Cms\Block\Page">
+        <plugin name="seoautolink"
+                type="Mirasvit\SeoAutolink\Model\Plugin\CmsPageOutput"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Mirasvit\Blog\Block\Post\View">
+        <plugin name="seoautolink"
+                type="Mirasvit\SeoAutolink\Model\Plugin\BlogPostOutput"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+</config>

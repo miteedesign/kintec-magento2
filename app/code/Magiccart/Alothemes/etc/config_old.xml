@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Magiccart 
+ * @category    Magiccart 
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * @license     http://www.magiccart.net/license-agreement.html
+ * @Author: DOng NGuyen<nguyen@dvn.com>
+ * @@Create Date: 2016-02-23 18:59:34
+ * @@Modify Date: 2016-04-27 10:17:37
+ * @@Function:
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+	    <alothemes>
+<!-- 	        <general>
+	            <enabled>1</enabled>
+	        </general> -->
+            <grid>
+                <mobile>1</mobile>
+                <portrait>2</portrait>
+                <landscape>2</landscape>
+                <tablet>3</tablet>
+                <desktop>2</desktop>
+                <visible>3</visible>
+                <padding>15</padding>
+            </grid>
+            <related>
+                <slide>1</slide>
+                <vertical>false</vertical>
+                <infinite>true</infinite>
+                <autoplay>true</autoplay>
+                <dots>false</dots>
+                <rows>1</rows>
+                <speed>300</speed>
+                <autoplay-Speed>3000</autoplay-Speed>
+                <padding>15</padding>
+                <mobile>1</mobile>
+                <portrait>2</portrait>
+                <landscape>3</landscape>
+                <tablet>3</tablet>
+                <desktop>4</desktop>
+                <visible>4</visible>
+            </related>
+            <upsell>
+                <slide>1</slide>
+                <vertical>false</vertical>
+                <infinite>true</infinite>
+                <autoplay>true</autoplay>
+                <dots>false</dots>
+                <rows>1</rows>
+                <speed>300</speed>
+                <autoplay-Speed>3000</autoplay-Speed>
+                <padding>15</padding>
+                <mobile>1</mobile>
+                <portrait>2</portrait>
+                <landscape>3</landscape>
+                <tablet>3</tablet>
+                <desktop>4</desktop>
+                <visible>4</visible>
+            </upsell>
+            <crosssell>
+                <slide>1</slide>
+                <vertical>false</vertical>
+                <infinite>true</infinite>
+                <autoplay>true</autoplay>
+                <dots>false</dots>
+                <rows>1</rows>
+                <speed>300</speed>
+                <autoplay-Speed>3000</autoplay-Speed>
+                <padding>15</padding>
+                <mobile>1</mobile>
+                <portrait>2</portrait>
+                <landscape>3</landscape>
+                <tablet>3</tablet>
+                <desktop>4</desktop>
+                <visible>4</visible>
+            </crosssell>
+            <labels>
+            	<!-- <newLabel>1</newLabel> -->
+            	<newText>New</newText>
+            	<!-- <saleLabel>1</saleLabel> -->
+            	<saleText>Sale</saleText>
+            	<salePercent>0</salePercent>
+            </labels>
+            <timer>
+            	<enabled>0</enabled>
+            	<caption>1</caption>
+            </timer>
+            <categorysearch>
+            	<enabled>0</enabled>
+				<select_category_on_category_pages>1</select_category_on_category_pages>
+				<show_subcategories>1</show_subcategories>
+				<subcategories_level>3</subcategories_level>
+				<indentation_text>-</indentation_text>
+            </categorysearch>
+            <newsletter>
+                <enabled>1</enabled>
+                <firstOnly>1</firstOnly>
+                <timeDelay>4000</timeDelay>
+                <autoClose>1</autoClose>
+                <timeClose>10000</timeClose>
+                <width>778</width>
+                <height>360</height>
+                <overlayColor>#353535</overlayColor>
+                <background_color>#ffffff</background_color>
+            </newsletter>
+            <font>
+            	<size>14px</size>
+            	<google>Raleway</google>
+            </font>
+	    </alothemes>
+	    <alodesign>
+	        <general>
+	            <developer>1</developer>
+	        </general>
+	    </alodesign>
+	</default>
+</config>

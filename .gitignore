@@ -1,0 +1,6 @@
+app/etc/env.php
+pub/media/*
+pub/static/*
+pub/staticbkp/*
+var/*
+media/*

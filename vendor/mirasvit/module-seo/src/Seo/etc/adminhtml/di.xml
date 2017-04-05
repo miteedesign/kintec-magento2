@@ -1,0 +1,19 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mirasvit\Core\Block\Adminhtml\Menu">
+        <arguments>
+            <argument name="menu" xsi:type="array">
+                <item name="seo" xsi:type="object">Mirasvit\Seo\Block\Adminhtml\Menu</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator">
+        <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\System\CategoryUrlPathGenerator" sortOrder="1000"/>
+    </type>
+    <type name="Magento\Catalog\Controller\Adminhtml\Product\Save">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\UrlKeyTemplate\ProductSave" sortOrder="1000"/>
+    </type>
+     <type name="Magento\Config\Model\Config\Structure\Element\Group">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Config\Group" sortOrder="1000"/>
+    </type>
+</config>
