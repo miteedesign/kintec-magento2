@@ -69,12 +69,15 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
     ) {
 
         if($addressInformation->getShippingMethodCode()=="storepickup"){
+            //print_r($addressInformation->getShippingAddress()->getData());
             $storepickup_session = $this->_checkoutSession->getData('storepickup_session');
-            $datashipping = array();
+            $datashipping = [];
             $storeId = $storepickup_session['store_id'];
+            if(is_null($storeId))
+                $storeId=1;
             $collectionstore = $this->_storeCollection->create();
             $store = $collectionstore->load($storeId, 'storepickup_id');
-            $datashipping['firstname'] = __('Store');
+            $datashipping['firstname'] = (string)__('Store');
             $datashipping['lastname'] = $store->getData('store_name');
             $datashipping['street'][0] = $store->getData('address');
             $datashipping['city'] = $store->getCity();
@@ -95,14 +98,17 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
             }
 
             $datashipping['save_in_address_book'] = 1;
+            //var_dump($datashipping);die();
             $addressInformation->getShippingAddress()->addData($datashipping);
-        }
-        //var_dump($addressInformation->getShippingAddress()->getData());
-        $quoteIdMask = $this->quoteIdMaskFactory->create()->load($cartId, 'masked_id');
-        return $this->shippingInformationManagement->saveAddressInformation(
-            $quoteIdMask->getQuoteId(),
-            $addressInformation
-        );
+            //var_dump($addressInformation->getShippingAddress()->getData());
+            $quoteIdMask = $this->quoteIdMaskFactory->create()->load($cartId, 'masked_id');
+            return $this->shippingInformationManagement->saveAddressInformation(
+                $quoteIdMask->getQuoteId(),
+                $addressInformation
+            );
+        }else
+            return  $proceed($cartId,$addressInformation);
+        
     }
 
 }
