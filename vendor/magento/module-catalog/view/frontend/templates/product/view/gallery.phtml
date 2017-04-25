@@ -108,3 +108,40 @@
         }
     }
 </script>
+
+<script>
+jQuery(document).ready(function($) {
+
+    // if we are on a product page
+    if($('.fotorama-item').length)) {
+        // try and get the default color
+        var currentColor = $('.fotorama__fade-rear.fotorama__active img:first').attr('alt');
+
+        // hide all the thumbs that do not match the current color
+        $('.fotorama__nav__frame--thumb').each(function(index) {
+            var imgLabel = $(this).attr('aria-label');
+            if(imgLabel != currentColor) {
+                $(this).css('display','none');
+            }
+        });
+
+        // on select change, go thru all thumbs again
+        $('swatch-select colour').on("change", function(event){
+            var selectedCol = $(this + 'option:selected').html();
+            
+            if (selectedCol != 'Choose an Option...') {
+                $('.fotorama__nav__frame--thumb').each(function(index) {
+                    var imgLabel = $(this).attr('aria-label');
+
+                    if(imgLabel != selectedCol) {
+                        $(this).css('display','none');
+                    }
+                    else {
+                        $(this).css('display','block');
+                    }
+                });
+            }
+        });
+    }
+});
+</script>

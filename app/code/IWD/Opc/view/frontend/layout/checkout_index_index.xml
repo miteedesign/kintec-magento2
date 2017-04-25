@@ -5,7 +5,7 @@
  * See COPYING.txt for license details.
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="IWD_Opc::css/iwd_onepage.css"/>
         <css src="IWD_Opc::css/iwd_m_onepage.css"/>
@@ -514,5 +514,7 @@
             <block class="IWD\Opc\Block\Account\Forgotpassword" name="forgotPassword" template="IWD_Opc::account/forgotpassword.phtml"> </block>
             <block class="IWD\Opc\Block\Js\Components" name="jsComponents" template="IWD_Opc::js/components.phtml"> </block>
         </referenceContainer>
+        <move element="logo" destination="alothemes_header"/>
+    
     </body>
 </page>

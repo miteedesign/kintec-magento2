@@ -1349,6 +1349,7 @@ webkit-transition: color .3s ease-in-out,background-color .3s ease-in-out,border
 -o-transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out;
 transition: color .3s ease-in-out,background-color .3s ease-in-out,border-color .3s ease-in-out;
 border:2px solid rgb(255, 107, 11) !important;
+line-height:52px !important;
 }
 
 .product-view .add-to-cart button.button span:hover {
@@ -1360,7 +1361,50 @@ border:2px solid rgb(255, 107, 11) !important;
 }
 
 .iwd-checkout-step-shipping form.form-login fieldset.hidden-fields div.actions-toolbar > div.primary button {
-    background-color: #ff6b0b;
-    border-left: 1px solid #ff6b0b;
-    height:initial;
+    background-color: #ff6b0b !important;
+    border-left: 1px solid #ff6b0b !important;
+    height:initial !important;
+    color:white !important;
+}
+.iwd-onepage-checkout .modal-popup.modal-slide .modal-footer .action-save-address {
+    background-color: #ff6b0b !important;
+    height:initial !important;
+    color:white !important;
+}
+.iwd-opc-form-for-payments .fieldset .opc-payment .payment-method._active > .payment-method-content > form.form {
+    border:none !important;
+}
+.field.no-label.month, .field.no-label.year {
+    float: left;
+    width: 45% !important;
+    display: inline-block;
+}
+
+.fieldset > .field > .label {
+    padding:0px !important;
+}
+.opc-wrapper .fieldset > .field > .label {
+    font-weight: 600 !important;
+}
+#billing-address-same-as-shipping-payflowpro {
+    margin-top:0 !important;
+}
+div#shipping-address-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+div#billing-address-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.fotorama__thumb {
+    background-color: transparent !important;
+}
+.fotorama__thumb-border {
+    display:none !important;
+}
+.fotorama__nav__frame {
+    cursor:pointer;
 }

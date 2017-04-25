@@ -863,6 +863,11 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\A
 
         $remote = preg_match('#^https?:#', $filename);
         if ($remote && !$this->_downloadRemoteImages) {
+            // when image is remote, and remote images are not allowed, do nothing and reset imported value
+            $this->_profile->getLogger()->warning($this->__('Skipping: %s, remote images download is disabled.',
+                                                            $filename));
+            $this->_profile->addValue('num_warnings');
+            $filename = '';
             return true;
         }
 
@@ -886,9 +891,12 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\A
             // if remote image and it has been already downloaded, use the existing file instead of downloading
             if (isset($this->_remoteImagesCache[$fromFilename])) {
                 $filename = $this->_remoteImagesCache[$fromFilename]['name'];
+                $this->_profile->getLogger()->warning($this->__('%s is downloaded already, using local file: %s.',
+                                                                $fromFilename, $filename));
                 $fromFilename = $this->_remoteImagesCache[$fromFilename]['path'];
                 $fromRemote = false;
-                $fromExists = is_readable($fromFilename); $slashPos = strpos($filename, $ds);
+                $fromExists = is_readable($fromFilename);
+                $slashPos = strpos($filename, $ds);
             } else {  // remote file is not yet downloaded
                 if ($this->_remoteImageSubfolderLevel) {
                     $filenameArr = explode('/', $filename);
@@ -915,9 +923,9 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\A
             $fromRemote = false;
         }
 
-        if(is_dir($fromFilename)){
+        if (is_dir($fromFilename)) {
             // swatch images are media type attribute but do not have actual image most of the time
-            $this->_profile->getLogger()->warning(__('%1 is not valid file, skipping copy' , $fromFilename));
+            $this->_profile->getLogger()->warning(__('%1 is not valid file, skipping copy', $fromFilename));
             return true;
         }
 
@@ -945,27 +953,32 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\A
         if ($import && $toExists && $this->_existingImageAction) {
             $this->_profile->addValue('num_warnings');
             $warning = __('Imported image file already exists.');
-            switch ($this->_existingImageAction) {
-                case 'skip':
-                    $warning .= __(' Skipping field update');
-                    $this->_profile->getLogger()->warning($warning);
+            if ($filename === $oldValue) {
+                // new file name is same as current value
+                $warning .= $this->__(' %s is same as current value, %s.', $filename, $oldValue);
+            } else {
+                switch ($this->_existingImageAction) {
+                    case 'skip':
+                        $warning .= __(' Skipping field update');
+                        $this->_profile->getLogger()->warning($warning);
 
-                    return false;
-                    break;
-                case 'replace' :
-                    // basically just notify user that there is
-                    $warning .= __(' Replacing existing image');
-                    break;
-                case 'save_new':
-                    $warning     .= __(' Updating image name and saving as new image.');
-                    $toFilename  = $this->_getUniqueImageName($toFilename);
-                    $newBasename = basename($toFilename);
-                    $oldBasename = basename($filename);
-                    if ($newBasename !== $oldBasename) {
-                        $filename = str_replace($oldBasename, $newBasename, $filename);
-                        $warning  .= __(' New image name: %1', $filename);
-                    }
-                    break;
+                        return false;
+                        break;
+                    case 'replace' :
+                        // basically just notify user that there is
+                        $warning .= __(' Replacing existing image');
+                        break;
+                    case 'save_new':
+                        $warning     .= __(' Updating image name and saving as new image.');
+                        $toFilename  = $this->_getUniqueImageName($toFilename);
+                        $newBasename = basename($toFilename);
+                        $oldBasename = basename($filename);
+                        if ($newBasename !== $oldBasename) {
+                            $filename = str_replace($oldBasename, $newBasename, $filename);
+                            $warning  .= __(' New image name: %1', $filename);
+                        }
+                        break;
+                }
             }
             $this->_profile->getLogger()->warning($warning);
         } else if ($import && !$toExists) {
@@ -989,11 +1002,12 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\A
 
                     case 'warning_skip':
                         $warning .= '. ' . __('Image field was not updated');
+                        $filename = $oldValue; // set import value to be same as old value and avoid update
                         break;
 
                     case 'warning_empty':
                         $warning .= '. ' . __('Image field was reset');
-                        $filename = null;
+                        $filename = '';
                         $result = true;
                         break;
                 }
@@ -1107,7 +1121,8 @@ abstract class AbstractResource extends \Magento\Framework\Model\ResourceModel\A
     {
         $fileInfo = pathinfo($toFilename);
         $newName = Uploader::getNewFileName($toFilename);
-        $toFilename = str_replace($fileInfo['filename'] . '.' . $fileInfo['extension'], $newName, $toFilename);
+        $extension = isset($fileInfo['extension'])? '.' . $fileInfo['extension']: '';
+        $toFilename = str_replace($fileInfo['filename'] . $extension, $newName, $toFilename);
 
         return $toFilename;
     }

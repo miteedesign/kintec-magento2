@@ -31,6 +31,7 @@ class Url extends AbstractHelper
         'url_key',
         'url_path',
         'name',
+        'store_id',
     ];
 
     /**

@@ -10,6 +10,7 @@
  * Product media data template
  *
  * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ * Edit file in: /www/app/design/frontend/Alothemes/milano/Magento_Catalog/templates/product/view
  */
 ?>
 <div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
@@ -67,9 +68,12 @@ require([
     'magiccart/zoom',
 ], function ($) {
     var loaded = false;
+    var swatchesSorted = false;
     $('.product.media .gallery-placeholder').bind("DOMSubtreeModified",function(){
         $('.product.media .fotorama').on('fotorama:ready', function (e, fotorama, extra) {
+
             loaded = false;
+            swatchesSorted = false;
             $('.product.media .fotorama').on('fotorama:load', function (e, fotorama, extra) {
                 if(!loaded){
                     $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
@@ -77,6 +81,7 @@ require([
                         touch:false
                     });
                     loaded = true;
+                    console.log('loading fotorama');
                 }
             });
             $('.product.media .fotorama').off('fotorama:showend').on('fotorama:showend', function (e, fotorama, extra) {
@@ -106,6 +111,41 @@ require([
                 });
             });
         });
+
+        if(loaded && !swatchesSorted){
+            console.log($('.swatch-select.colour').val());
+            var fotorama = $('.fotorama').data('fotorama');
+            // try and get the default color
+            if($('.swatch-select.colour').val() == 0) {
+                var currentColor = $('.fotorama__active:first').find('img:first').attr('alt');
+            } else {
+                var selectedColor = $('.swatch-select.colour').val();
+                var currentColor = $('.swatch-select.colour').find('option[value="' + selectedColor + '"]').text();
+            }
+            console.log('Current color: ' + currentColor);
+
+            // hide all the thumbs that do not match the current color
+            var mainImageSet = false;
+            var loadColorIndex = 0;
+
+            $('.fotorama__nav__frame--thumb').each(function(index) {
+                var imgLabel = $(this).attr('aria-label');
+                if(imgLabel != currentColor) {
+                  $(this).css('display','none');
+                  console.log('Disabled color: ' + imgLabel);
+                } else {
+                    if(!mainImageSet) {
+                        loadColorIndex = index;
+                        mainImageSet = true;
+                    }
+                }
+            });
+
+            fotorama.show(loadColorIndex);
+            swatchesSorted = true;
+        }
+
     });
 });
+
 </script>

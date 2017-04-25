@@ -391,7 +391,7 @@ form.form.form-login .field-tooltip._active .field-tooltip-content:before{border
 .checkout-payment-method .ccard .year .select{width: 130px; padding: 0 17px 0 19px; color: #888;}
 .iwd-opc-form-for-payments .fieldset .opc-payment .payment-method._active > .payment-method-content > form.form .field.cvv.required > div._with-tooltip input{ width: 90px; height: 40px; padding-left: 24px;}
 .iwd-opc-form-for-payments .fieldset .opc-payment .payment-method._active > .payment-method-content > form.form fieldset > div.number {margin: 0 0 20px 0; position: relative;}
-.iwd-opc-form-for-payments .fieldset .opc-payment .payment-method._active > .payment-method-content > form.form fieldset > div.date{margin: 0 0 20px 0;}
+.iwd-opc-form-for-payments .fieldset .opc-payment .payment-method._active > .payment-method-content > form.form fieldset > div.date{margin: 0 0 60px 0;}
 
 .iwd-opc-form-for-payments .fieldset .opc-payment .payment-method._active > .payment-method-content > form.form fieldset > div.date
 

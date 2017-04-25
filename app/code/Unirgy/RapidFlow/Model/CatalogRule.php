@@ -4,14 +4,11 @@ namespace Unirgy\RapidFlow\Model;
 
 use Magento\Catalog\Model\Product;
 use Magento\CatalogRule\Model\Rule as CatalogModelRule;
-use Magento\Customer\Model\Session;
-use Magento\Framework\Stdlib\DateTime;
-use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class CatalogRule
  *
- * @method \Unirgy\RapidFlow\Model\ResourceModel\CatalogRule getResource()
+ * @method ResourceModel\CatalogRule getResource()
  * @method string getFromDate()
  * @package Unirgy\RapidFlow\Model
  */
@@ -41,7 +38,7 @@ class CatalogRule extends CatalogModelRule
                 $productCollection->addWebsiteFilter($websiteIds)->addIdFilter($pIds);
                 $this->getConditions()->collectValidatedAttributes($productCollection);
 
-                $this->_modelResourceModelIterator->walk(
+                $this->_resourceIterator->walk(
                     $productCollection->getSelect(),
                     [[$this, 'callbackValidateMultiProduct']],
                     [
@@ -81,7 +78,7 @@ class CatalogRule extends CatalogModelRule
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('Unirgy\RapidFlow\Model\ResourceModel\CatalogRule');
+        $this->_init(ResourceModel\CatalogRule::class);
         $this->setIdFieldName('rule_id');
     }
 }

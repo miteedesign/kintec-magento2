@@ -550,6 +550,8 @@ define([
 
             $widget._LoadProductMedia();
             $input.trigger('change');
+
+
         },
 
         /**
@@ -582,6 +584,24 @@ define([
             $widget._UpdatePrice();
             $widget._LoadProductMedia();
             $input.trigger('change');
+
+            var selectedCol = $this.text();
+            console.log('Selected color: ' + selectedCol);
+
+            if (selectedCol != 'Choose an Option...') {
+              $('.fotorama__nav__frame--thumb').each(function(index) {
+                var imgLabel = $(this).attr('aria-label');
+
+                if(imgLabel != selectedCol) {
+                  $(this).css('display','none');
+                  console.log('Disabled color: ' + imgLabel);
+                }
+                else {
+                  $(this).css('display','block');
+                  console.log('Enabled color: ' + imgLabel);
+                }
+              });
+            }
         },
 
         /**

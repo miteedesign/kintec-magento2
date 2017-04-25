@@ -14,9 +14,9 @@ class Collection extends RuleCollection
     public function addIsActiveFilter($filterNow = false)
     {
         if ($filterNow) {
-            $this->getSelect()->where('from_date<=?', now(true));
+            $this->getSelect()->where('from_date<=?', \Unirgy\RapidFlow\Helper\Data::now(true));
         }
-        $this->getSelect()->where('to_date>=? or to_date is null', now(true));
+        $this->getSelect()->where('to_date>=? or to_date is null', \Unirgy\RapidFlow\Helper\Data::now(true));
         $this->getSelect()->where('is_active=1');
         return $this;
     }

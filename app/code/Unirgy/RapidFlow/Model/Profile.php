@@ -824,24 +824,6 @@ class Profile extends AbstractModel
 
         $this->_reindex();
         $this->_cacheRefresh();
-//        if ($this->_rapidFlowHelper->hasMageFeature('indexer_1.13')) {
-//
-//            $this->reindexEE113(); // reindexing for EE 1.13
-//
-//            $this->cacheRefreshEE113(); // cache refresh for EE 1.13
-//        } else if ($this->_rapidFlowHelper->hasMageFeature('indexer_1.4')) {
-//            $this->reindexCE14(); // reindexing after 1.4 CE till 1.13 EE
-//            $labels = [];
-//            foreach ($this->_appCache->getTypes() as $type) {
-//                $labels[$type->getId()] = $type->getDescription();
-//            }
-//        } else {
-//            $this->reindexCE13();
-//            $labels = $this->_appHelperAbstractHelper->getCacheTypes();
-//        }
-//        if (!empty($labels)) {
-//            $this->cacheRefresh14($labels);
-//        }
         $this->_eventManager->dispatch('urapidflow_profile_reindex_after', ['profile' => $this]);
         return $this;
     }

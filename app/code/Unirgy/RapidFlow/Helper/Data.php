@@ -34,6 +34,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Unirgy\RapidFlow\Model\Profile;
 use Unirgy\RapidFlow\Model\ResourceModel\Catalog\Product as RfProduct;
+use Magento\Framework\Module\ModuleListInterface;
 
 class Data extends AbstractHelper
 {
@@ -143,7 +144,7 @@ class Data extends AbstractHelper
     protected static function _getMetaData()
     {
         if (null === self::$metadata) {
-            self::$metadata = self::om()->get('Magento\Framework\App\ProductMetadataInterface');
+            self::$metadata = self::om()->get(ProductMetadataInterface::class);
         }
         return self::$metadata;
     }
@@ -198,7 +199,7 @@ class Data extends AbstractHelper
     public function getProfile($profileId)
     {
         /* @var $profile Profile */
-        $profile = self::om()->create('Unirgy\RapidFlow\Model\Profile');
+        $profile = self::om()->create(Profile::class);
 
         if (is_numeric($profileId)) {
             $profile->load($profileId);
@@ -235,11 +236,12 @@ class Data extends AbstractHelper
 
     /**
      * @return \Magento\Framework\Module\ModuleList|mixed
+     * @throws \RuntimeException
      */
     public function getModuleList()
     {
         if ($this->modulesList === null) {
-            $this->modulesList = self::om()->get('Magento\Framework\Module\ModuleListInterface');
+            $this->modulesList = self::om()->get(ModuleListInterface::class);
         }
 
         return $this->modulesList;

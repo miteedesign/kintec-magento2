@@ -1,3 +1,12 @@
+===== 2017-04-19 3.0.23 =====
+
+  * changed query to table CATALOG_PRODUCT_ENTITY_MEDIA_GALLERY to speed it up
+
+===== 2017-04-03 3.0.22 =====
+
+  * added index to table CATALOG_PRODUCT_ENTITY_MEDIA_GALLERY
+  * fixed sql in delete images query
+
 ===== 2017-02-20 3.0.21 =====
 
   * fixed table name used directly and not prefixed when needed
