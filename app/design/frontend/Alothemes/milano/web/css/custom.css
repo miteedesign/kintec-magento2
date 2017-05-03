@@ -395,8 +395,8 @@ a.footer-highlighted {
 }
 
 .mega-block-right img {
-    right: 10px;
-    bottom: 10px;
+    right:25px;
+    top: 25px;
 }
 
 .shop-by-size {
@@ -745,7 +745,7 @@ select option[value="position"] {
     max-width:1440px;
 }
 
-.category-mens .page-title-wrapper, .category-accessories .page-title-wrapper, .category-mens .alocolumns, .category-kids .alocolumns, .category-womens .alocolumns, .category-sports-med .alocolumns, .category-accessories .alocolumns{
+.category-mens .page-title-wrapper, .category-accessories .page-title-wrapper, .category-men .alocolumns, .category-kids .alocolumns, .category-women .alocolumns, .category-sports-med .alocolumns, .category-accessories .alocolumns{
     display:none;
 }
 
@@ -1022,8 +1022,12 @@ h4.storelocator {
     left:-1px !important;
     max-width:1100px !important;
 }
-.level0.nav-6 .level-top-mega .content-mega-horizontal, .level0.nav-5 .level-top-mega .content-mega-horizontal {
+.level0.nav-6 .level-top-mega .content-mega-horizontal {
     max-width:1000px !important;
+}
+
+.level0.nav-5 .level-top-mega .content-mega-horizontal {
+    max-width:900px !important;
 }
 
 .magicmenu .nav-desktop .level0.nav-6 .level-top-mega .children.level1 > a {
@@ -1407,4 +1411,25 @@ div#billing-address-title {
 }
 .fotorama__nav__frame {
     cursor:pointer;
+}
+.swatch-option.selected {
+    border-color: #ff6b0b !important;
+    border-width: 2px;
+    outline:0px !important;
+}
+.price-box .price {
+    color: #ff6b0b !important;
+}
+.nav>li.current {
+    padding: 10px 15px;
+    color: #ff6b0b;
+}
+.block-subscribe .actions button.button {
+    color: #393939;
+    background-color: #ffffff;
+    border-color: transparent;
+}
+.action.subscribe.button {
+    height: 35px;
+    line-height: 35px;
 }

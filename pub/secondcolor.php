@@ -40,8 +40,7 @@ $app = $bootstrap->createApplication('Magento\Framework\App\Http');
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $resource = $objectManager->get('\Magento\Framework\App\ResourceConnection');
 $writeConnection = $resource->getConnection('core_write');
-$result = $writeConnection->fetchAll('SELECT `eao`.`option_id`,`eaov`.`value` FROM `eav_attribute_option` AS `eao` JOIN `eav_attribute_option_value` `eaov` ON `eaov`.`option_id`=`eao`.`option_id` WHERE `eao`.`attribute_id`=157 ');
-$products = $objectManager->get('\Magento\Catalog\Model\Product')->getCollection()->addAttributeToFilter('type_id', array('eq' => 'simple'))->addAttributeToFilter('attribute_set_id',9)->addAttributeToSelect('colour');
+$products = $objectManager->get('\Magento\Catalog\Model\Product')->getCollection()->addAttributeToFilter('type_id', array('eq' => 'simple'))->addAttributeToFilter('attribute_set_id',4)->addAttributeToSelect('colour');
 
 $appState = $objectManager->get('\Magento\Framework\App\State');
 $appState->setAreaCode('adminhtml');

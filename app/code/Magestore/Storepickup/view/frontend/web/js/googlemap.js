@@ -307,7 +307,8 @@ define([
                 dataType: 'json',
                 data: params,
             }).done(function(data) {
-
+                self.$paginationWrapper.pagination();
+                self.$liststoreBox.liststore();
                 if (data.pagination) {
                     self.$paginationWrapper.html(data.pagination);
                     self.$paginationWrapper.pagination('addChangePageEvent');

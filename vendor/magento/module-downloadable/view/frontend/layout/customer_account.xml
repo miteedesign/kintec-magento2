@@ -15,5 +15,6 @@
                 </arguments>
             </block>
         </referenceBlock>
+        <referenceBlock name='customer-account-navigation-downloadable-products-link' remove='true'/>
     </body>
 </page>

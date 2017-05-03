@@ -15,5 +15,6 @@
                 </arguments>
             </block>
         </referenceBlock>
+        <referenceBlock name='customer-account-navigation-my-credit-cards-link' remove='true'/>
     </body>
 </page>

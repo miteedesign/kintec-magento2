@@ -19,7 +19,7 @@
  */
 
 try {
-    require __DIR__ . '/app/bootstrap.php';
+    require __DIR__ . '/../app/bootstrap.php';
 } catch (\Exception $e) {
     echo <<<HTML
 <div style="font:12px/1.35em arial, helvetica, sans-serif;">
@@ -39,7 +39,7 @@ $app = $bootstrap->createApplication('Magento\Framework\App\Http');
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $resource = $objectManager->get('\Magento\Framework\App\ResourceConnection');
 $writeConnection = $resource->getConnection('core_write');
-$result = $writeConnection->fetchAll('SELECT `eao`.`option_id`,`eaov`.`value` FROM `eav_attribute_option` AS `eao` JOIN `eav_attribute_option_value` `eaov` ON `eaov`.`option_id`=`eao`.`option_id` WHERE `eao`.`attribute_id`=157 ');
+$result = $writeConnection->fetchAll('SELECT `eao`.`option_id`,`eaov`.`value` FROM `eav_attribute_option` AS `eao` JOIN `eav_attribute_option_value` `eaov` ON `eaov`.`option_id`=`eao`.`option_id` WHERE `eao`.`attribute_id`=211 ');
 $colors = [
  'red'=>'#FF0000',
  'pink'=>'#FF69B4',

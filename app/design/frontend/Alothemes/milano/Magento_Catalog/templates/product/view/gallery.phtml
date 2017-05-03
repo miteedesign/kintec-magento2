@@ -69,6 +69,7 @@ require([
 ], function ($) {
     var loaded = false;
     var swatchesSorted = false;
+    var thumbColorNames = [];
     $('.product.media .gallery-placeholder').bind("DOMSubtreeModified",function(){
         $('.product.media .fotorama').on('fotorama:ready', function (e, fotorama, extra) {
 
@@ -112,15 +113,15 @@ require([
             });
         });
 
+/*
         if(loaded && !swatchesSorted){
-            console.log($('.swatch-select.colour').val());
+            console.log($('[attribute-code="colour"] .swatch-attribute-selected-option').text());
             var fotorama = $('.fotorama').data('fotorama');
             // try and get the default color
-            if($('.swatch-select.colour').val() == 0) {
+            if($('[attribute-code="colour"] .swatch-attribute-selected-option').text() == '') {
                 var currentColor = $('.fotorama__active:first').find('img:first').attr('alt');
             } else {
-                var selectedColor = $('.swatch-select.colour').val();
-                var currentColor = $('.swatch-select.colour').find('option[value="' + selectedColor + '"]').text();
+                var currentColor = $('[attribute-code="colour"] .swatch-attribute-selected-option').text();
             }
             console.log('Current color: ' + currentColor);
 
@@ -128,10 +129,25 @@ require([
             var mainImageSet = false;
             var loadColorIndex = 0;
 
+
+            // if the thumbs have been reloaded, re-assign the color names (aria-label values)
+            if(thumbColorNames.length){
+                $('.fotorama__nav__frame--thumb').each(function(index) {
+                    console.log('re-assigning aria-label values: ' + thumbColorNames[index]);
+                    $(this).attr('aria-label',thumbColorNames[index]);
+                });
+            }
+
             $('.fotorama__nav__frame--thumb').each(function(index) {
                 var imgLabel = $(this).attr('aria-label');
+
+                // if this is the first time page is loaded, let's store the aria-label values for future use
+                if(thumbColorNames[index] == null || thumbColorNames[index] == ''){
+                    console.log('storing aria-label values: ' + imgLabel);
+                    thumbColorNames.push(imgLabel);
+                }
                 if(imgLabel != currentColor) {
-                  $(this).css('display','none');
+                  $(this).addClass('hide-this-thumb');
                   console.log('Disabled color: ' + imgLabel);
                 } else {
                     if(!mainImageSet) {
@@ -143,7 +159,8 @@ require([
 
             fotorama.show(loadColorIndex);
             swatchesSorted = true;
-        }
+            //$('.fotorama__nav__shaft').css({transform: "translate3d(0px, 0, 0)"});
+        }*/
 
     });
 });

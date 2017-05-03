@@ -5180,3 +5180,1366 @@ Step #3 was reset successfully.
 2017/04/17 12:28:42 [info] [ub_data_migration] Continue running step #5
 2017/04/17 12:28:43 [info] [ub_data_migration] Step #5 was finished.
 2017/04/17 12:28:43 [info] [ub_data_migration] --------------------
+2017/04/29 21:19:43 [info] [ub_data_migration] 
+Step #5 was reset successfully.
+2017/04/29 23:21:37 [info] [ub_data_migration] Start running step #5
+2017/04/29 23:21:37 [info] [ub_data_migration] Migrated data in step #5 ok with 100 Products.
+2017/04/29 23:23:11 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:23:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:24:59 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:24:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:27:19 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:27:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:29:19 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:29:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:31:29 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:31:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:33:34 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:33:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:35:28 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:35:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:37:02 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:37:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:38:33 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:38:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:40:24 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:40:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:42:32 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:42:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:44:47 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:44:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:46:39 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:46:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:48:36 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:48:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:49:58 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:49:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:51:22 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:51:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:52:41 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:52:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:54:00 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:54:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:55:19 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:55:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:56:38 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:56:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:58:03 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:58:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/29 23:59:27 [info] [ub_data_migration] Continue running step #5
+2017/04/29 23:59:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:01:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:01:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:02:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:02:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:04:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:04:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:05:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:05:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:07:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:07:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:08:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:08:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:09:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:09:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:11:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:11:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:12:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:12:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:13:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:13:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:14:58 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:14:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:16:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:16:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:18:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:18:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:21:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:21:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:22:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:22:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:24:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:24:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:25:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:25:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:27:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:27:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:28:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:28:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:29:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:29:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:31:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:31:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:33:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:33:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:34:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:34:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:36:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:36:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:37:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:37:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:39:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:39:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:41:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:41:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:45:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:45:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:48:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:48:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:51:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:51:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:53:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:53:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:56:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:56:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 00:58:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 00:58:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:01:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:01:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:05:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:05:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:07:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:07:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:10:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:10:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:11:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:11:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:13:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:13:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:14:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:14:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:16:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:16:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:19:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:19:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:21:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:21:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:23:26 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:23:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:25:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:25:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:26:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:26:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:28:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:28:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:31:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:31:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:32:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:32:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:34:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:34:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:36:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:36:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:38:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:38:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:39:58 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:39:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:41:48 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:41:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:43:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:43:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:44:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:44:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:46:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:46:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:48:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:48:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:50:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:50:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:52:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:52:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:54:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:54:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:56:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:56:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 01:58:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 01:58:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:01:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:01:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:04:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:04:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:07:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:07:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:10:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:10:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:11:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:11:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:13:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:13:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:14:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:14:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:17:24 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:17:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:19:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:19:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:20:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:20:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:22:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:22:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:23:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:23:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:25:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:25:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:26:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:26:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:28:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:28:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:29:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:29:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:31:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:31:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:33:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:33:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:35:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:35:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:36:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:36:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:38:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:38:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:40:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:40:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:41:58 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:41:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:43:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:43:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:45:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:45:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:47:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:47:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:49:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:49:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:51:24 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:51:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:53:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:53:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:54:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:54:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:56:26 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:56:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:58:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:58:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 02:59:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 02:59:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:01:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:01:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:02:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:02:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:04:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:04:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:06:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:06:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:07:41 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:07:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:09:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:09:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:10:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:10:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:12:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:12:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:14:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:14:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:15:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:15:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:18:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:18:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:19:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:19:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:21:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:21:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:22:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:22:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:24:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:24:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:25:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:25:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:27:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:27:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:28:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:28:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:30:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:30:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:31:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:31:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:33:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:33:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:34:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:34:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:36:04 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:36:04 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:37:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:37:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:38:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:38:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:40:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:40:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:41:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:41:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:42:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:42:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:44:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:44:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:45:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:45:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:48:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:48:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:49:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:49:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:51:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:51:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:52:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:52:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:54:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:54:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:55:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:55:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:56:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:56:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:58:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:58:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 03:59:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 03:59:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:00:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:00:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:02:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:02:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:03:26 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:03:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:04:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:04:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:05:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:05:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:07:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:07:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:08:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:08:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:09:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:09:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:11:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:11:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:13:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:13:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:14:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:14:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:17:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:17:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:19:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:19:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:20:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:20:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:22:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:22:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:23:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:23:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:25:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:25:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:26:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:26:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:28:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:28:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:29:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:29:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:31:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:31:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:32:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:32:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:34:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:34:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:36:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:36:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:37:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:37:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:39:04 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:39:04 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:40:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:40:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:42:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:42:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:43:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:43:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:45:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:45:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:47:48 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:47:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:49:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:49:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:50:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:50:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:53:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:53:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:55:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:55:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:57:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:57:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 04:59:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 04:59:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:02:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:02:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:04:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:04:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:07:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:07:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:09:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:09:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:11:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:11:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:12:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:12:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:14:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:14:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:16:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:16:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:19:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:19:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:20:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:20:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:22:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:22:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:23:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:23:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:25:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:25:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:26:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:26:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:28:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:28:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:30:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:30:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:32:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:32:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:34:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:34:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:36:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:36:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:38:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:38:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:39:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:39:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:41:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:41:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:43:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:43:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:45:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:45:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:47:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:47:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:49:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:49:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:51:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:51:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:52:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:52:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:53:48 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:53:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:55:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:55:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 05:57:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 05:57:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:00:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:00:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:03:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:03:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:05:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:05:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:07:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:07:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:08:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:08:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:10:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:10:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:13:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:13:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:15:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:15:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:19:26 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:19:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:21:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:21:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:23:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:23:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:25:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:25:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:28:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:28:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:30:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:30:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:33:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:33:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:36:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:36:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:39:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:39:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:41:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:41:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:43:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:43:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:44:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:44:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:48:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:48:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:53:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:53:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:56:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:56:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 06:59:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 06:59:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:01:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:01:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:03:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:03:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:04:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:04:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:06:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:06:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:07:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:07:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:09:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:09:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:10:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:10:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:12:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:12:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:13:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:13:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:14:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:14:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:17:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:17:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:19:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:19:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:22:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:22:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:25:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:25:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:27:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:27:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:30:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:30:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:32:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:32:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:35:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:35:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:37:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:37:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:39:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:39:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:42:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:42:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:44:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:44:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:46:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:46:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:50:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:50:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:52:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:52:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:55:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:55:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 07:57:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 07:57:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:00:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:00:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:03:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:03:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:05:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:05:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:08:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:08:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:10:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:10:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:13:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:13:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:16:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:16:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:18:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:18:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:21:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:21:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:23:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:23:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:25:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:25:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:28:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:28:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:31:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:31:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:32:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:32:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:34:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:34:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:35:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:35:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:37:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:37:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:38:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:38:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:39:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:39:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:41:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:41:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:42:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:42:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:44:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:44:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:45:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:45:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:47:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:47:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:49:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:49:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:51:41 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:51:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:53:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:53:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:55:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:55:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:57:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:57:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:58:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:58:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 08:59:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 08:59:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:01:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:01:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:02:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:02:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:03:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:03:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:05:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:05:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:07:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:07:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:08:58 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:08:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:11:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:11:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:13:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:13:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:15:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:15:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:17:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:17:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:20:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:20:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:23:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:23:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:26:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:26:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:29:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:29:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:32:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:32:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:33:48 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:33:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:34:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:34:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:36:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:36:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:37:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:37:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:38:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:38:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:39:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:39:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:41:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:41:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:42:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:42:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:43:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:43:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:45:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:45:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:47:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:47:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:50:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:50:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:52:04 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:52:04 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:53:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:53:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:54:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:54:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:55:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:55:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:56:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:56:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:58:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:58:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 09:59:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 09:59:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:01:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:01:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:02:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:02:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:04:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:04:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:05:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:05:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:06:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:06:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:08:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:08:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:08:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:08:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:09:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:09:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Products.
+2017/04/30 10:09:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:09:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 22 Products.
+2017/04/30 10:09:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:09:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 76 Product Links. 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:09:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:10:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:10:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:10:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:10:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:10:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:10:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:10:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:10:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:10:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:10:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:11:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:11:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:11:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:11:26 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:11:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:11:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:11:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:11:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:12:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:12:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:12:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:12:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:12:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:12:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:12:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:12:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:13:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:13:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:13:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:13:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:13:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:13:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:13:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:13:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:14:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:14:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:14:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:14:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:14:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:14:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:14:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:14:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:14:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:14:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:15:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:15:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:15:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:15:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:15:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:15:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:16:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:16:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:16:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:16:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:17:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:17:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:17:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:17:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:18:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:18:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:18:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:18:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:18:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:18:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:19:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:19:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:19:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:19:41 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:20:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:20:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:20:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:20:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:20:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:20:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:21:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:21:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 21 Product Super Attributes. 100 Product Relations.
+2017/04/30 10:21:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:21:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:21:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:21:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:21:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:21:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:04 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:22:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:22:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:23:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:23:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:24:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:24:58 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:25:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:25:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:26:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:26:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:05 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:26 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:26 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:27:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:27:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:28:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:28:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:04 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:29:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:29:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:30:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:30:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:48 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:31:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:31:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:01 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:01 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:41 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:41 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:48 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:48 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:32:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:32:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:33:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:33:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:04 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:05 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:34:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:34:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:24 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:35:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:35:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:12 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:12 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:32 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:36:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:36:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:37:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:37:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:30 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:30 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:38:53 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:38:53 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:39:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:39:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:25 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:25 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:40:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:40:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:41:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:41:56 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:24 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:42:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:42:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:34 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:43:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:43:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:44:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:44:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:23 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:23 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:45:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:45:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:46:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:46:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:46:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:46:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:46:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:46:32 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:46:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:46:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:46:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:46:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:47:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:47:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:47:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:47:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:47:34 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:47:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:47:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:47:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:19 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:19 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:48:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:48:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:11 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:11 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:17 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:17 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:24 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:39 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:39 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:49:59 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:49:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:08 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:08 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:15 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:37 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:37 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:44 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:44 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:51 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:51 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:50:57 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:50:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:04 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:04 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:13 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:13 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:20 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:20 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:27 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:27 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:40 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:40 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:47 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:47 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:51:54 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:51:54 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:00 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:00 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:07 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:07 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:15 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:21 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:21 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:35 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:35 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:49 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:49 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:52:55 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:52:55 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:02 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:02 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:09 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:09 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:16 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:16 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:29 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:29 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:36 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:36 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:50 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:50 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:53:56 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:53:57 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:03 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:03 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:10 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:10 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:18 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:18 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:24 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:24 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:31 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:31 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:52 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:52 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:54:58 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:54:59 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:06 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:55:06 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:14 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:55:14 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:22 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:55:22 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:28 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:55:28 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:33 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:55:33 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:38 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 100 Product Relations.
+2017/04/30 10:55:38 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:42 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links. 76 Product Relations.
+2017/04/30 10:55:42 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:43 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links.
+2017/04/30 10:55:43 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:45 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 100 Product Super Links.
+2017/04/30 10:55:45 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:46 [info] [ub_data_migration] (Continued) migrated data in step #5 ok with 3 Product Super Links.
+2017/04/30 10:55:46 [info] [ub_data_migration] Continue running step #5
+2017/04/30 10:55:46 [info] [ub_data_migration] Step #5 was finished.
+2017/04/30 10:55:46 [info] [ub_data_migration] --------------------

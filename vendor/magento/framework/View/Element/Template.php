@@ -248,7 +248,9 @@ class Template extends AbstractBlock
             'TEMPLATE:' . $fileName,
             ['group' => 'TEMPLATE', 'file_name' => $relativeFilePath]
         );
-
+        if(isset($_GET['showTemp'])){
+            echo $relativeFilePath;
+        }
         if ($this->validator->isValid($fileName)) {
             $extension = pathinfo($fileName, PATHINFO_EXTENSION);
             $templateEngine = $this->templateEnginePool->get($extension);
