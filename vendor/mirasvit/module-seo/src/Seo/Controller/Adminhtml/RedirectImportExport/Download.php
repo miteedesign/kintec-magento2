@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -27,6 +27,17 @@ class Download extends \Mirasvit\Seo\Controller\Adminhtml\RedirectImportExport
 {
     const SAMPLE_FILES_MODULE = 'Mirasvit_Seo';
 
+    /**
+     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+     * @param \Magento\Framework\Controller\Result\RawFactory $resultRawFactory
+     * @param \Magento\Framework\Component\ComponentRegistrar $componentRegistrar
+     * @param \Magento\Framework\App\ResourceConnection $resource
+     * @param \Magento\Framework\Filesystem $filesystem
+     * @param \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Mirasvit\Seo\Model\RedirectFactory $redirectFactory
+     */
     public function __construct(
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Framework\Controller\Result\RawFactory $resultRawFactory,
@@ -38,7 +49,14 @@ class Download extends \Mirasvit\Seo\Controller\Adminhtml\RedirectImportExport
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Mirasvit\Seo\Model\RedirectFactory $redirectFactory
     ) {
-        parent::__construct($resource, $filesystem, $fileUploaderFactory, $context, $storeManager, $fileFactory, $redirectFactory);
+        parent::__construct($resource,
+            $filesystem,
+            $fileUploaderFactory,
+            $context,
+            $storeManager,
+            $fileFactory,
+            $redirectFactory
+        );
 
         $this->fileFactory        = $fileFactory;
         $this->resultRawFactory   = $resultRawFactory;
@@ -58,7 +76,7 @@ class Download extends \Mirasvit\Seo\Controller\Adminhtml\RedirectImportExport
 
         if (!file_exists($fileAbsolutePath)) {
             /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-            $this->messageManager->addError(__('There is no sample file for this entity.'));
+            $this->messageManager->addErrorMessage(__('There is no sample file for this entity.'));
             $resultRedirect = $this->resultRedirectFactory->create();
             $resultRedirect->setPath('*/*/index');
             return $resultRedirect;

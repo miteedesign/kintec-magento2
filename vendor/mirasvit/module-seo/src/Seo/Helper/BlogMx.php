@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -37,18 +37,26 @@ class BlogMx extends \Magento\Framework\App\Helper\AbstractHelper
     protected $seoData;
 
     /**
+     * @var \Magento\Framework\App\Filesystem\DirectoryLis
+     */
+    protected $directoryList;
+
+    /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Mirasvit\Seo\Helper\Data $seoData
+     * @param \Magento\Framework\App\Filesystem\DirectoryList $directoryList
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Mirasvit\Seo\Helper\Data $seoData
+        \Mirasvit\Seo\Helper\Data $seoData,
+        \Magento\Framework\App\Filesystem\DirectoryList $directoryList
     ) {
         $this->scopeConfig = $scopeConfig;
         $this->storeManager = $storeManager;
         $this->seoData = $seoData;
+        $this->directoryList = $directoryList;
     }
 
     /**
@@ -97,9 +105,22 @@ class BlogMx extends \Magento\Framework\App\Helper\AbstractHelper
      * @param string $imageUrl
      * @return array
      */
-    public function getImageSize($imageUrl) 
+    public function getImageSize($imageUrl)
     {
-        return getimagesize($imageUrl);
+        $checkedImageUrl = [];
+        $isAllowUrlFopen = ini_get('allow_url_fopen');
+        $rootFolder = $this->directoryList->getRoot();
+        $imageUrl = str_replace($this->storeManager->getStore()->getBaseUrl(), '/', $imageUrl);
+        $imageUrlDirect = $rootFolder . $imageUrl;
+        $imageUrlPub = $rootFolder . '/pub' . $imageUrl;
+
+        if ($isAllowUrlFopen && file_exists($imageUrlDirect)) {
+            $checkedImageUrl = getimagesize($imageUrlDirect);
+        } elseif ($isAllowUrlFopen && file_exists($imageUrlPub)) {
+            $checkedImageUrl = getimagesize($imageUrlPub);
+        }
+
+        return $checkedImageUrl;
     }
 
     /**
@@ -116,7 +137,7 @@ class BlogMx extends \Magento\Framework\App\Helper\AbstractHelper
 
         return $imageWidth;
     }
-    
+
     /**
      * @param string $imageUrl
      * @return int

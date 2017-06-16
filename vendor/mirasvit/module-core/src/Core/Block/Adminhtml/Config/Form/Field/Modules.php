@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-core
- * @version   1.2.24
+ * @version   1.2.26
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -57,6 +57,7 @@ class Modules extends Field
     public function render(AbstractElement $element)
     {
         $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
+
         return parent::render($element);
     }
 
@@ -77,12 +78,16 @@ class Modules extends Field
 
         foreach ($this->moduleFactory->create()->getInstalledModules() as $moduleName) {
             $module = $this->moduleFactory->create()
-                    ->load($moduleName);
+                ->load($moduleName);
 
-            if ($module->getName()) {
+            if ($module->getModuleName() || $module->getName()) {
                 $modules[] = $module;
             }
         }
+
+        usort($modules, function ($a, $b) {
+            return strcmp($b->getName(), $a->getName());
+        });
 
         return $modules;
     }

@@ -1,3 +1,19 @@
+## 1.2.26
+*(2017-04-11)*
+
+#### Fixed
+* Fixed an issue with moment.js
+
+---
+
+## 1.2.25
+*(2017-04-05)*
+
+#### Improvements
+* Developer information
+
+---
+
 ## 1.2.24
 *(2017-03-24)*
 

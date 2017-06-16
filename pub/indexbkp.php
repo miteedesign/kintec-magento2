@@ -44,21 +44,24 @@ $colors = [
  'red'=>'#FF0000',
  'pink'=>'#FF69B4',
  'orange'=>'#FF4500',
- 'black'=>'#000000',
+ 
  'purple'=>'#FF00FF',
  'gray'=>'#808080',
  'grey'=>'#808080',
  'green'=>'#32CD32',
  'blue'=>'#0000FF',
- 'white'=>'#FFFFFF',
+ 
  'silver'=>'#C0C0C0',
  'yellow'=>'#FFFF00',
  'brown'=>'#8B4513',
  'maroon'=>'#800000',
  'violet'=>'#8a2be2',
+ 'voilet'=>'#8a2be2',
  'chocolate'=>'#d2691e',
  'orchid'=>'#9932cc',
  'gold'=>'#ffd700',
+ 'black'=>'#000000',
+ 'white'=>'#FFFFFF',
 ];
 
 
@@ -77,6 +80,7 @@ foreach($result as $row){
 			}
 			$found = true;
 			echo 'Found : '.$row['value'].'='.$color.'<br>';
+			break;
 		}
 
 	}

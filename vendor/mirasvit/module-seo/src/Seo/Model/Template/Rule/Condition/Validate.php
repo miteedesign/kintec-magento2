@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -543,8 +543,10 @@ class Validate extends \Magento\Rule\Model\Condition\AbstractCondition
     {
         if ($object instanceof \Magento\Catalog\Model\Category) {
             $categoryIds = [$object->getId()];
+            $categoryIds = $this->prepareCategoryIds($categoryIds, true, $object);
         } else {
             $categoryIds = $object->getAvailableInCategories();
+            $categoryIds = $this->prepareCategoryIds($categoryIds, false, $object);
         }
         $op = $this->getOperatorForValidate();
         if ((($op == '==') || ($op == '!=')) && is_array($categoryIds)) {
@@ -571,6 +573,34 @@ class Validate extends \Magento\Rule\Model\Condition\AbstractCondition
         }
 
         return $this->validateAttribute($categoryIds);
+    }
+
+    /**
+     * @param array $categoryIds
+     * @param boolean $isCategory
+     * @param \Magento\Catalog\Model\Category $object
+     *
+     * @return array
+     *
+     */
+    protected function prepareCategoryIds($categoryIds, $isCategory, $object)
+    {
+        $applyForChildCategories = $this->getRule()->getApplyForChildCategories();
+        if ($applyForChildCategories
+            && $isCategory
+            && ($categoryPath = $object->getPathIds())
+            && is_array($categoryPath)) {
+            $categoryIds = array_merge($categoryIds, $categoryPath);
+        } elseif ($applyForChildCategories
+            && !$isCategory
+            && ($categoryCollection = $object->getCategoryCollection())
+            && is_object($categoryCollection)) {
+            foreach ($categoryCollection as $category) {
+                $categoryIds = array_merge($categoryIds, $category->getPathIds());
+            }
+        }
+
+        return array_unique($categoryIds);
     }
 
     /**

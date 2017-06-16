@@ -129,6 +129,8 @@ class CustomerChangeShippingAddress extends \Magento\Checkout\Model\ShippingInfo
                 $storepickup_session = $this->_checkoutSession->getData('storepickup_session');
                 $datashipping = [];
                 $storeId = $storepickup_session['store_id'];
+                $storeId = is_null($storeId)?1:$storeId;
+                
                 $collectionstore = $this->_storeCollection->create();
                 $store = $collectionstore->load($storeId, 'storepickup_id');
                 $datashipping['firstname'] = (string)__('Store');
@@ -152,19 +154,21 @@ class CustomerChangeShippingAddress extends \Magento\Checkout\Model\ShippingInfo
                 }
 
                // $datashipping['save_in_address_book'] = 0;
-    			$address->setSameAsBilling(0);
+    			
                 $address->addData($datashipping);
 
-                try {
-                    $address->save();
-                    $quote->collectTotals();
-                    $this->quoteRepository->save($quote);
-                } catch (\Exception $e) {
-                    $this->logger->critical($e);
-                    throw new InputException(__('Unable to save shipping information. Please, check input data.'));
-                }
+                
             }
-
+            try {
+                $address->setSameAsBilling(0);
+                $address->save();
+                $quote->collectTotals();
+                $this->quoteRepository->save($quote);   
+            } catch (\Exception $e) {
+                $this->logger->critical($e);
+                throw new InputException(__('Unable to save shipping information. Please, check input data.'));
+            }
+            
             /** @var \Magento\Checkout\Api\Data\PaymentDetailsInterface $paymentDetails */
             $paymentDetails = $this->paymentDetailsFactory->create();
             $paymentDetails->setPaymentMethods($this->paymentMethodManagement->getList($cartId));

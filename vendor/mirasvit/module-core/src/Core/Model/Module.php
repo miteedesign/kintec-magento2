@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-core
- * @version   1.2.24
+ * @version   1.2.26
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -131,12 +131,12 @@ class Module
     {
         $dir = $this->dirReader->getModuleDir("", $moduleName);
 
-        if (file_exists($dir.'/composer.json')) {
-            return json_decode(file_get_contents($dir.'/composer.json'), true);
+        if (file_exists($dir . '/composer.json')) {
+            return json_decode(file_get_contents($dir . '/composer.json'), true);
         }
 
-        if (file_exists($dir.'/../../composer.json')) {
-            return json_decode(file_get_contents($dir.'/../../composer.json'), true);
+        if (file_exists($dir . '/../../composer.json')) {
+            return json_decode(file_get_contents($dir . '/../../composer.json'), true);
         }
 
         return false;

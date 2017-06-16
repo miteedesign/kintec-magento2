@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -43,7 +43,7 @@ class BlogMx implements \Mirasvit\Seo\Api\Config\BlogMxInterface
      *
      * @return bool
      */
-    public function isEnabled() 
+    public function isEnabled()
     {
         return $this->moduleManager->isEnabled('Mirasvit_Blog');
     }
@@ -71,11 +71,11 @@ class BlogMx implements \Mirasvit\Seo\Api\Config\BlogMxInterface
     /**
      * Blog Mx actions
      *
-     * @return bool
+     * @return array
      */
     public function getActions()
     {
-        return ['blog_post_view', 'blog_category_view'];
+        return ['blog_post_view', 'blog_category_view', 'blog_category_index'];
     }
 }
 

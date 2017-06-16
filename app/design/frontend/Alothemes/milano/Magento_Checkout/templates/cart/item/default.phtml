@@ -40,6 +40,18 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                         <?php echo $block->escapeHtml($block->getProductName()) ?>
                     <?php endif; ?>
                 </strong>
+
+                <?php
+                    $product_id = $product->getId();
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $customProduct = $objectManager->get('Magento\Catalog\Model\Product')->load($product_id);
+                    $_finalsale = $customProduct->getData('warehouse_final_sale');
+
+                    if($_finalsale == '1') { ?>
+                        <p>* ALL WAREHOUSE CLEARANCE ITEMS ARE A FINAL SALE</p>
+                    <?php } 
+                ?>
+
                 <?php if ($_options = $block->getOptionList()):?>
                     <dl class="item-options">
                         <?php foreach ($_options as $_option) : ?>

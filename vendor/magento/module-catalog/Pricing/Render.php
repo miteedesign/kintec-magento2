@@ -37,6 +37,7 @@ class Render extends Template
         Registry $registry,
         array $data = []
     ) {
+        
         $this->registry = $registry;
         parent::__construct($context, $data);
     }

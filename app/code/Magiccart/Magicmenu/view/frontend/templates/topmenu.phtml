@@ -19,11 +19,39 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 $isLoggedIn = $customerSession->isLoggedIn();
 
-$menu = $this->_sysCfg->topmenu;
+/** @var \Magento\Framework\App\CacheInterface $cache */
+$cache = $objectManager->get('Magento\Framework\App\CacheInterface');
+
+
+if($menu=$cache->load('custom_top_menu1')){
+	$menu = json_decode($menu,true);
+}
+else{
+	
+	$menu = $this->_sysCfg->topmenu;
+	try{
+		$cache->save(json_encode($menu), 'custom_top_menu1', ['BLOCK_HTML'], 99999);
+	}
+	catch(\Exception $e){
+		 die($e->getMessage());
+
+	}
+}
+
 if(!$menu['enabled']) return;
 
 // drawMainMenu vs DrowMobileMenu
-$menuHtml = $this->drawMainMenu();
+
+
+if($menuHtml=$cache->load('custom_top_mainmenu1')){
+	$menuHtml = json_decode($menuHtml,true);
+}
+else{
+	$menuHtml = $this->drawMainMenu();
+	$cache->save(json_encode($menuHtml), 'custom_top_mainmenu1', ['BLOCK_HTML'], 99999);
+}
+
+
 $mobileMenu = $menuHtml['mobile'];
 $desktop 	= $menuHtml['desktop'];
 $ids  = explode(',', $menu['notIncludeNav']);

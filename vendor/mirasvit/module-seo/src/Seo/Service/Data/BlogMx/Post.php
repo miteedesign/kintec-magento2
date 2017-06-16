@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -23,16 +23,6 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
-
-    /**
-     * @var \Mirasvit\Blog\Model\Post
-     */
-    protected $post;
-
-    /**
-     * @var \Mirasvit\Blog\Model\Config
-     */
-    protected $config;
 
     /**
      * @var \Mirasvit\Seo\Helper\Data
@@ -50,27 +40,45 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
     protected $blogMx;
 
     /**
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $objectManager;
+
+    /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Mirasvit\Blog\Model\Post $post
-     * @param \Mirasvit\Blog\Model\Config $config
      * @param \Mirasvit\Seo\Helper\Data $seoData
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Mirasvit\Seo\Helper\BlogMx $blogMx
+     * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Mirasvit\Blog\Block\Post\View $post,
-        \Mirasvit\Blog\Model\Config $config,
         \Mirasvit\Seo\Helper\Data $seoData,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Mirasvit\Seo\Helper\BlogMx $blogMx
+        \Mirasvit\Seo\Helper\BlogMx $blogMx,
+        \Magento\Framework\ObjectManagerInterface $objectManager
     ) {
         $this->scopeConfig = $scopeConfig;
-        $this->post = $post->getPost();
-        $this->config = $config;
         $this->seoData = $seoData;
         $this->storeManager = $storeManager;
         $this->blogMx = $blogMx;
+        $this->objectManager = $objectManager;
+    }
+
+    /**
+     * @return \Mirasvit\Blog\Model\Config
+     */
+    public function getConfig()
+    {
+        return $this->objectManager->get('\Mirasvit\Blog\Model\Config');
+    }
+
+    /**
+     * @return \Mirasvit\Blog\Model\Post
+     */
+    public function getPost()
+    {
+        return $this->objectManager->get('\Mirasvit\Blog\Block\Post\View')->getPost();
     }
 
     /**
@@ -78,7 +86,7 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      */
     public function getHeadline()
     {
-        return $this->post ? $this->post->getName() : $this->config->getBlogName();
+        return $this->getPost() ? $this->getPost()->getName() : $this->getConfig()->getBlogName();
     }
 
     /**
@@ -86,7 +94,7 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      */
     public function getContent()
     {
-        return $this->post->getContent();
+        return $this->getPost()->getContent();
     }
 
     /**
@@ -105,7 +113,7 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      */
     public function getUrl()
     {
-        return $this->post->getUrl();
+        return $this->getPost()->getUrl();
     }
 
     /**
@@ -113,9 +121,9 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      */
     public function getKeywords()
     {
-        return $this->post
-            ? ($this->post->getMetaKeywords() ? $this->post->getMetaKeywords() : $this->post->getName())
-            : $this->config->getBaseMetaKeywords();
+        return $this->getPost()
+            ? ($this->getPost()->getMetaKeywords() ? $this->getPost()->getMetaKeywords() : $this->getPost()->getName())
+            : $this->getConfig()->getBaseMetaKeywords();
     }
 
     /**
@@ -123,7 +131,7 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      */
     public function getDatePublished()
     {
-        return $this->blogMx->getDatePublished($this->post->getCreatedAt());
+        return $this->blogMx->getDatePublished($this->getPost()->getCreatedAt());
     }
 
     /**
@@ -131,7 +139,7 @@ class Post implements \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
      */
     public function getAuthorName()
     {
-        return $this->post->getAuthor()->getName();
+        return $this->getPost()->getAuthor()->getName();
     }
 
     /**

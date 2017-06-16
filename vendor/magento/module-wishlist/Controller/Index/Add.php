@@ -147,8 +147,12 @@ class Add extends \Magento\Wishlist\Controller\AbstractIndex
                 __('We can\'t add the item to Wish List right now.')
             );
         }
-
+        if($this->_customerSession->isLoggedIn()) {
+           $resultRedirect->setPath($this->_redirect->getRefererUrl());
+        }
+        else
         $resultRedirect->setPath('*', ['wishlist_id' => $wishlist->getId()]);
+        
         return $resultRedirect;
     }
 }

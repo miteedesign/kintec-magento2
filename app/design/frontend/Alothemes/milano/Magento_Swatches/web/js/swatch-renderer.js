@@ -314,9 +314,9 @@ define([
             });
 
             // Connect Tooltip
-            container
+            /*container
                 .find('[option-type="1"], [option-type="2"], [option-type="0"], [option-type="3"]')
-                .SwatchRendererTooltip();
+                .SwatchRendererTooltip();*/
 
             // Hide all elements below more button
             $('.' + classes.moreButton).nextAll().hide();
@@ -330,6 +330,23 @@ define([
             //Emulate click on all swatches from Request
             $widget._EmulateSelected($.parseQuery());
             $widget._EmulateSelected($widget._getSelectedAttributes());
+
+            if($('.product-shop').length && $('.swatch-attribute.colour').length){
+                console.log($('.swatch-attribute.colour .swatch-option').length);
+                if($('.swatch-attribute.colour .swatch-option').length == 1) {
+                    console.log('triggering click');
+                    $('.swatch-attribute.colour').find('.swatch-option').first().trigger('click');
+                }
+            }
+
+            if($('.category-products').length){
+                $('.swatch-option.color').on('click', function(){
+                    var itemURL = $(this).parents('.product-item-details:first').find('.product-item-link').attr('href');
+                    window.location.href = itemURL;
+                });
+            }
+
+
         },
 
         /**
@@ -351,7 +368,12 @@ define([
             if (!this.options.jsonSwatchConfig.hasOwnProperty(config.id)) {
                 return '';
             }
-
+            if(config.code=='size'){
+                config.options = _.sortBy(config.options, function (option) {
+                    return parseFloat(option.label);
+                });
+            }
+            
             $.each(config.options, function () {
                 var id,
                     type,
@@ -529,7 +551,53 @@ define([
                 $widget._UpdatePrice();
             }
 
-            $widget._LoadProductMedia();
+            //$widget._LoadProductMedia();
+
+            console.log($('[attribute-code="colour"] .swatch-attribute-selected-option').text());
+            var fotorama = $('.fotorama').data('fotorama');
+            // try and get the default color
+            if($('[attribute-code="colour"] .swatch-attribute-selected-option').text() == '') {
+                var currentColor = $('.fotorama__active:first').find('img:first').attr('alt');
+            } else {
+                var currentColor = $('[attribute-code="colour"] .swatch-attribute-selected-option').text();
+            }
+            console.log('Current color: ' + currentColor);
+
+            // hide all the thumbs that do not match the current color
+            var mainImageSet = false;
+            var loadColorIndex = 0;
+
+
+            // if the thumbs have been reloaded, re-assign the color names (aria-label values)
+            /*if(thumbColorNames.length){
+                $('.fotorama__nav__frame--thumb').each(function(index) {
+                    console.log('re-assigning aria-label values: ' + thumbColorNames[index]);
+                    $(this).attr('aria-label',thumbColorNames[index]);
+                });
+            }*/
+
+            $('.fotorama__nav__frame--thumb').each(function(index) {
+                var imgLabel = $(this).attr('aria-label');
+
+                // if this is the first time page is loaded, let's store the aria-label values for future use
+                /*if(thumbColorNames[index] == null || thumbColorNames[index] == ''){
+                    console.log('storing aria-label values: ' + imgLabel);
+                    thumbColorNames.push(imgLabel);
+                }*/
+
+                if(imgLabel != currentColor) {
+                  $(this).addClass('hide-this-thumb');
+                  console.log('Disabled color: ' + imgLabel);
+                } else {
+                    if(!mainImageSet) {
+                        loadColorIndex = index;
+                        mainImageSet = true;
+                    }
+                }
+            });
+
+            fotorama.show(loadColorIndex);
+
             $input.trigger('change');
         },
 
@@ -904,7 +972,11 @@ define([
                 imagesToUpdate,
                 gallery = context.find(this.options.mediaGallerySelector).data('gallery'),
                 item;
+            if(typeof gallery=='undefined'){
 
+                gallery = $('.column.main').find(this.options.mediaGallerySelector).data('gallery');
+                console.log(gallery);
+            }
             if (isProductViewExist) {
                 imagesToUpdate = images.length ? this._setImageType($.extend(true, [], images)) : [];
 

@@ -32,6 +32,8 @@
 
     DirectoryIndex index.php
 
+    #SetEnv MAGE_PROFILER html
+
 <IfModule mod_php5.c>
 ############################################
 ## Adjust memory limit
@@ -162,6 +164,10 @@
 ## Rewrite everything else to index.php
 
     RewriteRule .* index.php [L]
+
+    
+    #RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+    #RewriteRule ^ %1 [R=301,L,NC]
 
 </IfModule>
 

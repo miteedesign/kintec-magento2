@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -161,8 +161,12 @@ class Sitemap  extends \Magento\Sitemap\Model\Sitemap
         if ($this->moduleManager->isEnabled('Mirasvit_Blog')) {
             $blogMxSitemap = $this->objectManager->get('\Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface');
             $this->_sitemapItems[] = $blogMxSitemap->getBlogItem();
-            $this->_sitemapItems[] = $blogMxSitemap->getCategoryItems();
-            $this->_sitemapItems[] = $blogMxSitemap->getPostItems();
+            if ($categoryItems = $blogMxSitemap->getCategoryItems()) {
+                $this->_sitemapItems[] = $categoryItems;
+            }
+            if ($postItems = $blogMxSitemap->getPostItems()) {
+                $this->_sitemapItems[] = $postItems;
+            }
         }
 
         $this->_tags = [

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -128,6 +128,14 @@ class Rule extends \Magento\Backend\Block\Widget\Form implements \Magento\Backen
             'label' => __('Stop Further Rules Processing'),
             'options' => ['1' => __('Yes'), '0' => __('No')],
             'value' => $model->getStopRulesProcessing(),
+        ]);
+
+        $fieldset->addField('apply_for_child_categories', 'select', [
+            'name'      => 'apply_for_child_categories',
+            'label'     => ('Apply to child categories'),
+            'options'   => ['1' => __('Yes'), '0' => __('No')],
+            'value'     => $model->getApplyForChildCategories(),
+            'note'     => 'If category is set in Conditions, template will also be applied to all child categories.',
         ]);
 
         $renderer = $this->widgetFormRendererFieldset

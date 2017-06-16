@@ -258,8 +258,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             $values = [];
 
             $productAttribute = $item->getProductAttribute();
-            if($productAttribute->getId()=='')
-                return;
+
             $itemId = $item->getId();
             $options = $configurableResource->getAttributeOptions(
                 $productAttribute,

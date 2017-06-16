@@ -26,10 +26,12 @@
                     <label>Skip auto links for a page</label>
                 </field>
 
-                <!--<field id="is_enable_links_for_blog" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">-->
-                <!--<label>Enable auto links for AW Blog:</label>-->
-                <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
-                <!--</field>-->
+                <field id="add_links_inside_templates" translate="label" type="textarea" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Paths of templates to add links inside</label>
+                    <comment>Will not work for big templates (with html tags more that 1000)</comment>
+                </field>
+
                 <field id="links_limit_per_page" translate="label" type="text" sortOrder="50" showInDefault="1"
                        showInWebsite="1" showInStore="1">
                     <label>Links limit per page</label>

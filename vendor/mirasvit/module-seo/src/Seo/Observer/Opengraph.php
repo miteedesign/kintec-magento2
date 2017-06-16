@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -68,6 +68,11 @@ class Opengraph implements ObserverInterface
     protected $blogMx;
 
     /**
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $objectManager;
+
+    /**
      * @param \Magento\Catalog\Model\ProductFactory      $productFactory
      * @param \Mirasvit\Seo\Model\Config                 $config
      * @param \Magento\Catalog\Helper\Image              $catalogImage
@@ -76,6 +81,8 @@ class Opengraph implements ObserverInterface
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Magento\Framework\Registry                $registry
      * @param \Magento\Backend\Model\Auth                $auth
+     * @param \Magento\Framework\ObjectManagerInterface  $objectManager
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         \Magento\Catalog\Model\ProductFactory $productFactory,
@@ -86,7 +93,8 @@ class Opengraph implements ObserverInterface
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Registry $registry,
         \Magento\Backend\Model\Auth $auth,
-        \Mirasvit\Seo\Api\Config\BlogMxInterface $blogMx
+        \Mirasvit\Seo\Api\Config\BlogMxInterface $blogMx,
+        \Magento\Framework\ObjectManagerInterface $objectManager
     ) {
         $this->productFactory = $productFactory;
         $this->config = $config;
@@ -97,39 +105,45 @@ class Opengraph implements ObserverInterface
         $this->registry = $registry;
         $this->auth = $auth;
         $this->blogMx = $blogMx;
+        $this->objectManager = $objectManager;
     }
 
     /**
      * @param \Magento\Framework\Event\Observer $e
+     * @param bool|Magento\Framework\App\Response\Http $response
      *
-     * @return void
+     * @return bool|\Magento\Framework\App\Response\Http
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     *  @SuppressWarnings(PHPMD.NPathComplexity)
+     *  @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function modifyHtmlResponse($e)
+    public function modifyHtmlResponse($e, $response = false)
     {
         $tags = [];
+
+        $applyForCache = ($response) ? true : false;
 
         if ((!$this->config->getCategoryOpenGraph() && !$this->config->isCmsOpenGraphEnabled())
             || $this->seoData->isIgnoredActions()
             || $this->seoData->isIgnoredUrls()
             || $this->registry->registry('current_product')
             || $this->auth->getUser()
-            || !is_object($e)) {
-                return;
+            || (!$applyForCache && !is_object($e))) {
+                return $response;
         }
 
-        $response = $e->getResponse();
+        if (!$applyForCache) {
+            $response = $e->getResponse();
+        }
 
         $body = $response->getBody();
 
         if (!$this->hasDoctype(trim($body))) {
-            return;
+            return $response;
         }
 
         $label = '<!-- mirasvit open graph begin -->';
         if (strpos($body, $label) !== false) {
-            return;
+            return $response;
         }
 
         $fullActionCode = $this->seoData->getFullActionCode();
@@ -156,6 +170,13 @@ class Opengraph implements ObserverInterface
                     );
                 }
             }
+
+            if ($fullActionCode == 'blog_post_view'
+                && ($featuredImageUrl = $this->objectManager->get('\Mirasvit\Blog\Block\Post\View')
+                    ->getPost()->getFeaturedImageUrl())) {
+                        $tags['image'] = $this->createMetaTag('image', $featuredImageUrl);
+            }
+
             if ($this->storeManager->getStore()->getName() != 'Default Store View') {
                 $tags[] = $this->createMetaTag('site_name', $this->storeManager->getStore()->getName());
             }
@@ -180,6 +201,10 @@ class Opengraph implements ObserverInterface
         }
 
         $response->setBody($body);
+
+        if ($applyForCache) {
+            return $response;
+        }
     }
 
     /**

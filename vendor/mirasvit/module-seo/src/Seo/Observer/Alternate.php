@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -312,6 +312,8 @@ class Alternate implements ObserverInterface
      * Get stores urls.
      *
      * @return array
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     public function getStoresCurrentUrl()
     {
@@ -328,13 +330,29 @@ class Alternate implements ObserverInterface
                     $this->stores[$store->getId()] = $store;
                     $currentUrl = $store->getCurrentUrl(false);
                     $storesBaseUrls[$store->getId()] = $store->getBaseUrl();
-                    $storeUrls[$store->getId()] = $this->_storeUrlPrepare(
-                        $storesBaseUrls,
-                        $store->getBaseUrl(),
-                        $currentUrl,
-                        $store->getCode()
+                    $storeUrls[$store->getId()] = new \Magento\Framework\DataObject(
+                        [
+                            'store_base_url' => $store->getBaseUrl(),
+                            'current_url' => $currentUrl,
+                            'store_code' => $store->getCode()
+                        ]
                     );
+
                     ++$storesNumberInGroup;
+            }
+        }
+
+        $isSimilarLinks = (count($storesBaseUrls) - count(array_unique($storesBaseUrls)) > 0) ? true : false;
+
+        if (count($storeUrls) > 1) {
+            foreach ($storeUrls as $storeId => $storeData) {
+                $storeUrls[$storeId] = $this->_storeUrlPrepare(
+                    $storesBaseUrls,
+                    $storeData->getStoreBaseUrl(),
+                    $storeData->getCurrentUrl(),
+                    $storeData->getStoreCode(),
+                    $isSimilarLinks
+                );
             }
         }
 
@@ -355,20 +373,31 @@ class Alternate implements ObserverInterface
      * @param string $storeBaseUrl
      * @param string $currentUrl
      * @param string $storeCode
+     * @param bool $isSimilarLinks
      * @return string
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function _storeUrlPrepare($storesBaseUrls, $storeBaseUrl, $currentUrl, $storeCode)
+    protected function _storeUrlPrepare($storesBaseUrls, $storeBaseUrl, $currentUrl, $storeCode, $isSimilarLinks)
     {
         if (strpos($currentUrl, $storeBaseUrl) == false) {
             $currentUrl = str_replace($storesBaseUrls, $storeBaseUrl, $currentUrl); // fix bug with incorrect base urls
         }
+
         $currentUrl = str_replace('&amp;', '&', $currentUrl);
+        $currentUrl = preg_replace('/SID=(.*?)(&|$)/', '', $currentUrl);
+
+        //cut get params for AMASTY_XLANDING if "Cut category additional data for alternate url" enabled
+        if ($this->config->isHreflangCutCategoryAdditionalData()
+            && $this->seoData->getFullActionCode() == Config::AMASTY_XLANDING) {
+            $currentUrl = strtok($currentUrl, '?');
+        }
 
         $deleteStoreQuery = (substr_count($storeBaseUrl, '/') > 3) ? true : false;
 
-        if (strpos($currentUrl, '___store=' . $storeCode) === false || !$deleteStoreQuery) {
-            return $currentUrl;
+        if (strpos($currentUrl, '___store=' . $storeCode) === false
+            || (!$deleteStoreQuery && $isSimilarLinks)) {
+                return $currentUrl;
         }
 
         if (strpos($currentUrl, '?___store=' . $storeCode) !== false

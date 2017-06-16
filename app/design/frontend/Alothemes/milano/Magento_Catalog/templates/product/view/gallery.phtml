@@ -113,7 +113,6 @@ require([
             });
         });
 
-/*
         if(loaded && !swatchesSorted){
             console.log($('[attribute-code="colour"] .swatch-attribute-selected-option').text());
             var fotorama = $('.fotorama').data('fotorama');
@@ -131,21 +130,22 @@ require([
 
 
             // if the thumbs have been reloaded, re-assign the color names (aria-label values)
-            if(thumbColorNames.length){
+            /*if(thumbColorNames.length){
                 $('.fotorama__nav__frame--thumb').each(function(index) {
                     console.log('re-assigning aria-label values: ' + thumbColorNames[index]);
                     $(this).attr('aria-label',thumbColorNames[index]);
                 });
-            }
+            }*/
 
             $('.fotorama__nav__frame--thumb').each(function(index) {
                 var imgLabel = $(this).attr('aria-label');
 
                 // if this is the first time page is loaded, let's store the aria-label values for future use
-                if(thumbColorNames[index] == null || thumbColorNames[index] == ''){
+                /*if(thumbColorNames[index] == null || thumbColorNames[index] == ''){
                     console.log('storing aria-label values: ' + imgLabel);
                     thumbColorNames.push(imgLabel);
-                }
+                }*/
+                
                 if(imgLabel != currentColor) {
                   $(this).addClass('hide-this-thumb');
                   console.log('Disabled color: ' + imgLabel);
@@ -160,7 +160,7 @@ require([
             fotorama.show(loadColorIndex);
             swatchesSorted = true;
             //$('.fotorama__nav__shaft').css({transform: "translate3d(0px, 0, 0)"});
-        }*/
+        }
 
     });
 });

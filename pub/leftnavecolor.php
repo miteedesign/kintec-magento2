@@ -46,12 +46,12 @@ $colors = [
  'red'=>'Red',
  'pink'=>'Pink',
  'orange'=>'Orange',
- 'black'=>'Black',
+ 
  'purple'=>'Purple',
  'grey'=>'Grey',
  'green'=>'Green',
  'blue'=>'Blue',
- 'white'=>'White',
+ 
  'silver'=>'Silver',
  'yellow'=>'Yellow',
  'brown'=>'Brown',
@@ -60,6 +60,8 @@ $colors = [
  'chocolate'=>'Chocolate',
  'orchid'=>'Orchid',
  'gold'=>'Gold',
+ 'black'=>'Black',
+ 'white'=>'White',
 ];
 
 $attr = $objectManager->get('\Magento\Catalog\Model\Product')->getResource()->getAttribute('colour');
@@ -109,7 +111,16 @@ try{
 				break;
 			}
 		}
-		$query = "INSERT INTO `{$table}` (`attribute_id`,`store_id`,`entity_id`,`value`) VALUES ('{$attr1->getId()}','0','{$product->getId()}','{$colors[$productColor]}') ";
+		$swatch = $writeConnection->fetchAll("SELECT * FROM `{$table}` WHERE `attribute_id` = '{$attr1->getId()}' AND `entity_id`='{$product->getId()}';" );
+		if(isset($swatch[0])){
+			
+			$query="UPDATE`{$table}` SET `value` = {$colors[$productColor]} WHERE `attribute_id` = '{$attr1->getId()}' AND `entity_id`='{$product->getId()}';" ;
+		}else
+		{
+			$query = "INSERT INTO `{$table}` (`attribute_id`,`store_id`,`entity_id`,`value`) VALUES ('{$attr1->getId()}','0','{$product->getId()}','{$colors[$productColor]}') ";	
+		}
+
+		
 		/*if($productColor=='grey'){
 			$query="UPDATE`{$table}` SET `value` = {$colors[$productColor]} WHERE `attribute_id` = '{$attr1->getId()}' AND `entity_id`='{$product->getId()}';" ;*/
 		

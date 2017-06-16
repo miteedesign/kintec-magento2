@@ -7,7 +7,7 @@
                 "magento/framework": "100.0.*|100.1.*|100.2.*"
         },
         "type": "magento2-module",
-        "version": "1.2.24",
+        "version": "1.2.26",
         "license": [
                 "proprietary"
         ],

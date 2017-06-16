@@ -72,7 +72,7 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
             //print_r($addressInformation->getShippingAddress()->getData());
             $storepickup_session = $this->_checkoutSession->getData('storepickup_session');
             $datashipping = [];
-            $storeId = $storepickup_session['store_id'];
+            $storeId = $storepickup_session['store_id']??null;
             if(is_null($storeId))
                 $storeId=1;
             $collectionstore = $this->_storeCollection->create();

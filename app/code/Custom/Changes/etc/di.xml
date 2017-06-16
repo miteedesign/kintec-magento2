@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<!--
+    <preference for="Magento\Catalog\Block\Product\ProductList\Toolbar" type="Custom\Changes\Block\Product\ProductList\Toolbar" />
+    <preference for="Magento\Review\Block\Form" type="Custom\Changes\Block\Review\Form" />
+    <preference for="Magento\Swatches\Block\Product\Renderer\Configurable" type="Custom\Changes\Block\Swatches\Product\Renderer\Configurable" />
+	-->
+    <preference for="Magento\Wishlist\Controller\Index\Add" type="Custom\Changes\Controller\Wishlist\Add" />
+
+    <preference for="Magento\Catalog\Pricing\Render" type="Custom\Changes\Pricing\Render" />
+    <preference for="Magento\CatalogSearch\Model\Layer\Filter\Attribute" type="Custom\Changes\Model\CatalogSearch\Layer\Filter\Attribute" />
+
+</config>

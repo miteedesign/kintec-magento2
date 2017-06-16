@@ -67,8 +67,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         }else {
             $saleLabel = isset($this->_labels['saleText']) ? $this->_labels['saleText'] : '';
         }
-        if($saleLabel && $this->isOnSale($product)) $html .= '<span class="sticker top-right"><span class="labelsale">' . __($saleLabel) . '</span></span>';
-        
+        if($saleLabel && $this->isOnSale($product)) $html .= '<span class="sticker top-right "><span class="labelsale">' . __($saleLabel) . '</span></span>';
         return $html;
     }
 
@@ -79,10 +78,22 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     protected function isOnSale($product)
     {
-        $specialPrice = number_format($product->getFinalPrice(), 2);
-        $regularPrice = number_format($product->getPrice(), 2);
+        //$specialPrice = number_format($product->getFinalPrice(), 2);
+        $specialPrice = (string)$product->getPriceInfo()->getPrice('final_price')->getAmount();
+        $specialPrice = number_format((float)$specialPrice, 2);
+        //$regularPrice = number_format($product->getPrice(), 2);
+        $reqularPrice = (string)$product->getPriceInfo()->getPrice('regular_price')->getAmount();
 
-        if ($specialPrice != $regularPrice) return $this->_nowIsBetween($product->getData('special_from_date'), $product->getData('special_to_date'));
+        $regularPrice = number_format((float)$reqularPrice, 2);
+        if ($specialPrice != $regularPrice){
+            if($product->getTypeId()=='configurable')
+                return true;
+            if(is_null($product->getData('special_to_date'))){
+                return true;
+            }
+            else
+            return $this->_nowIsBetween($product->getData('special_from_date'), $product->getData('special_to_date'));
+        } 
         else return false;
     }
     

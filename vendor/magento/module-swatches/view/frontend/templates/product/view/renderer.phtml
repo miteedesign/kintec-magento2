@@ -5,44 +5,6 @@
  */
 //"swatchRenderer": {
 ?>
-<?php $sizeChartPopup = $block->getProduct()->getSizeChart();
-if ($sizeChartPopup) { ?>
-    <a id="show-size-chart" href="javascript:void();">Size Chart</a>
-<?php } else { ?>
-    <a id="show-size-chart" href="javascript:void();" style="display:none;">Size Chart</a>
-<?php } ?>
-
-<div id="size-options"><?= $block->getProduct()->getSizeChart(); ?></div>
-<script>
-
-    require(
-        [
-            'jquery',
-            'Magento_Ui/js/modal/modal',
-            'ko',
-        ],
-        function(
-            $,
-            modal,
-            ko
-        ) {
-            var dishoptions = {
-                type: 'popup',
-                responsive: true,
-                innerScroll: true,
-                title: 'Size Chart',
-                buttons: false
-            };
-
-
-
-            var popup = modal(dishoptions, $('#size-options'));
-
-            document.getElementById('show-size-chart').onclick=function(){
-                $('#size-options').modal('openModal'); 
-            };
-        });
-</script>
 <?php /** @var $block \Magento\Swatches\Block\Product\Renderer\Configurable */ ?>
 <div class="swatch-opt" data-role="swatch-options"></div>
 

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -168,7 +168,7 @@ class Snippet implements ObserverInterface
             || !$product
             || $this->appliedSnippets
             || $this->seoData->isIgnoredActions())) {
-            return;
+            return $response;
         }
 
         $changeDefaultSnippets = $this->config->isForceProductSnippets();

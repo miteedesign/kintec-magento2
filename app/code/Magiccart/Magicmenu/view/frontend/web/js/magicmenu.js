@@ -257,5 +257,10 @@ require([
 
 			})('.vmagicmenu');
 
+			$(".menu-expander").on('click', function (e){
+		        //alert('clicked');
+		        e.stopPropagation();
+		    });
+
 		});
 });

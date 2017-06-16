@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -40,13 +40,7 @@ class FinalPrice extends \Magento\Catalog\Pricing\Price\FinalPrice
     public function getValue()
     {
         if (!isset($this->values[$this->product->getId()])) {
-            try{
-                $this->values[$this->product->getId()] = $this->priceResolver->resolvePrice($this->product);
-            }
-            catch(\Magento\Framework\Exception\LocalizedException $e){
-                return $this->values[$this->product->getId()] = 0;
-
-            }
+            $this->values[$this->product->getId()] = $this->priceResolver->resolvePrice($this->product);
         }
 
         return $this->values[$this->product->getId()];

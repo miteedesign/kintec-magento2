@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -62,7 +62,7 @@ class Form extends \Magento\Backend\Block\Widget\Form
             'class' => 'fieldset-wide',
         ]);
 
-        $downloadUrl = $this->getUrl('seo/redirectimport/download', ['file' => 'seo_autolink_example']);
+        $downloadUrl = $this->getUrl('*/*/download', ['file' => 'seo_autolink_example']);
         $general->addField('file', 'file', [
             'name' => 'file',
             'label' => __('Import File (.csv)'),

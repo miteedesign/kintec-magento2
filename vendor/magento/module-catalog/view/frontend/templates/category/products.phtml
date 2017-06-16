@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -17,16 +17,3 @@
 <?php if (!$block->isContentMode() || $block->isMixedMode()): ?>
     <?php echo $block->getProductListHtml() ?>
 <?php endif; ?>
-
-<script type="text/javascript">
-    require([
-        'jquery',
-        'slick',
-        'alothemes',
-        ], function($){
-            (function($) {
-                var shopbrand  = $('.featured-brands .shopbrand');
-                if(shopbrand.length) $('head').append(magicproduct(shopbrand, '.item'));
-            })(jQuery); 
-    });
-</script>

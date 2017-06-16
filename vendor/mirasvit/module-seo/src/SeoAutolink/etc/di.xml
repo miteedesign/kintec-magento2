@@ -1,4 +1,7 @@
 <config>
+    <!--CONFIG-->
+    <preference for="Mirasvit\SeoAutolink\Api\Config\AutolinkInterface" type="Mirasvit\SeoAutolink\Service\Config\Autolink" />
+
     <type name="Magento\Cms\Block\Page">
         <plugin name="seoautolink"
                 type="Mirasvit\SeoAutolink\Model\Plugin\CmsPageOutput"

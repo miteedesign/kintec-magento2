@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -63,6 +63,38 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'nullable' => false,
                         'default' => '1',
                         'comment' => 'SEO description position',
+                    ]
+                );
+        }
+
+        if (version_compare($context->getVersion(), '1.0.3') < 0) {
+            $setup->getConnection()
+                ->addColumn(
+                    $setup->getTable('mst_seo_template'),
+                    'description_template',
+                    [
+                        'type' =>  \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                        'length' => '64K',
+                        'unsigned' => false,
+                        'nullable' => true,
+                        'default' => null,
+                        'comment' => 'Template for adding SEO description',
+                    ]
+                );
+        }
+
+        if (version_compare($context->getVersion(), '1.0.4') < 0) {
+            $setup->getConnection()
+                ->addColumn(
+                    $setup->getTable('mst_seo_template'),
+                    'apply_for_child_categories',
+                    [
+                        'type' =>  \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+                        'length' => '5',
+                        'unsigned' => true,
+                        'nullable' => false,
+                        'default' => '0',
+                        'comment' => 'Apply for child categories',
                     ]
                 );
         }

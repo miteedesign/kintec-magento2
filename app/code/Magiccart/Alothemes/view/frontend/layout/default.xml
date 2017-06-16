@@ -32,8 +32,8 @@
         <link src="Magiccart_Alothemes::css/plugins/meanmenu.min.css"/>
         <link src="Magiccart_Alothemes::css/default.css"/>
         <link src="Magiccart_Alothemes::css/default.css"/>
-        <!-- <link src="jquery.js"/> -->
-        <link src="Magiccart_Alothemes::js/alothemes.js"/>
+        <!-- <link src="jquery.js"/> 
+        <link src="Magiccart_Alothemes::js/alothemes.js"/>-->
     </head>
 	<body>
 	   <referenceBlock name="head.additional">

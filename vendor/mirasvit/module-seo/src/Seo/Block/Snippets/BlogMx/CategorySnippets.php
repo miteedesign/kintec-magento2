@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -25,23 +25,24 @@ class CategorySnippets extends \Magento\Framework\View\Element\Template
     protected $blogCategory;
 
     /**
-     * @var \Mirasvit\Seo\Api\Config\BlogMxInterface
+     * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $blogMxConfig;
+    protected $objectManager;
 
     /**
      * @param \Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface $blogCategory
      * @param \Magento\Framework\View\Element\Template\Contex $context
+     * @param \Magento\Framework\ObjectManagerInterface $objectManager
      * @param array $data
      */
     public function __construct(
-        \Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface $blogCategory,
         \Mirasvit\Seo\Api\Config\BlogMxInterface $blogMxConfig,
         \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Framework\ObjectManagerInterface $objectManager,
         array $data = []
     ) {
-        $this->blogCategory = $blogCategory;
         $this->blogMxConfig = $blogMxConfig;
+        $this->objectManager = $objectManager;
         parent::__construct($context, $data);
     }
 
@@ -50,7 +51,7 @@ class CategorySnippets extends \Magento\Framework\View\Element\Template
      */
     public function getBlogCategory()
     {
-        return $this->blogCategory;
+        return $this->objectManager->get('\Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface');
     }
 
     /**

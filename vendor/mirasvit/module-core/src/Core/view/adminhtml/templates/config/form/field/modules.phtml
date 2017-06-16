@@ -6,25 +6,28 @@ $modules = $block->getModules();
     <div class="admin__data-grid-wrap-static">
         <table class="data-grid">
             <tr>
-                <th class="data-grid-th"><?=__('Module') ?></th>
-                <th class="data-grid-th" nowrap><?=__('Installed Version') ?></th>
-                <th class="data-grid-th" nowrap><?=__('Latest Version') ?></th>
+                <th class="data-grid-th"><?= __('Module') ?></th>
+                <th class="data-grid-th" nowrap><?= __('Installed Version') ?></th>
+                <th class="data-grid-th" nowrap><?= __('Latest Version') ?></th>
             </tr>
-        <?php foreach ($modules as $i => $module): ?>
-            <tr>
-                <td>
-                    <a href="<?=$module->getUrl() ?>"><?=$module->getName() ?></a>
-                    <?php if ($module->getInstalledVersion() && version_compare($module->getInstalledVersion(), $module->getLatestVersion())): ?>
-                        <div style="float: right; color: #eb5202;">
-                            <span class="fa fa-fw fa-code-fork"></span> New version is available
-                        </div>
-                    <?php endif ?>
-                </td>
-                <td><?=$module->getInstalledVersion() ?></td>
-                <td><?=$module->getLatestVersion() ?></td>
-
-            </tr>
-        <?php endforeach ?>
+            <?php foreach ($modules as $i => $module): ?>
+                <tr>
+                    <td>
+                        <?php if ($module->getUrl() && $module->getName()): ?>
+                            <a href="<?= $module->getUrl() ?>"><?= $module->getName() ?></a>
+                        <?php else: ?>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<small><?= $module->getModuleName() ?></small>
+                        <?php endif ?>
+                        <?php if ($module->getInstalledVersion() && version_compare($module->getInstalledVersion(), $module->getLatestVersion())): ?>
+                            <div style="float: right; color: #eb5202;">
+                                <span class="fa fa-fw fa-code-fork"></span> New version is available
+                            </div>
+                        <?php endif ?>
+                    </td>
+                    <td><?= $module->getInstalledVersion() ?></td>
+                    <td><?= $module->getLatestVersion() ?></td>
+                </tr>
+            <?php endforeach ?>
         </table>
     </div>
 </div>

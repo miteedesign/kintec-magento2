@@ -1,5 +1,5 @@
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -169,9 +169,6 @@ define([
             //selector of product images gallery wrapper
             mediaGallerySelector: '[data-gallery-role=gallery-placeholder]',
 
-            // selector of category product tile wrapper
-            selectorProductTile: '.product-item',
-
             // number of controls to show (false or zero = show all)
             numberToShow: false,
 
@@ -193,21 +190,8 @@ define([
             // Cache for BaseProduct images. Needed when option unset
             mediaGalleryInitial: [{}],
 
-            // whether swatches are rendered in product list or on product page
-            inProductList: false,
-
-            /**
-             * Defines the mechanism of how images of a gallery should be
-             * updated when user switches between configurations of a product.
-             *
-             * As for now value of this option can be either 'replace' or 'prepend'.
-             *
-             * @type {String}
-             */
-            gallerySwitchStrategy: 'replace',
-
-            // sly-old-price block selector
-            slyOldPriceSelector: '.sly-old-price'
+            //
+            onlyMainImg: false
         },
 
         /**
@@ -252,17 +236,17 @@ define([
                     this.element.parents('.product-item-info');
 
             if (isProductViewExist) {
-                gallery.data('gallery') ?
-                    this._onGalleryLoaded(gallery) :
-                    gallery.on('gallery:loaded', this._onGalleryLoaded.bind(this, gallery));
+                gallery.on('gallery:loaded', function () {
+                    var galleryObject = gallery.data('gallery');
+
+                    options.mediaGalleryInitial = galleryObject.returnCurrentImages();
+                });
             } else {
                 options.mediaGalleryInitial = [{
                     'img': $main.find('.product-image-photo').attr('src')
                 }];
             }
-
-            this.productForm = this.element.parents(this.options.selectorProductTile).find('form:first');
-            this.inProductList = this.productForm.length > 0;
+            this.productForm = this.element.parents(this.options.selectorProduct).find('form:first');
         },
 
         /**
@@ -295,12 +279,12 @@ define([
                         '<span class="' + classes.attributeLabelClass + '">' + item.label + '</span>' +
                         '<span class="' + classes.attributeSelectedOptionLabelClass + '"></span>';
                 }
-
-                if ($widget.inProductList) {
-                    $widget.productForm.append(input);
+                /*
+                if ($widget.productForm) {
+                    container.append(input);
                     input = '';
                 }
-
+                */
                 // Create new control
                 container.append(
                     '<div class="' + classes.attributeClass + ' ' + item.code +
@@ -330,9 +314,9 @@ define([
             });
 
             // Connect Tooltip
-            container
+            /*container
                 .find('[option-type="1"], [option-type="2"], [option-type="0"], [option-type="3"]')
-                .SwatchRendererTooltip();
+                .SwatchRendererTooltip();*/
 
             // Hide all elements below more button
             $('.' + classes.moreButton).nextAll().hide();
@@ -346,6 +330,23 @@ define([
             //Emulate click on all swatches from Request
             $widget._EmulateSelected($.parseQuery());
             $widget._EmulateSelected($widget._getSelectedAttributes());
+
+            if($('.product-shop').length && $('.swatch-attribute.colour').length){
+                console.log($('.swatch-attribute.colour .swatch-option').length);
+                if($('.swatch-attribute.colour .swatch-option').length == 1) {
+                    console.log('triggering click');
+                    $('.swatch-attribute.colour').find('.swatch-option').first().trigger('click');
+                }
+            }
+
+            if($('.category-products').length){
+                $('.swatch-option.color').on('click', function(){
+                    var itemURL = $(this).parents('.product-item-details:first').find('.product-item-link').attr('href');
+                    window.location.href = itemURL;
+                });
+            }
+
+
         },
 
         /**
@@ -514,16 +515,13 @@ define([
          * @private
          */
         _OnClick: function ($this, $widget) {
+
             var $parent = $this.parents('.' + $widget.options.classes.attributeClass),
                 $label = $parent.find('.' + $widget.options.classes.attributeSelectedOptionLabelClass),
                 attributeId = $parent.attr('attribute-id'),
-                $input = $parent.find('.' + $widget.options.classes.attributeInput);
-
-            if ($widget.inProductList) {
                 $input = $widget.productForm.find(
                     '.' + $widget.options.classes.attributeInput + '[name="super_attribute[' + attributeId + ']"]'
                 );
-            }
 
             if ($this.hasClass('disabled')) {
                 return;
@@ -548,10 +546,54 @@ define([
                 $widget._UpdatePrice();
             }
 
-            $widget._LoadProductMedia();
+            //$widget._LoadProductMedia();
+
+            console.log($('[attribute-code="colour"] .swatch-attribute-selected-option').text());
+            var fotorama = $('.fotorama').data('fotorama');
+            // try and get the default color
+            if($('[attribute-code="colour"] .swatch-attribute-selected-option').text() == '') {
+                var currentColor = $('.fotorama__active:first').find('img:first').attr('alt');
+            } else {
+                var currentColor = $('[attribute-code="colour"] .swatch-attribute-selected-option').text();
+            }
+            console.log('Current color: ' + currentColor);
+
+            // hide all the thumbs that do not match the current color
+            var mainImageSet = false;
+            var loadColorIndex = 0;
+
+
+            // if the thumbs have been reloaded, re-assign the color names (aria-label values)
+            /*if(thumbColorNames.length){
+                $('.fotorama__nav__frame--thumb').each(function(index) {
+                    console.log('re-assigning aria-label values: ' + thumbColorNames[index]);
+                    $(this).attr('aria-label',thumbColorNames[index]);
+                });
+            }*/
+
+            $('.fotorama__nav__frame--thumb').each(function(index) {
+                var imgLabel = $(this).attr('aria-label');
+
+                // if this is the first time page is loaded, let's store the aria-label values for future use
+                /*if(thumbColorNames[index] == null || thumbColorNames[index] == ''){
+                    console.log('storing aria-label values: ' + imgLabel);
+                    thumbColorNames.push(imgLabel);
+                }*/
+
+                if(imgLabel != currentColor) {
+                  $(this).addClass('hide-this-thumb');
+                  console.log('Disabled color: ' + imgLabel);
+                } else {
+                    if(!mainImageSet) {
+                        loadColorIndex = index;
+                        mainImageSet = true;
+                    }
+                }
+            });
+
+            fotorama.show(loadColorIndex);
+
             $input.trigger('change');
-
-
         },
 
         /**
@@ -564,13 +606,9 @@ define([
         _OnChange: function ($this, $widget) {
             var $parent = $this.parents('.' + $widget.options.classes.attributeClass),
                 attributeId = $parent.attr('attribute-id'),
-                $input = $parent.find('.' + $widget.options.classes.attributeInput);
-
-            if ($widget.inProductList) {
                 $input = $widget.productForm.find(
                     '.' + $widget.options.classes.attributeInput + '[name="super_attribute[' + attributeId + ']"]'
                 );
-            }
 
             if ($this.val() > 0) {
                 $parent.attr('option-selected', $this.val());
@@ -584,24 +622,6 @@ define([
             $widget._UpdatePrice();
             $widget._LoadProductMedia();
             $input.trigger('change');
-
-            var selectedCol = $this.text();
-            console.log('Selected color: ' + selectedCol);
-
-            if (selectedCol != 'Choose an Option...') {
-              $('.fotorama__nav__frame--thumb').each(function(index) {
-                var imgLabel = $(this).attr('aria-label');
-
-                if(imgLabel != selectedCol) {
-                  $(this).css('display','none');
-                  console.log('Disabled color: ' + imgLabel);
-                }
-                else {
-                  $(this).css('display','block');
-                  console.log('Enabled color: ' + imgLabel);
-                }
-              });
-            }
         },
 
         /**
@@ -731,11 +751,6 @@ define([
                 }
             );
 
-            if (result.oldPrice.amount !== result.finalPrice.amount) {
-                $(this.options.slyOldPriceSelector).show();
-            } else {
-                $(this.options.slyOldPriceSelector).hide();
-            }
         },
 
         /**
@@ -948,27 +963,26 @@ define([
          */
         updateBaseImage: function (images, context, isProductViewExist) {
             var justAnImage = images[0],
-                initialImages = this.options.mediaGalleryInitial,
-                gallery = context.find(this.options.mediaGallerySelector).data('gallery'),
+                updateImg,
                 imagesToUpdate,
-                isInitial;
+                gallery = context.find(this.options.mediaGallerySelector).data('gallery'),
+                item;
 
             if (isProductViewExist) {
                 imagesToUpdate = images.length ? this._setImageType($.extend(true, [], images)) : [];
-                isInitial = _.isEqual(imagesToUpdate, initialImages);
 
-                if (this.options.gallerySwitchStrategy === 'prepend' && !isInitial) {
-                    imagesToUpdate = imagesToUpdate.concat(initialImages);
-                }
+                if (this.options.onlyMainImg) {
+                    updateImg = imagesToUpdate.filter(function (img) {
+                        return img.isMain;
+                    });
+                    item = updateImg.length ? updateImg[0] : imagesToUpdate[0];
+                    gallery.updateDataByIndex(0, item);
 
-                gallery.updateData(imagesToUpdate);
-
-                if (isInitial) {
+                    gallery.seek(1);
+                } else {
+                    gallery.updateData(imagesToUpdate);
                     $(this.options.mediaGallerySelector).AddFotoramaVideoEvents();
                 }
-
-                gallery.first();
-
             } else if (justAnImage && justAnImage.img) {
                 context.find('.product-image-photo').attr('src', justAnImage.img);
             }
@@ -1020,17 +1034,6 @@ define([
             }
 
             return selectedAttributes;
-        },
-
-        /**
-         * Callback which fired after gallery gets initialized.
-         *
-         * @param {HTMLElement} element - DOM element associated with a gallery.
-         */
-        _onGalleryLoaded: function (element) {
-            var galleryObject = element.data('gallery');
-
-            this.options.mediaGalleryInitial = galleryObject.returnCurrentImages();
         }
     });
 

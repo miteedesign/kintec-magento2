@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,33 +20,41 @@ namespace Mirasvit\SeoSitemap\Service\Data\BlogMx;
 class Sitemap implements \Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface
 {
     /**
-     * @var \Mirasvit\Blog\Block\Sidebar\CategoryTree
+     * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $categoryTree;
+    protected $objectManager;
 
     /**
-     * @var string
-     */
-    protected $baseRoute;
-
-    /**
-     * @var \Mirasvit\Blog\Model\ResourceModel\Post\CollectionFactory
-     */
-    protected $postCollectionFactory;
-
-    /**
-     * @param \Mirasvit\Blog\Block\Sidebar\CategoryTree $categoryTree
-     * @param \Mirasvit\Blog\Model\Config $config
-     * @param \Mirasvit\Blog\Model\ResourceModel\Post\CollectionFactory $postCollectionFactory
+     * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
     public function __construct(
-        \Mirasvit\Blog\Block\Sidebar\CategoryTree $categoryTree,
-        \Mirasvit\Blog\Model\Config $config,
-        \Mirasvit\Blog\Model\ResourceModel\Post\CollectionFactory $postCollectionFactory
+        \Magento\Framework\ObjectManagerInterface $objectManager
     ) {
-        $this->categoryTree = $categoryTree->getTree();
-        $this->postCollectionFactory = $postCollectionFactory;
-        $this->baseRoute = $config->getBaseRoute();
+        $this->objectManager = $objectManager;
+    }
+
+    /**
+     * @return \Mirasvit\Blog\Model\ResourceModel\Post\CollectionFactory
+     */
+    public function getPostCollectionFactory()
+    {
+        return $this->objectManager->get('\Mirasvit\Blog\Model\ResourceModel\Post\CollectionFactory');
+    }
+
+    /**
+     * @return string
+     */
+    public function getBaseRoute()
+    {
+        return $this->objectManager->get('\Mirasvit\Blog\Model\Config')->getBaseRoute();
+    }
+
+    /**
+     * @return array
+     */
+    public function getCategoryTree()
+    {
+        return $this->objectManager->get('\Mirasvit\Blog\Block\Sidebar\CategoryTree')->getTree();
     }
 
     /**
@@ -56,7 +64,7 @@ class Sitemap implements \Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface
     {
         $baseUrlCollection = new \Magento\Framework\DataObject(
             [
-                'url' => $this->baseRoute,
+                'url' => $this->getBaseRoute(),
             ]
         );
 
@@ -72,15 +80,20 @@ class Sitemap implements \Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface
     }
 
     /**
-     * @return \Magento\Framework\DataObject
+     * @return \Magento\Framework\DataObject|bool
      */
     public function getCategoryItems()
     {
-        foreach ($this->categoryTree as $category) {
+        $categoryTree = $this->getCategoryTree();
+        if (!$categoryTree) {
+            return false;
+        }
+
+        foreach ($categoryTree as $category) {
             $categoryCollection[] = new \Magento\Framework\DataObject(
                 [
                     'name' => $category->getName(),
-                    'url' => $this->baseRoute . '/' . $category->getUrlKey(),
+                    'url' => $this->getBaseRoute() . '/' . $category->getUrlKey(),
                 ]
             );
         }
@@ -97,20 +110,23 @@ class Sitemap implements \Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface
     }
 
     /**
-     * @return \Magento\Framework\DataObject
+     * @return \Magento\Framework\DataObject|bool
      */
     public function getPostItems()
     {
-        $postCollectionFactory = $this->postCollectionFactory->create()
+        $postCollectionFactory = $this->getPostCollectionFactory()->create()
             ->addAttributeToSelect(['name', 'url_key'])
             ->addVisibilityFilter();
 
+        if ($postCollectionFactory->getSize() <= 0) {
+            return false;
+        }
 
         foreach ($postCollectionFactory as $post) {
             $postCollection[] = new \Magento\Framework\DataObject(
                 [
                     'name' => $post->getName(),
-                    'url' => $this->baseRoute . '/' . $post->getUrlKey(),
+                    'url' => $this->getBaseRoute() . '/' . $post->getUrlKey(),
                 ]
             );
         }

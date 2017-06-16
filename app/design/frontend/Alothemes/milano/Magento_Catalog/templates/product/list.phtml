@@ -140,7 +140,11 @@ $_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
                             </a>
                         </h2>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
-                        <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
+                        <?php 
+                             $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                             $renderer = $objectManager->get('Custom\Changes\Pricing\Render');
+                             echo $renderer->setPro($_product)->setPriceRender('product.price.render.default')->setPrice_type_code('final_price')->setZone('item_view')->toHtml();
+                        /* @escapeNotVerified */ // echo $block->getProductPrice($_product) ?>
                         <?php echo $block->getProductDetailsHtml($_product); ?>
 
                         <?php if ($showAddto): ?> <?php /* @showAddto */ ?>

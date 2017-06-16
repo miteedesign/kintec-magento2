@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -53,12 +53,14 @@ class General extends \Magento\Backend\Block\Widget\Form
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Framework\Registry $registry,
         \Magento\Backend\Block\Widget\Context $context,
+        \Magento\Config\Model\Config\Structure\Element\Dependency\FieldFactory $fieldFactory,
         array $data = []
     ) {
         $this->systemStore = $systemStore;
         $this->formFactory = $formFactory;
         $this->registry = $registry;
         $this->context = $context;
+        $this->fieldFactory = $fieldFactory;
         parent::__construct($context, $data);
     }
 
@@ -127,7 +129,8 @@ class General extends \Magento\Backend\Block\Widget\Form
                 break;
         }
 
-        $descriptionNote = 'Will be added in the bottom of the page.';
+        $descriptionNote = 'Will be added in position which you can configure in
+                            "SEO description position" and "Template for adding SEO description" field.';
         if ($model->getRuleType() != Config::PRODUCTS_RULE) {
             $descriptionNote .= '<br/>' . $note;
         }
@@ -171,6 +174,13 @@ class General extends \Magento\Backend\Block\Widget\Form
                 'onchange' => 'getSelectedValue(this)',
                 'value'    => $model->getDescriptionPosition(),
                 'values'   => $this->_getDescriptionPositionList($model->getRuleType()),
+            ]);
+
+            $fieldset->addField('description_template', 'textarea', [
+                'name'  => 'description_template',
+                'label' => __('Template for adding SEO description '),
+                'value' => $model->getDescriptionTemplate(),
+                'note'  => 'Block template',
             ]);
 
             $fieldset->addField('description', 'textarea', [
@@ -227,15 +237,50 @@ class General extends \Magento\Backend\Block\Widget\Form
                 'label' => __('Sort Order'),
                 'value' => $model->getSortOrder(),
             ]);
+
+            $this->addFiedDependence();
         }
 
         return parent::_prepareForm();
     }
 
-     /**
-      * @param int $ruleType
-      * @return array
-      */
+    /**
+     * @return bool
+     */
+    protected function addFiedDependence()
+    {
+        $blockDependence = $this->getLayout()->createBlock(
+            'Magento\Backend\Block\Widget\Form\Element\Dependence'
+        );
+
+        $filter = $this->fieldFactory->create([
+            'fieldData' => [
+                'value' => (string)Config::CUSTOM_TEMPLATE,
+            ],
+            'fieldPrefix' => '',
+        ]);
+
+        $blockDependence->addFieldMap(
+            "description_position",
+            'description_position'
+        )->addFieldMap(
+            "description_template",
+            'description_template'
+        )->addFieldDependence(
+            'description_template',
+            'description_position',
+            $filter
+        );
+
+        $this->setChild('form_after', $blockDependence);
+
+        return true;
+    }
+
+    /**
+     * @param int $ruleType
+     * @return array
+     */
     protected function _getDescriptionPositionList($ruleType)
     {
         switch ($ruleType) {
@@ -244,13 +289,15 @@ class General extends \Magento\Backend\Block\Widget\Form
                     Config::BOTTOM_PAGE             => 'Bottom of the page',
                     Config::UNDER_SHORT_DESCRIPTION => 'Under Short Description',
                     Config::UNDER_FULL_DESCRIPTION  => 'Under Full Description',
+                    Config::CUSTOM_TEMPLATE         => 'Under custom template',
                 ];
                 break;
             case Config::CATEGORIES_RULE:
             case Config::RESULTS_LAYERED_NAVIGATION_RULE:
-               $descriptionPositionList = [
+                $descriptionPositionList = [
                     Config::BOTTOM_PAGE             => 'Bottom of the page',
                     Config::UNDER_PRODUCT_LIST => 'Under Product List',
+                    Config::CUSTOM_TEMPLATE         => 'Under custom template',
                 ];
                 break;
             default:

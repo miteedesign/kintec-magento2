@@ -204,7 +204,7 @@ class Menu extends \Magento\Catalog\Block\Navigation
             $hasChild = $catTop->hasChildren() ? ' hasChild parent' : '';
             $isDropdown = in_array($idTop, $dropdownIds) ? ' dropdown' : '';
             $active   = $this->isCategoryActive($idTop) ? ' active' : '';
-            $urlTop      =  '<a class="level-top" href="' .$catTop->getUrl(). '">' .$this->getThumbnail($catTop). '<span>' .__($catTop->getName()) . $this->getCatLabel($catTop). '</span><span class="boder-menu"></span></a>';
+            $urlTop      =  '<a class="level-top" href="' .$catTop->getUrl(). '">' .$this->getThumbnail($catTop). '<span>' .__($catTop->getName()) . $this->getCatLabel($catTop). '</span><span class="boder-menu"></span><i class="menu-expander fa fa-plus-square-o" aria-hidden="true"></i></a>';
             $classTop    = ($i == 1) ? 'first' : ($i == $last ? 'last' : '');
             $classTop   .= $active . $hasChild .$isDropdown;
 

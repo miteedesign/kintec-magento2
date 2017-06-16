@@ -7,6 +7,7 @@
     <!--SERVICE-->
 	<preference for="Mirasvit\Seo\Api\Service\FriendlyUrl\ProductUrlKeyTemplateInterface" type="Mirasvit\Seo\Service\FriendlyUrl\ProductUrlKeyTemplate" />
     <preference for="Mirasvit\Seo\Api\Service\Cache\CleanInterface" type="Mirasvit\Seo\Service\Cache\Clean" />
+    <preference for="Mirasvit\Seo\Api\Service\Template\SeoDescription\TemplateInterface" type="Mirasvit\Seo\Service\Template\SeoDescription\Template" />
 
 	<!--DATA-->
 	<preference for="Mirasvit\Seo\Api\Data\SuffixInterface" type="Mirasvit\Seo\Service\Data\Suffix" />

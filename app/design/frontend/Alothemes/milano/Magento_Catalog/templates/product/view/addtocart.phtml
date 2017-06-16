@@ -11,7 +11,32 @@
 <?php $_product = $block->getProduct(); ?>
 <?php $buttonTitle = __('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
+<style>
+.catalog-product-view .modal-content div {
+    text-align: left;
+}
+
+ .catalog-product-view .modal-popup .swatch-attribute.colour{
+    height: auto;
+    min-height: auto;
+ }
+
+ .catalog-product-view .modal-popup .swatch-attribute-options {
+    display: block;
+}
+
+.modal-popup .addit{
+    display:none;
+}
+</style>
 <div class="box-tocart">
+    <?php
+        $_finalsale = $_product->getResource()->getAttribute('warehouse_final_sale')->getFrontend()->getValue($_product);
+
+        if($_finalsale == 'Yes') { ?>
+            <p class="clearance-notice">* ALL WAREHOUSE CLEARANCE ITEMS ARE A FINAL SALE</p>
+        <?php } 
+    ?>
     <div class="fieldset">
         <?php if ($block->shouldRenderQuantity()): ?>
         <div class="field qty">
@@ -37,7 +62,7 @@
         </div>
         <?php endif; ?>
         <div class="actions add-to-cart">
-            <button type="submit"
+            <button type="button"
                     title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
                     class="action primary tocart button btn-cart"
                     id="product-addtocart-button">
@@ -62,19 +87,44 @@
 <script>
     require([
         'jquery',
+        'Magento_Ui/js/modal/modal',
         'mage/mage',
         'Magento_Catalog/product/view/validation',
         'Magento_Catalog/js/catalog-add-to-cart'
-    ], function ($) {
+    ], function ($,modal) {
         'use strict';
-
+        var formOpen = false;
+        $('#product-addtocart-button').click(function(){
+            var dishoptions = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'Product',
+                    buttons: false,
+                    closed:function(){
+                        
+                        $('#product-add-form-container').append($('.product-add-form'));
+                    }
+                };
+                if(!$('#product_addtocart_form').valid()){
+                    formOpen = true;
+                    var popup = modal(dishoptions, $('.product-add-form'));
+                    $('.product-add-form').modal('openModal'); 
+                    return false;
+                }
+                if(formOpen)
+                    $('.product-add-form').modal('closeModal'); 
+                $('#product_addtocart_form').submit();
+           
+        });
         $('#product_addtocart_form').mage('validation', {
             radioCheckboxClosest: '.nested',
             submitHandler: function (form) {
+                
+                 
                 var widget = $(form).catalogAddToCart({
                     bindSubmit: false
                 });
-
                 widget.catalogAddToCart('submitForm', $(form));
 
                 return false;

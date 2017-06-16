@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,14 +20,14 @@ namespace Mirasvit\Seo\Block\Snippets\BlogMx;
 class PostSnippets extends \Magento\Framework\View\Element\Template
 {
     /**
-     * @var \Mirasvit\Seo\Api\Data\BlogMx\PostInterface
-     */
-    protected $post;
-
-    /**
      * @var \Mirasvit\Seo\Api\Config\BlogMxInterface
      */
     protected $blogMxConfig;
+
+    /**
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $objectManager;
 
     /**
      * @param  \Mirasvit\Seo\Api\Data\BlogMx\PostInterface $post
@@ -35,13 +35,13 @@ class PostSnippets extends \Magento\Framework\View\Element\Template
      * @param array $data
      */
     public function __construct(
-        \Mirasvit\Seo\Api\Data\BlogMx\PostInterface $post,
         \Mirasvit\Seo\Api\Config\BlogMxInterface $blogMxConfig,
         \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Framework\ObjectManagerInterface $objectManager,
         array $data = []
     ) {
-        $this->post = $post;
         $this->blogMxConfig = $blogMxConfig;
+        $this->objectManager = $objectManager;
         parent::__construct($context, $data);
     }
 
@@ -50,7 +50,7 @@ class PostSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getPost()
     {
-        return $this->post;
+        return $this->objectManager->get('\Mirasvit\Seo\Api\Data\BlogMx\PostInterface');
     }
 
     /**

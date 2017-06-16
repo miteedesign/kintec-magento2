@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -18,6 +18,16 @@ namespace Mirasvit\Seo\Api\Data\BlogMx;
 
 interface PostInterface
 {
+    /**
+     * @return \Mirasvit\Blog\Model\Config
+     */
+    public function getConfig();
+
+    /**
+     * @return \Mirasvit\Blog\Model\Post
+     */
+    public function getPost();
+
     /**
      * @return string
      */

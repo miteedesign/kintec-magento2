@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -121,9 +121,13 @@ class Config
     const UNDER_SHORT_DESCRIPTION = 2;
     const UNDER_FULL_DESCRIPTION = 3;
     const UNDER_PRODUCT_LIST = 4;
+    const CUSTOM_TEMPLATE = 5;
 
      //Description Position
     const X_DEFAULT_AUTOMATICALLY = 'AUTOMATICALLY';
+
+    //amasty_xlanding page
+    const AMASTY_XLANDING = 'amasty_xlanding_page_view';
 
     /**
      * @return bool

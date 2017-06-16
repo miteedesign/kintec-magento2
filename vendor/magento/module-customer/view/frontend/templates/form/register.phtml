@@ -17,6 +17,9 @@
 <?php echo $block->getChildHtml('form_fields_before')?>
 <?php /* Extensions placeholder */ ?>
 <?php echo $block->getChildHtml('customer.form.register.extra')?>
+
+<p class="subheading-text">Check out faster, keep more than one address, track orders and more.</p>
+
 <form class="form create account form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off">
     <fieldset class="fieldset create info">
         <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Personal Information') ?></span></legend><br>
@@ -26,7 +29,7 @@
         <?php if ($block->isNewsletterEnabled()): ?>
             <div class="field choice newsletter">
                 <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
-                <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?></span></label>
+                <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Subscribe to our newsletter to get the latest news &amp; deals.') ?></span></label>
             </div>
             <?php /* Extensions placeholder */ ?>
             <?php echo $block->getChildHtml('customer.form.register.newsletter')?>

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -42,47 +42,71 @@ class ContactPageMeta extends \Magento\Framework\Model\AbstractModel implements 
     protected $robots;
 
     /**
+     * @var \Magento\Framework\Module\Manager
+     */
+    protected $moduleManager;
+
+    /**
      * @param \Mirasvit\Seo\Helper\Data   $seoData
      * @param \Mirasvit\Seo\Helper\UpdateBody $updateBody,
      * @param \Magento\Framework\Registry $registry
+     * @param \Mirasvit\Seo\Observer\Robots $robots
+     * @param \Magento\Framework\Module\Manager $moduleManager
      */
     public function __construct(
         \Mirasvit\Seo\Helper\Data $seoData,
         \Mirasvit\Seo\Helper\UpdateBody $updateBody,
         \Magento\Framework\Registry $registry,
-        \Mirasvit\Seo\Observer\Robots $robots
+        \Mirasvit\Seo\Observer\Robots $robots,
+        \Magento\Framework\Module\Manager $moduleManager
     ) {
         $this->seoData = $seoData;
         $this->updateBody = $updateBody;
         $this->registry = $registry;
         $this->robots = $robots;
+        $this->moduleManager = $moduleManager;
     }
 
     /**
      * @param string $e
+     * @param bool|Magento\Framework\App\Response\Http $response
      *
-     * @return void
+     * @return bool|\Magento\Framework\App\Response\Http
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity) 
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function modifyHtmlResponseTitle($e)
+    public function modifyHtmlResponseTitle($e, $response = false)
     {
-        if (($this->seoData->getFullActionCode() != 'contact_index_index')
+        $applyForCache = ($response) ? true : false;
+        $action = $this->seoData->getFullActionCode();
+        $isModifyAllowed = false;
+
+
+        if ($action == 'blog_tag_view'
+            && $this->moduleManager->isEnabled('Magefan_Blog')) {
+                $isModifyAllowed = true;
+        }
+
+        if (($action != 'contact_index_index' && !$isModifyAllowed)
             || $this->seoData->isIgnoredActions()) {
-                return;
+                return $response;
         }
 
         $seo = $this->seoData->getCurrentSeo();
 
-        if (!$seo || !is_object($e)) {
-            return;
+        if (!$seo || (!$applyForCache && !is_object($e))) {
+            return $response;
         }
 
-        $response = $e->getResponse();
+        if (!$applyForCache) {
+            $response = $e->getResponse();
+        }
 
         $body = $response->getBody();
 
         if (!$this->updateBody->hasDoctype($body)) {
-            return;
+            return $response;
         }
 
         $seoTitle = trim($seo->getTitle());
@@ -112,6 +136,10 @@ class ContactPageMeta extends \Magento\Framework\Model\AbstractModel implements 
         }
 
         $response->setBody($body);
+
+        if ($applyForCache) {
+            return $response;
+        }
     }
 
     /**

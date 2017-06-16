@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -1273,7 +1273,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function cancelIgnoredActions()
     {
-        $cancelIgnoredActions = ['amasty_xlanding_page_view'];
+        $cancelIgnoredActions = [Config::AMASTY_XLANDING];
         if (in_array($this->getFullActionCode(), $cancelIgnoredActions)) {
             return true;
         }

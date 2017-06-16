@@ -21,4 +21,7 @@
     <type name="Magento\Framework\Controller\ResultInterface">
         <plugin name="change-title-before-cache" type="Mirasvit\Seo\Plugin\ChangeResult\Title"/>
     </type>
+    <type name="Magento\Framework\View\TemplateEngineFactory">
+        <plugin name="add_seo_description_under_template" type="Mirasvit\Seo\Plugin\Template\AddSeoDescriptionUnderTemplate" sortOrder="1001"/>
+    </type>
 </config>

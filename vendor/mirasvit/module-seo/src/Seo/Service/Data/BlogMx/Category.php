@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.51
+ * @version   1.0.58
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -23,11 +23,6 @@ class Category implements \Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $scopeConfig;
-
-    /**
-     * @var \Mirasvit\Blog\Block\Post\PostList
-     */
-    protected $postList;
 
     /**
      * @var \Mirasvit\Seo\Helper\Data
@@ -45,24 +40,28 @@ class Category implements \Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface
     protected $blogMx;
 
     /**
+     * @var \Magento\Framework\ObjectManagerInterface
+     */
+    protected $objectManager;
+
+    /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Mirasvit\Blog\Block\Post\PostList $postList
      * @param \Mirasvit\Seo\Helper\Data $seoData
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
      * @param \Mirasvit\Seo\Helper\BlogMx $blogMx
      */
     public function __construct(
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Mirasvit\Blog\Block\Post\PostList $postList,
         \Mirasvit\Seo\Helper\Data $seoData,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Mirasvit\Seo\Helper\BlogMx $blogMx
+        \Mirasvit\Seo\Helper\BlogMx $blogMx,
+        \Magento\Framework\ObjectManagerInterface $objectManager
     ) {
         $this->scopeConfig = $scopeConfig;
-        $this->postList = $postList->getPostCollection();
         $this->seoData = $seoData;
         $this->storeManager = $storeManager;
         $this->blogMx = $blogMx;
+        $this->objectManager = $objectManager;
     }
 
     /**
@@ -70,7 +69,7 @@ class Category implements \Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface
      */
     public function getPostList()
     {
-        return $this->postList;
+        return $this->objectManager->get('\Mirasvit\Blog\Block\Post\PostList')->getPostCollection();
     }
 
     /**

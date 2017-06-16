@@ -1,3 +1,69 @@
+## 1.0.58
+*(2017-04-24)*
+
+#### Improvements
+* "Apply to child categories" setting added to make SEO Templates management more flexible
+
+---
+
+## 1.0.57
+*(2017-04-10)*
+
+#### Features
+* Ability add seo description in any template
+
+#### Improvements
+* compatibility with Magefan_Blog
+
+#### Fixed
+* Fixed alternate tags for Amasty Xlanding page
+
+---
+
+## 1.0.56
+*(2017-03-30)*
+
+#### Fixed
+* Fixed issue with ability download Import Links example
+
+---
+
+## 1.0.55
+*(2017-03-30)*
+
+#### Fixed
+* Fixed issue with ability download Import Links example
+
+---
+
+## 1.0.54
+*(2017-03-28)*
+
+#### Fixed
+* Fixed error with BlogMX
+
+---
+
+## 1.0.53
+*(2017-03-28)*
+
+#### Fixed
+* Fixed Open Graph issue
+
+---
+
+## 1.0.52
+*(2017-03-27)*
+
+#### Features
+* Ability use paths of templates to add links inside
+
+#### Fixed
+* Fixed an error if can't get image url
+* Fixed sitemap error if blog haven't category
+
+---
+
 ## 1.0.51
 *(2017-03-23)*
 
