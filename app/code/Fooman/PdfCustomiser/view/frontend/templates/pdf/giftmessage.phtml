@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var \Fooman\PdfCustomiser\Block\Giftmessage $block
+ */
+?>
+<?php $giftMessage = $block->getGiftmessage(); ?>
+<?php if ($giftMessage) : ?>
+    <table width="100%" border="0" cellpadding="2" cellspacing="0">
+        <tr>
+            <td>
+                <br/>
+                <strong><?php echo __('Gift Message') ?></strong><br/>
+                <b><?php echo __('From:') ?></b> <?php echo $block->escapeHtml($giftMessage->getSender()) ?><br/>
+                <b><?php echo __('To:') ?></b> <?php echo $block->escapeHtml($giftMessage->getRecipient()) ?><br/>
+                <b><?php echo __('Message:') ?></b> <?php echo $block->escapeHtml($giftMessage->getMessage()) ?> <br/>
+            </td>
+        </tr>
+    </table>
+<?php endif; ?>

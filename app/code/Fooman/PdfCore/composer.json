@@ -1,0 +1,35 @@
+{
+  "name": "fooman/pdfcore-m2",
+  "license": "proprietary",
+  "description": "Common functionality for all Fooman Pdf extensions",
+  "type": "magento2-module",
+  "version": "9.0.1",
+  "autoload": {
+    "psr-4": {
+      "Fooman\\PdfCore\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Fooman\\PdfCore\\Test\\": "tests/unit/Test/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ],
+  "require": {
+    "fooman/tcpdf": "^6.2.12",
+    "magento/module-backend": "^100.1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.5"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

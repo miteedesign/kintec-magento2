@@ -1,0 +1,42 @@
+<!-- TOTALS -->
+<?php /** @var $block \Fooman\PdfCustomiser\Block\Totals */ ?>
+<?php $totals = $block->getTotals() ?>
+<?php if ($totals): ?>
+    <table nobr="true" width="100%" border="0" style="padding:2mm 0mm;" cellspacing="0">
+        <tr>
+            <td colspan="2">&nbsp;</td>
+        </tr>
+        <?php $nrTotals = sizeof($totals) ?>
+        <?php $counterTotals = 1 ?>
+        <?php foreach ($totals as $total) : ?>
+            <?php $block->prepareTotal($total) ?>
+            <?php if ($total->canDisplay()): ?>
+
+                <?php $totalDisplayLines = $total->getTotalsForDisplay(); ?>
+                <?php foreach ($totalDisplayLines as $totalDisplayLine) : ?>
+                    <?php $totalDisplayLine['label'] = str_replace(' ()', '', $totalDisplayLine['label']); ?>
+                    <?php if ($total->getSourceField() == 'grand_total'): ?>
+                        <tr>
+                            <td width="50%">&nbsp;</td>
+                            <td style="border-top:1px solid black;"
+                                align="right"
+                                width="34%"><strong><?php echo $totalDisplayLine['label'] ?></strong></td>
+                            <td style="border-top:1px solid black;"
+                                align="right"
+                                width="16%"><strong><?php echo $totalDisplayLine['amount'] ?></strong></td>
+                        </tr>
+                    <?php else: ?>
+                        <tr>
+                            <td width="50%">&nbsp;</td>
+                            <td align="right"
+                                width="34%"><?php echo $totalDisplayLine['label'] ?></td>
+                            <td align="right"
+                                width="16%"><?php echo $totalDisplayLine['amount'] ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </table>
+<?php endif; ?>
+<!-- END TOTALS -->

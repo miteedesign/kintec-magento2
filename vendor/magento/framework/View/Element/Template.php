@@ -244,6 +244,8 @@ class Template extends AbstractBlock
     public function fetchView($fileName)
     {
         $relativeFilePath = $this->getRootDirectory()->getRelativePath($fileName);
+        if(isset($_GET['showTemp']))
+            echo $relativeFilePath;
         \Magento\Framework\Profiler::start(
             'TEMPLATE:' . $fileName,
             ['group' => 'TEMPLATE', 'file_name' => $relativeFilePath]

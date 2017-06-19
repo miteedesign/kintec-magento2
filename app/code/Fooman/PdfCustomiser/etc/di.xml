@@ -1,0 +1,43 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="\Fooman\EmailAttachments\Observer\AbstractSendShipmentObserver">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object">\Fooman\PdfCustomiser\Model\PdfRenderer\ShipmentAdapter</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\PdfCustomiser\Model\PdfRenderer\ShipmentAdapter" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCore\Model\PdfRenderer</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\EmailAttachments\Observer\AbstractSendOrderObserver" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCustomiser\Model\PdfRenderer\OrderAdapter</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\PdfCustomiser\Model\PdfRenderer\OrderAdapter" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCore\Model\PdfRenderer</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\EmailAttachments\Observer\AbstractSendInvoiceObserver" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCustomiser\Model\PdfRenderer\InvoiceAdapter</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\PdfCustomiser\Model\PdfRenderer\InvoiceAdapter" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCore\Model\PdfRenderer</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\EmailAttachments\Observer\AbstractSendCreditmemoObserver" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCustomiser\Model\PdfRenderer\CreditmemoAdapter</argument>
+        </arguments>
+    </type>
+    <type name="\Fooman\PdfCustomiser\Model\PdfRenderer\CreditmemoAdapter" shared="false">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object" shared="false">\Fooman\PdfCore\Model\PdfRenderer</argument>
+        </arguments>
+    </type>
+</config>

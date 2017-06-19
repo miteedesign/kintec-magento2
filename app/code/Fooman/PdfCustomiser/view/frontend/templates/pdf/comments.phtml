@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var \Fooman\PdfCustomiser\Block\Comments $block
+ */
+?>
+<br/>
+<strong><?php echo __('Comments') ?></strong><br/>  
+<table border="0" cellpadding="2" cellspacing="0">
+<?php foreach ($block->getComments() as $comment): ?>
+    <tr>
+        <td><?php echo $comment['date'] ?><?php if ($comment['label']): ?> | <?php echo $comment['label'] ?><?php endif; ?></td>
+        <td><?php echo $comment['comment'] ?></td>
+    </tr>
+<?php endforeach; ?>
+</table>
+<br/>

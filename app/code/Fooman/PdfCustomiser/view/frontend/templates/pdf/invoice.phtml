@@ -1,0 +1,106 @@
+<?php
+/**
+ * @var \Fooman\PdfCustomiser\Block\Invoice $block
+ */
+?>
+<?php $invoice = $block->getInvoice() ?>
+<?php $order = $block->getOrder() ?>
+<?php $itemsStyling = $block->getDefaultItemStyling() ?>
+
+<table width="100%" border="0" cellpadding="2" cellspacing="0">
+    <tr>
+        <?php if ($block->isLogoOnRight()): ?>
+            <td
+                valign="top"
+                width="50%"
+                height="30mm"
+                style="font-weight:bold;
+                    font-size:<?php echo $block->getFontsize('large') ?>"><?php echo $block->escapeHtml($block->getTitle()) ?></td>
+            <td valign="top">&nbsp;<?php echo $block->getLogoBlock() ?></td>
+        <?php else: ?>
+            <td width="50%"
+                valign="top">&nbsp;<?php echo $block->getLogoBlock() ?></td>
+            <td
+                valign="top"
+                height="30mm"
+                style="font-weight:bold;
+                    font-size:<?php echo $block->getFontsize('large') ?>"><?php echo $block->escapeHtml($block->getTitle()) ?></td>
+        <?php endif; ?>
+    </tr>
+    <tr>
+        <td valign="top" width="50%"><?php echo __('Invoice #') ?>: <?php echo $invoice->getIncrementId() ?><br/>
+            <?php echo __('Invoice Date') ?>: <?php echo $block->getFormattedDate($invoice->getCreatedAt()) ?><br/>
+            <?php if ($block->showOrderIncrementId()): ?>
+                <?php echo __('Order #') . ': ' . $order->getIncrementId() ?><br/>
+            <?php endif; ?>
+            <?php echo __('Order Date') ?>: <?php echo $block->getFormattedDate($order->getCreatedAt()) ?>
+        </td>
+        <td valign="top"><?php echo nl2br($block->escapeHtml($block->getOwnerAddress())) ?></td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <?php if ($block->shouldDisplayBothAddresses()): ?>
+            <!--Example with indentation of address, adjust the percentages to adjust the left-right positioning
+            <td valign="top" colspan="2">
+                <table>
+                    <tr>
+                        <td width="5%"></td>
+                        <td width="45%"><?php echo __('Sold to:') ?><br/><?php echo $block->getBillingAddress() ?></td>
+                        <td width="5%"></td>
+                        <td width="45%"><?php echo __('Ship to:') ?><br/><?php echo $block->getShippingAddress() ?></td>
+                    </tr>
+                </table>
+            </td>-->
+            <td valign="top" width="50%"><?php echo __('Sold to:') ?><br/><?php echo $block->getBillingAddress() ?></td>
+            <td valign="top"><?php if (!$order->getIsVirtual()): ?><?php echo __('Ship to:') ?>
+                    <br/><?php echo $block->getShippingAddress() ?><?php endif; ?></td>
+        <?php elseif ($block->shouldDisplayShippingAddress()): ?>
+            <td valign="top" colspan="2"><?php echo $block->getShippingAddress() ?></td>
+        <?php elseif ($block->shouldDisplayBillingAddress()): ?>
+            <td valign="top" colspan="2"><?php echo $block->getBillingAddress() ?></td>
+        <?php endif; ?>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <?php if ($order->getIsVirtual()): ?>
+        <tr>
+            <td valign="top" colspan="2"><strong><?php echo __('Payment Method') ?></strong></td>
+        </tr>
+        <tr>
+            <td valign="top" colspan="2"><?php echo $block->getPaymentBlock() ?></td>
+        </tr>
+    <?php else: ?>
+        <tr>
+            <td valign="top" width="50%"><strong><?php echo __('Payment Method') ?></strong></td>
+            <td valign="top"><strong><?php echo __('Shipping Method') ?></strong></td>
+        </tr>
+        <tr>
+            <td valign="top" width="50%"><?php echo $block->getPaymentBlock() ?></td>
+            <td valign="top"><?php echo $block->getShippingBlock() ?></td>
+        </tr>
+    <?php endif; ?>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+</table>
+
+<?php echo $block->getItemsBlock($itemsStyling) ?>
+
+<?php echo $block->getTotalsBlock() ?>
+
+<?php echo $block->getGiftmessageBlock()?>
+
+<?php echo $block->getCommentsBlock() ?>
+
+<?php $customText = $block->getCustomText() ?>
+<?php if ($customText) : ?>
+    <br/>
+    <table width="100%" border="0" cellpadding="2" cellspacing="0">
+        <tr>
+            <td colspan="2"> <?php echo $customText ?></td>
+        </tr>
+    </table>
+<?php endif; ?>

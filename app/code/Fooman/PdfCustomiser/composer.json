@@ -1,0 +1,35 @@
+{
+    "name": "fooman/pdfcustomiser-m2",
+    "description": "Customise your sales pdf",
+    "version": "5.0.4",
+    "require": {
+        "fooman/pdfcore-m2":"^8.0.2 || ^9.0.0",
+        "fooman/printorderpdf-m2":"^2.0.3",
+        "fooman/emailattachments-m2":"^2.0.7",
+        "magento/module-backend": "^100.1.0",
+        "magento/module-sales": "^100.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fooman\\PdfCustomiser\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fooman\\PdfCustomiser\\Test\\": "tests/unit/Test/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ],
+    "type": "magento2-module"
+}

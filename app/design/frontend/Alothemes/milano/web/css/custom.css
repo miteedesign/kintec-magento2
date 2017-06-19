@@ -578,6 +578,14 @@ select.swatch-select{
     font-size: 13px;
 }
 
+.products-grid .price-box {
+    margin: 5px 0 0px;
+}
+
+.products-grid div[class^="swatch-opt-"] {
+    margin-top: 8px;
+}
+
 /* shopping cart styles */
 
 .data.table .custom-qty .alo_qty {
@@ -611,11 +619,11 @@ select.swatch-select{
     display:none;
 }
 
-.fieldset.review-fieldset>.field>.label:after {
+.fieldset.review-fieldset>.required>.label:after {
     content:"*";
     color:red;
     display:inline-block;
-    margin-left:8px;
+    margin-left:3px;
 }
 
 textarea#review_field {
@@ -1047,6 +1055,17 @@ select option[value="position"] {
     min-height: 0px !important;
     min-width: 0px !important; 
     display:none !important;
+}
+
+.products.list .swatch-attribute.colour {
+    height: 25px;
+    display: block;
+    min-height: 25px;
+}
+
+.product-info-main .swatch-attribute-options {
+    margin: 10px 0 !important;
+    margin-top: 5px !important;
 }
 
 .filter-content .toggle-tab:before {
@@ -1665,8 +1684,12 @@ div#billing-address-title {
     border-color: transparent;
 }
 .action.subscribe.button {
-    height: 35px;
-    line-height: 35px;
+    height: 38px;
+    line-height: 38px;
+    background: #ff6b0b;
+    color: white;
+    border: none;
+    padding: 0 10px;
 }
 .footer .block-content-statick li a:hover {
     padding-left:0;
@@ -1691,6 +1714,7 @@ div#billing-address-title {
 .block-subscribe input.input-text {
     height: 38px;
     line-height: 38px;
+    margin-bottom:10px;
 }
 .grand.totals.excl {
     display:none;
