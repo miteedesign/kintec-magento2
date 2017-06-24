@@ -92,7 +92,7 @@ class ProductUrlPathGenerator
      */
     public function getUrlPathWithSuffix($product, $storeId, $category = null)
     {
-        return $this->getUrlPath($product, $category) . $this->getProductUrlSuffix($storeId);
+        return $this->getUrlPath($product, $category) /*. $this->getProductUrlSuffix($storeId)*/;
     }
 
     /**
@@ -139,6 +139,7 @@ class ProductUrlPathGenerator
      */
     protected function getProductUrlSuffix($storeId = null)
     {
+        return '';
         if ($storeId === null) {
             $storeId = $this->storeManager->getStore()->getId();
         }

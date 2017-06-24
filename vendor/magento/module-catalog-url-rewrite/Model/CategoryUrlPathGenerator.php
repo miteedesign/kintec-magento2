@@ -113,6 +113,7 @@ class CategoryUrlPathGenerator
      */
     protected function getCategoryUrlSuffix($storeId = null)
     {
+        return '';
         if ($storeId === null) {
             $storeId = $this->storeManager->getStore()->getId();
         }
