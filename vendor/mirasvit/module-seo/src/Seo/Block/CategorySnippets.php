@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -40,6 +40,11 @@ class CategorySnippets extends \Magento\Framework\View\Element\Template
     protected $config;
 
     /**
+     * @var \Mirasvit\Seo\Helper\Snippets\Price
+     */
+    protected $seoSnippetsPriceHelper;
+
+    /**
      * @var \Magento\Framework\Registry
      */
     protected $registry;
@@ -58,21 +63,24 @@ class CategorySnippets extends \Magento\Framework\View\Element\Template
      * @param \Magento\Catalog\Model\CategoryFactory           $categoryFactory
      * @param \Magento\Catalog\Model\ProductFactory            $productFactory
      * @param \Mirasvit\Seo\Model\Config                       $config
+     * @param \Mirasvit\Seo\Helper\Snippets\Price              $seoSnippetsPriceHelper
      * @param \Magento\Framework\Registry                      $registry
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array                                            $data
      */
     public function __construct(
-        \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \Magento\Catalog\Model\ProductFactory $productFactory,
-        \Mirasvit\Seo\Model\Config $config,
-        \Magento\Framework\Registry $registry,
+        \Magento\Catalog\Model\CategoryFactory           $categoryFactory,
+        \Magento\Catalog\Model\ProductFactory            $productFactory,
+        \Mirasvit\Seo\Model\Config                       $config,
+        \Mirasvit\Seo\Helper\Snippets\Price              $seoSnippetsPriceHelper,
+        \Magento\Framework\Registry                      $registry,
         \Magento\Framework\View\Element\Template\Context $context,
         array $data = []
     ) {
         $this->categoryFactory = $categoryFactory;
         $this->productFactory = $productFactory;
         $this->config = $config;
+        $this->seoSnippetsPriceHelper = $seoSnippetsPriceHelper;
         $this->registry = $registry;
         $this->request = $context->getRequest();
         $this->context = $context;
@@ -301,7 +309,8 @@ class CategorySnippets extends \Magento\Framework\View\Element\Template
             $this->categorySnippetsFilter();
         }
 
-        return $this->categorySnippetsPrice;
+        return $this->seoSnippetsPriceHelper->formatPriceValue($this->categorySnippetsPrice);
+
     }
 
     /**

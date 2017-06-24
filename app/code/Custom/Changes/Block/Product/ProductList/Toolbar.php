@@ -15,7 +15,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar as ToolbarModel;
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Toolbar extends Magento\Catalog\Block\Product\ProductList\Toolbar
+class Toolbar extends \Magento\Catalog\Block\Product\ProductList\Toolbar
 {
 
     /**

@@ -1,3 +1,11 @@
+## 1.2.27
+*(2017-05-10)*
+
+#### Improvements
+* Moved attachments from helpdesk and rma to core
+
+---
+
 ## 1.2.26
 *(2017-04-11)*
 

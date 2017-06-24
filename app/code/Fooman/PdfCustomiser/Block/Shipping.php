@@ -65,7 +65,7 @@ class Shipping extends \Fooman\PdfCore\Block\Pdf\Block
      */
     public function getShippingDescription()
     {
-        return $this->description;
+        return preg_replace("/<img[^>]+\>/i", "", $this->description); ;
     }
 
     /**

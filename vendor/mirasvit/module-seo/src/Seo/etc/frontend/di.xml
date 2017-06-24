@@ -24,4 +24,8 @@
     <type name="Magento\Framework\View\TemplateEngineFactory">
         <plugin name="add_seo_description_under_template" type="Mirasvit\Seo\Plugin\Template\AddSeoDescriptionUnderTemplate" sortOrder="1001"/>
     </type>
+    <type name="Magento\Catalog\Block\Product\View\Gallery">
+        <plugin name="change_product_view_image_alt" type="Mirasvit\Seo\Plugin\Image\AltTemplate" sortOrder="1001"/>
+    </type>
+
 </config>

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -40,6 +40,11 @@ class Snippet implements ObserverInterface
      * @var \Mirasvit\Seo\Helper\Snippets
      */
     protected $seoSnippets;
+
+    /**
+     * @var \Mirasvit\Seo\Helper\Snippets\Price
+     */
+    protected $seoSnippetsPriceHelper;
 
     /**
      * @var \Magento\Catalog\Helper\Image
@@ -104,6 +109,7 @@ class Snippet implements ObserverInterface
      * @param \Magento\Shipping\Model\Config                     $shippingMethodConfig
      * @param \Mirasvit\Seo\Model\Config                         $config
      * @param \Mirasvit\Seo\Helper\Snippets                      $seoSnippets
+     * @param \Mirasvit\Seo\Helper\Snippets\Price                $seoSnippetsPriceHelper
      * @param \Magento\Catalog\Helper\Image                      $catalogImage
      * @param \Mirasvit\Seo\Helper\Data                          $seoData
      * @param \Magento\Store\Model\StoreManagerInterface         $storeManager
@@ -117,9 +123,10 @@ class Snippet implements ObserverInterface
     public function __construct(
         \Magento\Catalog\Model\CategoryFactory             $categoryFactory,
         \Magento\Payment\Model\Config                      $paymentConfig,
-        \Magento\Shipping\Model\Config $shippingMethodConfig,
+        \Magento\Shipping\Model\Config                     $shippingMethodConfig,
         \Mirasvit\Seo\Model\Config                         $config,
         \Mirasvit\Seo\Helper\Snippets                      $seoSnippets,
+        \Mirasvit\Seo\Helper\Snippets\Price                $seoSnippetsPriceHelper,
         \Magento\Catalog\Helper\Image                      $catalogImage,
         \Mirasvit\Seo\Helper\Data                          $seoData,
         \Magento\Store\Model\StoreManagerInterface         $storeManager,
@@ -133,6 +140,7 @@ class Snippet implements ObserverInterface
         $this->paymentConfig = $paymentConfig;
         $this->shippingMethodConfig = $shippingMethodConfig;
         $this->seoSnippets = $seoSnippets;
+        $this->seoSnippetsPriceHelper = $seoSnippetsPriceHelper;
         $this->catalogImage = $catalogImage;
         $this->seoData = $seoData;
         $this->storeManager = $storeManager;
@@ -751,11 +759,7 @@ class Snippet implements ObserverInterface
         $currencyCode = $this->storeManager->getStore()->getCurrentCurrencyCode();
         if ($productFinalPrice = $this->seoData->getCurrentProductFinalPrice($product, true)) {
             /* Google Structured Data Testing Tool throws Warning on price attribute with comma like price = 3,99 */
-            if (substr_count($productFinalPrice, ',') + substr_count($productFinalPrice, '.') > 1) {
-                $productFinalPrice = str_replace(',', '', $productFinalPrice);
-            } elseif (strpos($productFinalPrice, ',') !== false) {
-                $productFinalPrice = str_replace(',', '.', $productFinalPrice);
-            }
+            $productFinalPrice = $this->seoSnippetsPriceHelper->formatPriceValue($productFinalPrice);
             $price = '<span itemprop="offers" itemscope itemtype="http://schema.org/Offer">'.
                         $offerSnippets.
                         '<meta itemprop="price" content="'.$productFinalPrice.'" />'.

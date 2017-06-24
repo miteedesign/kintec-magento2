@@ -278,7 +278,8 @@ abstract class AbstractSalesDocument extends \Fooman\PdfCore\Block\Pdf\DocumentR
         if (!empty($tracks)) {
             $block->setTracks($tracks);
         }
-        $block->setShippingDescription($this->getOrder()->getShippingDescription())
+        $des = preg_replace("/<img[^>]+\>/i", "", $this->getOrder()->getShippingDescription());
+        $block->setShippingDescription($des)
             ->setTotalWeight();
         return $block->toHtml();
     }

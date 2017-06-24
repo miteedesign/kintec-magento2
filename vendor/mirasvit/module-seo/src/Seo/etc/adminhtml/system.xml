@@ -69,48 +69,71 @@
                     <label>Robots Meta Header for HTTPS</label>
                     <source_model>\Mirasvit\Seo\Model\Config\Source\HttpsNoindexPages</source_model>
                 </field>
-                <field id="is_alternate_hreflang" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable Link Rel=&quot;alternate&quot; and hreflang</label>
+                <field id="is_paging_prevnext" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Link Rel=&quot;next/prev&quot;</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field> 
-                <field id="is_hreflang_locale_code_automatical" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                </field>
+                <field id="is_category_meta_tags_used" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use meta tags from categories if they are not empty</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="is_product_meta_tags_used" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use meta tags from products if they are not empty</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="test" translate="label" type="label" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[<strong><u>Alternate configuration:</u></strong>]]></label>
+                </field>
+                <field id="is_alternate_hreflang" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Link Rel=&quot;alternate&quot; and hreflang</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\Alternate\Alternate</source_model>
+                    <tooltip><![CDATA["Add for every website" - create alternate for stores inside website.
+                    "Configure manually" - ability configure alternate for any store group.
+                        ]]></tooltip>
+                </field>
+                <field id="alternate_configurable" translate="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Configurate alternate manually</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\Alternate</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="is_alternate_hreflang">2</field>
+                    </depends>
+                </field>
+                <field id="configurable_hreflang_x_default" translate="label" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Add hreflang hreflang x-default (not necessary)</label>
+                    <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\AlternateXDefault</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="is_alternate_hreflang">2</field>
+                    </depends>
+                </field>
+                <field id="is_hreflang_locale_code_automatical" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Add hreflang locale code automatically (not necessary)</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
-                        <field id="is_alternate_hreflang">1</field>
+                        <field id="is_alternate_hreflang" separator="|">1|2</field>
                     </depends>
                 </field>
-                <field id="is_hreflang_cut_category_additional_data" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="is_hreflang_cut_category_additional_data" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Cut category additional data for alternate url</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
-                        <field id="is_alternate_hreflang">1</field>
+                        <field id="is_alternate_hreflang" separator="|">1|2</field>
                     </depends>
                 </field>
-                <field id="hreflang_locale_code" translate="label" type="text" sortOrder="120" showInDefault="0" showInWebsite="0" showInStore="1">
+                <field id="hreflang_locale_code" translate="label" type="text" sortOrder="180" showInDefault="0" showInWebsite="0" showInStore="1">
                     <label>Hreflang locale code (not necessary)</label>
                     <depends>
                         <field id="is_alternate_hreflang">1</field>
                     </depends>
                 </field>
-                <field id="is_hreflang_x_default" translate="label" type="select" sortOrder="130" showInDefault="0" showInWebsite="1" showInStore="0">
+                <field id="is_hreflang_x_default" translate="label" type="select" sortOrder="190" showInDefault="0" showInWebsite="1" showInStore="0">
                     <label>Add hreflang hreflang x-default (not necessary)</label>
                     <source_model>\Mirasvit\Seo\Model\Config\Source\Alternate\XDefault</source_model>
                     <depends>
                         <field id="is_alternate_hreflang">1</field>
                     </depends>
-                </field>
-                <field id="is_paging_prevnext" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable Link Rel=&quot;next/prev&quot;</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="is_category_meta_tags_used" translate="label" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use meta tags from categories if they are not empty</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-                <field id="is_product_meta_tags_used" translate="label" type="select" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use meta tags from products if they are not empty</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
             <group id="extended" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="600">
@@ -189,8 +212,8 @@
                     <!--&lt;!&ndash;<frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\BtnAction</frontend_model>&ndash;&gt;-->
                 <!--&lt;!&ndash;</field>&ndash;&gt;-->
             </group>
-            <!--<group id="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="900">-->
-                <!--<label>Product Images Settings</label>-->
+            <group id="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="900">
+                <label>Product Images Settings</label>
                 <!--<field id="is_enable_image_friendly_urls" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">-->
                     <!--<label>Enable SEO-friendly URLs for Product Images</label>-->
                     <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
@@ -198,14 +221,17 @@
                 <!--<field id="image_url_template" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">-->
                     <!--<label>Template for URL key of Product Images</label>-->
                 <!--</field>-->
-                <!--<field id="is_enable_image_alt" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">-->
-                    <!--<label>Enable generation of Product Images Alt and Title</label>-->
-                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
-                <!--</field>-->
-                <!--<field id="image_alt_template" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">-->
-                    <!--<label>Template for Product Images Alt and Title</label>-->
-                <!-- </field> -->
-            <!-- </group> -->
+                <field id="is_enable_image_alt" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable generation of Product Images Alt and Title</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="image_alt_template" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template for Product Images Alt and Title</label>
+                    <depends>
+                        <field id="is_enable_image_alt" separator="|">1|2</field>
+                    </depends>
+                </field>
+            </group>
             <group id="info" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="1100">
                 <label>Info (visible in frontend, will not work if FPC or Varnish enabled)</label>
                 <field id="info" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">

@@ -21,7 +21,9 @@ $fitvalue = $_product->getResource()->getAttribute('fit')->getFrontend()->getVal
 
     <?php if($fitvalue) { ?>
 	    <div class="fieldset fit-size">
-	    	<strong>Fit:</strong> <?php echo $fitvalue; ?>
+	    	<?php if($fitvalue != 'No') { ?>
+	    		<strong>Fit:</strong> <?php echo $fitvalue; ?>
+	    	<?php } ?>
 	    </div>
 	<?php } else { 
 			

@@ -742,11 +742,11 @@ select option[value="position"] {
 }
 
 .mens-footwear {
-    background: #fff url('/media/wysiwyg/cms-images/kintec-category-mens.jpg') top center no-repeat;
+    background: #fff url('/media/wysiwyg/cms-images/Men-Banner-2.jpg') top center no-repeat;
 }
 
 .womens {
-    background: #fff url('/media/wysiwyg/cms-images/kintec-category-womens.jpg') top center no-repeat;
+    background: #fff url('/media/wysiwyg/cms-images/Women-Banner-warm-2.jpg') top center no-repeat;
     background-size:contain;
 }
 
@@ -759,7 +759,7 @@ select option[value="position"] {
 }
 
 .kids {
-    background: #fff url('/media/wysiwyg/cms-images/kintec-category-kids.png') top center no-repeat;
+    background: #fff url('/media/wysiwyg/cms-images/Kid-Banner---2.jpg') top center no-repeat;
     background-size:contain;
 }
 
@@ -1815,4 +1815,39 @@ h2.title-page {
 }
 .storepickup-wrapper .list-store .store-item .tag-store, .storepickup-wrapper .map-box-container .store-item .tag-store {
     display: none;
+}
+
+/* magicproduct.css */
+.magictabs .item.activated, .magictabs .item:hover {
+    border-color : #ff3366;
+}
+.content-products .mage-magictabs {
+    display: none;
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
+}
+.content-products .mage-magictabs.activated {
+    display: block;
+    /*visibility: visible;*/
+    /*opacity: 1;*/
+}
+
+/* shopbrand.css */
+.shopbrand{text-align:center;display:block}
+
+/* default.css */
+.alothemes{display:block}
+
+/* testimonials */
+.testimonial{text-align: center; display:block}
+
+tr.totals.sub.incl {
+    display: none;
+}
+
+.totals.shipping label {
+    color: #333;
+    font-size: 13px;
+    padding: 0;
+    font-weight: normal;
 }

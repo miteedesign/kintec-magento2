@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4156747a059a3078c8f85863dc58c596",
-    "content-hash": "afb79d5951c90ff8e0c9eac63e2c5111",
+    "hash": "eaabaa01faa40a1090df57a4747e494a",
+    "content-hash": "711319383d56a17258222fb302c089f3",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -400,6 +400,72 @@
                 "validator"
             ],
             "time": "2017-04-03 19:08:52"
+        },
+        {
+            "name": "fooman/tcpdf",
+            "version": "6.2.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fooman/TCPDF.git",
+                "reference": "5d25ce0d1058cec619927a9fe03c41b03ccb07ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fooman/TCPDF/zipball/5d25ce0d1058cec619927a9fe03c41b03ccb07ff",
+                "reference": "5d25ce0d1058cec619927a9fe03c41b03ccb07ff",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "ext-imagick": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "fonts",
+                    "include",
+                    "tcpdf.php",
+                    "tcpdf_parser.php",
+                    "tcpdf_import.php",
+                    "tcpdf_barcodes_1d.php",
+                    "tcpdf_barcodes_2d.php",
+                    "include/tcpdf_colors.php",
+                    "include/tcpdf_filters.php",
+                    "include/tcpdf_font_data.php",
+                    "include/tcpdf_fonts.php",
+                    "include/tcpdf_images.php",
+                    "include/tcpdf_static.php",
+                    "include/barcodes/datamatrix.php",
+                    "include/barcodes/pdf417.php",
+                    "include/barcodes/qrcode.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Nicola Asuni",
+                    "email": "info@tecnick.com",
+                    "homepage": "http://nicolaasuni.tecnick.com"
+                }
+            ],
+            "description": "Trimmed down version of TCPDF (no examples, tools and minimal fonts). TCPDF is a PHP class for generating PDF documents and barcodes.",
+            "homepage": "http://www.tcpdf.org/",
+            "keywords": [
+                "PDFD32000-2008",
+                "TCPDF",
+                "barcodes",
+                "datamatrix",
+                "pdf",
+                "pdf417",
+                "qrcode"
+            ],
+            "time": "2015-09-16 06:26:28"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5395,11 +5461,11 @@
         },
         {
             "name": "mirasvit/module-core",
-            "version": "1.2.26",
+            "version": "1.2.27",
             "dist": {
                 "type": "tar",
-                "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-core-1.2.26-de6dd7.tar",
-                "reference": "12a87b6610bc48fc13239d4b7efdd8ade4ba24e9",
+                "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-core-1.2.27-9164fc.tar",
+                "reference": "3e4af41176913fd1220a6e760e21e284307cdaca",
                 "shasum": null
             },
             "require": {
@@ -5420,15 +5486,15 @@
                 "proprietary"
             ],
             "description": "Mirasvit Core",
-            "time": "2017-04-11 11:03:24"
+            "time": "2017-05-10 12:39:12"
         },
         {
             "name": "mirasvit/module-seo",
-            "version": "1.0.58",
+            "version": "1.0.63",
             "dist": {
                 "type": "tar",
-                "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-seo-1.0.58-321e33.tar",
-                "reference": "9dfd73c6d46567c3abf9a85a05a3b384a9c914af",
+                "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-seo-1.0.63-446d07.tar",
+                "reference": "4ddd9208c0738fa8f8bbb40c39779b49be21e9f0",
                 "shasum": null
             },
             "require": {
@@ -5455,7 +5521,7 @@
                 "proprietary"
             ],
             "description": "Advanced Seo Suite",
-            "time": "2017-04-24 14:13:27"
+            "time": "2017-05-31 13:48:55"
         },
         {
             "name": "mjankiewicz/configurableproduct",
@@ -5687,16 +5753,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.4",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "ab8028c93c03cc8d9c824efa75dc94f1db2369bf"
+                "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/ab8028c93c03cc8d9c824efa75dc94f1db2369bf",
-                "reference": "ab8028c93c03cc8d9c824efa75dc94f1db2369bf",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34a7699e6f31b1ef4035ee36444407cecf9f56aa",
+                "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa",
                 "shasum": ""
             },
             "require": {
@@ -5775,7 +5841,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2016-10-04 00:57:04"
+            "time": "2017-06-05 06:31:10"
         },
         {
             "name": "psr/log",
@@ -5874,16 +5940,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "791f8c594f300d246cdf01c6b3e1e19611e301d8"
+                "reference": "50d63f2858d87c4738d5b76a7dcbb99fa8cf7c77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/791f8c594f300d246cdf01c6b3e1e19611e301d8",
-                "reference": "791f8c594f300d246cdf01c6b3e1e19611e301d8",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/50d63f2858d87c4738d5b76a7dcbb99fa8cf7c77",
+                "reference": "50d63f2858d87c4738d5b76a7dcbb99fa8cf7c77",
                 "shasum": ""
             },
             "require": {
@@ -5919,7 +5985,7 @@
                 "parser",
                 "validator"
             ],
-            "time": "2017-03-06 16:42:24"
+            "time": "2017-06-18 15:11:04"
         },
         {
             "name": "seld/phar-utils",
@@ -6078,16 +6144,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "7fc8e2b4118ff316550596357325dfd92a51f531"
+                "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/7fc8e2b4118ff316550596357325dfd92a51f531",
-                "reference": "7fc8e2b4118ff316550596357325dfd92a51f531",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/1377400fd641d7d1935981546aaef780ecd5bf6d",
+                "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d",
                 "shasum": ""
             },
             "require": {
@@ -6134,20 +6200,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-26 16:56:54"
+            "time": "2017-06-02 07:47:27"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "dc40154e26a0116995e4f2f0c71cb9c2fe0775a3"
+                "reference": "19c11158da8d110cc5289c063bf2ec4cc1ce9e7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/dc40154e26a0116995e4f2f0c71cb9c2fe0775a3",
-                "reference": "dc40154e26a0116995e4f2f0c71cb9c2fe0775a3",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/19c11158da8d110cc5289c063bf2ec4cc1ce9e7c",
+                "reference": "19c11158da8d110cc5289c063bf2ec4cc1ce9e7c",
                 "shasum": ""
             },
             "require": {
@@ -6183,20 +6249,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-12 14:07:15"
+            "time": "2017-05-28 14:07:33"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.2.8",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "9cf076f8f492f4b1ffac40aae9c2d287b4ca6930"
+                "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/9cf076f8f492f4b1ffac40aae9c2d287b4ca6930",
-                "reference": "9cf076f8f492f4b1ffac40aae9c2d287b4ca6930",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/baea7f66d30854ad32988c11a09d7ffd485810c4",
+                "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4",
                 "shasum": ""
             },
             "require": {
@@ -6205,7 +6271,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -6232,20 +6298,20 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-12 14:13:17"
+            "time": "2017-06-01 21:01:25"
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "aff35fb3dee799c84a7313c576b72208b046ef8d"
+                "reference": "d54232f5682fda2f8bbebff7c81b864646867ab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/aff35fb3dee799c84a7313c576b72208b046ef8d",
-                "reference": "aff35fb3dee799c84a7313c576b72208b046ef8d",
+                "url": "https://api.github.com/repos/symfony/process/zipball/d54232f5682fda2f8bbebff7c81b864646867ab9",
+                "reference": "d54232f5682fda2f8bbebff7c81b864646867ab9",
                 "shasum": ""
             },
             "require": {
@@ -6281,7 +6347,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-12 14:07:15"
+            "time": "2017-05-08 01:19:21"
         },
         {
             "name": "tedivm/jshrink",
@@ -8601,23 +8667,23 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.4.1",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
+                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
-                "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/7f066a26a962dbe58ddea9f72a4e82874a3975a4",
+                "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8"
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
             },
             "type": "library",
             "extra": {
@@ -8649,7 +8715,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2015-12-08 07:14:41"
+            "time": "2017-05-22 07:24:03"
         },
         {
             "name": "sebastian/environment",
@@ -9023,7 +9089,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -9079,16 +9145,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "e1c722dfe4dd04453aeb6b7a6deefb400c878394"
+                "reference": "b4a4b8f6ae1d69a6b2c0c31623bbc474121ee075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/e1c722dfe4dd04453aeb6b7a6deefb400c878394",
-                "reference": "e1c722dfe4dd04453aeb6b7a6deefb400c878394",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b4a4b8f6ae1d69a6b2c0c31623bbc474121ee075",
+                "reference": "b4a4b8f6ae1d69a6b2c0c31623bbc474121ee075",
                 "shasum": ""
             },
             "require": {
@@ -9138,20 +9204,20 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-26 01:38:53"
+            "time": "2017-06-02 14:36:56"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v3.2.8",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "5a0105afb670dbd38f521105c444de1b8e10cfe3"
+                "reference": "602a15299dc01556013b07167d4f5d3a60e90d15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/5a0105afb670dbd38f521105c444de1b8e10cfe3",
-                "reference": "5a0105afb670dbd38f521105c444de1b8e10cfe3",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/602a15299dc01556013b07167d4f5d3a60e90d15",
+                "reference": "602a15299dc01556013b07167d4f5d3a60e90d15",
                 "shasum": ""
             },
             "require": {
@@ -9160,7 +9226,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.2-dev"
+                    "dev-master": "3.3-dev"
                 }
             },
             "autoload": {
@@ -9187,20 +9253,20 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-12 14:13:17"
+            "time": "2017-04-12 14:14:56"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.20",
+            "version": "v2.8.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "93ccdde79f4b079c7558da4656a3cb1c50c68e02"
+                "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/93ccdde79f4b079c7558da4656a3cb1c50c68e02",
-                "reference": "93ccdde79f4b079c7558da4656a3cb1c50c68e02",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
+                "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
                 "shasum": ""
             },
             "require": {
@@ -9236,7 +9302,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-05-01 14:31:55"
+            "time": "2017-06-01 20:52:29"
         },
         {
             "name": "theseer/fdomdocument",

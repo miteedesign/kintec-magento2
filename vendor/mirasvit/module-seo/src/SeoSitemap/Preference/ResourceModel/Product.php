@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -87,6 +87,29 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected $_mediaConfig;
 
     /**
+     * @var array
+     */
+    protected $parseObjects = array();
+
+    /**
+     * @var \Mirasvit\Seo\Model\Config
+     */
+    protected $_config;
+
+    /**
+     * @var \Mirasvit\Seo\Helper\Parse
+     */
+    protected $seoParse;
+
+    /**
+     * @var \Magento\Catalog\Model\ProductRepository
+     */
+    protected $_productRepository;
+
+    /**
+     * @param \Mirasvit\Seo\Model\Config $config
+     * @param \Mirasvit\Seo\Helper\Parse $parse
+     * @param \Magento\Catalog\Model\ProductRepository $productRepository
      * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
      * @param \Magento\Sitemap\Helper\Data $sitemapData
      * @param \Magento\Catalog\Model\ResourceModel\Product $productResource
@@ -100,6 +123,9 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
+        \Mirasvit\Seo\Model\Config $config,
+        \Mirasvit\Seo\Helper\Parse $parse,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
         \Magento\Framework\Model\ResourceModel\Db\Context $context,
         \Magento\Sitemap\Helper\Data $sitemapData,
         \Magento\Catalog\Model\ResourceModel\Product $productResource,
@@ -111,6 +137,9 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         \Magento\Catalog\Model\Product\Media\Config $mediaConfig,
         $connectionName = null
     ) {
+        $this->_config = $config;
+        $this->seoParse = $parse;
+        $this->_productRepository = $productRepository;
         $this->_productResource = $productResource;
         $this->_storeManager = $storeManager;
         $this->_productVisibility = $productVisibility;
@@ -375,7 +404,9 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
             $product->setImages(
                 new \Magento\Framework\DataObject(
-                    ['collection' => $imagesCollection, 'title' => $product->getName(), 'thumbnail' => $thumbnail]
+                    ['collection' => $imagesCollection,
+                     'title' => $this->getSeoImageLabel($product) ? $this->getSeoImageLabel($product) : $product->getName(),
+                     'thumbnail' => $thumbnail]
                 )
             );
         }
@@ -397,15 +428,25 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         );
 
         $imagesCollection = [];
+        $seoLabel = $this->getSeoImageLabel($product);
         if ($gallery) {
             $productMediaPath = $this->_getMediaConfig()->getBaseMediaUrlAddition();
             foreach ($gallery as $image) {
-                $imagesCollection[] = new \Magento\Framework\DataObject(
-                    [
-                        'url' => $productMediaPath . $image['file'],
-                        'caption' => $image['label'] ? $image['label'] : $image['label_default'],
-                    ]
-                );
+                if ($seoLabel) {
+                    $imagesCollection[] = new \Magento\Framework\DataObject(
+                        [
+                            'url' => $productMediaPath . $image['file'],
+                            'caption' => $seoLabel,
+                        ]
+                    );
+                } else {
+                    $imagesCollection[] = new \Magento\Framework\DataObject(
+                        [
+                            'url' => $productMediaPath . $image['file'],
+                            'caption' => $image['label'] ? $image['label'] : $image['label_default'],
+                        ]
+                    );
+                }
             }
         }
 
@@ -420,5 +461,24 @@ class Product extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected function _getMediaConfig()
     {
         return $this->_mediaConfig;
+    }
+
+    /**
+     * Return image label
+     *
+     * @param \Magento\Framework\DataObject $product
+     * @return string
+     */
+    public function getSeoImageLabel($product)
+    {
+        if ($this->_config->getIsEnableImageAlt() && $this->_config->getImageAltTemplate()) {
+            $template = $this->_config->getImageAltTemplate();
+            $product = $this->_productRepository->getById($product->getId());
+            $this->parseObjects['product'] = $product;
+            $label = $this->seoParse->parse($template, $this->parseObjects);
+            return $label;
+        }
+
+        return null;
     }
 }

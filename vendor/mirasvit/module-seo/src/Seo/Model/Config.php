@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -32,9 +32,9 @@ class Config
       */
     protected $cookie;
 
-     /**
-      * @var \Magento\Store\Model\StoreManagerInterface
-      */
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
     protected $storeManager;
 
     /**
@@ -123,12 +123,6 @@ class Config
     const UNDER_PRODUCT_LIST = 4;
     const CUSTOM_TEMPLATE = 5;
 
-     //Description Position
-    const X_DEFAULT_AUTOMATICALLY = 'AUTOMATICALLY';
-
-    //amasty_xlanding page
-    const AMASTY_XLANDING = 'amasty_xlanding_page_view';
-
     /**
      * @return bool
      */
@@ -210,6 +204,14 @@ class Config
         $pages = $this->scopeConfig->getValue('seo/general/noindex_pages2');
         $pages = unserialize($pages);
         $result = [];
+        if (is_object($pages)) {
+            $pages = (array)$pages;
+            foreach ($pages as $key => $value) {
+                if (is_object($value)) {
+                    $pages[$key] = (array)$value;
+                }
+            }
+        }
         if (is_array($pages)) {
             foreach ($pages as $value) {
                 $result[] = new \Magento\Framework\DataObject($value);
@@ -225,58 +227,6 @@ class Config
     public function getHttpsNoindexPages()
     {
         return $this->scopeConfig->getValue('seo/general/https_noindex_pages');
-    }
-
-    /**
-     * @param string $store
-     * @return bool
-     */
-    public function isAlternateHreflangEnabled($store)
-    {
-        return $this->scopeConfig->getValue(
-            'seo/general/is_alternate_hreflang',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
-     * @return bool
-     */
-    public function isHreflangLocaleCodeAddAutomatical()
-    {
-        return $this->scopeConfig->getValue('seo/general/is_hreflang_locale_code_automatical');
-    }
-
-    /**
-     * @return bool
-     */
-    public function isHreflangCutCategoryAdditionalData()
-    {
-        return $this->scopeConfig->getValue('seo/general/is_hreflang_cut_category_additional_data');
-    }
-
-    /**
-     * @return string|int
-     */
-    public function getXDefault()
-    {
-        return $this->scopeConfig->getValue('seo/general/is_hreflang_x_default',
-            \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITE,
-            $this->storeManager->getStore()->getWebsiteId());
-    }
-
-    /**
-     * @param string $store
-     * @return string
-     */
-    public function getHreflangLocaleCode($store)
-    {
-        return trim($this->scopeConfig->getValue(
-            'seo/general/hreflang_locale_code',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
-            $store
-        ));
     }
 
     /**

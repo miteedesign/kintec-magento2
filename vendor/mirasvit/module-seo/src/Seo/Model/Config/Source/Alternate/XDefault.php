@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -18,7 +18,7 @@
 namespace Mirasvit\Seo\Model\Config\Source\Alternate;
 
 use Magento\Framework\Option\ArrayInterface;
-use Mirasvit\Seo\Model\Config as Config;
+use Mirasvit\Seo\Api\Config\AlternateConfigInterface as AlternateConfig;
 
 class XDefault implements ArrayInterface
 {
@@ -33,10 +33,10 @@ class XDefault implements ArrayInterface
     protected $request;
 
      /**
-     * @param \Magento\Framework\App\State $state
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\App\Request\Http $request
-     */
+      * @param \Magento\Framework\App\State $state
+      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+      * @param \Magento\Framework\App\Request\Http $request
+      */
     public function __construct(
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\App\Request\Http $request
@@ -52,7 +52,7 @@ class XDefault implements ArrayInterface
     {
         $options = [
             ['value' => 0, 'label' => __('Disabled')],
-            ['value' => Config::X_DEFAULT_AUTOMATICALLY, 'label' => __('Add Automatically')],
+            ['value' => AlternateConfig::X_DEFAULT_AUTOMATICALLY, 'label' => __('Add Automatically')],
         ];
 
         $storeIds = $this->storeManager->getWebsite($this->request->getParam('website'))->getStoreIds();

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -332,6 +332,8 @@ class Map extends \Magento\Framework\View\Element\Template
      * @param \Magento\Framework\Data\Tree\Node|\Magento\Catalog\Model\Category     $category
      * @param int    $level
      * @return string
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function _getCategoriesTree($category, $level = 0)
     {
@@ -340,17 +342,33 @@ class Map extends \Magento\Framework\View\Element\Template
         }
 
         $children = $category->getChildren();
-        if (!is_object($children) || !$children->count()) {
+
+        if (is_string($children) && $children) {
+            $children = explode(',', $children);
+            $children = array_map('trim', $children);
+        } elseif (!is_object($children) || !$children->count()) {
             return '';
         }
 
         // select active children
         $activeChildren = [];
-        foreach ($children as $child) {
-            if ($child->getIsActive()) {
-                $activeChildren[] = $child;
+        if (is_object($children)) {
+            foreach ($children as $child) {
+                if ($child->getIsActive()) {
+                    $activeChildren[] = $child;
+                }
+            }
+        } elseif (is_array($children)) {
+            foreach ($children as $child) {
+                $_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                $child = $_objectManager->create('Magento\Catalog\Model\Category')
+                    ->load($child);
+                if ($child->getIsActive()) {
+                    $activeChildren[] = $child;
+                }
             }
         }
+
         $j = 0;
         foreach ($activeChildren as $child) {
             if (!$this->seoSitemapData->checkArrayPattern($this->getCategoryUrl($child), $this->getExcludeLinks())) {
@@ -617,8 +635,10 @@ class Map extends \Magento\Framework\View\Element\Template
     {
         $sitemapHelper = $this->objectManager->create('\Aheadworks\Blog\Helper\Sitemap');
         $urlHelper = $this->objectManager->create('Aheadworks\Blog\Helper\Url');
-        $categoryCollectionFactory = $this->objectManager->create('\Aheadworks\Blog\Model\ResourceModel\Category\CollectionFactory');
-        $postCollectionFactory = $this->objectManager->create('\Aheadworks\Blog\Model\ResourceModel\Post\CollectionFactory');
+        $categoryCollectionFactory = $this->objectManager
+            ->create('\Aheadworks\Blog\Model\ResourceModel\Category\CollectionFactory');
+        $postCollectionFactory = $this->objectManager
+            ->create('\Aheadworks\Blog\Model\ResourceModel\Post\CollectionFactory');
 
         $storeId = $this->context->getStoreManager()->getStore()->getId();
         $items = [];

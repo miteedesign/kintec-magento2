@@ -1165,7 +1165,7 @@ ul.magictabs{padding:0}
 .products-grid{position:relative;z-index: 0;}
 .products-grid.last{border-bottom:0}
 .products-grid .product-name{margin:0 0 5px;font-size:100%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;line-height: normal;}
-.products-grid .product-name a{font-size:14px;line-height: normal;outline:0 none;text-transform:uppercase;text-decoration:none;font-weight: 500;letter-spacing: 1px;}
+.products-grid .product-name a{font-size:11px;line-height: normal;outline:0 none;text-transform:uppercase;text-decoration:none;font-weight: 500;letter-spacing: 1px;}
 .product-item-name, .product.name a{font-weight: 500;}
 .products-grid .price-box{line-height: normal;display: inline-block;margin: 5px 0 15px;}
 .products-grid .availability{line-height:21px}

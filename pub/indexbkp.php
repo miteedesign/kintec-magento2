@@ -38,8 +38,9 @@ $bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $_SERVER);
 $app = $bootstrap->createApplication('Magento\Framework\App\Http');
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $resource = $objectManager->get('\Magento\Framework\App\ResourceConnection');
+$attr = $objectManager->get('\Magento\Catalog\Model\Product')->getResource()->getAttribute('colour');
 $writeConnection = $resource->getConnection('core_write');
-$result = $writeConnection->fetchAll('SELECT `eao`.`option_id`,`eaov`.`value` FROM `eav_attribute_option` AS `eao` JOIN `eav_attribute_option_value` `eaov` ON `eaov`.`option_id`=`eao`.`option_id` WHERE `eao`.`attribute_id`=211 ');
+$result = $writeConnection->fetchAll("SELECT `eao`.`option_id`,`eaov`.`value` FROM `eav_attribute_option` AS `eao` JOIN `eav_attribute_option_value` `eaov` ON `eaov`.`option_id`=`eao`.`option_id` WHERE `eao`.`attribute_id`={$attr->getId()} ");
 $colors = [
  'red'=>'#FF0000',
  'pink'=>'#FF69B4',

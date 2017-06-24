@@ -944,60 +944,6 @@
         ]
     },
     {
-        "name": "sebastian/diff",
-        "version": "1.4.1",
-        "version_normalized": "1.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/diff.git",
-            "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/13edfd8706462032c2f52b4b862974dd46b71c9e",
-            "reference": "13edfd8706462032c2f52b4b862974dd46b71c9e",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.8"
-        },
-        "time": "2015-12-08 07:14:41",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Kore Nordmann",
-                "email": "mail@kore-nordmann.de"
-            },
-            {
-                "name": "Sebastian Bergmann",
-                "email": "sebastian@phpunit.de"
-            }
-        ],
-        "description": "Diff implementation",
-        "homepage": "https://github.com/sebastianbergmann/diff",
-        "keywords": [
-            "diff"
-        ]
-    },
-    {
         "name": "doctrine/instantiator",
         "version": "1.0.5",
         "version_normalized": "1.0.5.0",
@@ -5795,57 +5741,6 @@
         ]
     },
     {
-        "name": "seld/jsonlint",
-        "version": "1.6.0",
-        "version_normalized": "1.6.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Seldaek/jsonlint.git",
-            "reference": "791f8c594f300d246cdf01c6b3e1e19611e301d8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/791f8c594f300d246cdf01c6b3e1e19611e301d8",
-            "reference": "791f8c594f300d246cdf01c6b3e1e19611e301d8",
-            "shasum": ""
-        },
-        "require": {
-            "php": "^5.3 || ^7.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^4.5"
-        },
-        "time": "2017-03-06 16:42:24",
-        "bin": [
-            "bin/jsonlint"
-        ],
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Seld\\JsonLint\\": "src/Seld/JsonLint/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jordi Boggiano",
-                "email": "j.boggiano@seld.be",
-                "homepage": "http://seld.be"
-            }
-        ],
-        "description": "JSON Linter",
-        "keywords": [
-            "json",
-            "linter",
-            "parser",
-            "validator"
-        ]
-    },
-    {
         "name": "seld/cli-prompt",
         "version": "1.0.3",
         "version_normalized": "1.0.3.0",
@@ -5957,100 +5852,6 @@
             "semver",
             "validation",
             "versioning"
-        ]
-    },
-    {
-        "name": "phpseclib/phpseclib",
-        "version": "2.0.4",
-        "version_normalized": "2.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "ab8028c93c03cc8d9c824efa75dc94f1db2369bf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/ab8028c93c03cc8d9c824efa75dc94f1db2369bf",
-            "reference": "ab8028c93c03cc8d9c824efa75dc94f1db2369bf",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "phing/phing": "~2.7",
-            "phpunit/phpunit": "~4.0",
-            "sami/sami": "~2.0",
-            "squizlabs/php_codesniffer": "~2.0"
-        },
-        "suggest": {
-            "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
-            "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
-            "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
-            "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
-        },
-        "time": "2016-10-04 00:57:04",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "phpseclib/bootstrap.php"
-            ],
-            "psr-4": {
-                "phpseclib\\": "phpseclib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jim Wigginton",
-                "email": "terrafrost@php.net",
-                "role": "Lead Developer"
-            },
-            {
-                "name": "Patrick Monnerat",
-                "email": "pm@datasphere.ch",
-                "role": "Developer"
-            },
-            {
-                "name": "Andreas Fischer",
-                "email": "bantu@phpbb.com",
-                "role": "Developer"
-            },
-            {
-                "name": "Hans-Jürgen Petrich",
-                "email": "petrich@tronic-media.com",
-                "role": "Developer"
-            },
-            {
-                "name": "Graham Campbell",
-                "email": "graham@alt-three.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
-        "homepage": "http://phpseclib.sourceforge.net",
-        "keywords": [
-            "BigInteger",
-            "aes",
-            "asn.1",
-            "asn1",
-            "blowfish",
-            "crypto",
-            "cryptography",
-            "encryption",
-            "rsa",
-            "security",
-            "sftp",
-            "signature",
-            "signing",
-            "ssh",
-            "twofish",
-            "x.509",
-            "x509"
         ]
     },
     {
@@ -7726,57 +7527,6 @@
         ]
     },
     {
-        "name": "symfony/process",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/process.git",
-            "reference": "aff35fb3dee799c84a7313c576b72208b046ef8d"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/process/zipball/aff35fb3dee799c84a7313c576b72208b046ef8d",
-            "reference": "aff35fb3dee799c84a7313c576b72208b046ef8d",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9"
-        },
-        "time": "2017-04-12 14:07:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Process\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Process Component",
-        "homepage": "https://symfony.com"
-    },
-    {
         "name": "magento/framework",
         "version": "100.1.6",
         "version_normalized": "100.1.6.0",
@@ -8295,108 +8045,6 @@
         "description": "N/A"
     },
     {
-        "name": "symfony/finder",
-        "version": "v3.2.8",
-        "version_normalized": "3.2.8.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/finder.git",
-            "reference": "9cf076f8f492f4b1ffac40aae9c2d287b4ca6930"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/finder/zipball/9cf076f8f492f4b1ffac40aae9c2d287b4ca6930",
-            "reference": "9cf076f8f492f4b1ffac40aae9c2d287b4ca6930",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9"
-        },
-        "time": "2017-04-12 14:13:17",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.2-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Finder\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Finder Component",
-        "homepage": "https://symfony.com"
-    },
-    {
-        "name": "symfony/filesystem",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/filesystem.git",
-            "reference": "dc40154e26a0116995e4f2f0c71cb9c2fe0775a3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/filesystem/zipball/dc40154e26a0116995e4f2f0c71cb9c2fe0775a3",
-            "reference": "dc40154e26a0116995e4f2f0c71cb9c2fe0775a3",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9"
-        },
-        "time": "2017-04-12 14:07:15",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\Filesystem\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony Filesystem Component",
-        "homepage": "https://symfony.com"
-    },
-    {
         "name": "composer/spdx-licenses",
         "version": "1.1.6",
         "version_normalized": "1.1.6.0",
@@ -8458,68 +8106,6 @@
             "spdx",
             "validator"
         ]
-    },
-    {
-        "name": "symfony/event-dispatcher",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "7fc8e2b4118ff316550596357325dfd92a51f531"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/7fc8e2b4118ff316550596357325dfd92a51f531",
-            "reference": "7fc8e2b4118ff316550596357325dfd92a51f531",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.9"
-        },
-        "require-dev": {
-            "psr/log": "~1.0",
-            "symfony/config": "^2.0.5|~3.0.0",
-            "symfony/dependency-injection": "~2.6|~3.0.0",
-            "symfony/expression-language": "~2.6|~3.0.0",
-            "symfony/stopwatch": "~2.3|~3.0.0"
-        },
-        "suggest": {
-            "symfony/dependency-injection": "",
-            "symfony/http-kernel": ""
-        },
-        "time": "2017-04-26 16:56:54",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Component\\EventDispatcher\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony EventDispatcher Component",
-        "homepage": "https://symfony.com"
     },
     {
         "name": "oyejorge/less.php",
@@ -9335,13 +8921,262 @@
         "description": "eCommerce Platform for Growth (Community Edition)"
     },
     {
+        "name": "theseer/fdomdocument",
+        "version": "1.6.5",
+        "version_normalized": "1.6.5.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/theseer/fDOMDocument.git",
+            "reference": "8dcfd392135a5bd938c3c83ea71419501ad9855d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/theseer/fDOMDocument/zipball/8dcfd392135a5bd938c3c83ea71419501ad9855d",
+            "reference": "8dcfd392135a5bd938c3c83ea71419501ad9855d",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "lib-libxml": "*",
+            "php": ">=5.3.3"
+        },
+        "time": "2017-04-21 14:50:31",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Arne Blankerts",
+                "email": "arne@blankerts.de",
+                "role": "lead"
+            }
+        ],
+        "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
+        "homepage": "https://github.com/theseer/fDOMDocument"
+    },
+    {
+        "name": "phpseclib/phpseclib",
+        "version": "2.0.6",
+        "version_normalized": "2.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpseclib/phpseclib.git",
+            "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34a7699e6f31b1ef4035ee36444407cecf9f56aa",
+            "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phing/phing": "~2.7",
+            "phpunit/phpunit": "~4.0",
+            "sami/sami": "~2.0",
+            "squizlabs/php_codesniffer": "~2.0"
+        },
+        "suggest": {
+            "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+            "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+            "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+            "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+        },
+        "time": "2017-06-05 06:31:10",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "phpseclib/bootstrap.php"
+            ],
+            "psr-4": {
+                "phpseclib\\": "phpseclib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jim Wigginton",
+                "email": "terrafrost@php.net",
+                "role": "Lead Developer"
+            },
+            {
+                "name": "Patrick Monnerat",
+                "email": "pm@datasphere.ch",
+                "role": "Developer"
+            },
+            {
+                "name": "Andreas Fischer",
+                "email": "bantu@phpbb.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Hans-Jürgen Petrich",
+                "email": "petrich@tronic-media.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Graham Campbell",
+                "email": "graham@alt-three.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+        "homepage": "http://phpseclib.sourceforge.net",
+        "keywords": [
+            "BigInteger",
+            "aes",
+            "asn.1",
+            "asn1",
+            "blowfish",
+            "crypto",
+            "cryptography",
+            "encryption",
+            "rsa",
+            "security",
+            "sftp",
+            "signature",
+            "signing",
+            "ssh",
+            "twofish",
+            "x.509",
+            "x509"
+        ]
+    },
+    {
+        "name": "symfony/event-dispatcher",
+        "version": "v2.8.22",
+        "version_normalized": "2.8.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/event-dispatcher.git",
+            "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/1377400fd641d7d1935981546aaef780ecd5bf6d",
+            "reference": "1377400fd641d7d1935981546aaef780ecd5bf6d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "^2.0.5|~3.0.0",
+            "symfony/dependency-injection": "~2.6|~3.0.0",
+            "symfony/expression-language": "~2.6|~3.0.0",
+            "symfony/stopwatch": "~2.3|~3.0.0"
+        },
+        "suggest": {
+            "symfony/dependency-injection": "",
+            "symfony/http-kernel": ""
+        },
+        "time": "2017-06-02 07:47:27",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\EventDispatcher\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony EventDispatcher Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/process",
+        "version": "v2.8.22",
+        "version_normalized": "2.8.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/process.git",
+            "reference": "d54232f5682fda2f8bbebff7c81b864646867ab9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/process/zipball/d54232f5682fda2f8bbebff7c81b864646867ab9",
+            "reference": "d54232f5682fda2f8bbebff7c81b864646867ab9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9"
+        },
+        "time": "2017-05-08 01:19:21",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Process\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Process Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "mirasvit/module-core",
-        "version": "1.2.26",
-        "version_normalized": "1.2.26.0",
+        "version": "1.2.27",
+        "version_normalized": "1.2.27.0",
         "dist": {
             "type": "tar",
-            "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-core-1.2.26-de6dd7.tar",
-            "reference": "12a87b6610bc48fc13239d4b7efdd8ade4ba24e9",
+            "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-core-1.2.27-9164fc.tar",
+            "reference": "3e4af41176913fd1220a6e760e21e284307cdaca",
             "shasum": null
         },
         "require": {
@@ -9349,7 +9184,7 @@
             "magento/module-backend": "100.0.*|100.1.*|100.2.*",
             "magento/module-store": "100.0.*|100.1.*|100.2.*"
         },
-        "time": "2017-04-11 11:03:24",
+        "time": "2017-05-10 12:39:12",
         "type": "magento2-module",
         "installation-source": "dist",
         "autoload": {
@@ -9367,12 +9202,12 @@
     },
     {
         "name": "mirasvit/module-seo",
-        "version": "1.0.58",
-        "version_normalized": "1.0.58.0",
+        "version": "1.0.63",
+        "version_normalized": "1.0.63.0",
         "dist": {
             "type": "tar",
-            "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-seo-1.0.58-321e33.tar",
-            "reference": "9dfd73c6d46567c3abf9a85a05a3b384a9c914af",
+            "url": "https://24871:QJ9KS8XIL4@packages.mirasvit.com//downloads/mirasvit-module-seo-1.0.63-446d07.tar",
+            "reference": "4ddd9208c0738fa8f8bbb40c39779b49be21e9f0",
             "shasum": null
         },
         "require": {
@@ -9382,7 +9217,7 @@
             "mirasvit/module-core": "^1.2",
             "php": "~5.5.0|~5.6.0|~7.0.0"
         },
-        "time": "2017-04-24 14:13:27",
+        "time": "2017-05-31 13:48:55",
         "type": "magento2-module",
         "installation-source": "dist",
         "autoload": {
@@ -9403,24 +9238,129 @@
         "description": "Advanced Seo Suite"
     },
     {
-        "name": "symfony/yaml",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
+        "name": "symfony/finder",
+        "version": "v3.3.2",
+        "version_normalized": "3.3.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/yaml.git",
-            "reference": "93ccdde79f4b079c7558da4656a3cb1c50c68e02"
+            "url": "https://github.com/symfony/finder.git",
+            "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/yaml/zipball/93ccdde79f4b079c7558da4656a3cb1c50c68e02",
-            "reference": "93ccdde79f4b079c7558da4656a3cb1c50c68e02",
+            "url": "https://api.github.com/repos/symfony/finder/zipball/baea7f66d30854ad32988c11a09d7ffd485810c4",
+            "reference": "baea7f66d30854ad32988c11a09d7ffd485810c4",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5.9"
+        },
+        "time": "2017-06-01 21:01:25",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Finder\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Finder Component",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "sebastian/diff",
+        "version": "1.4.3",
+        "version_normalized": "1.4.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sebastianbergmann/diff.git",
+            "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/7f066a26a962dbe58ddea9f72a4e82874a3975a4",
+            "reference": "7f066a26a962dbe58ddea9f72a4e82874a3975a4",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.3.3 || ^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.0"
+        },
+        "time": "2017-05-22 07:24:03",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Kore Nordmann",
+                "email": "mail@kore-nordmann.de"
+            },
+            {
+                "name": "Sebastian Bergmann",
+                "email": "sebastian@phpunit.de"
+            }
+        ],
+        "description": "Diff implementation",
+        "homepage": "https://github.com/sebastianbergmann/diff",
+        "keywords": [
+            "diff"
+        ]
+    },
+    {
+        "name": "symfony/yaml",
+        "version": "v2.8.22",
+        "version_normalized": "2.8.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/yaml.git",
+            "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/yaml/zipball/4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
+            "reference": "4c29dec8d489c4e37cf87ccd7166cd0b0e6a45c5",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.9"
         },
-        "time": "2017-05-01 14:31:55",
+        "time": "2017-06-01 20:52:29",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -9454,9 +9394,60 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "symfony/filesystem",
+        "version": "v2.8.22",
+        "version_normalized": "2.8.22.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/filesystem.git",
+            "reference": "19c11158da8d110cc5289c063bf2ec4cc1ce9e7c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/filesystem/zipball/19c11158da8d110cc5289c063bf2ec4cc1ce9e7c",
+            "reference": "19c11158da8d110cc5289c063bf2ec4cc1ce9e7c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9"
+        },
+        "time": "2017-05-28 14:07:33",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Filesystem\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Filesystem Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "symfony/config",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
+        "version": "v2.8.22",
+        "version_normalized": "2.8.22.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/config.git",
@@ -9513,17 +9504,17 @@
     },
     {
         "name": "symfony/dependency-injection",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
+        "version": "v2.8.22",
+        "version_normalized": "2.8.22.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/dependency-injection.git",
-            "reference": "e1c722dfe4dd04453aeb6b7a6deefb400c878394"
+            "reference": "b4a4b8f6ae1d69a6b2c0c31623bbc474121ee075"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/e1c722dfe4dd04453aeb6b7a6deefb400c878394",
-            "reference": "e1c722dfe4dd04453aeb6b7a6deefb400c878394",
+            "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b4a4b8f6ae1d69a6b2c0c31623bbc474121ee075",
+            "reference": "b4a4b8f6ae1d69a6b2c0c31623bbc474121ee075",
             "shasum": ""
         },
         "require": {
@@ -9543,7 +9534,7 @@
             "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
             "symfony/yaml": ""
         },
-        "time": "2017-04-26 01:38:53",
+        "time": "2017-06-02 14:36:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -9577,70 +9568,79 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "theseer/fdomdocument",
-        "version": "1.6.5",
-        "version_normalized": "1.6.5.0",
+        "name": "seld/jsonlint",
+        "version": "1.6.1",
+        "version_normalized": "1.6.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/theseer/fDOMDocument.git",
-            "reference": "8dcfd392135a5bd938c3c83ea71419501ad9855d"
+            "url": "https://github.com/Seldaek/jsonlint.git",
+            "reference": "50d63f2858d87c4738d5b76a7dcbb99fa8cf7c77"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/theseer/fDOMDocument/zipball/8dcfd392135a5bd938c3c83ea71419501ad9855d",
-            "reference": "8dcfd392135a5bd938c3c83ea71419501ad9855d",
+            "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/50d63f2858d87c4738d5b76a7dcbb99fa8cf7c77",
+            "reference": "50d63f2858d87c4738d5b76a7dcbb99fa8cf7c77",
             "shasum": ""
         },
         "require": {
-            "ext-dom": "*",
-            "lib-libxml": "*",
-            "php": ">=5.3.3"
+            "php": "^5.3 || ^7.0"
         },
-        "time": "2017-04-21 14:50:31",
+        "require-dev": {
+            "phpunit/phpunit": "^4.5"
+        },
+        "time": "2017-06-18 15:11:04",
+        "bin": [
+            "bin/jsonlint"
+        ],
         "type": "library",
         "installation-source": "dist",
         "autoload": {
-            "classmap": [
-                "src/"
-            ]
+            "psr-4": {
+                "Seld\\JsonLint\\": "src/Seld/JsonLint/"
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "BSD-3-Clause"
+            "MIT"
         ],
         "authors": [
             {
-                "name": "Arne Blankerts",
-                "email": "arne@blankerts.de",
-                "role": "lead"
+                "name": "Jordi Boggiano",
+                "email": "j.boggiano@seld.be",
+                "homepage": "http://seld.be"
             }
         ],
-        "description": "The classes contained within this repository extend the standard DOM to use exceptions at all occasions of errors instead of PHP warnings or notices. They also add various custom methods and shortcuts for convenience and to simplify the usage of DOM.",
-        "homepage": "https://github.com/theseer/fDOMDocument"
+        "description": "JSON Linter",
+        "keywords": [
+            "json",
+            "linter",
+            "parser",
+            "validator"
+        ]
     },
     {
         "name": "symfony/stopwatch",
-        "version": "v3.2.8",
-        "version_normalized": "3.2.8.0",
+        "version": "v3.3.2",
+        "version_normalized": "3.3.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/stopwatch.git",
-            "reference": "5a0105afb670dbd38f521105c444de1b8e10cfe3"
+            "reference": "602a15299dc01556013b07167d4f5d3a60e90d15"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/stopwatch/zipball/5a0105afb670dbd38f521105c444de1b8e10cfe3",
-            "reference": "5a0105afb670dbd38f521105c444de1b8e10cfe3",
+            "url": "https://api.github.com/repos/symfony/stopwatch/zipball/602a15299dc01556013b07167d4f5d3a60e90d15",
+            "reference": "602a15299dc01556013b07167d4f5d3a60e90d15",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9"
         },
-        "time": "2017-04-12 14:13:17",
+        "time": "2017-04-12 14:14:56",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "dist",
@@ -9668,5 +9668,73 @@
         ],
         "description": "Symfony Stopwatch Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "fooman/tcpdf",
+        "version": "6.2.12",
+        "version_normalized": "6.2.12.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fooman/TCPDF.git",
+            "reference": "5d25ce0d1058cec619927a9fe03c41b03ccb07ff"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fooman/TCPDF/zipball/5d25ce0d1058cec619927a9fe03c41b03ccb07ff",
+            "reference": "5d25ce0d1058cec619927a9fe03c41b03ccb07ff",
+            "shasum": ""
+        },
+        "require": {
+            "ext-bcmath": "*",
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "ext-imagick": "*"
+        },
+        "time": "2015-09-16 06:26:28",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "fonts",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPLv3"
+        ],
+        "authors": [
+            {
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "homepage": "http://nicolaasuni.tecnick.com"
+            }
+        ],
+        "description": "Trimmed down version of TCPDF (no examples, tools and minimal fonts). TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
+        ]
     }
 ]

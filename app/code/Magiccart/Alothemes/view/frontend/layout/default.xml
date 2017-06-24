@@ -30,8 +30,8 @@
     <head>
         <link src="Magiccart_Alothemes::css/plugins/jquery.fancybox.css"/>
         <link src="Magiccart_Alothemes::css/plugins/meanmenu.min.css"/>
-        <link src="Magiccart_Alothemes::css/default.css"/>
-        <link src="Magiccart_Alothemes::css/default.css"/>
+        <!--<link src="Magiccart_Alothemes::css/default.css"/>
+        <link src="Magiccart_Alothemes::css/default.css"/>-->
         <!-- <link src="jquery.js"/> 
         <link src="Magiccart_Alothemes::js/alothemes.js"/>-->
     </head>

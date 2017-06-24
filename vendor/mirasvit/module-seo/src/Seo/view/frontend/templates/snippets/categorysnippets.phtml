@@ -7,7 +7,7 @@
         $ratingCount            = $this->getCategorySnippetsRatingCount();
         $currentCategoryName    = $this->getCurrentCategoryName();
         $currencyCode           = $this->getCurrentCurrencyCode();
-        $formattedPrice         = number_format($categorySnippetsPrice, 2);
+        $formattedPrice         = number_format($categorySnippetsPrice, 2, '.', '');
     }
 ?>
 <?php if ($this->isCategoryRichSnippetsEnabled() && $this->getCurrentPageProductCount()):?>

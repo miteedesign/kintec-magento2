@@ -3,11 +3,14 @@
     <!--CONFIG-->
     <preference for="Mirasvit\Seo\Api\Config\ProductUrlTemplateConfigInterface" type="Mirasvit\Seo\Service\Config\ProductUrlTemplateConfig" />
     <preference for="Mirasvit\Seo\Api\Config\BlogMxInterface" type="Mirasvit\Seo\Service\Config\BlogMx" />
+    <preference for="Mirasvit\Seo\Api\Config\AlternateConfigInterface" type="Mirasvit\Seo\Service\Config\AlternateConfig" />
 
     <!--SERVICE-->
 	<preference for="Mirasvit\Seo\Api\Service\FriendlyUrl\ProductUrlKeyTemplateInterface" type="Mirasvit\Seo\Service\FriendlyUrl\ProductUrlKeyTemplate" />
     <preference for="Mirasvit\Seo\Api\Service\Cache\CleanInterface" type="Mirasvit\Seo\Service\Cache\Clean" />
     <preference for="Mirasvit\Seo\Api\Service\Template\SeoDescription\TemplateInterface" type="Mirasvit\Seo\Service\Template\SeoDescription\Template" />
+    <preference for="Mirasvit\Seo\Api\Service\Alternate\StrategyFactoryInterface" type="Mirasvit\Seo\Service\Alternate\StrategyFactory" />
+    <preference for="Mirasvit\Seo\Api\Service\Alternate\UrlInterface" type="Mirasvit\Seo\Service\Alternate\Url" />
 
 	<!--DATA-->
 	<preference for="Mirasvit\Seo\Api\Data\SuffixInterface" type="Mirasvit\Seo\Service\Data\Suffix" />
@@ -15,6 +18,7 @@
     <preference for="Mirasvit\Seo\Api\Data\BlogMx\PostInterface" type="Mirasvit\Seo\Service\Data\BlogMx\Post" />
     <preference for="Mirasvit\Seo\Api\Data\BlogMx\CategoryInterface" type="Mirasvit\Seo\Service\Data\BlogMx\Category" />
 
+    <preference for="Magento\Catalog\Helper\Image" type="Mirasvit\Seo\Helper\Rewrite\Image" />
 
     <type name="Magento\Framework\Console\CommandList">
         <arguments>

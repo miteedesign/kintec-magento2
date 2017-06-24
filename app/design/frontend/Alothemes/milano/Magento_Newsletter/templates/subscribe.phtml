@@ -10,38 +10,38 @@
 ?>
 <div class="block newsletter block-subscribe">
     <div class="block-title"><strong>Newsletter</strong></div>
-        <!-- Start of signup -->
+<!-- Start of signup -->
 <script language="javascript">
 <!--
 function validate_signup(frm) {
-var emailAddress = frm.Email.value;
-var errorString = '';
-if (emailAddress == '' || emailAddress.indexOf('@') == -1) {
-errorString = 'Please enter your email address';
-}
+	var emailAddress = frm.Email.value;
+	var errorString = '';
+	if (emailAddress == '' || emailAddress.indexOf('@') == -1) {
+		errorString = 'Please enter your email address';
+	}
 
     
 
-var isError = false;
+	var isError = false;
     if (errorString.length > 0)
         isError = true;
 
     if (isError)
         alert(errorString);
-return !isError;
+	return !isError;
 }
 
 
 //-->
 </script>
 
-<form name="signup" id="signup" action="https://kintec-email.net/signup.ashx" method="post" onsubmit="return validate_signup(this)">
+<form name="signup" id="signup" action="http://kintec-email.net/signup.ashx" method="post" onsubmit="return validate_signup(this)">
 <p></p>
 <input type="hidden" name="addressbookid" value="42464">
 <!-- UserID - required field, do not remove -->
 <input type="hidden" name="userid" value="130285">
 <!-- ReturnURL - when the user hits submit, they'll get sent here -->
-<input type="hidden" name="ReturnURL" value="/success">
+<input type="hidden" name="ReturnURL" value="https://shop.kintec.net/success">
 <!-- Email - the user's email address -->
 
 <div class="block-content">
@@ -57,5 +57,5 @@ return !isError;
 		<input class="action subscribe button" type="Submit" name="Submit" value="Subscribe">
 	</div>
 </form>
-<!-- End of signup —>
+<!-- End of signup -->
 </div>

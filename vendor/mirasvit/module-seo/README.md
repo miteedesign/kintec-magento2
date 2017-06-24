@@ -1,3 +1,57 @@
+## 1.0.63
+*(2017-05-31)*
+
+#### Improvements
+* Rich Snippets accuracy and price formatting improved
+
+#### Fixed
+* Incorrect Robots meta header tags config data (magento 2.2.0-dev)
+
+---
+
+## 1.0.62
+*(2017-05-24)*
+
+#### Fixed
+* Incorrect alternate tags config data (magento 2.2.0-dev)
+
+---
+
+## 1.0.61
+*(2017-05-23)*
+
+#### Features
+* Ability to define product images alt, title and caption tags for frontend and Google sitemap
+
+---
+
+## 1.0.60
+*(2017-05-22)*
+
+#### Features
+* Ability add alternate tags for any stores combinations
+
+#### Fixed
+* Fixed child category sitemap
+* Fixed cms alternate group issue
+* Fixed an error with circular dependency
+
+---
+
+## 1.0.59
+*(2017-05-04)*
+
+#### Improvements
+* Auto Links documentation and example CSV file actualized
+
+#### Fixed
+* Fixed breadcrumbs design issue when SM Himarket extension installed
+
+#### Documentation
+* General user manual adjustments made
+
+---
+
 ## 1.0.58
 *(2017-04-24)*
 

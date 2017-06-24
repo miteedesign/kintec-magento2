@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.58
+ * @version   1.0.63
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -25,16 +25,13 @@ class Cookie extends \Magento\Framework\DataObject
     /**
      * @param CookieManagerInterface                                  $cookieManager
      * @param \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory  $cookieMetadataFactory
-     * @param \Magento\Framework\Session\Config\ConfigInterface       $sessionConfig
      */
     public function __construct(
         CookieManagerInterface $cookieManager,
-        \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory $cookieMetadataFactory,
-        \Magento\Framework\Session\Config\ConfigInterface $sessionConfig
+        \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory $cookieMetadataFactory
     ) {
         $this->cookieManager = $cookieManager;
         $this->cookieMetadataFactory = $cookieMetadataFactory;
-        $this->sessionConfig = $sessionConfig;
     }
 
     /**
