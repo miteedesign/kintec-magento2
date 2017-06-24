@@ -191,7 +191,8 @@ class Url extends \Magento\Framework\DataObject
         if (!isset($routeParams['_query'])) {
             $routeParams['_query'] = [];
         }
+        $url = $this->getUrlInstance()->setScope($storeId)->getUrl($routePath, $routeParams);
 
-        return $this->getUrlInstance()->setScope($storeId)->getUrl($routePath, $routeParams);
+        return str_replace('.html', '', $url);
     }
 }

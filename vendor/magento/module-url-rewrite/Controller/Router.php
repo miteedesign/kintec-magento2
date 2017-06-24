@@ -78,7 +78,13 @@ class Router implements \Magento\Framework\App\RouterInterface
         }
         $rewrite = $this->getRewrite($request->getPathInfo(), $this->storeManager->getStore()->getId());
         if ($rewrite === null) {
-            return null;
+            if(strpos($request->getPathInfo(),'.html')!==false)
+                $rewrite = $this->getRewrite(str_replace('.html','',$request->getPathInfo()), $this->storeManager->getStore()->getId());
+            else
+                $rewrite = $this->getRewrite($request->getPathInfo().'.html', $this->storeManager->getStore()->getId());
+            if ($rewrite === null) {
+                return null;
+            }
         }
 
         if ($rewrite->getRedirectType()) {
