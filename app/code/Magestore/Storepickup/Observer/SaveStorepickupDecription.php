@@ -109,6 +109,14 @@ class SaveStorepickupDecription implements ObserverInterface
                         $order->getShippingAddress()->addData($datashipping);
                     }
                 }
+
+                if($this->_checkoutSession->getShippingComment()){
+                    //$new = $order->getShippingDescription();
+                    //$new .= '<br> Shipping Comment :<br>'.$this->_checkoutSession->getShippingComment();
+                    $order->setShippingComment($this->_checkoutSession->getShippingComment());
+                    //$order->setShippingDescription($new);
+                    $this->_checkoutSession->setShippingComment(false);
+                }
             }
 
         } catch (Exception $e) {
