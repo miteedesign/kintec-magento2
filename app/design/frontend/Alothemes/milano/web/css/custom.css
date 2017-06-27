@@ -1851,3 +1851,7 @@ tr.totals.sub.incl {
     padding: 0;
     font-weight: normal;
 }
+
+.ie10 .page-wrapper,.ie11 .page-wrapper{
+    height: auto !important;
+}
