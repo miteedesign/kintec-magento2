@@ -261,6 +261,11 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
     private $metadataPool;
 
     /**
+     * @var SalableProcessor
+     */
+    private $salableProcessor;
+
+    /**
      * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
@@ -304,7 +309,8 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Stdlib\DateTime $dateTime,
         GroupManagementInterface $groupManagement,
-        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null
+        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
+        \Magento\ConfigurableProduct\Model\Product\Type\Collection\SalableProcessor $salableProcessor = null
     ) {
         $this->moduleManager = $moduleManager;
         $this->_catalogProductFlatState = $catalogProductFlatState;
@@ -317,6 +323,8 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
         $this->dateTime = $dateTime;
         $this->_groupManagement = $groupManagement;
         $this->_productLimitationFilters = $this->createLimitationFilters();
+        $this->salableProcessor = $salableProcessor ?: \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\ConfigurableProduct\Model\Product\Type\Collection\SalableProcessor::class);
+        
         parent::__construct(
             $entityFactory,
             $logger,
@@ -721,6 +729,33 @@ class Collection extends \Magento\Catalog\Model\ResourceModel\Collection\Abstrac
      */
     public function load($printQuery = false, $logQuery = false)
     {
+        if(isset($_GET['size']) || isset($_GET['color'])){
+            $tmpItems = [];
+            foreach($this->_items as $key=>$pro){
+               if($pro->getTypeId()=='configurable'){
+                    $childProducts = $pro->getTypeInstance()->getUsedProductCollection($pro);
+                    if(isset($_GET['size']))
+                        $childProducts->addAttributeToFilter('size',$_GET['size']);
+     
+                    if(isset($_GET['color']))
+                        $childProducts->addAttributeToFilter('color',$_GET['color']);
+                    $childProducts = $this->salableProcessor->process($childProducts);
+                    //var_dump($childProducts->getSize());
+                    if($childProducts->getSize()!=0){
+                        $tmpItems[] = $pro;
+                    }
+                        
+               }
+               else
+               {
+                    $tmpItems[] = $pro;
+               }
+                 
+     
+            }
+            $this->_items = $tmpItems;
+        }
+        
         if ($this->isLoaded()) {
             return $this;
         }
