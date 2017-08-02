@@ -50,6 +50,28 @@ define(
     ) {
         'use strict';
         var popUp = null;
+        function uncheckDefault()
+            {
+                if($('.loading-mask').is(":visible")){
+                   setTimeout(function(){ uncheckDefault(); }, 1000);
+
+                }
+                else
+                if($('#billing-address-same-as-shipping-payflowpro').length==0){
+                     setTimeout(function(){ uncheckDefault(); }, 1000);
+                }
+                else
+                {
+                    if($('#billing-address-same-as-shipping-payflowpro').prop("checked") == true){
+
+                        //alert($j('#billing-address-same-as-shipping-payflowpro').length);
+                        $('#billing-address-same-as-shipping-payflowpro').click();    
+                        $('#billing-address-same-as-shipping-payflowpro').parent().hide();
+                    }
+                    
+                }
+               
+            }
         return Component.extend({
             defaults: {
                 template: 'IWD_Opc/shipping'
@@ -101,7 +123,16 @@ define(
                         checkoutData.setShippingAddressFromData(shippingAddressData);
                     });
                 });
-
+               
+                $('#checkout').on('blur','#co-shipping-form input',function(){
+                    //if(!$('#checkout-payment-method-load').is(':visible'))
+                    if($(this).attr('binded')==1)
+                        self.validateShippingInformation();
+                    else
+                        $(this).attr('binded','1');
+                });
+                self.validateShippingInformation();
+                
                 return this;
             },
 
@@ -200,6 +231,7 @@ define(
             },
 
             validateShippingInformation: function () {
+                
                 var shippingAddress,
                     addressData,
                     loginFormSelector = 'form[data-role=email-with-possible-login]',
@@ -209,7 +241,18 @@ define(
                     this.errorValidationMessage('Please specify a shipping method');
                     return false;
                 }
-
+                if(quote.shippingMethod().method_code=='storepickup'){
+                    $('#checkout-payment-method-load').show();
+                    $('#co-shipping-form').hide();
+                    $('#pickup_name').show();
+                    uncheckDefault();
+                    return true;
+                }
+                else
+                {
+                    $('#co-shipping-form').show();
+                    $('#pickup_name').hide();
+                }
                 if (!customer.isLoggedIn()) {
                     $(loginFormSelector).validation();
                     emailValidationResult = Boolean($(loginFormSelector + ' input[name=username]').valid());
@@ -230,6 +273,7 @@ define(
                         || !quote.shippingMethod().carrier_code
                         || !emailValidationResult
                     ) {
+                        $('#checkout-payment-method-load').hide();
                         return false;
                     }
                     shippingAddress = quote.shippingAddress();
@@ -252,6 +296,11 @@ define(
                     }
                     selectShippingAddress(shippingAddress);
                 }
+
+                $('#checkout-payment-method-load').show();
+                /*if($('#checkout-shipping-method-load input[type="radio"]:checked').length>0){
+                    $('#checkout-shipping-method-load input[type="radio"]:checked').click();          
+                }*/
                 return true;
             }
         });
