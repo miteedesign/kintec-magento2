@@ -11,4 +11,6 @@
     <preference for="Magento\Catalog\Pricing\Render" type="Custom\Changes\Pricing\Render" />
     <preference for="Magento\CatalogSearch\Model\Layer\Filter\Attribute" type="Custom\Changes\Model\CatalogSearch\Layer\Filter\Attribute" />
     <preference for="Magento\Sales\Model\Order" type="Custom\Changes\Model\Sales\Order" />
+    <preference for="Magento\Swatches\Block\Product\Renderer\Listing\Configurable" type="Custom\Changes\Block\Swatches\Product\Renderer\Listing\Configurable" />
+    <preference for="Magento\Swatches\Block\Product\Renderer\Configurable" type="Custom\Changes\Block\Swatches\Product\Renderer\Configurable" />
 </config>

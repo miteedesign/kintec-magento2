@@ -8,3 +8,17 @@
     	<textarea id="shipping-comment" data-bind="event: { blur:setComment }"></textarea>
     </div>
 </div>
+
+<div id="pickup_name">
+	<div class="field _required ">
+
+	    <label class="">
+	        <span><i>Please enter the first and last name of the person authorized to pickup your order.</i></span>
+	    </label>
+
+	    <div class="control" >
+	    	<input type="text" id="pickup-first" data-bind="event: { blur:setFirstname }" name="first_name" placeholder="First Name" />
+	    	<input type="text" id="pickup-last" name="last_name" data-bind="event: { blur:setLastname }" placeholder="Last Name" />
+	    </div>
+	</div>
+</div>
