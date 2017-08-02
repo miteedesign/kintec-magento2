@@ -26,8 +26,18 @@ class Order extends \Magento\Sales\Model\Order
      */
     public function getShippingDescription()
     {
+        $request = \Magento\Framework\App\ObjectManager::getInstance()->get('\Magento\Framework\App\Request\Http');
+        if($request->getActionName()=='print'){
+           $des = strip_tags($this->getData(OrderInterface::SHIPPING_DESCRIPTION), '<img>');
+           if($this->getPickupPerson() && $this->getPickupPerson()!=='')
+                $des = $des.',  Pickup Person : '.$this->getPickupPerson().' ';
+           if($this->getShippingComment() && $this->getShippingComment()!=='')
+                $des = $des.',  Shipping Comment : '.$this->getShippingComment() ;
+            
 
-        $des = strip_tags($this->getData(OrderInterface::SHIPPING_DESCRIPTION), '<img>');
-        return $des.'<br>'.$this->getShippingComment() ;//str_replace('<br>',PHP_EOL,  $string);
+            return $des;
+        }
+        
+        return $this->getData(OrderInterface::SHIPPING_DESCRIPTION) ;//str_replace('<br>',PHP_EOL,  $string);
     }
 }
