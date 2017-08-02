@@ -117,6 +117,15 @@ class SaveStorepickupDecription implements ObserverInterface
                     //$order->setShippingDescription($new);
                     $this->_checkoutSession->setShippingComment(false);
                 }
+                if($this->_checkoutSession->getPickfirst()){
+                    $name = $this->_checkoutSession->getPickfirst();
+                    if($this->_checkoutSession->getPicklast())
+                        $name .= ' '.$this->_checkoutSession->getPicklast();
+                    $order->setPickupPerson($name);
+                    //$order->setShippingDescription($new);
+                    $this->_checkoutSession->setPickfirst(false);
+                    $this->_checkoutSession->setPicklast(false);
+                }
             }
 
         } catch (Exception $e) {

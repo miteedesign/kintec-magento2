@@ -45,7 +45,16 @@
             <?php /* @escapeNotVerified */ echo $_excl; ?>
             <?php if ($this->helper('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_excl): ?>
                 (<?php /* @escapeNotVerified */ echo __('Incl. Tax'); ?> <?php /* @escapeNotVerified */ echo $_incl; ?>)
+
             <?php endif; ?>
+             <?php if ($order->getShippingComment() && $order->getShippingComment()!=''){ ?>
+                <br>
+                <strong>Shipping Comment : </strong><?= $order->getShippingComment() ?>
+                <?php } ?>
+             <?php if ($order->getPickupPerson() && $order->getPickupPerson()!=''){ ?>
+                <br>
+                <strong>Pickup Person : </strong><?= $order->getPickupPerson() ?>
+                <?php } ?>
         <?php else: ?>
             <?php /* @escapeNotVerified */ echo __('No shipping information available'); ?>
         <?php endif; ?>

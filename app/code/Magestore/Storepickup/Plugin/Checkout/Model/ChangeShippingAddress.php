@@ -106,8 +106,26 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
                 $quoteIdMask->getQuoteId(),
                 $addressInformation
             );
-        }else
+        }else{
+            
+            $data = $addressInformation->getShippingAddress()->getData();
+            if(!isset($data['firstname']) || $data['firstname']=='First Name' || $data['firstname']==''){
+                try{
+                    throw new \Magento\Framework\Exception\LocalizedException('Please fill all shiping details.');
+                }
+                catch(\Magento\Framework\Exception\LocalizedException $e){
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $messageManager = $objectManager->get('\Magento\Framework\Message\ManagerInterface');
+                    $messageManager->addExceptionMessage(
+                        $e,
+                        __($e->getMessage())
+                    );
+                }
+                
+
+            }
             return  $proceed($cartId,$addressInformation);
+        }
         
     }
 
