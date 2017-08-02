@@ -30,7 +30,9 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * Path to template file with Swatch renderer.
      */
-    const SWATCH_RENDERER_TEMPLATE = 'Custom_Changes::swatches/product/view/renderer.phtml';
+    //const SWATCH_RENDERER_TEMPLATE = 'Custom_Changes::swatches/product/view/renderer.phtml';
+    const SWATCH_RENDERER_TEMPLATE = 'Magento_Swatches::product/view/renderer.phtml';
+
 
     /**
      * Path to default template file with standard Configurable renderer.
@@ -106,7 +108,33 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
             $data
         );
     }
-
+    public function getListSwatchJs($force=false){
+        $dir = BP.'/var'.'/cache'.'/swatches'.'/view/';
+        $path = $dir.$this->getProduct()->getId();
+       
+        if(false && file_exists($path) && $force==false){
+            $swatchJs = file_get_contents($path);
+        }
+        else
+        {
+            if (!file_exists($dir)) {
+               mkdir($dir, 0777, true);
+            }
+            if(file_exists($path))
+                unlink($path);
+            $swatchJs = '"Magento_Swatches/js/swatch-renderer": {
+                "jsonConfig": '. $this->getJsonConfig().',
+                "jsonSwatchConfig": '.$this->getJsonSwatchConfig().',
+                "mediaCallback": "'.$this->getMediaCallback().'",
+                "gallerySwitchStrategy": "'.($this->getVar('gallery_switch_strategy',
+                    'Magento_ConfigurableProduct') ?: 'replace').'"
+            }';
+           
+            file_put_contents($path, $swatchJs);
+        }
+        
+        return $swatchJs;
+    }
     /**
      * Get Key for caching block content
      *
