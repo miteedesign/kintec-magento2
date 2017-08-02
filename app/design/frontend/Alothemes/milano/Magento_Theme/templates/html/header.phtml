@@ -28,7 +28,7 @@ $msg = $isLoggedIn ? __('Welcome') .', '. $customerSession->getCustomer()->getNa
 						<p class="greet welcome-msg"><?php echo $msg; ?></p>
 					</div>
 					<div class="top-right col-md-6 col-sm-8 col-xs-12">
-						<div class="content-search col-md-7 col-sm-8 hidden-xs">
+						<div class="content-search col-md-7 col-sm-8 hidden-xs hidden-sm">
 							<div class="search-area header-search">
 								<?php echo $this->getChildHtml('top.search'); ?>
 							</div>
@@ -81,7 +81,7 @@ $msg = $isLoggedIn ? __('Welcome') .', '. $customerSession->getCustomer()->getNa
 				    <div class="col-sm-12">
 						<?php echo $this->getChildHtml('navigation.sections'); ?>
 					</div>
-					<div class="content-search col-xs-12 visible-xs">
+					<div class="content-search col-xs-12 visible-xs visible-sm">
 						<div class="search-area header-search">
 							<?php echo $this->getChildHtml('top.search'); ?>
 						</div>

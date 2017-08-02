@@ -40,7 +40,7 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $resource = $objectManager->get('\Magento\Framework\App\ResourceConnection');
 $writeConnection = $resource->getConnection('core_write');
 
-$products = $objectManager->get('\Magento\Catalog\Model\Product')->getCollection()->addAttributeToFilter('type_id', array('eq' => 'simple'))->addAttributeToFilter('attribute_set_id',4)->addAttributeToSelect('colour');
+$products = $objectManager->get('\Magento\Catalog\Model\Product')->getCollection()->addAttributeToFilter('type_id', array('eq' => 'simple'))->addAttributeToFilter('color', array('eq' => ''))->addAttributeToFilter('attribute_set_id',4)->addAttributeToSelect(['colour','color']);
 
 $colors = [
  'red'=>'Red',
@@ -95,6 +95,8 @@ $i = 0;
 try{
 	foreach($products as $product)
 	{
+		if($product->getColor()!='')
+			continue;
 		echo $product->getId().',';
 		if($count < (($page-1)*$size))
 			coninue;

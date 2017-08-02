@@ -43,7 +43,7 @@ $writeConnection = $resource->getConnection('core_write');
 $result = $writeConnection->fetchAll("SELECT `eao`.`option_id`,`eaov`.`value` FROM `eav_attribute_option` AS `eao` JOIN `eav_attribute_option_value` `eaov` ON `eaov`.`option_id`=`eao`.`option_id` WHERE `eao`.`attribute_id`={$attr->getId()} ");
 $colors = [
  'red'=>'#FF0000',
- 'pink'=>'#FF69B4',
+ 
  'orange'=>'#FF4500',
  
  'purple'=>'#FF00FF',
@@ -63,6 +63,7 @@ $colors = [
  'gold'=>'#ffd700',
  'black'=>'#000000',
  'white'=>'#FFFFFF',
+ 'pink'=>'#FF69B4',
 ];
 
 
@@ -73,6 +74,7 @@ foreach($result as $row){
 		if(strpos(strtolower($row['value']),$key)!==false){
 			$swatch = $writeConnection->fetchAll("SELECT * FROM `eav_attribute_option_swatch` WHERE `option_id`={$row['option_id']} ");
 			if(isset($swatch[0])){
+				continue;
 				$writeConnection->query("UPDATE `eav_attribute_option_swatch` SET value='{$color}',type=1 WHERE `option_id`={$row['option_id']} ");
 			}
 			else
@@ -90,6 +92,7 @@ foreach($result as $row){
 	{
 		$swatch = $writeConnection->fetchOne("SELECT * FROM `eav_attribute_option_swatch` WHERE `option_id`={$row['option_id']} ");
 		if(isset($swatch[0])){
+			continue;
 			$writeConnection->query("UPDATE `eav_attribute_option_swatch` SET value='#ffffff',type=1 WHERE `option_id`={$row['option_id']} ");
 		}else
 			{
@@ -103,3 +106,9 @@ echo 'done';
 
 //INSERT INTO `eav_attribute_label`(`attribute_id`, `store_id`, `value`) VALUES (211,1,'Colour')
 //$bootstrap->run($app);
+//eav_attribute_option_swatch
+/*
+insert into eav_attribute_option(attribute_id,sort_order) values(211,0);
+INSERT INTO `eav_attribute_option_swatch`(option_id,store_id,type,value) VALUES('7106',0,1,'#777777') 
+INSERT INTO `eav_attribute_option_value`(option_id,store_id,value) VALUES('7106',0,'Ebony/Metal')
+*/

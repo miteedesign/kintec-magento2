@@ -134,7 +134,7 @@ define([
          * @returns void
          */
         update: function (updatedCart) {
-            if($("#co-shipping-form input[name*='firstname']").length){
+            if($("#co-shipping-form input[name*='firstname']").length && $('#checkout-payment-method-load .payment-method').length>0){
                 var $email = $('#customer-email').val();
                 if($('#customer-email').val()==''){
                     $('#customer-email').val('example1@bigturns.com');
@@ -161,13 +161,16 @@ define([
                     $("#co-shipping-form input[name*='city']").keyup();
                 }
                 
-                var $region_id = document.getElementsByName("region_id")[0].value;
-                if(document.getElementsByName("region_id")[0].value==''){
-                    document.getElementsByName("region_id")[0].value='66';
-                    var e = new Event("change");
-                    document.getElementsByName("region_id")[0].dispatchEvent(e);
-                    //document.getElementsByName("region_id")[0].change();
+                if(typeof document.getElementsByName("region_id")[0]!='undefined'){
+                    var $region_id = document.getElementsByName("region_id")[0].value;
+                    if(document.getElementsByName("region_id")[0].value==''){
+                        document.getElementsByName("region_id")[0].value='66';
+                        var e = new Event("change");
+                        document.getElementsByName("region_id")[0].dispatchEvent(e);
+                        //document.getElementsByName("region_id")[0].change();
+                    }
                 }
+                
 
                 var $postcode = $("#co-shipping-form input[name*='postcode']").val();
                 if($("#co-shipping-form input[name*='postcode']").val()==''){
@@ -186,6 +189,7 @@ define([
                 }
                 
                 
+                
                 $("#co-shipping-method-form").submit();
 
                 $('#customer-email').val($email);
@@ -193,7 +197,8 @@ define([
                 $("#co-shipping-form input[name*='lastname']").val($lastname);
                 $("#co-shipping-form input[name*='street[0]']").val($street);
                 $("#co-shipping-form input[name*='city']").val($city);
-                document.getElementsByName("region_id")[0].value=$region_id;
+                if(typeof document.getElementsByName("region_id")[0]!='undefined')
+                    document.getElementsByName("region_id")[0].value=$region_id;
                 $("#co-shipping-form input[name*='postcode']").val($postcode);
                 $("#co-shipping-form input[name*='telephone']").val($telephone);
             }

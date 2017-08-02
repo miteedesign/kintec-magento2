@@ -30,9 +30,9 @@
 ############################################
 ## Default index file
 
-    DirectoryIndex index.php
+#    DirectoryIndex index.php
 
-    #SetEnv MAGE_PROFILER html
+#   SetEnv MAGE_PROFILER html
 
 <IfModule mod_php5.c>
 ############################################

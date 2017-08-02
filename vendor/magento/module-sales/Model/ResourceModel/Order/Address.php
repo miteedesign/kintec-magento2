@@ -90,7 +90,7 @@ class Address extends SalesResource implements OrderAddressResourceInterface
             'region_id' => __('State/Province'),
             'street' => __('Street Address'),
             'telephone' => __('Phone Number'),
-            'postcode' => __('Zip/Postal Code'),
+            'postcode' => __('Postal Code'),
         ];
         asort($attributes);
         return $attributes;
