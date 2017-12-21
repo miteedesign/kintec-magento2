@@ -1,5 +1,5 @@
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 /*browser:true*/
@@ -109,7 +109,7 @@ define([
 
             $('body').trigger('processStart');
 
-            $.get(self.nonceUrl, {
+            $.getJSON(self.nonceUrl, {
                 'public_hash': self.publicHash
             }).done(function (response) {
                 self.setPaymentDetails(response.paymentMethodNonce);

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -31,6 +31,9 @@ class Filter extends \Magento\Framework\DataObject
         $names = [];
         $code = false;
         foreach ($this->getActiveFilters() as $filter) {
+            if (!$filter->getData('filter')) {
+                continue; // to prevent "The filter must be an object. Please set a correct filter" error.
+            }
             if (!$filter->getFilter()->getData('attribute_model')) {
                 continue;
             }

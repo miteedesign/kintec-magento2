@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -65,7 +65,7 @@ class AlternateConfig implements \Mirasvit\Seo\Api\Config\AlternateConfigInterfa
     public function getAlternateManualConfig($store, $hreflang = false)
     {
         $storeId = (is_object($store)) ? $store->getId() : $store;
-        $config = $this->getPreparedAlternateManualConfig($storeId);
+        $config = $this->getPreparedAlternateManualConfig();
 
         if (!is_array($config)) {
             return [];
@@ -92,25 +92,27 @@ class AlternateConfig implements \Mirasvit\Seo\Api\Config\AlternateConfigInterfa
     }
 
     /**
-     * @param int $storeId
      * @return array
      */
-    protected function getPreparedAlternateManualConfig($storeId)
+    protected function getPreparedAlternateManualConfig()
     {
         $config = $this->scopeConfig->getValue(
             'seo/general/alternate_configurable',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
-            $storeId
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
-        $config = json_decode($config);
+        $configDecode = json_decode($config);
 
-        if (is_object($config)) {
-            $config = (array)$config;
+        if (is_object($configDecode)) {
+            $config = (array)$configDecode;
             foreach ($config as $key => $value) {
                 if (is_object($value)) {
                     $config[$key] = (array)$value;
                 }
             }
+        }
+
+        if (!is_array($config)) {
+            $config = unserialize($config);
         }
 
         return $config;
@@ -124,7 +126,21 @@ class AlternateConfig implements \Mirasvit\Seo\Api\Config\AlternateConfigInterfa
     {
         $xDefaultUrl = false;
         $config = $this->scopeConfig->getValue('seo/general/configurable_hreflang_x_default');
-        $config = unserialize($config);
+        if ($config == '[]' || !$config) {
+            $config = [];
+        } elseif ($decode = json_decode($config)) {
+            $config = [];
+            if (is_object($decode)) {
+                $decode = (array)$decode;
+                foreach ($decode as $key => $value) {
+                    if (is_object($decode)) {
+                        $config[$key] = (array)$value;
+                    }
+                }
+            }
+        } else {
+            $config = unserialize($config);
+        }
         $storeIds = array_keys($storeUrls);
         foreach ($config as $value) {
             if (in_array($value['option'], $storeIds)) {

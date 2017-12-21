@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -17,7 +17,12 @@
 
 namespace Mirasvit\Seo\Service\Alternate;
 
-class StrategyFactory implements \Mirasvit\Seo\Api\Service\Alternate\StrategyFactoryInterface
+use Mirasvit\Seo\Api\Service\Alternate\StrategyFactoryInterface;
+
+/**
+ *@SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
+class StrategyFactory implements StrategyFactoryInterface
 {
     /**
      * @var \Mirasvit\Seo\Helper\Alternate\ProductStrategy
@@ -58,6 +63,7 @@ class StrategyFactory implements \Mirasvit\Seo\Api\Service\Alternate\StrategyFac
      * @param \Mirasvit\Seo\Service\Alternate\ProductStrategy $productStrategy
      * @param \Mirasvit\Seo\Service\Alternate\CategoryStrategy $categoryStrategy
      * @param \Mirasvit\Seo\Service\Alternate\CmsStrategy $cmsStrategy
+     * @param \Mirasvit\Seo\Service\Alternate\DefaultPagesStrategy $defaultPagesStrategy,
      * @param \Mirasvit\Seo\Service\Alternate\DefaultStrategy $defaultStrategy
      * @param \Magento\Framework\App\Request\Http $request
      * @param \Magento\Framework\Registry $registry
@@ -67,6 +73,7 @@ class StrategyFactory implements \Mirasvit\Seo\Api\Service\Alternate\StrategyFac
         \Mirasvit\Seo\Service\Alternate\ProductStrategy $productStrategy,
         \Mirasvit\Seo\Service\Alternate\CategoryStrategy $categoryStrategy,
         \Mirasvit\Seo\Service\Alternate\CmsStrategy $cmsStrategy,
+        \Mirasvit\Seo\Service\Alternate\DefaultPagesStrategy $defaultPagesStrategy,
         \Mirasvit\Seo\Service\Alternate\DefaultStrategy $defaultStrategy,
         \Magento\Framework\App\Request\Http $request,
         \Magento\Framework\Registry $registry,
@@ -75,6 +82,7 @@ class StrategyFactory implements \Mirasvit\Seo\Api\Service\Alternate\StrategyFac
         $this->productStrategy = $productStrategy;
         $this->categoryStrategy = $categoryStrategy;
         $this->cmsStrategy = $cmsStrategy;
+        $this->defaultPagesStrategy = $defaultPagesStrategy;
         $this->defaultStrategy = $defaultStrategy;
         $this->request = $request;
         $this->registry = $registry;
@@ -97,6 +105,8 @@ class StrategyFactory implements \Mirasvit\Seo\Api\Service\Alternate\StrategyFac
             && $this->page->getPageId()
             && $this->request->getActionName() != 'noRoute') {
                 return $this->cmsStrategy;
+        } elseif (in_array($this->request->getModuleName(), StrategyFactoryInterface::MODULE_NAME)) {
+            return $this->defaultPagesStrategy;
         }
 
         return $this->defaultStrategy;

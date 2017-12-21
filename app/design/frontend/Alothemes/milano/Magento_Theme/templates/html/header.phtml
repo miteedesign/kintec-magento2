@@ -8,12 +8,14 @@
 
 /**
  * @var \Magento\Theme\Block\Html\Header $block
- */
+ */ 
+
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 $isLoggedIn = $customerSession->isLoggedIn();
 $msg = $isLoggedIn ? __('Welcome') .', '. $customerSession->getCustomer()->getName() : $this->getWelcome() 
 ?>
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('header_notice')->toHtml();?>
 <header class="page-header alothemes">
     <div class="header">
 		<div class="header-top">
@@ -34,36 +36,12 @@ $msg = $isLoggedIn ? __('Welcome') .', '. $customerSession->getCustomer()->getNa
 							</div>
 						</div>
 						<div class="header-setting col-md-5">
-							
-							<ul class="top-links">
-							 <?php if( $isLoggedIn ) { ?>
-							    <li class="hidden-xs hidden-sm">
-									<a href="<?php echo $this->getUrl('customer/account/'); ?>" title="<?php echo __('My account') ?>"><?php echo __('My account') ?>
-									</a>
-								</li>
-								<li class="hidden-xs hidden-sm">
-								<span class="or"><?php echo __('Or') ?></span>
-								</li>
-							    <li class="logout hidden-sm">
-									<a href="<?php echo $this->getUrl('customer/account/logout'); ?>" title="<?php echo __('Sign Out') ?>"><?php echo __('Sign Out') ?>
-									</a>
-								</li>
-							 <?php } else { ?>
-								<li class="login hidden-xs hidden-sm">
-								  <a href="<?php echo $this->getUrl('customer/account/login'); ?>" title="<?php echo __('Sign In') ?>"><?php echo __('Sign In') ?>
-								  </a>
-								</li>
-								
-								<li class="first hidden-xs hidden-sm">
-									<a id="quick_sigup_link" style="positon:relative;" href="<?php echo $this->getUrl('customer/account/create'); ?>" title="<?php echo __('Create an account') ?>"><?php echo __('Register') ?>
-									</a>
-								</li>
-							 <?php }  ?>
-							 	<li>
-							 		<?php echo $this->getChildHtml('minicart'); ?>
-							 	</li>
-				            </ul>
-
+							 <div class="top-links">
+							 	<div class="hidden-sm pull-left">
+							 		<?php echo $this->getChildHtml('header.links'); ?>
+							 	</div>
+							 	<?php echo $this->getChildHtml('minicart'); ?>
+							 </div>
 						</div>
 
 						

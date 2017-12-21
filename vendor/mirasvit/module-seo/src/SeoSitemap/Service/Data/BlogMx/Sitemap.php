@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -110,11 +110,13 @@ class Sitemap implements \Mirasvit\SeoSitemap\Api\Data\BlogMx\SitemapInterface
     }
 
     /**
+     * @param int $storeId
      * @return \Magento\Framework\DataObject|bool
      */
-    public function getPostItems()
+    public function getPostItems($storeId)
     {
         $postCollectionFactory = $this->getPostCollectionFactory()->create()
+            ->addStoreFilter($storeId)
             ->addAttributeToSelect(['name', 'url_key'])
             ->addVisibilityFilter();
 

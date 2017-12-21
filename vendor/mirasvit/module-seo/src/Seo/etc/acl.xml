@@ -4,16 +4,17 @@
         <resources>
             <resource id="Magento_Backend::admin">
                <resource id="Magento_Backend::marketing">
-                    <resource id="Magento_Backend::marketing_seo">
-                        <resource id="Mirasvit_Seo::seo" title="SEO" sortOrder="71">
+                        <resource id="Mirasvit_Seo::seo" title="Mirasvit SEO" sortOrder="71">
                             <resource id="Mirasvit_Seo::seo_template" title="SEO Templates" sortOrder="100"/>
                             <resource id="Mirasvit_Seo::seo_redirect_node" title="Redirect" sortOrder="300">
                                 <resource id="Mirasvit_Seo::seo_redirect" title="Management" sortOrder="10"/>
                                 <resource id="Mirasvit_Seo::seo_redirect_import_export" title="Import/Export" sortOrder="20"/>
                             </resource>
                             <resource id="Mirasvit_Seo::seo_rewrite" title="Rewrites Management" sortOrder="500"/>
+                            <resource id="Mirasvit_Seo::seo_canonicalRewrite" title="Canonical Rewrite Management" sortOrder="600"/>
+                            <resource id="Mirasvit_Seo::seo_manual" title="User Manual" sortOrder="700"/>
+                            <resource id="Mirasvit_Seo::seo_get_support" title="Get Support" sortOrder="800"/>
                             <resource id="Mirasvit_Seo::seo_settings" title="Settings" sortOrder="1000"/>
-                        </resource>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">

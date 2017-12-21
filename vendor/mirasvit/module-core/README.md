@@ -1,3 +1,109 @@
+## 1.2.40
+*(2017-10-19)*
+
+#### Fixed
+* js errors
+
+---
+
+## 1.2.39
+*(2017-10-06)*
+
+#### Fixed
+* compatibility with php 5.5.9
+
+---
+
+## 1.2.38
+*(2017-09-26)*
+
+#### Fixed
+* M2.2.0
+
+---
+
+## 1.2.37
+*(2017-09-19)*
+
+#### Fixed
+* escape variables during parse process 
+
+---
+
+## 1.2.36
+*(2017-09-11)*
+
+#### Fixed
+* use function
+
+---
+
+## 1.2.35
+*(2017-09-04)*
+
+#### Improvements
+* Manuals
+
+---
+
+## 1.2.34
+*(2017-08-15)*
+
+#### Fixed
+* mirasvit.com to lc.mirasvit.com
+
+---
+
+## 1.2.33
+*(2017-08-14)*
+
+#### Fixed
+* HTTP to HTTPS (license)
+
+---
+
+## 1.2.32
+*(2017-08-11)*
+
+#### Fixed
+* Styles for grids
+
+---
+
+## 1.2.31
+*(2017-07-18)*
+
+#### Fixed
+* License
+* disable check for mirasvit.com
+
+---
+
+## 1.2.30
+*(2017-07-14)*
+
+#### Improvements
+* license
+
+---
+
+## 1.2.29
+*(2017-07-11)*
+
+#### Improvements
+* License
+
+---
+
+## 1.2.28
+*(2017-07-03)*
+
+#### Fixed
+* License
+* issue with get latest module versions
+
+---
+
 ## 1.2.27
 *(2017-05-10)*
 

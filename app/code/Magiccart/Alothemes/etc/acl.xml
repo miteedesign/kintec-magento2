@@ -15,7 +15,10 @@
 	    <resources>
 	        <resource id="Magento_Backend::admin">
 	        	<resource id="Magiccart_Alothemes::magiccart" title="Magiccart" sortOrder="10">
-	        	    <resource id="Magiccart_Alothemes::alothemes" title="ALO Themes" sortOrder="10" />
+	        	    <resource id="Magiccart_Alothemes::alothemes" title="ALO Themes" sortOrder="10">
+	        	    	<resource id="Magiccart_Alothemes::alothemes_config" title="Configuration" sortOrder="10" />
+	        	        <resource id="Magiccart_Alothemes::alothemes_import" title="Import" sortOrder="20" />
+	        	    </resource>
 	        	</resource>
 	            <resource id="Magento_Backend::stores">
 	                <resource id="Magento_Backend::stores_settings">

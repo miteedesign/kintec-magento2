@@ -11,7 +11,7 @@
         <container name="header.container" as="header_container" label="Page Header Container"  htmlTag="header" htmlClass="page-header page-header-alothemes" before="main.content"/>
         <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
 		<container name="slide.showcase" as="slide-showcase" label="Slide Showcase" htmlTag="div" htmlClass="slide-showcase alo-block-slide" after="header.container"/>
-		<container name="alo.sectionsbottom" as="alo_sectionsbottom" label="Page Section Container"  htmlTag="div" htmlClass="page-alo-sectionbottom wrap" after="main.content" />
+		<container name="alo.sectionsbottom" as="alo_sectionsbottom" label="Page Section Container"  htmlTag="div" htmlClass="page-alo-sectionbottom wrap" after="main.content.fix" />
 		<container name="sections.page.bottom" as="sections_page_bottom" label="Page Bottom Container"  htmlTag="div" htmlClass="sections-page-bottom wrap"/>
         <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer"/>
     </referenceContainer>

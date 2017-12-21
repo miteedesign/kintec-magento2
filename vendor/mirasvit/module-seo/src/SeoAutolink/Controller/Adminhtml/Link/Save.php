@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -67,11 +67,13 @@ class Save extends \Mirasvit\SeoAutolink\Controller\Adminhtml\Link
      * @param array $data
      * @return array
      */
-    protected function prepareStoreIds($data) {
-        if (isset($data['store_ids'])
-            && count($data['store_ids']) > 1
-            && in_array(0, $data['store_ids'])) {
-            $data['store_ids'] = array(0);
+    protected function prepareStoreIds($data)
+    {
+        if (isset($data['use_config']['store_ids'])
+            && $data['use_config']['store_ids'] == 'true') {
+            $data['store_ids'] = [0];
+        } elseif (isset($data['store_id'])) {
+            $data['store_ids'] = $data['store_id'];
         }
 
         return $data;

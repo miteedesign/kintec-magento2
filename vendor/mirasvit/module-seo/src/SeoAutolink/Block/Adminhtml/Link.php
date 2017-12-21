@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -28,35 +28,23 @@ class Link extends GridContainer
     {
         $this->_controller = 'adminhtml_link';
         $this->_blockGroup = 'Mirasvit_SeoAutolink';
+        $this->_addButtonLabel = __('Add New Link');
+
+
+        $this->buttonList->add('import', [
+            'label'   => __('Import Links'),
+            'onclick' => "setLocation('" . $this->getUrl('seoautolink/import/index') . "')",
+        ]);
 
         parent::_construct();
     }
 
     /**
-     * Add custom Add button.
-     * @return void
+     * @return string
      */
-    protected function _addNewButton()
+    public function getCreateUrl()
     {
-        $addButtonProps = [
-            'id'           => 'add_new_link',
-            'label'        => __('Add Link'),
-            'class'        => 'add',
-            'button_class' => '',
-            'class_name'   => 'Magento\Backend\Block\Widget\Button\SplitButton',
-            'options'      => [
-                'add'    => [
-                    'label'   => __('Add Link'),
-                    'onclick' => "setLocation('" . $this->getUrl('seoautolink/link/add') . "')",
-                    'default' => true,
-                ],
-                'import' => [
-                    'label'   => __('Import Links'),
-                    'onclick' => "setLocation('" . $this->getUrl('seoautolink/import/index') . "')",
-                ]
-            ]
-        ];
-
-        $this->buttonList->add('add_new', $addButtonProps);
+        return $this->getUrl('*/*/add');
     }
+
 }

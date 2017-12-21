@@ -1,266 +1,219 @@
-/**
- * Magiccart 
- * @category 	Magiccart 
- * @copyright 	Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
- * @license 	http://www.magiccart.net/license-agreement.html
- * @Author: DOng NGuyen<nguyen@dvn.com>
- * @@Create Date: 2014-04-25 13:16:48
- * @@Modify Date: 2016-03-09 15:02:12
- * @@Function:
- */
-require([
-	'jquery',
-	], 
-	function($){
-		jQuery(document).ready(function($) {
+require(["jquery"], function($){
+   
+    /**
+     * Magiccart 
+     * @category    Magiccart 
+     * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+     * @license     http://www.magiccart.net/license-agreement.html
+     * @Author: DOng NGuyen<nguyen@dvn.com>
+     * @@Create Date: 2014-04-25 13:16:48
+     * @@Modify Date: 2017-04-25 10:42:19
+     * @@Function:
+     */
 
-			// // for Mobile
-		 //    $('.nav-mobile').meanmenu({
-		 //    	meanMenuContainer: ".menu-mobile",
-		 //    	meanScreenWidth: "991",
-			// });	
+    !(function ($) {"use strict"; $.fn.meanmenu = function (options) {var defaults = {meanMenuTarget: $(this), meanMenuContainer: 'body', meanMenuClose: "X", meanMenuCloseSize: "18px", meanMenuOpen: "<span /><span /><span />", meanRevealPosition: "right", meanRevealPositionDistance: "0", meanRevealColour: "", meanRevealHoverColour: "", meanScreenWidth: "480", meanNavPush: "", meanShowChildren: true, meanExpandableChildren: true, meanExpand: "+", meanContract: "-", meanRemoveAttrs: false, onePage: false, removeElements: "", meanMenuExpandTop: true, expandActive: true, meanMenuResponsive: true, }; var options = $.extend(defaults, options); var currentWidth = window.innerWidth || document.documentElement.clientWidth; return this.each(function () {var meanMenu = options.meanMenuTarget; var meanContainer = options.meanMenuContainer; var meanReveal = options.meanReveal; var meanMenuClose = options.meanMenuClose; var meanMenuCloseSize = options.meanMenuCloseSize; var meanMenuOpen = options.meanMenuOpen; var meanRevealPosition = options.meanRevealPosition; var meanRevealPositionDistance = options.meanRevealPositionDistance; var meanRevealColour = options.meanRevealColour; var meanRevealHoverColour = options.meanRevealHoverColour; var meanScreenWidth = options.meanScreenWidth; var meanNavPush = options.meanNavPush; var meanRevealClass = ".meanmenu-reveal"; var meanShowChildren = options.meanShowChildren; var meanExpandableChildren = options.meanExpandableChildren; var meanExpand = options.meanExpand; var meanContract = options.meanContract; var meanRemoveAttrs = options.meanRemoveAttrs; var onePage = options.onePage; var removeElements = options.removeElements; var meanMenuExpandTop = options.meanMenuExpandTop; var meanMenuResponsive = options.meanMenuResponsive; var expandActive = options.expandActive; if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i)) || (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Blackberry/i)) || (navigator.userAgent.match(/Windows Phone/i))) {var isMobile = true; } if ((navigator.userAgent.match(/MSIE 8/i)) || (navigator.userAgent.match(/MSIE 7/i))) {$('html').css("overflow-y", "scroll"); } meanCentered(); var meanStyles = "background:" + meanRevealColour + ";color:" + meanRevealColour + ";" + meanRevealPos; var $navreveal = ""; var menuOn = false; var meanMenuExist = false; if (meanRevealPosition == "right") {meanRevealPos = "right:" + meanRevealPositionDistance + ";left:auto;"; } if (meanRevealPosition == "left") {var meanRevealPos = "left:" + meanRevealPositionDistance + ";right:auto;"; } if (meanMenuResponsive) {if (!isMobile) {$(window).resize(function () {currentWidth = window.innerWidth || document.documentElement.clientWidth; if (currentWidth > meanScreenWidth) {meanOriginal(); } else {showMeanMenu(); meanCentered(); } }); } window.onorientationchange = function () {meanCentered(); currentWidth = window.innerWidth || document.documentElement.clientWidth; if (currentWidth >= meanScreenWidth) {meanOriginal(); } if (currentWidth <= meanScreenWidth) {showMeanMenu(); } } } if (currentWidth <= meanScreenWidth || !meanMenuResponsive) {if (meanMenuExist == false) {showMeanMenu(); } else {meanOriginal(); } }function meanCentered() {if (meanRevealPosition == "center") {var newWidth = window.innerWidth || document.documentElement.clientWidth; var meanCenter = ((newWidth / 2) - 22) + "px"; meanRevealPos = "left:" + meanCenter + ";right:auto;"; if (!isMobile) {$('.meanmenu-reveal').css("left", meanCenter); } else {$('.meanmenu-reveal').animate({left: meanCenter }); } } }function meanInner() {if (meanMenuExpandTop) {if ($($navreveal).is(".meanmenu-reveal.meanclose")) {$navreveal.html(meanMenuClose); } else {$navreveal.html(meanMenuOpen); } } }function meanOriginal() {$(meanContainer).removeClass("mean-container").find('.mean-bar,.mean-push').hide(); $(meanMenu).show(); menuOn = false; $(removeElements).removeClass('mean-remove'); }function showMeanMenu() {$(removeElements).addClass('mean-remove'); var meanMenuContainer = $(meanContainer); meanMenuContainer.addClass("mean-container"); if (meanMenuExist) {meanMenuContainer.find('.mean-bar,.mean-push').show().find('.mean-nav ul:first').show(); return; } if (meanMenuExpandTop) meanMenuContainer.append('<div class="mean-bar"><nav class="mean-nav"></nav></div>'); else meanMenuContainer.append('<div class="mean-bar"><a href="#nav" class="meanmenu-reveal" style="' + meanStyles + '">Show Navigation</a><nav class="mean-nav"></nav></div>'); var meanMenuObj = $(meanMenu); meanMenuContainer.find('.mean-nav').html(meanMenuObj.html()); meanMenuObj.remove(); var catplus = meanMenuContainer.find('.nav-accordion >.level0:hidden').not('.all-cat'); if(catplus.length) meanMenuContainer.find('.all-cat').show().click(function(event) {$(this).children().toggle(); catplus.slideToggle('slow');}); else meanMenuContainer.find('.all-cat').hide(); if (meanRemoveAttrs) {meanMenuContainer.find('nav.mean-nav ul, nav.mean-nav ul *').each(function () {$(this).removeAttr("class"); $(this).removeAttr("id"); }); } $(meanMenu).before('<div class="mean-push" />'); meanMenuContainer.find('.mean-push').css("margin-top", meanNavPush); $(meanMenu).hide(); meanMenuContainer.find(".meanmenu-reveal").show(); $(meanRevealClass).html(meanMenuOpen); $navreveal = $(meanRevealClass); if (meanMenuExpandTop) {meanMenuContainer.find('.mean-nav ul ul').hide(); } else {meanMenuContainer.find('.mean-nav ul').hide(); } if (meanShowChildren) {if (meanExpandableChildren) {meanMenuContainer.find('.mean-nav ul ul').each(function () {if ($(this).children().length) {$(this, 'li:first').parent().append('<a class="mean-expand" href="#" style="font-size: ' + meanMenuCloseSize + '">' + meanExpand + '</a>'); } }); if (expandActive) {var listActive = meanMenuContainer.find('.mean-nav li.active'); listActive.find('>ul').show(); listActive.find('> .mean-expand').addClass('mean-clicked').html(meanContract); } meanMenuContainer.find('.mean-expand').on("click", function (e) {e.preventDefault(); $(this).parent().siblings().children('a.mean-expand').text(meanExpand); $(this).parent().siblings().children('a.mean-expand').removeClass('mean-clicked'); $(this).parent().siblings().children('ul').slideUp(300, function () {}); if ($(this).hasClass("mean-clicked")) {$(this).text(meanExpand); $(this).prev('ul').slideUp(300, function () {}); } else {$(this).text(meanContract); $(this).prev('ul').slideDown(300, function () {}); } $(this).toggleClass("mean-clicked"); }); } else {meanMenuContainer.find('.mean-nav ul ul').show(); } } else {meanMenuContainer.find('.mean-nav ul ul').hide(); } meanMenuContainer.find('.mean-nav ul li').last().addClass('mean-last'); $navreveal.removeClass("meanclose"); $($navreveal).click(function (e) {e.preventDefault(); if (menuOn == false) {$navreveal.css("text-align", "center"); $navreveal.css("text-indent", "0"); $navreveal.css("font-size", meanMenuCloseSize); meanMenuContainer.find('.mean-nav ul:first').slideDown(); menuOn = true; } else {meanMenuContainer.find('.mean-nav ul:first').slideUp(); menuOn = false; } $navreveal.toggleClass("meanclose"); meanInner(); $(removeElements).addClass('mean-remove'); }); if (onePage) {meanMenuContainer.find('.mean-nav ul > li > a:first-child').on("click", function () {meanMenuContainer.find('.mean-nav ul:first').slideUp(); menuOn = false; $($navreveal).toggleClass("meanclose").html(meanMenuOpen); }); } meanMenuExist = true; } }); }; })(jQuery);
 
-			(function(selector){
-				var $content = $(selector);
-				var $navDesktop = $('.nav-desktop', $content);
-				/* Fix active Cache */
-				var body = $('body');
-				if(!body.hasClass('catalog-category-view')){
-					if(body.hasClass('catalog-product-view')){
-						var urlTop = body.find('.breadcrumbs ul').children().eq(1).find('a');
-						if(urlTop.length){
-							link = urlTop.attr('href');
-							var topUrl = $('li.level0 a.level-top', $content);
-							var catUrl = $('li.level0.cat a.level-top', $content);
-							var activeUrl = $('li.level0.active a.level-top', $content); // default active
-							catUrl.each(function() {
-								var $this = $(this);
-								if($this.attr('href').indexOf(link) > -1){
-									activeUrl = $this;						
-									var activeObj = activeUrl.parent();
-									activeObj.addClass('active');	
-									$('li.level0.home', $content).removeClass('active');							
-								}
-							});
-						}
-					} else {
-						var currentUrl = document.URL;
-						var extUrl = $('li.level0.ext a.level-top', $content);
-						var activeUrl = $('li.level0.home a.level-top', $content); // default active
-						if(activeUrl.length){
-							extUrl.each(function() {
-								var $this = $(this);
-								if(currentUrl.indexOf($this.attr('href')) > -1 && $this.attr('href').length > activeUrl.attr('href').length) activeUrl = $this;
-							});
-						}
-						var activeObj = activeUrl.parent();
-						if(activeObj.length) $('li.level0.home', $content).removeClass('active');
-						activeObj.addClass('active');			
-					}		
-				} else {
-					$('li.level0.home', $content).removeClass('active');
-				}
-				/* End fix active Cache */
+    (function ($) {
+        "use strict";
+        $.fn.magicmenu = function (options) {
+            var defaults = {
+                breakpoint : 991,
+                horizontal : '.magicmenu',
+                vertical   : '.vmagicmenu',
+                sticky     : '.header-sticker',
+            };
 
-			    // Sticker Menu
-			    if($navDesktop.hasClass('sticker')){			
-					$(window).scroll(function () {
-					 if ($(this).scrollTop() > 500) {
-					  $('.header-sticker').addClass('header-container-fixed');
-					 } 
-					 else{
-					  $('.header-sticker').removeClass('header-container-fixed');
-					 }
-					 return false;
-					});
-			    }
-			    // End Sticker Menu
+            var settings   = $.extend(defaults, options);
+            var breakpoint = settings.breakpoint;
+            var hSelector  = settings.horizontal;
+            var vSelector  = settings.vertical;
+            var sticky     = settings.sticky;
 
-				var $window  = $(window).width();
-				setReponsive($window);
-				$(window).resize(function(){
-					var $window = $(window).width();
-					setReponsive($window);
-			 	})
-				var $navtop = $content.find('li.level0.hasChild, li.level0.home').not('.dropdown');
-				var maxW 	= $('body').outerWidth(); //$('.container').outerWidth();
-				var fullWidth = $navDesktop.data('fullwidth');
-				$navtop.each(function(index, val) {
-					var $item 	  = $(this);
-					if(fullWidth) $item.find('.level-top-mega').addClass('parent-full-width').wrap( '<div class="full-width"></div>' );
-					var options  = $item.data('options');
-					var $cat_mega = $('.cat-mega', $item);
-					var $children = $('.children', $cat_mega);
-					var columns   = $children.length;
-					var wchil 	  = $children.outerWidth();
-					if(options){
-						var col 	= parseInt(options.cat_columns);
-						if(!isNaN(col)) columns = col;
-						var cat 		= parseFloat(options.cat_proportion);
-						var left 		= parseFloat(options.left_proportion);
-						var right 	 	= parseFloat(options.right_proportion);
-						if(isNaN(left)) left = 0; if(isNaN(right)) right = 0;
-						var custom 		= left + right;
-						var proportion = cat + left + right;
-						var cat_width	= Math.floor(100*cat/proportion);
-						var temp 		= 100/columns;
-						var col_width 	= (temp+Math.floor(temp))/2; // approximately down
-						var left_width	= 100*left/proportion;
-						var right_width	= 100*right/proportion;
-						var $block_left = $('.mega-block-left', $item);
-							$block_left.width(left_width + '%');
-						var $block_right = $('.mega-block-right', $item);
-							$block_right.width(right_width + '%');
-							$cat_mega.width(cat_width + '%');
-						var wcolumns  = wchil*columns;
-							if(custom){
-								var wTopMega = wcolumns + (left_width*wcolumns)/cat_width + (right_width*wcolumns)/cat_width
-								if(wTopMega > maxW) wTopMega = maxW;
-								$('.content-mega-horizontal',$item).width(wTopMega);
-							} else {
-								if(wcolumns > maxW)	wcolumns = Math.floor(maxW / wchil)*wchil;
-								$('.content-mega-horizontal',$item).width(wcolumns);	
-							} 
-							$children.each(function(idx) {
-								if(idx % columns ==0 && idx != 0)   $item.css("clear", "both");
-							});
-					} else {
-						var wcolumns 	= wchil*columns;
-						if(wcolumns > maxW)	wcolumns = Math.floor(maxW / wchil)*wchil;
-						$('.content-mega-horizontal', $item).width(wcolumns);	
-					}
+            var methods = {
+                init : function() {
+                    return this.each(function() {
+                        // Topmenu
+                        var topmenu = $(hSelector);
+                        var navDesktop = topmenu.find('.nav-desktop');
+                        if(navDesktop.hasClass('sticker')) methods.sticky(topmenu);
+                        var fullWidth = navDesktop.data('fullwidth');
+                        var leveltop = topmenu.find('li.level0.hasChild, li.level0.home').not('.dropdown');
+                        methods.horizontal(leveltop, fullWidth, true);
 
-				});
+                        // Vertical Menu
+                        var vmenu   = $(vSelector);
+                        methods.toggleVertical(vmenu);
+                        var vLeveltop = vmenu.find('li.level0.hasChild, li.level0.home').not('.dropdown');
+                        methods.vertical(vLeveltop, fullWidth, true);
+                        // Responsive
+                        $(window).resize(function(){
+                            if ( breakpoint <= $(window).width()){
+                                $('.nav-mobile').hide();
+                                navDesktop.show();
+                                methods.horizontal(leveltop, fullWidth, false);
+                                methods.vertical(vLeveltop, fullWidth, false);
+                            } else {
+                                $('.nav-mobile').show();
+                                navDesktop.hide();
+                            }
+                        })
+                    });
+                },
 
-				function setReponsive($window){
-					if (767 <= $window){
-						jQuery('.nav-mobile').hide();
-						var $navtop = $content.find('li.level0.hasChild, li.level0.home').not('.dropdown');
-					    $navtop.hover(function(){
-					    	var $item 			= $(this);
-					    	var wrapper 		= $('.container');
-					       	var postionWrapper 	= wrapper.offset();
-					       	var wWrapper 		= wrapper.width();  	/*include padding border*/
-					       	var wMega   		= $('.level-top-mega', $item).outerWidth(); /*include padding + margin + border*/
-					       	var postionMega 	= $item.offset();
-					       	var xLeft 			= wWrapper - wMega - (wWrapper - wrapper.width())/2;
-					       	var xLeft2 			= postionMega.left - postionWrapper.left;
-					       	if(xLeft > xLeft2) xLeft = xLeft2;
-					       	if(xLeft < 0) xLeft = xLeft/2;
-					       	var topMega = $item.find('.level-top-mega');
-					       	if(topMega.length){
-					       		topMega.css('left',xLeft);
-					       		$item.addClass('over');
-					       	}
-					    },function(){
-					       $(this).removeClass('over');
-					    })
-					}
-				}
+                sticky: function(topmenu){
+                    var menuHeight = topmenu.height()/2;
+                    var postionTop = topmenu.offset().top + menuHeight;
+                    var fixedMenu = $(sticky);
+                    var headerHeight = $('header').height();
+                    $(window).scroll(function () {
+                        var postion = $(this).scrollTop();
+                        if (postion > postionTop ){
+                            $('header').height(headerHeight);
+                            fixedMenu.addClass('header-container-fixed');
+                        } else {
+                            $('header').height('auto');
+                           fixedMenu.removeClass('header-container-fixed');
+                        }
+                    });
+                },
 
-			})('.magicmenu');
-			
-			// Vertical Menu
-			(function(selector){
-				var $content = $(selector);
-				var $window  = $(window).width();
-				setReponsive($window);
-				$(window).resize(function(){
-					var $window = $(window).width();
-					setReponsive($window);
-			 	})
-				var catplus = $content.find('.level0:hidden');
-				if(!catplus.length) $content.find('.all-cat').hide();
-				else $content.find('.all-cat').click(function(event) {$(this).children().toggle(); catplus.slideToggle('slow');});
-				var $navtop = $content.find('li.level0').not('.dropdown');
-				var maxW 	= $('.container').outerWidth();
-				$navtop.each(function(index, val) {
-					var options  = $(this).data('options');
-					var $cat_mega = $('.cat-mega', $(this));
-					var $children = $('.children', $cat_mega);
-					var columns   = $children.length;
-					var wchil 	  = $children.outerWidth();
-					if(options){
-						var columns 	= parseInt(options.cat_columns);
-						var cat 		= parseFloat(options.cat_proportion);
-						var left 		= parseFloat(options.left_proportion);
-						var right 	 	= parseFloat(options.right_proportion);
-						if(isNaN(left)) left = 0; if(isNaN(right)) right = 0;
-						var custom 		= left + right;
-						var proportion = cat + left + right;
-						var cat_width	= Math.floor(100*cat/proportion);
-						var temp 		= 100/columns;
-						var col_width 	= (temp+Math.floor(temp))/2; // approximately down
-						var left_width	= 100*left/proportion;
-						var right_width	= 100*right/proportion;
-						var $block_left = $('.mega-block-left', $(this));
-							$block_left.width(left_width + '%');
-						var $block_right = $('.mega-block-right', $(this));
-							$block_right.width(right_width + '%');
-							$cat_mega.width(cat_width + '%');
-						var wcolumns  = wchil*columns;
-							if(custom){
-								var wTopMega = wcolumns + (left_width*wcolumns)/cat_width + (right_width*wcolumns)/cat_width
-								if(wTopMega > maxW) wTopMega = maxW;
-								$('.content-mega-horizontal',$(this)).width(wTopMega);
-							} else {
-								if(wcolumns > maxW)	wcolumns = Math.floor(maxW / wchil)*wchil;
-								$('.content-mega-horizontal',$(this)).width(wcolumns);	
-							} 
-							$children.each(function(idx) {
-								if(idx % columns ==0 && idx != 0)   $(this).css("clear", "both");
-							});
-					} else {
-						var wcolumns 	= wchil*columns;
-						if(wcolumns > maxW)	wcolumns = Math.floor(maxW / wchil)*wchil;
-						$('.content-mega-horizontal',$(this)).width(wcolumns);	
-					}
+                initMenu: function($navtop, fullWidth){
+                    $navtop.each(function(index, val) {
+                        var $item     = $(this);
+                        if(fullWidth) $item.find('.level-top-mega').addClass('parent-full-width').wrap( '<div class="full-width"></div>' );
+                        var options   = $item.data('options');
+                        var $catMega = $item.find('.cat-mega');
+                        var $children = $catMega.find('.children');
+                        var columns   = $children.length;
+                        var wchil     = $children.outerWidth();
+                        if(options){
+                            var col     = parseInt(options.cat_col);
+                            if(!isNaN(col)) columns = col;
+                            var cat         = parseFloat(options.cat_proportion);
+                            var left        = parseFloat(options.left_proportion);
+                            var right       = parseFloat(options.right_proportion);
+                            if(isNaN(left)) left = 0; if(isNaN(right)) right = 0;
+                            var proportion  = cat + left + right;
+                            var wCat        = Math.ceil(100*cat/proportion);
+                            var wLeft       = Math.floor(100*left/proportion);
+                            var wRight      = Math.floor(100*right/proportion);
+                            // Init Responsive
+                            $catMega.width(wCat + '%');
+                            $item.find('.mega-block-left').width(wLeft + '%');
+                            $item.find('.mega-block-right').width(wRight + '%');
+                            $children.each(function(idx) { if(idx % columns ==0 && idx != 0) $(this).css("clear", "both"); });
+                            $item.attr({'data-wcat': wCat, 'data-wleft': wLeft,'data-wright': wRight });
+                        } 
 
-				});
+                    });
+                },
 
-				function setReponsive($window){
-					if (767 <= $window){
-						var $navtop = $content.find('li.level0.hasChild, li.level0.home').not('.dropdown');
-						var $container = $('.container');
-						var wContainer = $container.outerWidth();
-					    $navtop.hover(function(){
-					    	var options = $(this).data('options');
-					    	var children 		= $('.children', this);
-					       	var colSet 			= children.length;
-					       	if(options){
-					    		var columns 	= parseInt(options.cat_columns);
-					    		if(columns) colSet = columns;
-					       	}
-					       	var postionWrapper 	= $container.offset();
-					       	var wWrapper 		= $container.outerWidth();  	/*include padding border*/
-					       	var wVmenu			= $content.outerWidth(true);
-					       	var postionMega 	= $(this).position();
-					       	var margin_top 		= 0; // set in config
-					       	var wChild 			= children.outerWidth();
-					       	var outerChildren 	= wChild - children.width();
-					       	var wMageMax 		= $container.width()- wVmenu;
-					       	var wCatMega		= colSet*wChild;
-					       	if(wCatMega > wMageMax) wCatMega = Math.floor(wMageMax / wChild)*wChild;
-					       	var rBlock 			= $('.mega-block-right', this);
-					       	var wRblock 		= rBlock.width();
-					       	var megaHorizontal 	= wCatMega + wRblock;
-					       	if(megaHorizontal < wMageMax) $('.content-mega-horizontal', this).width(megaHorizontal);
-					       	$('.cat-mega', this).width(wCatMega);
-					       	$('.level-top-mega', this).css('top',postionMega.top);
-					       	// $('.level-top-mega', this).css('margin-left',wVmenu-2); // - margin
+                horizontal: function ($navtop, fullWidth, init) {
+                    if(init) methods.initMenu($navtop, fullWidth);
+                    var menuBox = $('.container');
+                    var maxW      = fullWidth ? $('body').width() : menuBox.width();
+                    var wMenuBox  = menuBox.width();
+                    $navtop.hover(function(){
+                        var $item       = $(this);
+                        var options     = $item.data('options');
+                        var $children   = $item.find('.cat-mega .children');
+                        var columns     = $children.length;
+                        var wChild      = $children.outerWidth(true);
+                        var wMega       = wChild*columns;
+                        if(options){
+                            var col     = parseInt(options.cat_col);
+                            if(!isNaN(col)) wMega = wChild*col;
+                            var wCat    = $item.data('wcat');
+                            var wLeft   = Math.ceil($item.data('wleft')*wMega/wCat);
+                            var wRight  = Math.ceil($item.data('wright')*wMega/wCat);
+                            if( wLeft || wRight ) wMega = wMega + wLeft + wRight;
+                        }
+                        if(wMega > maxW) wMega = Math.floor(maxW / wChild)*wChild;
+                        $item.find('.content-mega-horizontal').width(wMega);
+                        var topMega     = $item.find('.level-top-mega');
+                        if(topMega.length){
+                            var offsetMenuBox        = menuBox.offset();
+                            var offsetMega           = $item.offset();
+                            var xLeft                = wMenuBox - topMega.outerWidth(true);
+                            var xLeft2               = offsetMega.left - offsetMenuBox.left;
+                            if(xLeft > xLeft2) xLeft = xLeft2;
+                            if(xLeft < 0)      xLeft = xLeft/2;
+                            topMega.css('left',xLeft);                          
+                        }
+                    })
+                },
 
-					    },function(){
+                vertical: function ($navtop, fullWidth, init)  {
+                    if(init) methods.initMenu($navtop, fullWidth);
+                    var menuBox = $('.container');
+                    var maxW    = menuBox.width();
+                    $navtop.hover(function(){
+                        var $item       = $(this);
+                        var options     = $item.data('options');
+                        var $children   = $item.find('.cat-mega .children');
+                        var columns     = $children.length;
+                        var wChild      = $children.outerWidth(true);
+                        var topMega     = $item.find('.level-top-mega');
+                        var wMega           = wChild*columns;
+                        if(options){
+                            var col     = parseInt(options.cat_col);
+                            if(!isNaN(col)) wMega = wChild*col;
+                            var wCat    = $item.data('wcat');
+                            var wLeft   = Math.ceil($item.data('wleft')*wMega/wCat);
+                            var wRight  = Math.ceil($item.data('wright')*wMega/wCat);
+                            if( wLeft || wRight ) wMega = wMega + wLeft + wRight;
+                        }
+                        var wVmenu          = $navtop.closest(vSelector).outerWidth(true);
+                        var wMageMax        = maxW- wVmenu - (topMega.outerWidth(true) - topMega.width());
+                        if(wMega > wMageMax) wMega = Math.floor(wMageMax / wChild)*wChild;
+                        var postionMega     = $item.position();
+                        topMega.css('top', postionMega.top);
+                        $item.find('.content-mega-horizontal').width(wMega);
+                    })
+                },
 
-					    })
-					}
-				}
+                toggleVertical: function ($vmenu) {
+                    $vmenu.find('.v-title').click(function() {
+                        // $vmenu.find('.nav-desktop').parent().toggle();
+                        $vmenu.find('.nav-desktop').slideToggle(400);
+                    });
+                    var catplus = $vmenu.find('.level0:hidden').not('.all-cat');
+                    if(catplus.length) $vmenu.find('.all-cat').show().click(function(event) {$(this).children().toggle(); catplus.slideToggle('slow');});
+                    else $vmenu.find('.all-cat').hide();
+                }
+            };
 
-			})('.vmagicmenu');
+            if(methods[options]) { // $("#element").pluginName('methodName', 'arg1', 'arg2');
+                return methods[options].apply(this, Array.prototype.slice.call(arguments, 1));
+            } else if (typeof options === 'object' || !options) { // $("#element").pluginName({ option: 1, option:2 });
+                return methods.init.apply(this);
+            } else {
+                $.error('Method "' + method + '" does not exist in timer plugin!');
+            }
+        }
 
-			$(".menu-expander").on('click', function (e){
-		        //alert('clicked');
-		        e.stopPropagation();
-		    });
+    })(jQuery);
 
-		});
+    $(document).ready(function($) {
+        // For accordion
+        $('.meanmenu-accordion').meanmenu({
+            meanMenuContainer: ".accordion-container",
+            // meanScreenWidth: "2000",
+            removeElements:true,
+            // meanMenuExpandTop: false,
+            meanMenuResponsive: false,
+        });
+        // End For accordion
+
+        // For Mobile
+        $('.navigation-mobile').meanmenu({
+            meanMenuContainer: ".magicmenu",
+            meanScreenWidth: "991",
+            meanMenuResponsive: true,
+            expandActive: false,
+            removeElements:true,
+        });
+        // End for Mobile
+        $(document).magicmenu();
+    });
 });

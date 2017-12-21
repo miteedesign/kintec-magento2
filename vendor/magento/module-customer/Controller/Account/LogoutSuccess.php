@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Customer\Controller\Account;
@@ -34,15 +34,7 @@ class LogoutSuccess extends \Magento\Customer\Controller\AbstractAccount
      * @return \Magento\Framework\View\Result\Page
      */
     public function execute()
-    {   if (isset($_SERVER['HTTP_COOKIE'])) {
-            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-            foreach($cookies as $cookie) {
-                $parts = explode('=', $cookie);
-                $name = trim($parts[0]);
-                setcookie($name, '', time()-1000);
-                setcookie($name, '', time()-1000, '/');
-            }
-        }
+    {
         return $this->resultPageFactory->create();
     }
 }

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -1261,6 +1261,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         }
 
         if (strpos($this->getFullActionCode(), 'paypal_express') !== false) {
+            return true;
+        }
+
+        if ($this->request->isAjax()) {
             return true;
         }
 

@@ -12,12 +12,12 @@ class Resume extends AbstractProfile
         try {
             $id = $this->getRequest()->getParam('id', false);
             if (!$id) {
-                throw new \Exception("INVALID ID");
+                throw new \Exception("INVALID PROFILE ID");
             }
             $this->_profile->load($id)->factory()->resume()->save();
-            $this->messageManager->addSuccess(__('Profile resumed successfully'));
+            $this->messageManager->addSuccessMessage(__('Profile resumed successfully'));
         } catch (\Exception $e) {
-            $this->messageManager->addError($e->getMessage());
+            $this->messageManager->addErrorMessage($e->getMessage());
         }
         $this->_redirect('*/*/edit', ['_current'=>true]);
     }

@@ -201,6 +201,12 @@ class Product
             $select->where("{$entId} in (?)", $condProdIds);
         }
 
+        if ($this->currentVersion && $this->currentVersion->getId()) {
+            $select->setPart('disable_staging_preview', true);
+            $select->where('e.created_in <= ?', $this->currentVersion->getId());
+            $select->where('e.updated_in > ?', $this->currentVersion->getId());
+        }
+
         $countSelect = clone $select;
         $countSelect->reset(Select::FROM)->reset(Select::COLUMNS)->from(array('e' => $table), ['count(*)']);
         $count = $this->_read->fetchOne($countSelect);
@@ -589,16 +595,22 @@ class Product
                 $this->_checkLock();
 
                 $this->_eventManager->dispatch('urapidflow_product_import_after_fetch', ['vars' => $eventVars]);
+
                 $this->_importValidateNewData();
 #memory_get_usage(true);
                 if ($benchmark) $this->_logger->debug('_importValidateNewData: ' . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
                 $this->_eventManager->dispatch('urapidflow_product_import_after_validate', ['vars' => $eventVars]);
+
                 $this->_importProcessDataDiff();
 #memory_get_usage(true);
                 if ($benchmark) $this->_logger->debug('_importProcessDataDiff: ' . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
                 $this->_eventManager->dispatch('urapidflow_product_import_after_diff', ['vars' => $eventVars]);
 
                 if (!$dryRun) {
+                    $this->_importProcessRemoteImageBatch();
+                    if ($benchmark) $this->_logger->debug('_importProcessRemoteImageBatch: ' . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
+                    $this->_eventManager->dispatch('urapidflow_product_import_after_remote_image_batch', ['vars' => $eventVars]);
+
                     $this->_importSaveEntities();
 #memory_get_usage(true);
                     if ($benchmark) $this->_logger->debug('_importSaveEntities: ' . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
@@ -827,6 +839,7 @@ class Product
         $profile = $this->_profile;
         $logger = $profile->getLogger();
 
+        $emptyValueStrategy = $profile->getData('options/import/empty_value_strategy');
         $defaultSeparator = $profile->getData('options/csv/multivalue_separator');
         if (!$defaultSeparator) {
             $defaultSeparator = ';';
@@ -918,7 +931,19 @@ class Product
                             }
                         }
                     }
-                    if (!isset($this->_defaultUsed[$sku][$k]) || $v !== '' && $v !== array()) {
+                    if ($v === '#EMPTY#' || $emptyValueStrategy === 'empty' && $v === '') {
+                        $this->_newData[$sku][$k] = '';
+                        unset($this->_defaultUsed[$sku][$k]);
+                    } elseif ($v === ['#EMPTY#'] || $emptyValueStrategy === 'empty' && $v === ['']) {
+                        $this->_newData[$sku][$k] = [''];
+                        unset($this->_defaultUsed[$sku][$k]);
+                    } elseif ($v === '#DEFAULT#' || $emptyValueStrategy === 'default' && $v === '') {
+                        $this->_newData[$sku][$k] = !empty($this->_newDataTemplate[$k]) ? $this->_newDataTemplate[$k] : '';
+                        unset($this->_defaultUsed[$sku][$k]);
+                    } elseif ($v === ['#DEFAULT#'] || $emptyValueStrategy === 'default' && $v === ['']) {
+                        $this->_newData[$sku][$k] = !empty($this->_newDataTemplate[$k]) ? [$this->_newDataTemplate[$k]] : [''];
+                        unset($this->_defaultUsed[$sku][$k]);
+                    } elseif (!isset($this->_defaultUsed[$sku][$k]) || $v !== '' && $v !== array()) {
                         $this->_newData[$sku][$k] = $v;
                         unset($this->_defaultUsed[$sku][$k]);
                     }
@@ -1236,6 +1261,12 @@ class Product
 
         $oldValues = [];
 
+        $defMinQty = $this->_scopeConfig->getValue(
+            'cataloginventory/item_options/min_qty',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $profile->getStoreId()
+        );
+
         // find changed data
         foreach ($this->_newData as $sku => $p) {
             try {
@@ -1275,9 +1306,16 @@ class Product
                     $pId = $this->_skus[$sku];
                 }
                 $isUpdated = false;
-
+                
                 if ($stockZeroOut && isset($p['stock.qty'])) {
-                    $p['stock.is_in_stock'] = $p['stock.qty'] > 0;
+                    if (!empty($p['stock.use_config_min_qty'])) {
+                        $minQty = $defMinQty;
+                    } else {
+                        $minQty = isset($p['stock.min_qty']) ? $p['stock.min_qty'] : $defMinQty;
+                    }
+                    if (!isset($p['stock.is_in_stock'])) {
+                        $p['stock.is_in_stock'] = $p['stock.qty'] > $minQty;
+                    }
                     if (!isset($this->_fieldsCodes['stock.is_in_stock'])) {
                         $this->_fieldsCodes['stock.is_in_stock'] = $this->_fieldsCodes['stock.qty'];
                     }
@@ -1287,9 +1325,9 @@ class Product
                     $logger->setColumn(isset($this->_fieldsCodes[$k]) ? $this->_fieldsCodes[$k] + 1 : 0);
 
                     $oldValue = !$pId ? null : (
-                    isset($this->_products[$pId][$storeId][$k]) ? $this->_products[$pId][$storeId][$k] : (
-                    isset($this->_products[$pId][0][$k]) ? $this->_products[$pId][0][$k] : null
-                    )
+                        isset($this->_products[$pId][$storeId][$k]) ? $this->_products[$pId][$storeId][$k] : (
+                            isset($this->_products[$pId][0][$k]) ? $this->_products[$pId][0][$k] : null
+                        )
                     );
                     $attr = $this->_attr($k);
 

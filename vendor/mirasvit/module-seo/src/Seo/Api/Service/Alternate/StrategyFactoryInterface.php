@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -19,6 +19,8 @@ namespace Mirasvit\Seo\Api\Service\Alternate;
 
 interface StrategyFactoryInterface
 {
+    const MODULE_NAME = ['customer', 'checkout'];
+
     /**
      * @return \Mirasvit\Seo\Api\Service\Alternate\StrategyInterface
      */

@@ -29,7 +29,7 @@ class ProductUrlUpdateObserver implements ObserverInterface
         /** @var \Unirgy\RapidFlow\Model\Profile $profile */
         $profile = $observer->getData('profile');
         try {
-            $this->helper->updateProductsUrlRewrites();
+            $this->helper->updateProductsUrlRewrites($profile->getStoreId());
         } catch (\Magento\Framework\Exception\AlreadyExistsException $e) {
             $profile->getLogger()->error($e->getLogMessage());
         }

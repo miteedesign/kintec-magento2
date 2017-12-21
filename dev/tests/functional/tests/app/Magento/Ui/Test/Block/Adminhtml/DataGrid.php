@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -9,7 +9,6 @@ namespace Magento\Ui\Test\Block\Adminhtml;
 use Magento\Mtf\Client\Locator;
 use Magento\Backend\Test\Block\Widget\Grid;
 use Magento\Mtf\Client\Element\SimpleElement;
-use Magento\Mtf\Client\ElementInterface;
 
 /**
  * Backend Data Grid with advanced functionality for managing entities.
@@ -47,14 +46,14 @@ class DataGrid extends Grid
     protected $selectItem = 'tbody tr [data-action="select-row"]';
 
     /**
-     * Secondary part of row locator template for getRow() method.
+     * Secondary part of row locator template for getRow() method
      *
      * @var string
      */
     protected $rowTemplate = 'td[*[contains(.,normalize-space("%s"))]]';
 
     /**
-     * Secondary part of row locator template for getRow() method with strict option.
+     * Secondary part of row locator template for getRow() method with strict option
      *
      * @var string
      */
@@ -102,7 +101,6 @@ class DataGrid extends Grid
      */
     protected $rowById = ".//tr[td//input[@data-action='select-row' and @value='%s']]";
 
-    // @codingStandardsIgnoreStart
     /**
      * Column header number.
      *
@@ -115,7 +113,7 @@ class DataGrid extends Grid
      *
      * @var string
      */
-    private $cellByHeader = "//td[count(//th[span[.='%s']][not(ancestor::*[@class='sticky-header'])]/preceding-sibling::th)+1]";
+    protected $cellByHeader = "//td[%s+1]";
 
     // @codingStandardsIgnoreStart
     /**
@@ -127,15 +125,11 @@ class DataGrid extends Grid
     // @codingStandardsIgnoreEnd
 
     /**
-     * Search field.
-     *
      * @var string
      */
     protected $fullTextSearchField = '.data-grid-search-control-wrap .data-grid-search-control';
 
     /**
-     * Search button.
-     *
      * @var string
      */
     protected $fullTextSearchButton = '.data-grid-search-control-wrap .action-submit';
@@ -175,7 +169,7 @@ class DataGrid extends Grid
      */
     public function resetFilter()
     {
-        $chipsHolder = $this->_rootElement->find($this->appliedFiltersList);
+        $chipsHolder = $this->getGridHeaderElement()->find($this->appliedFiltersList);
         if ($chipsHolder->isVisible()) {
             parent::resetFilter();
         }
@@ -347,13 +341,16 @@ class DataGrid extends Grid
     {
         $actionType = is_array($action) ? key($action) : $action;
         $this->getGridHeaderElement()->find($this->actionButton)->click();
-        $this->getGridHeaderElement()
-            ->find(sprintf($this->actionList, $actionType), Locator::SELECTOR_XPATH)
-            ->click();
+        $toggle = $this->getGridHeaderElement()->find(sprintf($this->actionList, $actionType), Locator::SELECTOR_XPATH);
+        $toggle->hover();
+        if ($toggle->isVisible() === false) {
+            $this->getGridHeaderElement()->find($this->actionButton)->click();
+        }
+        $toggle->click();
         if (is_array($action)) {
-            $this->getGridHeaderElement()
-                ->find(sprintf($this->actionList, end($action)), Locator::SELECTOR_XPATH)
-                ->click();
+            $locator = sprintf($this->actionList, end($action));
+            $this->getGridHeaderElement()->find($locator, Locator::SELECTOR_XPATH)->hover();
+            $this->getGridHeaderElement()->find($locator, Locator::SELECTOR_XPATH)->click();
         }
     }
 
@@ -409,6 +406,7 @@ class DataGrid extends Grid
      * Sort grid by column.
      *
      * @param string $columnLabel
+     * @return void
      */
     public function sortByColumn($columnLabel)
     {
@@ -498,7 +496,7 @@ class DataGrid extends Grid
     /**
      * Returns admin data grid header element.
      *
-     * @return ElementInterface
+     * @return \Magento\Mtf\Client\ElementInterface
      */
     private function getGridHeaderElement()
     {

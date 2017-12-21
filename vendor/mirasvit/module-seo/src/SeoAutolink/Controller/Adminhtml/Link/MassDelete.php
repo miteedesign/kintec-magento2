@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -18,18 +18,52 @@
 namespace Mirasvit\SeoAutolink\Controller\Adminhtml\Link;
 
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Ui\Component\MassAction\Filter;
+use Mirasvit\SeoAutolink\Model\ResourceModel\Link\CollectionFactory;
 
 class MassDelete extends \Mirasvit\SeoAutolink\Controller\Adminhtml\Link
 {
     /**
-     *
+     * @param \Mirasvit\SeoAutolink\Model\LinkFactory              $linkFactory
+     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate
+     * @param \Magento\Framework\Registry                          $registry
+     * @param \Magento\Backend\App\Action\Context                  $context
+     * @param Filter                                               $filter
+     * @param CollectionFactory                                    $collectionFactory
+     */
+    public function __construct(
+        \Mirasvit\SeoAutolink\Model\LinkFactory $linkFactory,
+        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate,
+        \Magento\Framework\Registry $registry,
+        \Magento\Backend\App\Action\Context $context,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    ) {
+        parent::__construct($linkFactory, $localeDate, $registry, $context);
+        $this->filter = $filter;
+        $this->collectionFactory = $collectionFactory;
+    }
+
+    /**
+     * @return void
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        //$resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
+        $ids = [];
 
-        $ids = $this->getRequest()->getParam('link_id');
+        if ($this->getRequest()->getParam('link_id')) {
+            $ids = $this->getRequest()->getParam('link_id');
+        }
+
+        if ($this->getRequest()->getParam(Filter::SELECTED_PARAM)) {
+            $ids = $this->getRequest()->getParam(Filter::SELECTED_PARAM);
+        }
+
+        if (!$ids) {
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
+            $ids = $collection->getAllIds();
+        }
+
         if (!is_array($ids)) {
             $this->messageManager->addError(__('Please select item(s)'));
         } else {

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -369,8 +369,9 @@ class Replace extends \Magento\Framework\App\Helper\AbstractHelper
             $urltitle = $link->getUrlTitle() ? "title='{$link->getUrlTitle()}' " : '';
             $nofollow = $link->getIsNofollow() ? 'rel=\'nofollow\' ' : '';
             $target = $link->getUrlTarget() ? "target='{$link->getUrlTarget()}' " : '';
-            $html = "<a href='{$this->_prepareLinkUrl($link->getUrl())}' {$urltitle}{$target}{$nofollow}class='autolink' >".
-                        $link->getKeyword()."</a>";
+            $html = "<a href='{$this->_prepareLinkUrl($link->getUrl())}'"
+                        . " {$urltitle}{$target}{$nofollow}class='autolink' >"
+                        . $link->getKeyword()."</a>";
 
             $maxReplacements = self::MAX_NUMBER;
             if ($link->getMaxReplacements() > 0) {
@@ -412,7 +413,7 @@ class Replace extends \Magento\Framework\App\Helper\AbstractHelper
         if (strpos($url, 'http://') === false && strpos($url, 'https://') === false) {
             $baseUrl = $this->storeManager->getStore()->getBaseUrl();
             if (substr($url, 0, 1) == '/') {
-                $url = substr($url,1);
+                $url = substr($url, 1);
             }
             $url = $baseUrl . $url;
         }
@@ -463,6 +464,7 @@ class Replace extends \Magento\Framework\App\Helper\AbstractHelper
     /**
      * Replace words and left the same cases
      *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @param string $replace - html which will replace the keyword
      * @param string $source - initial text
      * @param int $maxReplacements - max number of replacements in this text.
@@ -472,6 +474,10 @@ class Replace extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected function replace($replace, $source, $maxReplacements, $replaceKeyword = false, $direct = false)
     {
+        if ($this->currentNumberOfLinks >= $this->getMaxLinkPerPage()) { //Links limit per page
+            return $source;
+        }
+
         if ($maxReplacements > 0 && $this->getRelpacementCount($replaceKeyword) > $maxReplacements) {
             return $source;
         }
@@ -484,7 +490,10 @@ class Replace extends \Magento\Framework\App\Helper\AbstractHelper
         // raw text, void of any html.
 
         $source = $pl->getTokenizedText();
-        preg_match_all('/'.preg_quote($replaceKeyword, '/').'/i', $source, $replaceKeywordVariations, PREG_OFFSET_CAPTURE);
+        preg_match_all('/'.preg_quote($replaceKeyword, '/').'/i',
+            $source,
+            $replaceKeywordVariations,
+            PREG_OFFSET_CAPTURE);
 
         // we will later need this to put the html we stripped out, back in.
         $translationTable = $pl->getTranslationTableArray();
@@ -505,6 +514,9 @@ class Replace extends \Magento\Framework\App\Helper\AbstractHelper
                     $keywordVariations = array_slice($keywordVariations, 0, $maxReplacements);
                 }
                 foreach ($keywordVariations as $keywordValue) {
+                    if ($this->currentNumberOfLinks >= $this->getMaxLinkPerPage()) { //Links limit per page
+                        break;
+                    }
                     $pl = new Replace\TextPlaceholder($source, $pregPatterns);
                     $source = $pl->getTokenizedText();
 

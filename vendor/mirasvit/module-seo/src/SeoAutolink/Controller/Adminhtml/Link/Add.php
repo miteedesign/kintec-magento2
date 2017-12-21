@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -34,18 +34,6 @@ class Add extends \Mirasvit\SeoAutolink\Controller\Adminhtml\Link
         $this->_initModel();
 
         $this->_initAction();
-        $this->_addBreadcrumb(
-            __('Link  Manager'),
-            __('Link Manager'),
-            $this->getUrl('*/*/')
-        );
-        $this->_addBreadcrumb(__('Add Link '), __('Add Link'));
-
-        $resultPage->getLayout()
-            ->getBlock('head')
-            ;
-
-        $this->_addContent($resultPage->getLayout()->createBlock('\Mirasvit\SeoAutolink\Block\Adminhtml\Link\Edit'));
 
         return $resultPage;
     }

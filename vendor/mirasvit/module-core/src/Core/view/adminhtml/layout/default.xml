@@ -3,6 +3,7 @@
     <body>
         <referenceContainer name="footer">
             <block class="Magento\Backend\Block\Template" name="mirasvit.utils" template="Mirasvit_Core::utils.phtml" />
+            <block class="Mirasvit\Core\Block\Adminhtml\License" name="mirasvit.license" template="Mirasvit_Core::license.phtml" />
         </referenceContainer>
         <referenceContainer name="page.title">
             <block class="Mirasvit\Core\Block\Adminhtml\Menu" name="mirasvit.menu" template="menu.phtml" />

@@ -1,19 +1,11 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Catalog\Test\Unit\Block\Product\View;
 
-use Magento\Catalog\Block\Product\ImageBlockBuilder;
-use Magento\Framework\App\ObjectManager;
-
-/**
- * Image gallery test
- *
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
- */
-class GalleryTest extends \PHPUnit_Framework_TestCase
+class GalleryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Magento\Catalog\Block\Product\View\Gallery
@@ -56,15 +48,6 @@ class GalleryTest extends \PHPUnit_Framework_TestCase
         $this->jsonEncoderMock = $this->getMockBuilder(\Magento\Framework\Json\EncoderInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
-
-        $objectManager = $this->getMockBuilder(ObjectManager::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $imageBlockBuilder = $this->getMockBuilder(ImageBlockBuilder::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $objectManager->expects($this->once())->method('get')->willReturn($imageBlockBuilder);
-        ObjectManager::setInstance($objectManager);
 
         $this->model = new \Magento\Catalog\Block\Product\View\Gallery(
             $this->context,
@@ -147,7 +130,7 @@ class GalleryTest extends \PHPUnit_Framework_TestCase
             ->willReturn('product_page_image_large_url');
 
         $images = $this->model->getGalleryImages();
-        $this->assertInstanceOf('Magento\Framework\Data\Collection', $images);
+        $this->assertInstanceOf(\Magento\Framework\Data\Collection::class, $images);
     }
 
     /**

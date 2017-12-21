@@ -6,7 +6,7 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-02-23 18:59:34
- * @@Modify Date: 2016-07-29 12:02:49
+ * @@Modify Date: 2017-05-30 12:02:49
  * @@Function:
  */ -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
@@ -19,54 +19,46 @@
             <label>ALO Themes</label>
             <tab>Magiccart</tab>
             <resource>Magiccart_Alothemes::config_alothemes</resource>
-<!--             <group id="general" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General</label>
-                <field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enabled</label>
-                    <comment>Enabled</comment>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-            </group> -->
             <group id="grid" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Grid Category</label>
                 <field id="mobile" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen <= 360: ]]></label>
+                    <label><![CDATA[max-width 360: ]]></label>
                     <comment><![CDATA[Number product show in screen ( Size <= 360 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
                 </field>
                 <field id="portrait" translate="label comment" type="select" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen ( 360, 480 ): ]]></label>
+                    <label><![CDATA[max-width 480: ]]></label>
                     <comment><![CDATA[Number product show in screen ( 360 < Size < 480 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
                 </field>
                 <field id="landscape" translate="label comment" type="select" sortOrder="10"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen [ 480, 640 ): ]]></label>
+                    <label><![CDATA[max-width 640: ]]></label>
                     <comment><![CDATA[Number product show in screen ( 480 <= Size < 640 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
                 </field>
                 <field id="tablet" translate="label comment" type="select" sortOrder="15"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen [ 640, 768 ): ]]></label>
+                    <label><![CDATA[max-width 768: ]]></label>
                     <comment><![CDATA[Number product show in screen ( 640 <= Size < 768 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
                 </field>
                 <field id="notebook" translate="label comment" type="select" sortOrder="20"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen [ 768, 992 ): ]]></label>
+                    <label><![CDATA[max-width 991: ]]></label>
                     <comment><![CDATA[Number product show in screen ( 768 <= Size < 992 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
                 </field>
                 <field id="desktop" translate="label comment" type="select" sortOrder="22"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen [ 992, 1200 ): ]]></label>
+                    <label><![CDATA[max-width 1199: ]]></label>
                     <comment><![CDATA[Number product show in screen ( 992 <= Size < 1200 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
                 </field>
                 <field id="visible" translate="label comment" type="select" sortOrder="25"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label><![CDATA[Display in Screen Size >= 1200: ]]></label>
+                    <label><![CDATA[min-width 1200: ]]></label>
                     <comment><![CDATA[Number product show in screen ( Size >= 1200 ) ]]></comment>
                     <source_model>Magiccart\Alothemes\Model\System\Config\Col</source_model>
                     <validate>required-entry validate-greater-than-zero</validate>
@@ -400,7 +392,6 @@
                 <field id="newText" translate="label comment" type="text" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>New Text Label: </label>
                     <comment>Text Label</comment>
-                    <validate>required-entry</validate>
                 </field>
 <!--                 <field id="saleLabel" translate="label comment" type="select" sortOrder="10"  showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Sale Text Label : </label>
@@ -410,7 +401,6 @@
                 <field id="saleText" translate="label comment" type="text" sortOrder="15"  showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Sale Text Label : </label>
                     <comment>Sale Text Label : </comment>
-                    <validate>required-entry</validate>
                 </field>
                 <field id="salePercent" translate="label comment" type="select" sortOrder="20"  showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Sale Label Percent: </label>
@@ -603,9 +593,13 @@
                     <label>User Name: </label>
                     <comment>User Name</comment>
                 </field>
+                <field id="accessToken" translate="label comment" type="text" sortOrder="2"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Access Token: </label>
+                    <comment>Get access Token follow guide here: http://jelled.com/instagram/access-token</comment>
+                </field>
                 <field id="limit" translate="label comment" type="text" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Speed</label>
-                    <comment>Speed</comment>
+                    <label>Limit</label>
+                    <comment>Limit</comment>
                     <validate>validate-zero-or-greater</validate>
                 </field>
             </group>
@@ -616,8 +610,8 @@
                     <comment>User Name</comment>
                 </field>
                 <field id="limit" translate="label comment" type="text" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Speed</label>
-                    <comment>Speed</comment>
+                    <label>Limit</label>
+                    <comment>Limit</comment>
                     <validate>validate-zero-or-greater</validate>
                 </field>
             </group>
@@ -628,8 +622,8 @@
                     <comment>User Name</comment>
                 </field>
                 <field id="limit" translate="label comment" type="text" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Speed</label>
-                    <comment>Speed</comment>
+                    <label>Limit</label>
+                    <comment>Limit</comment>
                     <validate>validate-zero-or-greater</validate>
                 </field>
             </group>
@@ -640,8 +634,8 @@
                     <comment>User Name</comment>
                 </field>
                 <field id="limit" translate="label comment" type="text" sortOrder="5"  showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Speed</label>
-                    <comment>Speed</comment>
+                    <label>Limit</label>
+                    <comment>Limit</comment>
                     <validate>validate-zero-or-greater</validate>
                 </field>
             </group>

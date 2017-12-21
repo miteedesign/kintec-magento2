@@ -137,19 +137,19 @@
 				</depends>
                 <options>
                     <option name="1" value="1" selected="true">
-                        <label translate="true">1 item per row</label>
+                        <label translate="true">1 row(s) /slider</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per row</label>
+                        <label translate="true">2 row(s) /slider</label>
                     </option>
                      <option name="3" value="3">
-                        <label translate="true">3 item per row</label>
+                        <label translate="true">3 row(s) /slider</label>
                     </option>
                     <option name="4" value="4">
-                        <label translate="true">4 item per row</label>
+                        <label translate="true">4 row(s) /slider</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per row</label>
+                        <label translate="true">5 row(s) /slider</label>
                     </option>
                 </options>
 			</parameter>
@@ -157,28 +157,28 @@
 				<label translate="true"><![CDATA[max-width 360: ]]></label>
                 <options>
                     <option name="1" value="1" selected="true">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>
@@ -186,28 +186,28 @@
 				<label translate="true"><![CDATA[max-width 480: ]]></label>
                 <options>
                     <option name="1" value="1" selected="true">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>
@@ -215,28 +215,28 @@
 				<label translate="true"><![CDATA[max-width 640: ]]></label>
                 <options>
                     <option name="1" value="1">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2" selected="true">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>
@@ -244,28 +244,28 @@
 				<label translate="true"><![CDATA[max-width 768: ]]></label>
                 <options>
                     <option name="1" value="1">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3" selected="true">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>
@@ -273,28 +273,28 @@
 				<label translate="true"><![CDATA[max-width 991: ]]></label>
                 <options>
                     <option name="1" value="1">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3" selected="true">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>
@@ -302,28 +302,28 @@
 				<label translate="true"><![CDATA[max-width 1199: ]]></label>
                 <options>
                     <option name="1" value="1">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4" selected="true">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>
@@ -331,28 +331,28 @@
 				<label translate="true"><![CDATA[min-width 1200: ]]></label>
                 <options>
                     <option name="1" value="1">
-                        <label translate="true">1 item per column</label>
+                        <label translate="true">1 item(s) /row</label>
                     </option>
                     <option name="2" value="2">
-                        <label translate="true">2 item per column</label>
+                        <label translate="true">2 item(s) /row</label>
                     </option>
                      <option name="3" value="3">
-                        <label translate="true">3 item per column</label>
+                        <label translate="true">3 item(s) /row</label>
                     </option>
                     <option name="4" value="4" selected="true">
-                        <label translate="true">4 item per column</label>
+                        <label translate="true">4 item(s) /row</label>
                     </option>
                     <option name="5" value="5">
-                        <label translate="true">5 item per column</label>
+                        <label translate="true">5 item(s) /row</label>
                     </option>
                     <option name="6" value="6">
-                        <label translate="true">6 item per column</label>
+                        <label translate="true">6 item(s) /row</label>
                     </option>
                     <option name="7" value="7">
-                        <label translate="true">7 item per column</label>
+                        <label translate="true">7 item(s) /row</label>
                     </option>
                     <option name="8" value="8">
-                        <label translate="true">8 item per column</label>
+                        <label translate="true">8 item(s) /row</label>
                     </option>
                 </options>
 			</parameter>

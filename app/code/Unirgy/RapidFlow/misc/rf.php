@@ -11,7 +11,7 @@ include __DIR__ . '/bootstrap.php';
 ///** @var Magento\Framework\Locale\ResolverInterface $localeResolver */
 //$localeResolver = $om->get('Magento\Framework\Locale\ResolverInterface');
 //$locale = 'nl_NL';
-//$oldLocale = $localeResolver->getLocale();
+//$oldLocale = $localeResolver->getLocaleFormat();
 //$localeResolver->setLocale($locale);
 //$localeResolver->setLocale($oldLocale);
 
@@ -43,10 +43,11 @@ function runRfProfile(ObjectManagerInterface $om, $profile)
     $helper->run($profile);
 }
 
-testRfEavExport($om);
-
-testRfCatExport($om);
-
-testRfExtraExport($om);
+runRfProfile($om, 5);
+//testRfEavExport($om);
+//
+//testRfCatExport($om);
+//
+//testRfExtraExport($om);
 
 // _ -u _www /usr/bin/php -d memory_limit=512M "<Magento root path>/app/code/Unirgy/RapidFlow/misc/rf.php"

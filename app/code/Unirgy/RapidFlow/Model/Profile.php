@@ -108,6 +108,15 @@ use Zend\Json\Json;
  */
 class Profile extends AbstractModel
 {
+    const NUM_WARNINGS   = 'num_warnings';
+    const NUM_ERRORS     = 'num_errors';
+    const ROWS_EMPTY     = 'rows_empty';
+    const ROWS_SUCCESS   = 'rows_success';
+    const ROWS_NOCHANGE  = 'rows_nochange';
+    const ROWS_DEPENDS   = 'rows_depends';
+    const ROWS_PROCESSED = 'rows_processed';
+    const ROWS_ERRORS    = 'rows_errors';
+
     /**
      * @var Config
      */

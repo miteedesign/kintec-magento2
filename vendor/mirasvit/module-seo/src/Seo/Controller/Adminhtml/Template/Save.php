@@ -9,13 +9,15 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
 
 
 namespace Mirasvit\Seo\Controller\Adminhtml\Template;
+
+use Mirasvit\Seo\Model\Config as Config;
 
 class Save extends \Mirasvit\Seo\Controller\Adminhtml\Template
 {
@@ -28,8 +30,11 @@ class Save extends \Mirasvit\Seo\Controller\Adminhtml\Template
             $data['sort_order'] = (isset($data['sort_order']) &&
                 trim($data['sort_order']) != '') ? (int) trim($data['sort_order']) : 10;
             $data = $this->prepareStoreIds($data);
+            $data = $this->prepareCompatibility($data);
+           
             $model = $this->_initModel();
             $model->setData($data);
+
 
             try {
                 $model->save();
@@ -37,7 +42,24 @@ class Save extends \Mirasvit\Seo\Controller\Adminhtml\Template
                 $this->backendSession->setFormData(false);
 
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', ['id' => $model->getId()]);
+                    $type = $model->getRuleType();
+                    switch ($type) {
+                        case Config::PRODUCTS_RULE:
+                            $path = '*/*/editProduct';
+                            break;
+
+                        case Config::CATEGORIES_RULE:
+                            $path = '*/*/editCategory';
+                            break;
+
+                        case Config::RESULTS_LAYERED_NAVIGATION_RULE:
+                            $path = '*/*/editLayeredNavigation';
+                            break;
+
+                        default:
+                            break;
+                    }
+                    $this->_redirect($path, ['id' => $model->getId()]);
 
                     return;
                 }
@@ -47,7 +69,7 @@ class Save extends \Mirasvit\Seo\Controller\Adminhtml\Template
             } catch (\Exception $e) {
                 $this->messageManager->addError($e->getMessage());
                 $this->backendSession->setFormData($data);
-                $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
+                $this->_redirect('*/*/');
 
                 return;
             }
@@ -56,15 +78,37 @@ class Save extends \Mirasvit\Seo\Controller\Adminhtml\Template
         $this->_redirect('*/*/');
     }
 
-     /**
+    /**
      * @param array $data
      * @return array
      */
-    protected function prepareStoreIds($data) {
-        if (isset($data['store_ids'])
-            && count($data['store_ids']) > 1
-            && in_array(0, $data['store_ids'])) {
-            $data['store_ids'] = array(0);
+    protected function prepareStoreIds($data)
+    {
+        if (isset($data['use_config']['store_ids'])
+            && $data['use_config']['store_ids'] == 'true') {
+            $data['store_ids'] = [0];
+        } elseif (isset($data['store_id'])) {
+            $data['store_ids'] = $data['store_id'];
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    protected function prepareCompatibility($data)
+    {
+        if (isset($data['conditions_serialized']) 
+            && $data['conditions_serialized']) {
+                $data['conditions_serialized'] = $this->compatibilityService
+                    ->prepareRuleDataForSave($data['conditions_serialized']);
+        }
+        if (isset($data['actions_serialized'])
+            && $data['actions_serialized']) {
+                $data['actions_serialized'] = $this->compatibilityService
+                    ->prepareRuleDataForSave($data['actions_serialized']);
         }
 
         return $data;

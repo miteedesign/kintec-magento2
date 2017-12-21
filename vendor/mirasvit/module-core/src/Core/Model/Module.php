@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-core
- * @version   1.2.27
+ * @version   1.2.40
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -76,7 +76,11 @@ class Module
     public function getAllModules()
     {
         if (self::$modules == null) {
-            self::$modules = json_decode(file_get_contents('http://mirasvit.com/pc/modules/'), true);
+            self::$modules = json_decode(@file_get_contents('http://mirasvit.com/pc/modules/'), true);
+
+            if (!is_array(self::$modules)) {
+                self::$modules = [];
+            }
         }
 
         return self::$modules;

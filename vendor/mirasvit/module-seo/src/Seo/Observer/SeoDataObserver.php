@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -81,6 +81,10 @@ class SeoDataObserver implements ObserverInterface
      * @var bool
      */
     protected $isProductDescriptionPrinted = false;
+    /**
+     * @var Array
+     */
+    protected $processedProductAttributes = ['name', 'short_description', 'description'];
 
     /**
      * @param \Magento\Framework\Event\Observer $observer
@@ -113,8 +117,7 @@ class SeoDataObserver implements ObserverInterface
 
         //$layout = $this->objectManager->get('\Magento\Framework\View\LayoutInterface');
         $layout = $this->context->getLayout();
-        $pageMainTitle = $layout->getBlock('page.main.title');
-        if ($pageMainTitle && $seo->getTitle()) {
+        if ($seo->getTitle() && $pageMainTitle = $layout->getBlock('page.main.title')) {
             $pageMainTitle->setPageTitle($seo->getTitle());
         }
     }
@@ -161,6 +164,10 @@ class SeoDataObserver implements ObserverInterface
             return $outputHtml;
         }
 
+        if (!in_array($params['attribute'], $this->processedProductAttributes)) {
+            return $outputHtml;
+        }
+
         if ($params['attribute'] == 'name' && $this->isProductTitlePrinted) {
             return $outputHtml;
         }
@@ -172,6 +179,7 @@ class SeoDataObserver implements ObserverInterface
         if ($params['attribute'] == 'description' && $this->isProductDescriptionPrinted) {
             return $outputHtml;
         }
+
         $seo = $this->seoData->getCurrentSeo();
         switch ($params['attribute']) {
             case 'name':

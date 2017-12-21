@@ -6,7 +6,7 @@
  * @license 	http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-04-27 22:38:59
+ * @@Modify Date: 2017-05-22 14:13:55
  * @@Function:
  */
 
@@ -39,6 +39,10 @@ class Product extends \Magento\Framework\View\Element\Template implements \Magen
                         ->addFieldToFilter('identifier', $identifier)->addFieldToFilter('type_id', $this->_typeId)->getFirstItem();
 		$config = $item->getConfig();
 		$data = @unserialize($config);
+        if(!$data){
+            echo '<div class="message-error error message">Identifier "'. $identifier . '" not exist.</div> ';        
+            return;
+        }
 		if($data['slide']){
             $breakpoints = $this->getResponsiveBreakpoints();
             $total = count($breakpoints);
@@ -53,8 +57,7 @@ class Product extends \Magento\Framework\View\Element\Template implements \Magen
             $data['swipe-To-Slide'] = 'true';
             $data['vertical-Swiping'] = $data['vertical'];
 		}
-
-        $this->addData($data);
+		if(is_array($data)) $this->addData($data);
         parent::_construct();
     }
 
@@ -115,7 +118,7 @@ class Product extends \Magento\Framework\View\Element\Template implements \Magen
 
     public function getResponsiveBreakpoints()
     {
-        return array(1201=>'visible', 991=>'desktop', 769=>'tablet', 641=>'landscape', 481=>'portrait', 361=>'mobile', 1=>'mobile');
+        return array(1201=>'visible', 1200=>'desktop', 992=>'notebook', 769=>'tablet', 641=>'landscape', 481=>'portrait', 361=>'mobile', 1=>'mobile');
     }
 
     public function getSlideOptions()

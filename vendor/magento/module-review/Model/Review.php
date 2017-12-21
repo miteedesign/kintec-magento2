@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Review\Model;
@@ -13,6 +13,7 @@ use Magento\Review\Model\ResourceModel\Review\Status\Collection as StatusCollect
 /**
  * Review model
  *
+ * @api
  * @method string getCreatedAt()
  * @method \Magento\Review\Model\Review setCreatedAt(string $value)
  * @method \Magento\Review\Model\Review setEntityId(int $value)
@@ -21,6 +22,7 @@ use Magento\Review\Model\ResourceModel\Review\Status\Collection as StatusCollect
  * @method int getStatusId()
  * @method \Magento\Review\Model\Review setStatusId(int $value)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @since 100.0.2
  */
 class Review extends \Magento\Framework\Model\AbstractModel implements IdentityInterface
 {
@@ -161,7 +163,7 @@ class Review extends \Magento\Framework\Model\AbstractModel implements IdentityI
      */
     protected function _construct()
     {
-        $this->_init('Magento\Review\Model\ResourceModel\Review');
+        $this->_init(\Magento\Review\Model\ResourceModel\Review::class);
     }
 
     /**
@@ -276,9 +278,9 @@ class Review extends \Magento\Framework\Model\AbstractModel implements IdentityI
             $errors[] = __('Please enter a nickname.');
         }
 
-        /*if (!\Zend_Validate::is($this->getDetail(), 'NotEmpty')) {
+        if (!\Zend_Validate::is($this->getDetail(), 'NotEmpty')) {
             $errors[] = __('Please enter a review.');
-        }*/
+        }
 
         if (empty($errors)) {
             return true;

@@ -58,8 +58,8 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     {
         $store = $this->getRequest()->getParam('store');
         $collection = $this->_magicmenuCollectionFactory->create();
-        $collection->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)))
-                ->addFieldToFilter('extra', 1);
+        if($store) $collection->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)));
+        $collection->addFieldToFilter('extra', 1);
         $this->setCollection($collection);
 
         return parent::_prepareCollection();

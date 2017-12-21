@@ -6,7 +6,7 @@
  * @license 	http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-06-08 14:31:40
+ * @@Modify Date: 2017-03-16 17:39:47
  * @@Function:
  */
 
@@ -97,17 +97,18 @@ class Brand extends \Magento\Framework\View\Element\Template implements \Magento
 
     public function getUrlBrand($brand)
     {
-        $typeLink = '1';
+        $typeLink = $this->getData('link');
         $baseUrl  = $this->_storeManager->getStore()->getBaseUrl();
         $attrCode = $this->getData('attributeCode');
         $link = '#';
         if(!$typeLink) $link = $brand->getUrlkey() ? $baseUrl . $brand->getUrlkey() : '#';
-        else {
+        elseif($typeLink == '2' && $brand->getOptionId()){
+            $link = $baseUrl . 'catalogsearch/advanced/result/?' . $attrCode . urlencode('[]') . '=' . $brand->getOptionId();
+        } elseif($typeLink == '1') {
             $attr = $this->getAttribute();
-            if ($attr->usesSource()) {
+            if($attr->usesSource()){
                 $option  = $attr->getSource()->getOptionText($brand->getOptionId());
-                if($typeLink == '1')  $link = $baseUrl . 'catalogsearch/result/?q=' .$option;
-                elseif($typeLink == '2') $link = $baseUrl . 'catalogsearch/advanced/result/?' . $attrCode . urlencode('[]') . '=' . $option;
+                $link = $baseUrl . 'catalogsearch/result/?q=' .$option; 
             }
         }
         return $link;

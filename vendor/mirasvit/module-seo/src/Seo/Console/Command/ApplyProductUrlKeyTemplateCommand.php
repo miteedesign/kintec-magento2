@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -36,8 +36,8 @@ class ApplyProductUrlKeyTemplateCommand extends \Symfony\Component\Console\Comma
     protected $urlRewriteProduct;
 
      /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
-     */
+      * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+      */
     protected $productCollectionFactory;
 
     /**
@@ -145,71 +145,73 @@ class ApplyProductUrlKeyTemplateCommand extends \Symfony\Component\Console\Comma
             || $input->getOption('restore-product-url-key-template')
             || $input->getOption('apply-product-url-key-template') ) {
                 gc_collect_cycles();
-                if (!$this->appState->getAreaCode()) {
-                    $this->appState->setAreaCode('frontend');
-                }
+            if (!$this->appState->isAreaCodeEmulated()) {
+                $this->appState->setAreaCode('frontend');
+            }
                 $urlKeyTemplate = $this->productUrlKeyTemplate->getUrlKeyTemplate();
 
-                if (!$urlKeyTemplate) {
-                    echo "Product URL Key Template is disabled in SEO configuration";
-                    return true;
+            if (!$urlKeyTemplate) {
+                echo "Product URL Key Template is disabled in SEO configuration";
+                return true;
+            }
+
+            foreach ($this->urlRewriteProduct as $rewrite) {
+                $storeId = $rewrite->getStoreId();
+                if (!isset($urlKeyTemplate[$storeId]) || !$urlKeyTemplate[$storeId]) {
+                    continue;
+                }
+                $productId = $rewrite->getEntityId();
+                $product = $this->productCollectionFactory->create()
+                            ->addAttributeToSelect('*')
+                            ->addFieldToFilter('entity_id', $productId)
+                            ->setStoreId($storeId)
+                            ->getFirstItem()
+                            ->setStoreId($storeId);
+
+                $templ = $this->objectProducturlFactory->create()
+                                ->setProduct($product);
+                if ($input->getOption('restore-product-url-key-template')) {
+                    $urlKeyTemplate[$storeId] = '[product_name]';
+                }
+                $urlKey = $templ->parse($urlKeyTemplate[$storeId]);
+                $urlKey = $product->formatUrlKey($urlKey);
+
+                if ($urlKey == $product->getUrlKey()) {
+                    echo 'product ID: ' . $productId . ' | store ID: ' . $storeId . ' | already use url key: ' . $urlKey . PHP_EOL;
+                    continue;
                 }
 
-                foreach ($this->urlRewriteProduct as $rewrite) {
-                    $storeId = $rewrite->getStoreId();
-                    if (!isset($urlKeyTemplate[$storeId]) || !$urlKeyTemplate[$storeId]) {
-                        continue;
-                    }
-                    $productId = $rewrite->getEntityId();
-                    $product = $this->productCollectionFactory->create()
-                                ->addAttributeToSelect('*')
-                                ->addFieldToFilter('entity_id', $productId)
-                                ->setStoreId($storeId)
-                                ->getFirstItem()
-                                ->setStoreId($storeId);
+                $urlKeyUnique = $this->productUrlKeyTemplate->checkUrlKeyUnique($urlKey, $productId, $storeId);
 
-                    $templ = $this->objectProducturlFactory->create()
-                                    ->setProduct($product);
-                    if ($input->getOption('restore-product-url-key-template')) {
-                        $urlKeyTemplate[$storeId] = '[product_name]';
+                if ($urlKey && $urlKeyUnique === true) {
+                    if (!$input->getOption('product-url-key-template-example')) { $this->productUrlKeyTemplate->applyUrlKey($urlKey, $product); 
                     }
-                    $urlKey = $templ->parse($urlKeyTemplate[$storeId]);
-                    $urlKey = $product->formatUrlKey($urlKey);
-
-                    if ($urlKey == $product->getUrlKey()) {
-                        echo 'product ID: ' . $productId . ' | store ID: ' . $storeId . ' | already use url key: ' . $urlKey . PHP_EOL;
-                        continue;
-                    }
-
-                    $urlKeyUnique = $this->productUrlKeyTemplate->checkUrlKeyUnique($urlKey, $productId, $storeId);
-
-                    if ($urlKey && $urlKeyUnique === true) {
-                        if (!$input->getOption('product-url-key-template-example')) $this->productUrlKeyTemplate->applyUrlKey($urlKey, $product);
-                        $memUsage = memory_get_usage(true);
-                        echo 'product ID: ' . $productId . ' | store ID: ' . $storeId
-                        . ' | added url key: ' . $urlKey . ' | php memory: ' . round($memUsage/1048576,2). 'Mb' . PHP_EOL;
-                    } elseif ($urlKey) {
-                        $info = 'product ID: ' . $productId . ' | store ID: ' . $storeId
-                        . ' | duplicate url key not added (this info has been added in file ' . $this->logPath . '): ' . $urlKey . PHP_EOL;
-                        echo $info;
-                        $this->log($info);
-                    } else {
-                        $info = 'product ID: ' . $productId . ' | store ID: ' . $storeId
-                        . ' | empty url key not added (this info has been added in file ' . $this->logPath . '): ' . $urlKey . PHP_EOL;
-                        echo $info;
-                        $this->log($info);
-                    }
+                    $memUsage = memory_get_usage(true);
+                    echo 'product ID: ' . $productId . ' | store ID: ' . $storeId
+                    . ' | added url key: ' . $urlKey . ' | php memory: ' . round($memUsage/1048576, 2). 'Mb' . PHP_EOL;
+                } elseif ($urlKey) {
+                    $info = 'product ID: ' . $productId . ' | store ID: ' . $storeId
+                    . ' | duplicate url key not added (this info has been added in file ' . $this->logPath . '): ' . $urlKey . PHP_EOL;
+                    echo $info;
+                    $this->log($info);
+                } else {
+                    $info = 'product ID: ' . $productId . ' | store ID: ' . $storeId
+                    . ' | empty url key not added (this info has been added in file ' . $this->logPath . '): ' . $urlKey . PHP_EOL;
+                    echo $info;
+                    $this->log($info);
                 }
+            }
 
-                if ($input->getOption('restore-product-url-key-template')
+            if ($input->getOption('restore-product-url-key-template')
                     || $input->getOption('apply-product-url-key-template') ) {
-                        $this->cleanCache->cleanAllCache();
+                    $this->cleanCache->cleanAllCache();
 
-                }
+            }
         }
     }
 
-    protected function log($info) {
+    protected function log($info) 
+    {
         $writer = new \Zend\Log\Writer\Stream(BP . $this->logPath);
         $logger = new \Zend\Log\Logger();
         $logger->addWriter($writer);

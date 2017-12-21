@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -55,7 +55,7 @@ class CurrentSeoData extends \Magento\Framework\App\Helper\AbstractHelper
     ) {
         $this->config = $config;
         $this->seoautolinkData = $objectManager->get('\Mirasvit\SeoAutolink\Helper\Replace');
-        $this->currentSeoData = $seoData->getCurrentSeo();
+        $this->currentSeoData = $seoData;
         $this->moduleManager = $moduleManager;
     }
 
@@ -64,7 +64,7 @@ class CurrentSeoData extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getCurrentSeoData()
     {
-        return $this->currentSeoData;
+        return $this->currentSeoData->getCurrentSeo();
     }
 
     /**
@@ -117,6 +117,6 @@ class CurrentSeoData extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getSeoDescriptionPosition()
     {
-        return $this->currentSeoData->getDescriptionPosition();
+        return $this->getCurrentSeoData()->getDescriptionPosition();
     }
 }

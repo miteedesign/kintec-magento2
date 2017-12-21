@@ -93,12 +93,17 @@ class Url extends AbstractHelper
     }
 
     /**
+     * @param int|null $storeId
      * @throws \Magento\Framework\Exception\AlreadyExistsException
      */
-    public function updateProductsUrlRewrites()
+    public function updateProductsUrlRewrites($storeId = null)
     {
         foreach ($this->_productsToUpdate as $productId => $productData) {
             $this->refreshProductRewrite($productId, $productData);
+            if ($productData['store_id'] !== 0) {
+                $productData['store_id'] = 0;
+                $this->refreshProductRewrite($productId, $productData);
+            }
         }
     }
 
@@ -116,7 +121,6 @@ class Url extends AbstractHelper
 //            $field = RfProduct::ROW_ID;
 //        }
         $product->setId($productId);
-
         foreach ($this->vitalForGenerationFields as $field) {
             if (isset($productData[$field])) {
                 $product->setData($field, $productData[$field]);

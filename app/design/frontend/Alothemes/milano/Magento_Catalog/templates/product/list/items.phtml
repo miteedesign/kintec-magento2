@@ -18,7 +18,7 @@ switch ($type = $block->getType()) {
             $class = $type;
 
             $image = 'related_products_list';
-            $title = __('You might also like');
+            $title = __('Related Products');
             $items = $block->getAllItems();
             $limit = $block->getPositionLimit();
             $shuffle = (int) $block->isShuffled();
@@ -39,7 +39,7 @@ switch ($type = $block->getType()) {
             $class = $type;
 
             $image = 'related_products_list';
-            $title = __('You might also like');
+            $title = __('Related Products');
             $items = $block->getItems();
             $limit = 0;
             $shuffle = 0;
@@ -284,7 +284,6 @@ switch ($type = $block->getType()) {
                                 <?php if (!$_item->getRequiredOptions()): ?>
                                     <div class="field choice related">
                                         <input type="checkbox" class="checkbox related" id="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>" name="related_products[]" value="<?php /* @escapeNotVerified */ echo $_item->getId() ?>" />
-                                        <!--<label class="label" for="related-checkbox<?php /* @escapeNotVerified */ //echo $_item->getId() ?>"><span><?php /* @escapeNotVerified */ //echo __('Add to Cart') ?></span></label>-->
                                     </div>
                                 <?php endif; ?>
                             <?php endif; ?>

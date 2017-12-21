@@ -37,7 +37,7 @@
                 <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
                     <?php $flag = 'style="background-image:url('. $block->getViewFileUrl(('images/flags/'. $_lang->getCode() .'.png')) .');"'; ?>
                     <li class="view-<?php echo $block->escapeHtml($_lang->getCode()); ?> switcher-option">
-                        <a href="<?php echo $_lang->getCurrentUrl(); ?>" <?php echo $flag ?>>
+                        <a href="#" <?php echo $flag ?> data-post='<?php /* @escapeNotVerified */ echo $block->getTargetStorePostData($_lang); ?>'>
                             <?php echo $block->escapeHtml($_lang->getName()) ?></a>
                     </li>
                 <?php endif; ?>

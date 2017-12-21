@@ -9,62 +9,30 @@
 /**
  * @var \Magento\Theme\Block\Html\Header $block
  */
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$customerSession = $objectManager->get('Magento\Customer\Model\Session');
-$isLoggedIn = $customerSession->isLoggedIn();
-$msg = $isLoggedIn ? __('Welcome') .', '. $customerSession->getCustomer()->getName() : $this->getWelcome() 
 ?>
+<link href="//fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet"> 
 <header class="page-header alothemes">
     <div class="header">
 		<div class="header-top">
 			<div class="container">
 				<div class="row">
 					<div class="top-left col-md-5 col-sm-5 col-xs-12">
-						<p class="greet welcome-msg"><?php echo $msg; ?></p>
+						<?php echo $this->getChildHtml('welcometop'); ?>
 					</div>
 					<div class="top-right col-md-7 col-sm-7 col-xs-12">
 						<div class="header-setting">
 							<div class="settting-switcher">
-								<div class="dropdown-toggle">
+								<div class="dropdown-toggle toggle-tab">
 									<div class="text-setting"><?php echo __('Links'); ?></div>
 								</div>
-								<div class="dropdown-switcher">
-									<div class="top-links-alo">
-										<div class="header-top-link">
-											<?php echo $this->getChildHtml('header.links'); ?>
-										</div>
-									</div>
+								<div class="dropdown-switcher toggle-content">
 									<?php echo $this->getChildHtml('currency'); ?>
 								    <?php echo $this->getChildHtml('store_language'); ?>
 								</div>
 							</div>
-								<ul class="top-links">
-								 <?php if( $isLoggedIn ) { ?>
-								    <li>
-										<a href="<?php echo $this->getUrl('customer/account/'); ?>" title="<?php echo __('My account') ?>"><?php echo __('My account') ?>
-										</a>
-									</li>
-									<li>
-									<span class="or"><?php echo __('Or') ?></span>
-									</li>
-								    <li class="logout">
-										<a href="<?php echo $this->getUrl('customer/account/logout'); ?>" title="<?php echo __('Sign Out') ?>"><?php echo __('Sign Out') ?>
-										</a>
-									</li>
-								 <?php } else { ?>
-									<li class="login">
-									  <a href="<?php echo $this->getUrl('customer/account/login'); ?>" title="<?php echo __('Sign In') ?>"><?php echo __('Sign In') ?>
-									  </a>
-									</li>
-									<li>
-										<span class="or"><?php echo __('Or') ?></span>
-									</li>
-									<li class="first">
-										<a id="quick_sigup_link" style="positon:relative;" href="<?php echo $this->getUrl('customer/account/create'); ?>" title="<?php echo __('Register') ?>"><?php echo __('Register') ?>
-										</a>
-									</li>
-								 <?php }  ?>
-					            </ul>
+							<div class="top-links">
+							<?php echo $this->getChildHtml('header.links'); ?>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -1,15 +1,12 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
 namespace Magento\Catalog\Pricing\Render;
 
 use Magento\Catalog\Pricing\Price;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Module\Manager;
-use Magento\Framework\Pricing\Render;
 use Magento\Framework\Pricing\Render\PriceBox as BasePriceBox;
 use Magento\Msrp\Pricing\Price\MsrpPrice;
 use Magento\Catalog\Model\Product\Pricing\Renderer\SalableResolverInterface;
@@ -17,13 +14,14 @@ use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\Pricing\SaleableInterface;
 use Magento\Framework\Pricing\Price\PriceInterface;
 use Magento\Framework\Pricing\Render\RendererPool;
+use Magento\Framework\App\ObjectManager;
+use Magento\Catalog\Pricing\Price\MinimalPriceCalculatorInterface;
 
 /**
  * Class for final_price rendering
  *
  * @method bool getUseLinkForAsLowAs()
  * @method bool getDisplayMinimalPrice()
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class FinalPriceBox extends BasePriceBox
 {
@@ -32,8 +30,10 @@ class FinalPriceBox extends BasePriceBox
      */
     private $salableResolver;
 
-    /** @var  Manager */
-    private $moduleManager;
+    /**
+     * @var MinimalPriceCalculatorInterface
+     */
+    private $minimalPriceCalculator;
 
     /**
      * @param Context $context
@@ -42,6 +42,7 @@ class FinalPriceBox extends BasePriceBox
      * @param RendererPool $rendererPool
      * @param array $data
      * @param SalableResolverInterface $salableResolver
+     * @param MinimalPriceCalculatorInterface $minimalPriceCalculator
      */
     public function __construct(
         Context $context,
@@ -49,11 +50,13 @@ class FinalPriceBox extends BasePriceBox
         PriceInterface $price,
         RendererPool $rendererPool,
         array $data = [],
-        SalableResolverInterface $salableResolver = null
+        SalableResolverInterface $salableResolver = null,
+        MinimalPriceCalculatorInterface $minimalPriceCalculator = null
     ) {
         parent::__construct($context, $saleableItem, $price, $rendererPool, $data);
-        $this->salableResolver = $salableResolver ?: \Magento\Framework\App\ObjectManager::getInstance()
-            ->get(SalableResolverInterface::class);
+        $this->salableResolver = $salableResolver ?: ObjectManager::getInstance()->get(SalableResolverInterface::class);
+        $this->minimalPriceCalculator = $minimalPriceCalculator
+            ?: ObjectManager::getInstance()->get(MinimalPriceCalculatorInterface::class);
     }
 
     /**
@@ -61,13 +64,11 @@ class FinalPriceBox extends BasePriceBox
      */
     protected function _toHtml()
     {
-        // Check catalog permissions
-        if ($this->getSaleableItem()->getCanShowPrice() === false) {
+        if (!$this->salableResolver->isSalable($this->getSaleableItem())) {
             return '';
         }
 
         $result = parent::_toHtml();
-
         //Renders MSRP in case it is enabled
         if ($this->isMsrpPriceApplicable()) {
             /** @var BasePriceBox $msrpBlock */
@@ -90,14 +91,8 @@ class FinalPriceBox extends BasePriceBox
      *
      * @return bool
      */
-    private function isMsrpPriceApplicable()
+    protected function isMsrpPriceApplicable()
     {
-        $moduleManager = $this->getModuleManager();
-
-        if (!$moduleManager->isEnabled('Magento_Msrp') || !$moduleManager->isOutputEnabled('Magento_Msrp')) {
-            return false;
-        }
-
         try {
             /** @var MsrpPrice $msrpPriceType */
             $msrpPriceType = $this->getSaleableItem()->getPriceInfo()->getPrice('msrp_price');
@@ -106,12 +101,7 @@ class FinalPriceBox extends BasePriceBox
             return false;
         }
 
-        if ($msrpPriceType === null) {
-            return false;
-        }
-
         $product = $this->getSaleableItem();
-
         return $msrpPriceType->canApplyMsrp($product) && $msrpPriceType->isMinimalPriceLessMsrp($product);
     }
 
@@ -136,11 +126,15 @@ class FinalPriceBox extends BasePriceBox
      */
     public function renderAmountMinimal()
     {
-        /** @var \Magento\Catalog\Pricing\Price\FinalPrice $price */
-        $price = $this->getPriceType(\Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE);
         $id = $this->getPriceId() ? $this->getPriceId() : 'product-minimal-price-' . $this->getSaleableItem()->getId();
+
+        $amount = $this->minimalPriceCalculator->getAmount($this->getSaleableItem());
+        if ($amount === null) {
+            return '';
+        }
+
         return $this->renderAmount(
-            $price->getMinimalPrice(),
+            $amount,
             [
                 'display_label'     => __('As low as'),
                 'price_id'          => $id,
@@ -169,13 +163,15 @@ class FinalPriceBox extends BasePriceBox
      */
     public function showMinimalPrice()
     {
+        $minTierPrice = $this->minimalPriceCalculator->getValue($this->getSaleableItem());
+
         /** @var Price\FinalPrice $finalPrice */
         $finalPrice = $this->getPriceType(Price\FinalPrice::PRICE_CODE);
         $finalPriceValue = $finalPrice->getAmount()->getValue();
-        $minimalPriceAValue = $finalPrice->getMinimalPrice()->getValue();
+
         return $this->getDisplayMinimalPrice()
-        && $minimalPriceAValue
-        && $minimalPriceAValue < $finalPriceValue;
+            && $minTierPrice !== null
+            && $minTierPrice < $finalPriceValue;
     }
 
     /**
@@ -199,18 +195,6 @@ class FinalPriceBox extends BasePriceBox
         $cacheKeys['display_minimal_price'] = $this->getDisplayMinimalPrice();
         $cacheKeys['is_product_list'] = $this->isProductList();
         return $cacheKeys;
-    }
-
-    /**
-     * @deprecated
-     * @return Manager
-     */
-    private function getModuleManager()
-    {
-        if ($this->moduleManager === null) {
-            $this->moduleManager = ObjectManager::getInstance()->get(Manager::class);
-        }
-        return $this->moduleManager;
     }
 
     /**

@@ -10,7 +10,6 @@ use Magento\CatalogRule\Model\Rule as CatalogModelRule;
  *
  * @method ResourceModel\CatalogRule getResource()
  * @method string getFromDate()
- * @package Unirgy\RapidFlow\Model
  */
 class CatalogRule extends CatalogModelRule
 {

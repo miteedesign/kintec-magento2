@@ -9,17 +9,24 @@
     <type name="Magento\Theme\Block\Html\Pager">
         <plugin name="dispatch" type="Mirasvit\Seo\Model\Plugin\Pager" sortOrder="1000"/>
     </type>
+
+    <!--make controller_front_send_response_before not working if FPC enabled, because it do FPC result slower-->
     <type name="Magento\Framework\Event\Invoker\InvokerDefault">
-        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\Dispatch" sortOrder="1000"/>
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\DispatchPlugin" sortOrder="1000"/>
     </type>
-    <type name="Magento\PageCache\Model\App\FrontController\BuiltinPlugin">
-        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\BuiltinPlugin" sortOrder="1000"/>
-    </type>
+
+    <!--add SEO data (snippets, opengraph, meta) for controller_front_send_response_before in response-->
     <type name="Magento\Framework\App\PageCache\Kernel">
-        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\Kernel" sortOrder="1000"/>
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\ApplyResponsePlugin" sortOrder="1000"/>
     </type>
+
+    <!--add SEO data (snippets, opengraph, meta) for controller_front_send_response_before in response if FPC Warmer installed-->
+    <type name="Mirasvit\CacheWarmer\Plugin\Debug\OnMissPlugin">
+        <plugin name="dispatch" type="Mirasvit\Seo\Plugin\Event\ApplyWarmResponsePlugin" sortOrder="1000"/>
+    </type>
+
     <type name="Magento\Framework\Controller\ResultInterface">
-        <plugin name="change-title-before-cache" type="Mirasvit\Seo\Plugin\ChangeResult\Title"/>
+        <plugin name="change-title-before-cache" type="Mirasvit\Seo\Plugin\ChangeResult\ChangeContent"/>
     </type>
     <type name="Magento\Framework\View\TemplateEngineFactory">
         <plugin name="add_seo_description_under_template" type="Mirasvit\Seo\Plugin\Template\AddSeoDescriptionUnderTemplate" sortOrder="1001"/>

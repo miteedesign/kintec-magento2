@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -23,6 +23,9 @@ use \Mirasvit\Seo\Api\Service\FriendlyUrl\ProductUrlKeyTemplateInterface as UrlK
 use \Mirasvit\Seo\Api\Data\SuffixInterface as Suffix;
 use \Mirasvit\Seo\Api\Data\TableInterface as Table;
 
+/**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\ProductUrlKeyTemplateInterface
 {
     /**
@@ -34,10 +37,6 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
      * @var Table
      */
     protected $tableName;
-    /**
-     * @var ProductUrlRewriteGenerator
-     */
-    protected $productUrlRewriteGenerator;
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
@@ -45,7 +44,7 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
     protected $storeManager;
 
     /**
-     * @var\Mirasvit\Seo\Api\Config\ProductUrlTemplateConfigInterface
+     * @var \Mirasvit\Seo\Api\Config\ProductUrlTemplateConfigInterface
      */
     protected $productUrlTemplateConfig;
 
@@ -72,7 +71,6 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
     /**
      * @param Suffix $producSuffix,
      * @param Table $tableName,
-     * @param ProductUrlRewriteGenerator $productUrlRewriteGenerator,
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager,
      * @param \Mirasvit\Seo\Api\Config\ProductUrlTemplateConfigInterface $productUrlTemplateConfig,
      * @param \Magento\UrlRewrite\Model\UrlPersistInterface $urlPersist,
@@ -82,7 +80,6 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
     public function __construct(
         Suffix $producSuffix,
         Table $tableName,
-        ProductUrlRewriteGenerator $productUrlRewriteGenerator,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Mirasvit\Seo\Api\Config\ProductUrlTemplateConfigInterface $productUrlTemplateConfig,
         \Magento\UrlRewrite\Model\UrlPersistInterface $urlPersist,
@@ -91,7 +88,6 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
     ) {
         $this->producSuffix = $producSuffix;
         $this->tableName = $tableName;
-        $this->productUrlRewriteGenerator = $productUrlRewriteGenerator;
         $this->storeManager = $storeManager;
         $this->productUrlTemplateConfig = $productUrlTemplateConfig;
         $this->urlPersist = $urlPersist;
@@ -102,7 +98,8 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
     /**
      * @return bool|array
      */
-    public function getUrlKeyTemplate() {
+    public function getUrlKeyTemplate() 
+    {
         $urlTemplate = [];
         $isUrlKeyTemplateEnabled = false;
         foreach ($this->storeManager->getStores() as $store) {
@@ -129,7 +126,8 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
      *
      * @return bool|array
      */
-    public function checkUrlKeyUnique($urlKey, $productId, $storeId) {
+    public function checkUrlKeyUnique($urlKey, $productId, $storeId) 
+    {
         $isUniqueUrlKey = true;
         $url = $urlKey;
         if ($suffix = $this->producSuffix->getProductUrlSuffix($storeId)) {
@@ -161,7 +159,8 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
      *
      * @return void
      */
-    public function applyUrlKey($urlKey, $product) {
+    public function applyUrlKey($urlKey, $product) 
+    {
         $product->setUrlKey($urlKey);
 
         $this->urlPersist->deleteByData([
@@ -172,7 +171,11 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
         ]);
 
         if ($product->isVisibleInSiteVisibility()) {
-            $this->urlPersist->replace($this->productUrlRewriteGenerator->generate($product));
+            //setup::install compatibility
+            $productUrlRewriteGenerator = \Magento\Framework\App\ObjectManager::getInstance()->get(
+                \Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator::class
+            );
+            $this->urlPersist->replace($productUrlRewriteGenerator->generate($product));
             $this->updateEntityUrlKey($urlKey, $product);
         }
     }
@@ -183,9 +186,10 @@ class ProductUrlKeyTemplate implements \Mirasvit\Seo\Api\Service\FriendlyUrl\Pro
      *
      * @return void
      */
-    public function updateEntityUrlKey($urlKey, $product) {
+    public function updateEntityUrlKey($urlKey, $product) 
+    {
         $productId = $product->getId();
-        $attributeId = $this->eavAttribute->getIdByCode('catalog_product','url_key');
+        $attributeId = $this->eavAttribute->getIdByCode('catalog_product', 'url_key');
         $storeId = $product->getStoreId();
         $table = $this->tableName->getTable('catalog_product_entity_varchar');
         $select = $this->connection->select()

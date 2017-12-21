@@ -8,10 +8,10 @@
         "AFL-3.0"
     ],
     "require": {
-        "magento/product-community-edition": "2.1.6",
+        "magento/product-community-edition": "2.2.0",
         "composer/composer": "@alpha",
         "mjankiewicz/configurableproduct": "dev-master",
-        "mirasvit/module-seo": "^1.0",
+        "mirasvit/module-seo": "^2.0",
         "fooman/tcpdf": "^6.2.12"
     },
     "require-dev": {

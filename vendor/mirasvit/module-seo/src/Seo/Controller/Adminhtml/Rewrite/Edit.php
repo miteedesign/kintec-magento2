@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -29,20 +29,11 @@ class Edit extends \Mirasvit\Seo\Controller\Adminhtml\Rewrite
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
 
-        $rewriteId = $this->getRequest()->getParam('id');
-        $_model = $this->rewriteFactory->create()->load($rewriteId);
+        $model = $this->_initModel();
 
-        if ($_model->getId()) {
-
-            $this->registry->register('rewrite_data', $_model);
-            $this->registry->register('current_rewrite', $_model);
-
-            $this->_initAction();
-
+        if ($model->getId()) {
             $resultPage->getConfig()->getTitle()->prepend(__('Edit Rewrite'));
-
-            $this->_addContent($resultPage->getLayout()->createBlock('\Mirasvit\Seo\Block\Adminhtml\Rewrite\Edit'))
-                ->_addLeft($resultPage->getLayout()->createBlock('\Mirasvit\Seo\Block\Adminhtml\Rewrite\Edit\Tabs'));
+            $this->_initAction();
 
             return $resultPage;
         } else {

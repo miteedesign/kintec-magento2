@@ -22,7 +22,7 @@ class AjaxStart extends AbstractProfile
                     $result = ['error' => __('Invalid profile run status')];
             }
         } catch (\Exception $e) {
-            $result = array('error' => $e->getMessage());
+            $result = ['error' => $e->getMessage()];
         }
 
         $this->getResponse()->representJson(Json::encode($result));

@@ -1,28 +1,32 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Custom\Changes\Block\Swatches\Product\Renderer;
 
 use Magento\Catalog\Block\Product\Context;
 use Magento\Catalog\Helper\Product as CatalogProduct;
+use Magento\Catalog\Model\Product;
 use Magento\ConfigurableProduct\Helper\Data;
 use Magento\ConfigurableProduct\Model\ConfigurableAttributeData;
 use Magento\Customer\Helper\Session\CurrentCustomer;
 use Magento\Framework\Json\EncoderInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Catalog\Model\Product;
 use Magento\Framework\Stdlib\ArrayUtils;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Swatches\Helper\Data as SwatchData;
 use Magento\Swatches\Helper\Media;
 use Magento\Swatches\Model\Swatch;
+use Magento\Framework\App\ObjectManager;
+use Magento\Swatches\Model\SwatchAttributesProvider;
 
 /**
  * Swatch renderer block
  *
+ * @api
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @since 100.0.2
  */
 class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\Configurable implements
     \Magento\Framework\DataObject\IdentityInterface
@@ -30,9 +34,7 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * Path to template file with Swatch renderer.
      */
-    //const SWATCH_RENDERER_TEMPLATE = 'Custom_Changes::swatches/product/view/renderer.phtml';
     const SWATCH_RENDERER_TEMPLATE = 'Magento_Swatches::product/view/renderer.phtml';
-
 
     /**
      * Path to default template file with standard Configurable renderer.
@@ -62,9 +64,16 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * Indicate if product has one or more Swatch attributes
      *
+     * @deprecated 100.1.5 unused
+     *
      * @var boolean
      */
     protected $isProductHasSwatchAttribute;
+
+    /**
+     * @var SwatchAttributesProvider
+     */
+    private $swatchAttributesProvider;
 
     /**
      * @param Context $context
@@ -78,6 +87,7 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
      * @param SwatchData $swatchHelper
      * @param Media $swatchMediaHelper
      * @param array $data other data
+     * @param SwatchAttributesProvider $swatchAttributesProvider
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
@@ -91,11 +101,13 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
         ConfigurableAttributeData $configurableAttributeData,
         SwatchData $swatchHelper,
         Media $swatchMediaHelper,
-        array $data = []
+        array $data = [],
+        SwatchAttributesProvider $swatchAttributesProvider = null
     ) {
         $this->swatchHelper = $swatchHelper;
         $this->swatchMediaHelper = $swatchMediaHelper;
-
+        $this->swatchAttributesProvider = $swatchAttributesProvider
+            ?: ObjectManager::getInstance()->get(SwatchAttributesProvider::class);
         parent::__construct(
             $context,
             $arrayUtils,
@@ -108,8 +120,9 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
             $data
         );
     }
-    public function getListSwatchJs($force=false){
-        $dir = BP.'/var'.'/cache'.'/swatches'.'/view/';
+	public function getListSwatchJs($force=false){
+        /*
+		$dir = BP.'/var'.'/cache'.'/swatches'.'/view/';
         $path = $dir.$this->getProduct()->getId();
        
         if(false && file_exists($path) && $force==false){
@@ -132,13 +145,21 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
            
             file_put_contents($path, $swatchJs);
         }
-        
+        */
+		$swatchJs = '"Magento_Swatches/js/swatch-renderer": {
+                "jsonConfig": '. $this->getJsonConfig().',
+                "jsonSwatchConfig": '.$this->getJsonSwatchConfig().',
+                "mediaCallback": "'.$this->getMediaCallback().'",
+                "gallerySwitchStrategy": "'.($this->getVar('gallery_switch_strategy',
+                    'Magento_ConfigurableProduct') ?: 'replace').'"
+            }';
         return $swatchJs;
     }
     /**
      * Get Key for caching block content
      *
      * @return string
+     * @since 100.1.0
      */
     public function getCacheKey()
     {
@@ -149,6 +170,7 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
      * Get block cache life time
      *
      * @return int
+     * @since 100.1.0
      */
     protected function getCacheLifetime()
     {
@@ -229,12 +251,26 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     }
 
     /**
+     * @deprecated 100.1.5 Method isProductHasSwatchAttribute() is used instead of this.
+     *
      * @codeCoverageIgnore
      * @return void
      */
     protected function initIsProductHasSwatchAttribute()
     {
         $this->isProductHasSwatchAttribute = $this->swatchHelper->isProductHasSwatch($this->getProduct());
+    }
+
+    /**
+     * Check that product has at least one swatch attribute
+     *
+     * @return bool
+     * @since 100.1.5
+     */
+    protected function isProductHasSwatchAttribute()
+    {
+        $swatchAttributes = $this->swatchAttributesProvider->provide($this->getProduct());
+        return count($swatchAttributes) > 0;
     }
 
     /**
@@ -272,8 +308,7 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
      */
     protected function addAdditionalMediaData(array $swatch, $optionId, array $attributeDataArray)
     {
-        if (
-            isset($attributeDataArray['use_product_image_for_swatch'])
+        if (isset($attributeDataArray['use_product_image_for_swatch'])
             && $attributeDataArray['use_product_image_for_swatch']
         ) {
             $variationMedia = $this->getVariationMedia($attributeDataArray['attribute_code'], $optionId);
@@ -375,18 +410,38 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * @param array $attributeData
      * @return array
+     * @since 100.0.3
      */
     protected function getConfigurableOptionsIds(array $attributeData)
     {
+		
         $ids = [];
+		$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+		$StockState = $objectManager->get('\Magento\CatalogInventory\Model\Stock\StockItemRepository');
+		$stockRegistryProvider = $objectManager->get('\Magento\CatalogInventory\Model\Spi\StockRegistryProviderInterface');
         foreach ($this->getAllowProducts() as $product) {
+			$stockItem = $stockRegistryProvider->getStockItem($product->getId(), $product->getStore()->getWebsiteId());
+			/*	
+			if($product->getId()=='246921'){
+				continue;
+				//var_dump($product->getIsInStock);
+				var_dump($StockState->get($stockItem->getId())->getData('is_in_stock'));die;
+				var_dump($StockState->get($product->getId())->getIsInStock());die;
+			}
+			
+			if($StockState->get($stockItem->getId())->getData('is_in_stock')===0)
+				continue;
+			*/
             /** @var \Magento\ConfigurableProduct\Model\Product\Type\Configurable\Attribute $attribute */
             foreach ($this->helper->getAllowAttributes($this->getProduct()) as $attribute) {
-                $productAttribute = $attribute->getProductAttribute();
-                $productAttributeId = $productAttribute->getId();
-                if (isset($attributeData[$productAttributeId])) {
-                    $ids[$product->getData($productAttribute->getAttributeCode())] = 1;
-                }
+				
+				
+				$productAttribute = $attribute->getProductAttribute();
+				$productAttributeId = $productAttribute->getId();
+				if (isset($attributeData[$productAttributeId])) {
+					$ids[$product->getData($productAttribute->getAttributeCode())] = 1;
+				}
+				
             }
         }
         return array_keys($ids);
@@ -395,12 +450,11 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * Produce and return block's html output
      *
-     * @codeCoverageIgnore
      * @return string
+     * @since 100.2.0
      */
     public function toHtml()
     {
-        $this->initIsProductHasSwatchAttribute();
         $this->setTemplate(
             $this->getRendererTemplate()
         );
@@ -411,7 +465,6 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     /**
      * Return HTML code
      *
-     * @codeCoverageIgnore
      * @return string
      */
     protected function _toHtml()
@@ -420,17 +473,20 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
     }
 
     /**
-     * @codeCoverageIgnore
+     * Return renderer template
+     *
+     * Template for product with swatches is different from product without swatches
+     *
      * @return string
      */
     protected function getRendererTemplate()
     {
-        return $this->isProductHasSwatchAttribute ?
+        return $this->isProductHasSwatchAttribute() ?
             self::SWATCH_RENDERER_TEMPLATE : self::CONFIGURABLE_RENDERER_TEMPLATE;
     }
 
     /**
-     * @codeCoverageIgnore
+     * @deprecated 100.1.5 Now is used _toHtml() directly
      * @return string
      */
     protected function getHtmlOutput()
@@ -450,6 +506,7 @@ class Configurable extends \Magento\ConfigurableProduct\Block\Product\View\Type\
      * Return unique ID(s) for each object in system
      *
      * @return string[]
+     * @since 100.1.0
      */
     public function getIdentities()
     {

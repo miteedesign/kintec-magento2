@@ -13,7 +13,7 @@ require(["jquery", "mage/mage"], function ($) {
     });
 });
 
-function UnirgySortable(options) {
+window.UnirgySortable = function (options) {
     if (!options.container) return;
 
     var $container = jQuery(options.container);
@@ -25,13 +25,13 @@ function UnirgySortable(options) {
     jQuery(document).on('mouseup', drop);
 
     function move(ev) {
-        if (state == 'mousedown') {
+        if (state === 'mousedown') {
             options.ondrag && options.ondrag();
             state = 'dragging';
             $curEl.css({position: 'absolute', width: ow + 'px', height: oh + 'px', opacity: .8});
             filler = document.createElement(tag);
             jQuery(filler).css({height: oh + 'px'});
-        } else if (state != 'dragging') {
+        } else if (state !== 'dragging') {
             return;
         }
         var nx = ev.pageX, ny = ev.pageY;
@@ -71,7 +71,7 @@ function UnirgySortable(options) {
 
     function drop(ev) {
         if (!$curEl) return;
-        if (state == 'dragging') {
+        if (state === 'dragging') {
             $curEl.css({position: '', left: '', top: '', width: '', height: '', opacity: 1});
             var $parent = $curEl.parent();
             $parent.append(filler);
@@ -88,7 +88,7 @@ function UnirgySortable(options) {
         drag: function (ev, el) {
             ev.stopPropagation();
             state = 'mousedown';
-            $curEl = el.tagName == tag ? el : jQuery(el).closest(tag);
+            $curEl = el.tagName === tag ? el : jQuery(el).closest(tag);
             mx = ev.pageX;
             my = ev.pageY;
             o = jQuery($curEl).position();
@@ -100,8 +100,8 @@ function UnirgySortable(options) {
             offset = $container.position();
         }
     }
-}
+};
 
-function escapeHTML(stringParam) {
+window.escapeHTML = function (stringParam) {
     return stringParam.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
+};

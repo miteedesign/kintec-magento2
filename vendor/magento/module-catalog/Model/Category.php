@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Catalog\Model;
@@ -17,6 +17,7 @@ use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
 /**
  * Catalog category
  *
+ * @api
  * @method Category setAffectedProductIds(array $productIds)
  * @method array getAffectedProductIds()
  * @method Category setMovedCategoryId(array $productIds)
@@ -33,6 +34,7 @@ use Magento\UrlRewrite\Service\V1\Data\UrlRewrite;
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @since 100.0.2
  */
 class Category extends \Magento\Catalog\Model\AbstractModel implements
     \Magento\Framework\DataObject\IdentityInterface,
@@ -65,7 +67,7 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
      */
     const TREE_ROOT_ID = 1;
 
-    const CACHE_TAG = 'catalog_category';
+    const CACHE_TAG = 'cat_c';
 
     /**#@+
      * Constants
@@ -84,11 +86,7 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
     const KEY_CHILDREN_DATA = 'children_data';
     /**#@-*/
 
-    /**
-     * Prefix of model events names
-     *
-     * @var string
-     */
+    /**#@-*/
     protected $_eventPrefix = 'catalog_category';
 
     /**
@@ -116,6 +114,7 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
      * URL rewrite model
      *
      * @var \Magento\UrlRewrite\Model\UrlRewrite
+     * @deprecated 101.1.0
      */
     protected $_urlRewrite;
 
@@ -206,13 +205,19 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
      */
     protected $flatState;
 
-    /** @var \Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator */
+    /**
+     * @var \Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator
+     */
     protected $categoryUrlPathGenerator;
 
-    /** @var UrlFinderInterface */
+    /**
+     * @var \Magento\UrlRewrite\Model\UrlFinderInterface
+     */
     protected $urlFinder;
 
-    /** @var \Magento\Framework\Indexer\IndexerRegistry */
+    /**
+     * @var \Magento\Framework\Indexer\IndexerRegistry
+     */
     protected $indexerRegistry;
 
     /**
@@ -306,10 +311,10 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
     {
         // If Flat Index enabled then use it but only on frontend
         if ($this->flatState->isAvailable()) {
-            $this->_init('Magento\Catalog\Model\ResourceModel\Category\Flat');
+            $this->_init(\Magento\Catalog\Model\ResourceModel\Category\Flat::class);
             $this->_useFlatResource = true;
         } else {
-            $this->_init('Magento\Catalog\Model\ResourceModel\Category');
+            $this->_init(\Magento\Catalog\Model\ResourceModel\Category::class);
         }
     }
 
@@ -652,14 +657,14 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
     }
 
     /**
-     * Retrieve image URL
-     *
-     * @return string
+     * @param string $attributeCode
+     * @return bool|string
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getImageUrl()
+    public function getImageUrl($attributeCode = 'image')
     {
         $url = false;
-        $image = $this->getImage();
+        $image = $this->getData($attributeCode);
         if ($image) {
             if (is_string($image)) {
                 $url = $this->_storeManager->getStore()->getBaseUrl(
@@ -1219,6 +1224,7 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
     {
         return $this->getData(self::KEY_CHILDREN_DATA);
     }
+
     //@codeCoverageIgnoreEnd
 
     /**
@@ -1411,5 +1417,6 @@ class Category extends \Magento\Catalog\Model\AbstractModel implements
     {
         return $this->_setExtensionAttributes($extensionAttributes);
     }
+
     //@codeCoverageIgnoreEnd
 }

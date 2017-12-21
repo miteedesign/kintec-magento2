@@ -14,7 +14,7 @@ namespace Custom\Changes\Block\Swatches\Product\Renderer\Listing;
 class Configurable extends \Magento\Swatches\Block\Product\Renderer\Configurable
 {
     public function getListSwatchJs($force=false){
-        
+        /*
         $dir = BP.'/var'.'/cache'.'/swatches'.'/list/';
         $path = $dir.$this->getProduct()->getId();
        
@@ -39,7 +39,16 @@ class Configurable extends \Magento\Swatches\Block\Product\Renderer\Configurable
         }); ';
             file_put_contents($path, $swatchJs);
         }
-        
+        */
+        $swatchJs = '    $(\'.swatch-opt-'.$this->getProduct()->getId().'\').SwatchRenderer({
+            selectorProduct: \'.product-item-details\',
+            onlySwatches: true,
+            enableControlLabel: false,
+            numberToShow: '.$this->getNumberSwatchesPerProduct().',
+            jsonConfig: '.$this->getJsonConfig().',
+            jsonSwatchConfig: '.$this->getJsonSwatchConfig().',
+            mediaCallback: \''.$this->getMediaCallback() .'\'
+        }); ';
         return $swatchJs;
     }
     /**

@@ -4,8 +4,8 @@
     <default>
         <Unirgy_RapidFlow>
             <usimpleup>
-                <remote>http://download.unirgy.com/simple/client_api/version/</remote>
-                <changelog>http://unirgy.com/support/portal/announcements</changelog>
+                <remote>https://download.unirgy.com/simple/client_api/version/</remote>
+                <changelog>https://unirgy.com/support/portal/announcements</changelog>
             </usimpleup>
         </Unirgy_RapidFlow>
         <urapidflow>
@@ -29,8 +29,8 @@
         </urapidflow>
         <Unirgy_RapidFlow>
             <usimpleup>
-                <remote>http://download.unirgy.com/simple/client_api/version/</remote>
-                <changelog>http://unirgy.com/support/portal/announcements</changelog>
+                <remote>https://download.unirgy.com/simple/client_api/version/</remote>
+                <changelog>https://unirgy.com/support/portal/announcements</changelog>
             </usimpleup>
         </Unirgy_RapidFlow>
     </default>

@@ -45,4 +45,4 @@ class Search extends \Magento\Framework\App\Helper\AbstractHelper
         return Mage::app()->getFrontController()->getAction() instanceof Mage_CatalogSearch_ResultController;
     }
 
-}
+}

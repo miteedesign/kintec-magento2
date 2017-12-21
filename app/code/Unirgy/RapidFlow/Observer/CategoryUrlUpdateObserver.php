@@ -8,6 +8,7 @@ namespace Unirgy\RapidFlow\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Store\Model\StoreManager;
 
 class CategoryUrlUpdateObserver implements ObserverInterface
 {
@@ -28,9 +29,17 @@ class CategoryUrlUpdateObserver implements ObserverInterface
     /**
      * @param Observer $observer
      * @return void
+     * @throws \Magento\Framework\Exception\AlreadyExistsException
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        $this->helper->updateCategoriesUrlRewrites();
+        /** @var \Unirgy\RapidFlow\Model\Profile $profile */
+        $profile = $observer->getData('profile');
+        $storeId = $profile->getStoreId();
+        $this->helper->updateCategoriesUrlRewrites($storeId);
+        if ($storeId !== 0) {
+            // update category url rewrites for default store too
+            $this->helper->updateCategoriesUrlRewrites(0);
+        }
     }
 }

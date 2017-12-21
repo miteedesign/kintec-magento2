@@ -105,7 +105,10 @@ abstract class Action extends \Magento\Backend\App\Action
 
     protected function _isAllowed()
     {
-        $action = strtolower(str_replace(__NAMESPACE__ . '\\','', __CLASS__ ));
+        $namespace = (new \ReflectionObject($this))->getNamespaceName();
+        $string = strtolower(str_replace(__NAMESPACE__ . '\\','', $namespace));
+        $action =  explode('\\', $string);
+        $action =  array_shift($action);
         return $this->_authorization->isAllowed("Magiccart_Alotheme::alotheme_$action");
     }
 }

@@ -62,3 +62,4 @@ Disallow: /*.Idea$
 Disallow: /*.Sql$
 Disallow: /*.Tgz$
 Sitemap: http://shop.kintec.net/sitemap.xml
+Sitemap: https://shop.kintec.net/sitemap.xml

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -202,7 +202,14 @@ class Config
     public function getNoindexPages()
     {
         $pages = $this->scopeConfig->getValue('seo/general/noindex_pages2');
-        $pages = unserialize($pages);
+        if ($pages == '[]' || !$pages) {
+            $pages = [];
+        } else
+        if ($decode = json_decode($pages)) {
+            $pages = $decode;
+        } else {
+            $pages = unserialize($pages);
+        }
         $result = [];
         if (is_object($pages)) {
             $pages = (array)$pages;
@@ -766,149 +773,204 @@ class Config
     /**
      * Organization
      *
+     * @param string $store
      * @return bool
      */
-    public function isOrganizationSnippetsEnabled()
+    public function isOrganizationSnippetsEnabled($store)
     {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/is_organization_snippets');
-    }
-
-    /**
-     * @return string
-     */
-    public function getNameOrganizationSnippets()
-    {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/name_organization_snippets');
-    }
-
-    /**
-     * @return string
-     */
-    public function getManualNameOrganizationSnippets()
-    {
-        return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_name_organization_snippets'
-        ));
-    }
-
-    /**
-     * @return int
-     */
-    public function getCountryAddressOrganizationSnippets()
-    {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/country_address_organization_snippets');
-    }
-
-    /**
-     * @return string
-     */
-    public function getManualCountryAddressOrganizationSnippets()
-    {
-        return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_country_address_organization_snippets'
-        ));
-    }
-
-    /**
-     * @return int
-     */
-    public function getLocalityAddressOrganizationSnippets()
-    {
-        return $this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/locality_address_organization_snippets'
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/is_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
         );
     }
 
     /**
+     * @param string $store
      * @return string
      */
-    public function getManualLocalityAddressOrganizationSnippets()
+    public function getNameOrganizationSnippets($store)
+    {
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/name_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * @param string $store
+     * @return string
+     */
+    public function getManualNameOrganizationSnippets($store)
     {
         return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_locality_address_organization_snippets'
+            'seo_snippets/organization_snippets/manual_name_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
         ));
     }
 
     /**
-     * @return string
-     */
-    public function getPostalCodeOrganizationSnippets()
-    {
-        return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/postal_code_organization_snippets'
-        ));
-    }
-
-    /**
-     * @return string
-     */
-    public function getManualPostalCodeOrganizationSnippets()
-    {
-        return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_postal_code_organization_snippets'
-        ));
-    }
-
-    /**
+     * @param string $store
      * @return int
      */
-    public function getStreetAddressOrganizationSnippets()
+    public function getCountryAddressOrganizationSnippets($store)
     {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/street_address_organization_snippets');
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/country_address_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+            );
     }
 
     /**
+     * @param string $store
      * @return string
      */
-    public function getManualStreetAddressOrganizationSnippets()
+    public function getManualCountryAddressOrganizationSnippets($store)
     {
         return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_street_address_organization_snippets'
+            'seo_snippets/organization_snippets/manual_country_address_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
         ));
     }
 
     /**
+     * @param string $store
      * @return int
      */
-    public function getTelephoneOrganizationSnippets()
+    public function getLocalityAddressOrganizationSnippets($store)
     {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/telephone_organization_snippets');
+        return $this->scopeConfig->getValue(
+            'seo_snippets/organization_snippets/locality_address_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 
     /**
+     * @param string $store
      * @return string
      */
-    public function getManualTelephoneOrganizationSnippets()
+    public function getManualLocalityAddressOrganizationSnippets($store)
     {
         return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_telephone_organization_snippets'
+            'seo_snippets/organization_snippets/manual_locality_address_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
         ));
     }
 
     /**
+     * @param string $store
      * @return string
      */
-    public function getManualFaxnumberOrganizationSnippets()
+    public function getPostalCodeOrganizationSnippets($store)
     {
         return trim($this->scopeConfig->getValue(
-            'seo_snippets/organization_snippets/manual_faxnumber_organization_snippets'
+            'seo_snippets/organization_snippets/postal_code_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
         ));
     }
 
     /**
-     * @return int
+     * @param string $store
+     * @return string
      */
-    public function getEmailOrganizationSnippets()
+    public function getManualPostalCodeOrganizationSnippets($store)
     {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/email_organization_snippets');
+        return trim($this->scopeConfig->getValue(
+            'seo_snippets/organization_snippets/manual_postal_code_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        ));
     }
 
     /**
+     * @param string $store
      * @return int
      */
-    public function getManualEmailOrganizationSnippets()
+    public function getStreetAddressOrganizationSnippets($store)
     {
-        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/manual_email_organization_snippets');
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/street_address_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * @param string $store
+     * @return string
+     */
+    public function getManualStreetAddressOrganizationSnippets($store)
+    {
+        return trim($this->scopeConfig->getValue(
+            'seo_snippets/organization_snippets/manual_street_address_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        ));
+    }
+
+    /**
+     * @param string $store
+     * @return int
+     */
+    public function getTelephoneOrganizationSnippets($store)
+    {
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/telephone_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * @param string $store
+     * @return string
+     */
+    public function getManualTelephoneOrganizationSnippets($store)
+    {
+        return trim($this->scopeConfig->getValue(
+            'seo_snippets/organization_snippets/manual_telephone_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        ));
+    }
+
+    /**
+     * @param string $store
+     * @return string
+     */
+    public function getManualFaxnumberOrganizationSnippets($store)
+    {
+        return trim($this->scopeConfig->getValue(
+            'seo_snippets/organization_snippets/manual_faxnumber_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        ));
+    }
+
+    /**
+     * @param string $store
+     * @return int
+     */
+    public function getEmailOrganizationSnippets($store)
+    {
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/email_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * @param string $store
+     * @return int
+     */
+    public function getManualEmailOrganizationSnippets($store)
+    {
+        return $this->scopeConfig->getValue('seo_snippets/organization_snippets/manual_email_organization_snippets',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 
     /**

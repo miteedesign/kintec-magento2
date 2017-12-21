@@ -17,6 +17,7 @@
         <observer name="m_seo_observer_robots_catalogsearch" instance="Mirasvit\Seo\Observer\Robots"/>
     </event>
 
+    <!--should be added in Mirasvit\Seo\Plugin\Event\Dispatch.php-->
     <event name="controller_front_send_response_before">
         <observer name="m_seo_observer_http_response_send_before" instance="\Mirasvit\Seo\Observer\Opengraph"/>
         <observer name="m_seo_observer_toolbar" instance="Mirasvit\Seo\Observer\ToolbarObserver"/>

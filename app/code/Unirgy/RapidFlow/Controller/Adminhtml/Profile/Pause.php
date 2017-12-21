@@ -13,12 +13,12 @@ class Pause extends AbstractProfile
         try {
             $id = $this->getRequest()->getParam('id', false);
             if (!$id) {
-                throw new \Exception("INVALID ID");
+                throw new \Exception('INVALID PROFILE ID');
             }
             $this->_profile->load($id)->factory()->pause()->save();
-            $this->messageManager->addSuccess(__('Profile paused successfully'));
+            $this->messageManager->addSuccessMessage(__('Profile paused successfully'));
         } catch (\Exception $e) {
-            $this->messageManager->addError($e->getMessage());
+            $this->messageManager->addErrorMessage($e->getMessage());
         }
         $this->_redirect('*/*/edit', ['_current'=>true]);
     }

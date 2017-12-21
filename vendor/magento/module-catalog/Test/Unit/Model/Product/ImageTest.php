@@ -1,116 +1,82 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-
 namespace Magento\Catalog\Test\Unit\Model\Product;
 
-use Magento\Catalog\Model\Product\Image\ParamsBuilder;
 use Magento\Catalog\Model\View\Asset\Image\ContextFactory;
 use Magento\Catalog\Model\View\Asset\ImageFactory;
 use Magento\Catalog\Model\View\Asset\PlaceholderFactory;
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
+use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\View\Asset\ContextInterface;
-use Magento\Catalog\Model\Product\Image\SizeCache;
 
 /**
- * Class ImageTest
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
-class ImageTest extends \PHPUnit_Framework_TestCase
+class ImageTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \Magento\Catalog\Model\Product\Image
      */
-    protected $image;
+    private $image;
 
     /**
      * @var \Magento\Framework\Model\Context|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $context;
-
-    /**
-     * @var \Magento\Framework\Registry|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $registry;
+    private $context;
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $storeManager;
+    private $storeManager;
 
     /**
      * @var \Magento\Catalog\Model\Product\Media\Config|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $config;
+    private $config;
 
     /**
      * @var \Magento\MediaStorage\Helper\File\Storage\Database|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $coreFileHelper;
+    private $coreFileHelper;
 
     /**
      * @var \Magento\Framework\Filesystem|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $filesystem;
+    private $filesystem;
 
     /**
      * @var \Magento\Framework\Image\Factory|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $factory;
-
-    /**
-     * @var \Magento\Framework\View\Asset\Repository|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $repository;
-
-    /**
-     * @var \Magento\Framework\View\FileSystem|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $fileSystem;
-
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $scopeConfigInterface;
+    private $factory;
 
     /**
      * @var \Magento\Framework\Filesystem\Directory\WriteInterface|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $mediaDirectory;
+    private $mediaDirectory;
 
     /**
      * @var \Magento\Framework\View\Asset\LocalInterface|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $imageAsset;
+    private $imageAsset;
 
     /**
      * @var ImageFactory|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $viewAssetImageFactory;
+    private $viewAssetImageFactory;
 
     /**
      * @var PlaceholderFactory|\PHPUnit_Framework_MockObject_MockObject
      */
-    protected $viewAssetPlaceholderFactory;
-
-    /**
-     * @var ParamsBuilder|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $paramsBuilder;
-
-    /**
-     * @var SizeCache|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $sizeCache;
+    private $viewAssetPlaceholderFactory;
 
     protected function setUp()
     {
-        $this->context = $this->getMock(\Magento\Framework\Model\Context::class, [], [], '', false);
-        $this->registry = $this->getMock(\Magento\Framework\Registry::class);
+        $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
+        $this->context = $this->createMock(\Magento\Framework\Model\Context::class);
 
         $this->storeManager = $this->getMockBuilder(\Magento\Store\Model\StoreManager::class)
             ->disableOriginalConstructor()
@@ -132,61 +98,37 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             ->setMethods(['create', 'isFile', 'isExist', 'getAbsolutePath'])
             ->getMock();
 
-        $this->filesystem = $this->getMock(\Magento\Framework\Filesystem::class, [], [], '', false);
+        $this->filesystem = $this->createMock(\Magento\Framework\Filesystem::class);
         $this->filesystem->expects($this->once())->method('getDirectoryWrite')
             ->with(DirectoryList::MEDIA)
             ->will($this->returnValue($this->mediaDirectory));
-        $this->factory = $this->getMock(\Magento\Framework\Image\Factory::class, [], [], '', false);
-        $this->repository = $this->getMock(\Magento\Framework\View\Asset\Repository::class, [], [], '', false);
-        $this->fileSystem = $this->getMock(\Magento\Framework\View\FileSystem::class, [], [], '', false);
-        $this->scopeConfigInterface = $this->getMock(\Magento\Framework\App\Config\ScopeConfigInterface::class);
-
-        $context = $this->getMockBuilder(\Magento\Framework\Model\Context::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $this->factory = $this->createMock(\Magento\Framework\Image\Factory::class);
 
         $this->viewAssetImageFactory = $this->getMockBuilder(ImageFactory::class)
             ->disableOriginalConstructor()
             ->setMethods(['create'])
             ->getMock();
-
         $this->viewAssetPlaceholderFactory = $this->getMockBuilder(PlaceholderFactory::class)
             ->disableOriginalConstructor()
             ->setMethods(['create'])
             ->getMock();
 
-        $this->paramsBuilder = $this->getMockBuilder(ParamsBuilder::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $this->sizeCache = $this->getMockBuilder(SizeCache::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $this->image = new \Magento\Catalog\Model\Product\Image(
-            $context,
-            $this->registry,
-            $this->storeManager,
-            $this->config,
-            $this->coreFileHelper,
-            $this->filesystem,
-            $this->factory,
-            $this->repository,
-            $this->fileSystem,
-            $this->scopeConfigInterface,
-            null,
-            null,
-            [],
-            $this->viewAssetImageFactory,
-            $this->viewAssetPlaceholderFactory,
-            $this->paramsBuilder,
-            $this->sizeCache
+        $this->image = $objectManager->getObject(
+            \Magento\Catalog\Model\Product\Image::class,
+            [
+                'storeManager' => $this->storeManager,
+                'catalogProductMediaConfig' => $this->config,
+                'coreFileStorageDatabase' => $this->coreFileHelper,
+                'filesystem' => $this->filesystem,
+                'imageFactory' => $this->factory,
+                'viewAssetImageFactory' => $this->viewAssetImageFactory,
+                'viewAssetPlaceholderFactory' => $this->viewAssetPlaceholderFactory
+            ]
         );
 
-        //Settings for backward compatible property
+        // Settings for backward compatible property
         $objectManagerHelper = new ObjectManagerHelper($this);
         $this->imageAsset = $this->getMockBuilder(\Magento\Framework\View\Asset\LocalInterface::class)
-            ->disableOriginalConstructor()
             ->getMockForAbstractClass();
         $objectManagerHelper->setBackwardCompatibleProperty(
             $this->image,
@@ -240,21 +182,6 @@ class ImageTest extends \PHPUnit_Framework_TestCase
 
     public function testSetGetBaseFile()
     {
-        $miscParams = [
-            'image_type' => null,
-            'image_height' => null,
-            'image_width' => null,
-            'keep_aspect_ratio' => 'proportional',
-            'keep_frame' => 'frame',
-            'keep_transparency' => 'transparency',
-            'constrain_only' => 'doconstrainonly',
-            'background' => 'ffffff',
-            'angle' => null,
-            'quality' => 80,
-        ];
-        $this->paramsBuilder->expects(self::once())
-            ->method('build')
-            ->willReturn($miscParams);
         $this->mediaDirectory->expects($this->any())->method('isFile')->will($this->returnValue(true));
         $this->mediaDirectory->expects($this->any())->method('isExist')->will($this->returnValue(true));
         $absolutePath = dirname(dirname(__DIR__)) . '/_files/catalog/product/somefile.png';
@@ -264,7 +191,18 @@ class ImageTest extends \PHPUnit_Framework_TestCase
             ->method('create')
             ->with(
                 [
-                    'miscParams' => $miscParams,
+                    'miscParams' => [
+                        'image_type' => null,
+                        'image_height' => null,
+                        'image_width' => null,
+                        'keep_aspect_ratio' => 'proportional',
+                        'keep_frame' => 'frame',
+                        'keep_transparency' => 'transparency',
+                        'constrain_only' => 'doconstrainonly',
+                        'background' => 'ffffff',
+                        'angle' => null,
+                        'quality' => 80,
+                    ],
                     'filePath' => '/somefile.png',
                 ]
             )
@@ -274,10 +212,6 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         $this->imageAsset->expects($this->any())->method('getSourceFile')->willReturn('catalog/product/somefile.png');
         $this->image->setBaseFile('/somefile.png');
         $this->assertEquals('catalog/product/somefile.png', $this->image->getBaseFile());
-        $this->assertEquals(
-            null,
-            $this->image->getNewFile()
-        );
     }
 
     public function testSetBaseNoSelectionFile()
@@ -381,9 +315,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase
         )->disableOriginalConstructor()->getMock();
         $this->image->setImageProcessor($imageProcessor);
         $this->coreFileHelper->expects($this->once())->method('saveFile')->will($this->returnValue(true));
-        $this->imageAsset->expects($this->any())
-            ->method('getPath')
-            ->willReturn('specific_path');
+
         $this->image->saveFile();
     }
 

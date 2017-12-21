@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -83,8 +83,23 @@ abstract class Rewrite extends \Magento\Backend\App\Action
      */
     protected function _initAction()
     {
-        $this->_setActiveMenu('Mirasvit_Seo::seo');
+        $this->_setActiveMenu('seo');
 
         return $this;
+    }
+
+    /**
+     * @return \Mirasvit\Seo\Model\Rewrite
+     */
+    public function _initModel()
+    {
+        $model = $this->rewriteFactory->create();
+        if ($this->getRequest()->getParam('id')) {
+            $model->load($this->getRequest()->getParam('id'));
+        }
+
+        $this->registry->register('current_model', $model);
+
+        return $model;
     }
 }

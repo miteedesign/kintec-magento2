@@ -21,7 +21,7 @@ class Google implements \Magento\Framework\Option\ArrayInterface
 		$names = explode(',', $this->_names);
 		$options = array();
 		foreach ($names as $n){
-			$options[] = array( 'value' => str_replace(' ', '+', $n), 'label' => $n);
+			$options[] = array( 'value' => $n, 'label' => $n);
 		}
         array_unshift($options, array(
                 'value' => '',

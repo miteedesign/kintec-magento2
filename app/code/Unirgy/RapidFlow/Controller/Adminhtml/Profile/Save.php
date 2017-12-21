@@ -41,12 +41,12 @@ class Save extends AbstractProfile
                 }
 
                 $model->save();
-                $this->messageManager->addSuccess(__('Profile was successfully saved'));
+                $this->messageManager->addSuccessMessage(__('Profile was successfully saved'));
                 $this->_session->setFormData(false);
 
                 if ($invokeStatus = $this->getRequest()->getParam('start')) {
                     $model->pending($invokeStatus)->save();
-                    $this->messageManager->addSuccess(__('Profile started successfully'));
+                    $this->messageManager->addSuccessMessage(__('Profile started successfully'));
                 }
 
                 if ($this->getRequest()->getParam('back')) {
@@ -57,13 +57,13 @@ class Save extends AbstractProfile
                 $this->_redirect('*/*/');
                 return;
             } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
                 $this->_session->setFormData($data);
                 $this->_redirect('*/*/edit', ['id' => $this->getRequest()->getParam('id')]);
                 return;
             }
         }
-        $this->messageManager->addError(__('Unable to find profile to save'));
+        $this->messageManager->addErrorMessage(__('Unable to find profile to save'));
         $this->_redirect('*/*/');
     }
 }

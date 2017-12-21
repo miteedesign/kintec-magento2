@@ -17,7 +17,6 @@
 
 namespace Unirgy\RapidFlow\Helper;
 
-use Magento\Backend\Model\Auth;
 use Magento\Catalog\Model\Product\Url as ProductUrl;
 use Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator;
 use Magento\CatalogUrlRewrite\Observer\UrlRewriteHandler;
@@ -33,8 +32,10 @@ use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\UrlRewrite\Model\UrlPersistInterface;
 use Unirgy\RapidFlow\Model\Profile;
+use Unirgy\RapidFlow\Model\ResourceModel\AbstractResource;
 use Unirgy\RapidFlow\Model\ResourceModel\Catalog\Product as RfProduct;
 use Magento\Framework\Module\ModuleListInterface;
+use Unirgy\RapidFlow\Model\ResourceModel\Catalog\Product;
 
 class Data extends AbstractHelper
 {
@@ -56,11 +57,6 @@ class Data extends AbstractHelper
      * @var ProductUrl
      */
     protected $_productUrl;
-
-    /**
-     * @var Auth
-     */
-    protected $_backendAuth;
 
     /**
      * @var bool
@@ -111,28 +107,23 @@ class Data extends AbstractHelper
     public function __construct(
         Context $context,
         ManagerInterface $messageManager,
-        ProductUrl $productUrl,
-        Auth $backendAuth,
         PageFactory $pageFactory,
         StoreManagerInterface $storeManager,
-        \Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator $categoryUrlRewriteGenerator,
-        \Magento\UrlRewrite\Model\UrlPersistInterface $urlPersist,
-        UrlRewriteHandler $urlRewriteHandler,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory
     )
     {
         $this->_messageManager = $messageManager;
-        $this->_productUrl = $productUrl;
-        $this->_backendAuth = $backendAuth;
         $this->_pageFactory = $pageFactory;
         $this->_storeManager = $storeManager;
 
-        $this->categoryUrlRewriteGenerator = $categoryUrlRewriteGenerator;
-        $this->urlPersist = $urlPersist;
-        $this->urlRewriteHandler = $urlRewriteHandler;
         $this->categoryFactory = $categoryFactory;
 
         parent::__construct($context);
+    }
+
+    protected function _backendAuth()
+    {
+        return ObjectManager::getInstance()->get('\Magento\Backend\Model\Auth');
     }
 
     protected static $metadata;
@@ -261,11 +252,19 @@ class Data extends AbstractHelper
 
     public function formatUrlKey($str)
     {
-        $urlKey = preg_replace('#[^0-9a-z]+#i', '-', $this->_productUrl->formatUrlKey($str));
+        $urlKey = preg_replace('#[^0-9a-z]+#i', '-', $this->_productUrl()->formatUrlKey($str));
         $urlKey = strtolower($urlKey);
         $urlKey = trim($urlKey, '-');
 
         return $urlKey;
+    }
+
+    /**
+     * @return \Magento\Catalog\Model\Product\Url
+     */
+    protected function _productUrl()
+    {
+        return $this->om()->get('Magento\Catalog\Model\Product\Url');
     }
 
     public function isModuleActive($code)
@@ -301,7 +300,7 @@ class Data extends AbstractHelper
 
     private function isEnterpriseEdition()
     {
-        return  strtolower(self::_getMetaData()->getEdition()) === 'enterprise';
+        return in_array(strtolower(self::_getMetaData()->getEdition()), ['enterprise', 'b2b']);
     }
 
     public function compareMageVer($ceVer, $eeVer = null, $op = '>=')
@@ -386,7 +385,7 @@ class Data extends AbstractHelper
     {
         if (null === $this->_ee_gws_filter) {
             $this->_ee_gws_filter = $this->isModuleActive('Magento_AdminGws')
-                && $this->_backendAuth->isLoggedIn()
+                && $this->_backendAuth()->isLoggedIn()
                 && !self::om()->get('Magento\AdminGws\Model\Role')->getIsAll();
 //            $this->_ee_gws_filter = false;
         }
@@ -449,26 +448,58 @@ class Data extends AbstractHelper
         $this->_categoryIdsToUpdate[] = $categoryId;
     }
 
-    public function updateCategoriesUrlRewrites()
+    /**
+     * @param int|null $store_id
+     * @throws \Magento\Framework\Exception\AlreadyExistsException
+     */
+    public function updateCategoriesUrlRewrites($store_id = null)
     {
+        $this->clearUrlPaths($this->_categoryIdsToUpdate);
         foreach (array_unique(array_filter($this->_categoryIdsToUpdate)) as $cId) {
-            $this->updateCategoryUrlRewritesById($cId);
+            $this->updateCategoryUrlRewritesById($cId, $store_id);
         }
     }
 
     /**
      * @param $categoryId
+     * @param int|null $store_id
      * @throws \Magento\Framework\Exception\AlreadyExistsException
      */
-    public function updateCategoryUrlRewritesById($categoryId)
+    public function updateCategoryUrlRewritesById($categoryId, $store_id)
     {
         $category = $this->categoryFactory->create()->load($categoryId);
+        $category->setStoreId($store_id);
         $urlRewrites = array_merge(
-            $this->categoryUrlRewriteGenerator->generate($category),
-            $this->urlRewriteHandler->generateProductUrlRewrites($category)
+            $this->categoryUrlRewriteGenerator()->generate($category, 1),
+            $this->urlRewriteHandler()->generateProductUrlRewrites($category)
         );
-        $this->urlPersist->replace($urlRewrites);
+        $this->urlPersist()->replace($urlRewrites);
     }
+
+    /**
+     * @return \Magento\CatalogUrlRewrite\Observer\UrlRewriteHandler
+     */
+    protected function urlRewriteHandler()
+    {
+        return $this->om()->get('Magento\CatalogUrlRewrite\Observer\UrlRewriteHandler');
+    }
+
+    /**
+     * @return \Magento\UrlRewrite\Model\UrlPersistInterface
+     */
+    protected function urlPersist()
+    {
+        return $this->om()->get('Magento\UrlRewrite\Model\UrlPersistInterface');
+    }
+
+    /**
+     * @return \Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator
+     */
+    protected function categoryUrlRewriteGenerator()
+    {
+        return $this->om()->get('Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator');
+    }
+
 
     /**
      * @return Logger
@@ -481,5 +512,29 @@ class Data extends AbstractHelper
     public static function now($dayOnly = false)
     {
         return date($dayOnly ? 'Y-m-d' : 'Y-m-d H:i:s');
+    }
+
+    protected function clearUrlPaths($categoryIds)
+    {
+        if (count($categoryIds) === 0) {
+            return;
+        }
+        $idField = 'entity_id';
+        if ($this->hasMageFeature(AbstractResource::ROW_ID)) {
+            $idField = 'row_id';
+        }
+
+        $res = $this->categoryFactory->create()->getResource();
+        $table = AbstractResource::TABLE_CATALOG_CATEGORY_ENTITY . '_varchar';
+        $con = $res->getConnection();
+        $select = $con->select()
+            ->from($table)
+            ->where('attribute_id=?',
+                new \Zend_Db_Expr('(SELECT attribute_id FROM ' . AbstractResource::TABLE_EAV_ATTRIBUTE . ' WHERE attribute_code=\'url_path\' AND entity_type_id=3)'))
+            ->where($idField . ' IN (?)', $categoryIds);
+
+        $query = $con->deleteFromSelect($select, $table);
+
+        return $con->query($query);
     }
 }

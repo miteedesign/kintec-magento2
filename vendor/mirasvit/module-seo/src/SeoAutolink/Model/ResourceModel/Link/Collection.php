@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,6 +20,10 @@ namespace Mirasvit\SeoAutolink\Model\ResourceModel\Link;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
     implements \Magento\Framework\Option\ArrayInterface //@codingStandardsIgnoreLine
 {
+    /**
+     * @var string
+     */
+    protected $_idFieldName = 'link_id'; //use in massaction
     /**
      * Load data for preview flag
      *
@@ -213,6 +217,22 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
                 }
             }
         }
+    }
+
+    /**
+     * @return $this
+     */
+    public function addStoreColumn()
+    {
+        $this->getSelect()
+            ->columns(
+                ['store_id' => new \Zend_Db_Expr(
+                    "(SELECT GROUP_CONCAT(store_id) FROM `{$this->getTable('mst_seoautolink_link_store')}`
+                    AS `seoautolink_link_store_table`
+                    WHERE main_table.link_id = seoautolink_link_store_table.link_id)")]
+            );
+
+        return $this;
     }
 
 }

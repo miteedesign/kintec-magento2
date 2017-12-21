@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -97,6 +97,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
                         'comment' => 'Apply for child categories',
                     ]
                 );
+        }
+
+        if (version_compare($context->getVersion(), '1.0.5') < 0) {
+            include_once 'Upgrade_1_0_5.php';
+
+            Upgrade_1_0_5::upgrade($installer, $context);
+        }
+
+        if (version_compare($context->getVersion(), '1.0.6') < 0) {
+            include_once 'Upgrade_1_0_6.php';
+
+            Upgrade_1_0_6::upgrade($installer, $context);
         }
 
         $installer->endSetup();

@@ -148,81 +148,29 @@
     </p>
     <h2><a name="list"></a>List of cookies we collect</h2>
     <p>The table below lists the cookies we collect and what information they store.</p>
-    <table class="data-table">
+    <table class="data-table data-table-definition-list">
         <thead>
-            <tr>
-                <th>COOKIE name</th>
-                <th>COOKIE Description</th>
-            </tr>
+        <tr>
+            <th>Cookie Name</th>
+            <th>Cookie Description</th>
+        </tr>
         </thead>
         <tbody>
             <tr>
-                <th>CART</th>
-                <td>The association with your shopping cart.</td>
-            </tr>
-            <tr>
-                <th>CATEGORY_INFO</th>
-                <td>Stores the category info on the page, that allows to display pages more quickly.</td>
-            </tr>
-            <tr>
-                <th>COMPARE</th>
-                <td>The items that you have in the Compare Products list.</td>
-            </tr>
-            <tr>
-                <th>CUSTOMER</th>
-                <td>An encrypted version of your customer id with the store.</td>
-            </tr>
-            <tr>
-                <th>CUSTOMER_AUTH</th>
-                <td>An indicator if you are currently logged into the store.</td>
-            </tr>
-            <tr>
-                <th>CUSTOMER_INFO</th>
-                <td>An encrypted version of the customer group you belong to.</td>
-            </tr>
-            <tr>
-                <th>CUSTOMER_SEGMENT_IDS</th>
-                <td>Stores the Customer Segment ID</td>
-            </tr>
-            <tr>
-                <th>EXTERNAL_NO_CACHE</th>
-                <td>A flag, which indicates whether caching is disabled or not.</td>
-            </tr>
-            <tr>
                 <th>FORM_KEY</th>
-                <td>Stores form key used by page cache functionality.</td>
+                <td>Stores randomly generated key used to prevent forged requests.</td>
             </tr>
             <tr>
-                <th>FRONTEND</th>
+                <th>PHPSESSID</th>
                 <td>Your session ID on the server.</td>
             </tr>
             <tr>
                 <th>GUEST-VIEW</th>
-                <td>Allows guests to edit their orders.</td>
-            </tr>
-            <tr>
-                <th>LAST_CATEGORY</th>
-                <td>The last category you visited.</td>
-            </tr>
-            <tr>
-                <th>LAST_PRODUCT</th>
-                <td>The most recent product you have viewed.</td>
-            </tr>
-            <tr>
-                <th>NEWMESSAGE</th>
-                <td>Indicates whether a new message has been received.</td>
-            </tr>
-            <tr>
-                <th>NO_CACHE</th>
-                <td>Indicates whether it is allowed to use cache.</td>
+                <td>Allows guests to view and edit their orders.</td>
             </tr>
             <tr>
                 <th>PERSISTENT_SHOPPING_CART</th>
-                <td>A link to information about your cart and viewing history if you have asked the site.</td>
-            </tr>
-            <tr>
-                <th>RECENTLYCOMPARED</th>
-                <td>The items that you have recently compared.</td>
+                <td>A link to information about your cart and viewing history, if you have asked for this.</td>
             </tr>
             <tr>
                 <th>STF</th>
@@ -237,16 +185,40 @@
                 <td>Indicates whether a customer allowed to use cookies.</td>
             </tr>
             <tr>
-                <th>VIEWED_PRODUCT_IDS</th>
-                <td>The products that you have recently viewed.</td>
+                <th>MAGE-CACHE-SESSID</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
             </tr>
             <tr>
-                <th>WISHLIST</th>
-                <td>An encrypted list of products added to your Wish List.</td>
+                <th>MAGE-CACHE-STORAGE</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
             </tr>
             <tr>
-                <th>WISHLIST_CNT</th>
-                <td>The number of items in your Wish List.</td>
+                <th>MAGE-CACHE-STORAGE-SECTION-INVALIDATION</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>MAGE-CACHE-TIMEOUT</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>SECTION-DATA-IDS</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>PRIVATE_CONTENT_VERSION</th>
+                <td>Facilitates caching of content on the browser to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>X-MAGENTO-VARY</th>
+                <td>Facilitates caching of content on the server to make pages load faster.</td>
+            </tr>
+            <tr>
+                <th>MAGE-TRANSLATION-FILE-VERSION</th>
+                <td>Facilitates translation of content to other languages.</td>
+            </tr>
+            <tr>
+                <th>MAGE-TRANSLATION-STORAGE</th>
+                <td>Facilitates translation of content to other languages.</td>
             </tr>
         </tbody>
     </table>
@@ -306,6 +278,104 @@
       <is_active><![CDATA[1]]></is_active>
     </item>
     <item>
+      <title><![CDATA[Milano Magento Theme Demo7]]></title>
+      <page_layout><![CDATA[1column]]></page_layout>
+      <identifier><![CDATA[demo7]]></identifier>
+      <content_heading><![CDATA[]]></content_heading>
+      <content><![CDATA[<div class="row">
+<div class="col-lg-12"><div class="featured-product-tab">{{widget type="Magiccart\Magicproduct\Block\Widget\Product" identifier="main-product-03" template="product.phtml"}}</div></div>
+</div>
+<!-- home banner -->
+<div class="row2 clearfix">
+	<div class="pa-lines container-nor">
+		<div class="banner1 banner-inner">
+			<div class="banner1-1">
+				<div class="banner-inner-mall size1of3">
+					<div class="banner-inner-content">
+						<div class="column column-1-3">
+							<a href="#"><img class="img-responsive" alt="Banner" src="{{media url="wysiwyg/alothemes/static/demo7/homeV8_01.jpg"}}" /> </a>
+							<div class="box-text box-text-possion"><h4>collection</h4><h3>man</h3><h3 class="shoes">shoes</h3></div>
+						</div>
+					</div>
+				</div>
+				<div class="banner-inner-mall size1of6 size1of6-last text-right">
+					<div class="banner-inner-content">
+						<div class="column column-1-2">
+							<a href="#"><img class="img-responsive" alt="Banner" src="{{media url="wysiwyg/alothemes/static/demo7/homeV8_02.jpg"}}" /> </a>
+							<div class="box-text box-text-possion"><h4>autumn</h4><h3>colection</h3></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- home brands -->
+<div class="alo-brands">
+<div class="container">
+<div class="main">
+<div class="row-nor">
+<div class="col-lg-12">{{widget type="Magiccart\Shopbrand\Block\Widget\Brand" template="brand.phtml"}}</div>
+</div>
+</div>
+</div>
+</div>
+<!-- home policy-->
+<div class="policy">
+<div class="container">
+<div class="support-policy">
+<div class="support-footer-inner row">
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<div class="row-normal clearfix">
+<div class="col-icon">
+<div class="support-icon square-round"><em class="icon-plane icons"><span class="hidden">hidden</span></em></div>
+</div>
+<div class="col-text">
+<div class="support-info">
+<div class="info-title">FREE SHIPPING WORLDWIDE</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<div class="row-normal clearfix">
+<div class="col-icon">
+<div class="support-icon square-round"><em class="icon-earphones-alt icons"><span class="hidden">hidden</span></em></div>
+</div>
+<div class="col-text">
+<div class="support-info">
+<div class="info-title">24/7 CUSTOMER SERVICE</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<div class="row-normal clearfix">
+<div class="col-icon">
+<div class="support-icon square-round"><em class="icon-users icons"><span class="hidden">hidden</span></em></div>
+</div>
+<div class="col-text">
+<div class="support-info">
+<div class="info-title">Member Discount</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>]]></content>
+      <layout_update_xml><![CDATA[<!-- Slide showcase-->
+<referenceContainer name="slide.showcase">
+			<block class="Magento\Cms\Block\Block" name="slide">
+				<arguments>
+					<argument name="block_id" xsi:type="string">home-slide1</argument>
+				</arguments>
+			</block>
+</referenceContainer>]]></layout_update_xml>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
       <title><![CDATA[Milano Magento Theme Demo5]]></title>
       <page_layout><![CDATA[1column]]></page_layout>
       <identifier><![CDATA[demo5]]></identifier>
@@ -362,36 +432,7 @@
 			{{block class="Magiccart\Magicmenu\Block\Menu" name="vmenu" template="vmenu.phtml"}}
 		</div>
 		<div class="slide size1of6">
-			<div class="home-slider" data-slides-to-show="1" data-slides-to-scroll="1" data-fade="false" data-dots="true" data-arrows="false" data-speed="400" data-autoplay-speed="6000" data-easing="linear" data-autoplay="true" >
-				<div class="item"> 
-					<a href="#"> <img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo5/home-slidev5_01.jpg"}}" alt="magicslider" /></a>
-					<div class="container-none figcaption">
-						<div class="text-slide">
-							<h3 class="caption1">new</h3>
-							<h3 class="caption2">fashion</h3>
-							<h3 class="caption3"><strong>&amp;</strong>style</h3>
-						</div>
-					</div>
-				</div>
-				<div class="item"> 
-					<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo5/home-slidev5_02.jpg"}}" alt="magicslider" /></a>
-					<div class="container-none figcaption">
-						<div class="text-slide text-slide2">
-							<h3 class="caption1">Lookbook</h3>
-							<h3 class="caption2">real man</h3>
-						</div>
-					</div>
-				</div>
-				<div class="item"> 
-					<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo5/home-slidev5_03.jpg"}}" alt="magicslider" /></a>
-					<div class="container-none figcaption">
-						<div class="text-slide text-slide2">
-							<h3 class="caption1">spring</h3>
-							<h3 class="caption2">collection</h3>
-						</div>
-					</div>
-				</div>
-			</div>
+			<div class="alo-magicslider home-slider">{{widget type="Magiccart\Magicslider\Block\Widget\Slider" identifier="slide5" template="magicslider.phtml"}}</div>
 		</div>
 		<div class="banner2 banner-inner size1of3">
 			<div class="banner-inner-content">

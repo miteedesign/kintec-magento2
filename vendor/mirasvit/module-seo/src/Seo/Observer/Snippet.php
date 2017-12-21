@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -23,6 +23,7 @@ use Mirasvit\Seo\Model\Config as Config;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.TooManyFields)
  */
 class Snippet implements ObserverInterface
 {
@@ -703,8 +704,8 @@ class Snippet implements ObserverInterface
      */
     protected function _deleteWrongSnippets($html)
     {
-        $breadcumbPattern = '/\\<span class="breadcrumbsbefore"\\>\\<\\/span\\>(.*?)
-                            \\<span class="breadcrumbsafter"\\>\\<\\/span\\>/ims';
+        $breadcumbPattern = '/\\<span class="breadcrumbsbefore"\\>\\<\\/span\\>(.*?)'
+                            .'\\<span class="breadcrumbsafter"\\>\\<\\/span\\>/ims';
         preg_match($breadcumbPattern, $html, $breadcumb);
         $pattern = ['/itemprop="(.*?)"/ims',
                         '/itemprop=\'(.*?)\'/ims',

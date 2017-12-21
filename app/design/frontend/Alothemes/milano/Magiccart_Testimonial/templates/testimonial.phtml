@@ -31,13 +31,11 @@ if(!count($testimonials)) return;
 <script type="text/javascript">
     require([
         'jquery',
-        'slick',
+        'magiccart/slick',
         'alothemes',
         ], function($){
-            (function($) {
-                var testimonial  = $('.<?php echo $selector ?> .testimonial');
-                if(testimonial.length) $('head').append(magicproduct(testimonial, '.item'));
-            })(jQuery); 
+		    var testimonial  = $('.<?php echo $selector ?> .testimonial');
+		    if(testimonial.length) $('head').append(magicproduct(testimonial, '.item'));
     });
 </script>
 

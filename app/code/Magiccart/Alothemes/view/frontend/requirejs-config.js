@@ -32,8 +32,11 @@ var config = {
 		'magiccart/slick': {
 			deps: ['jquery']
 		},
+		'magiccart/zoom': {
+			deps: ['jquery']
+		},
         'alothemes': {
-            deps: ['jquery', 'magiccart/easing', 'magiccart/fancybox', 'magiccart/ddslick', 'magiccart/slick']
+            deps: ['jquery', 'magiccart/easing', 'magiccart/fancybox', 'magiccart/ddslick', 'magiccart/slick' , 'magiccart/zoom']
         },
 
 	}

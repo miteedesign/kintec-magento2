@@ -21,6 +21,7 @@ use Magento\Framework\App\Cache\Proxy;
 use Magento\Framework\App\Cache\StateInterface;
 use Magento\Framework\App\Config\Base;
 use Magento\Framework\App\Config\Element;
+use Magento\Framework\Exception\LocalizedException;
 use Unirgy\RapidFlow\Helper\Data;
 use Unirgy\RapidFlow\Model\Config\Reader as RfReader;
 
@@ -33,9 +34,9 @@ class Config extends Base
     /**
      * Cache tag and cache id
      */
-    const CACHE_TAG = 'config_urapidflow';
+    const CACHE_TAG = \Unirgy\RapidFlow\Model\CacheType::CACHE_TAG;
 
-    const CACHE_ID = 'config_urapidflow';
+    const CACHE_ID = \Unirgy\RapidFlow\Model\CacheType::TYPE_IDENTIFIER;
 
     /**
      * @var array
@@ -46,11 +47,6 @@ class Config extends Base
      * @var Proxy
      */
     protected $_cacheProxy;
-
-    /**
-     * @var
-     */
-    protected $_useCache;
 
     /**
      * @var StateInterface
@@ -79,12 +75,7 @@ class Config extends Base
         $this->_cacheState = $cacheState;
         $this->_urfConfigReader = $reader;
 
-        $this->setCacheId(self::CACHE_ID);
-        $this->setCacheTags([self::CACHE_TAG]);
-        $this->setCacheChecksum(null);
-
         parent::__construct($sourceData);
-        $this->_construct();
     }
 
     /**
@@ -95,53 +86,39 @@ class Config extends Base
         return $this->_cacheProxy;
     }
 
-    /**
-     * @return $this
-     */
-    protected function _construct()
+    protected $_isLoaded=false;
+    protected function _loadData()
     {
-        if ($this->_useCache()) {
-            if ($this->loadCache()) {
-                return $this;
+        if (!$this->_isLoaded) {
+            $cacheId = self::CACHE_ID;
+            $cachedData = $this->_rfLoadCache();
+            if (empty($cachedData) || !$this->loadString($cachedData)) {
+                $config = $this->_urfConfigReader->read();
+                $this->setXml($config->descend('urapidflow'));
+                $this->_rfSaveCache($config->asXML());
+            } else {
+                $this->setXml($this->getXml()->descend('urapidflow'));
             }
+            $this->_isLoaded = true;
         }
+        return $this;
+    }
 
-        $config = $this->_urfConfigReader->read();
-
-//        $mergeConfig = $this->_baseConfig;
-//
-//        $config = $this->_scopeConfig;
-//        $modules = $this->_helper->getModuleList();
-//
-//        // check if local modules are disabled
-//        $disableLocalModules = (string)$config->getValue('global/disable_local_modules');
-//        $disableLocalModules = !empty($disableLocalModules) && (('true' === $disableLocalModules) || ('1' === $disableLocalModules));
-//
-//        $configFile = $this->_moduleDirReader->getModuleDir('etc', 'Unirgy_RapidFlow') . DIRECTORY_SEPARATOR . 'urapidflow.xml';
-//
-//        if ($mergeConfig->loadFile($configFile)) {
-//            $config->extend($mergeConfig, true);
-//        }
-//
-//        foreach ($modules as $modName => $module) {
-//            if ($module->is('active')) {
-//                if (($disableLocalModules && ('local' === (string)$module->codePool)) || $modName == 'Unirgy\RapidFlow') {
-//                    continue;
-//                }
-//
-//                $configFile = $config->getModuleDir('etc', $modName) . DIRECTORY_SEPARATOR . 'urapidflow.xml';
-//
-//                if ($mergeConfig->loadFile($configFile)) {
-//                    $config->extend($mergeConfig, true);
-//                }
-//            }
-//        }
-//
-        $this->setXml($config->descend('urapidflow'));
-
-        if ($this->_useCache()) {
-            $this->saveCache();
+    protected function _rfLoadCache()
+    {
+        if (!$this->_cacheState->isEnabled(self::CACHE_ID)) {
+            return false;
         }
+        $cacheData = $this->getCache()->load(self::CACHE_ID);
+        return $cacheData;
+    }
+
+    protected function _rfSaveCache($data)
+    {
+        if (!$this->_cacheState->isEnabled(self::CACHE_ID)) {
+            return false;
+        }
+        $this->getCache()->save($data, self::CACHE_ID, [self::CACHE_TAG]);
         return $this;
     }
 
@@ -150,6 +127,7 @@ class Config extends Base
      */
     public function getDataTypes()
     {
+        $this->_loadData();
         return $this->getNode('data_types')->children();
     }
 
@@ -159,6 +137,7 @@ class Config extends Base
      */
     public function getRowTypes($dataType = null)
     {
+        $this->_loadData();
         $nodes = $this->getNode('row_types')->children();
         if (!$dataType) {
             return $nodes;
@@ -170,7 +149,7 @@ class Config extends Base
             if ($restrictMagentoVersion && version_compare(Data::getVersion(), (string)$restrictMagentoVersion, '<')) {
                 continue;
             }
-            if ($dataType != (string)$node->data_type) {
+            if ($dataType !== (string)$node->data_type) {
                 continue;
             }
             $rowTypes[$k] = $node;
@@ -186,9 +165,10 @@ class Config extends Base
      */
     public function getProfileTabs($profileType, $dataType)
     {
+        $this->_loadData();
         $tabs = $this->getNode("data_types/$dataType/profile/$profileType/tabs");
         if (!$tabs) {
-            throw new \Exception(__("Invalid data type '%1' or profile type '%2'", $dataType, $profileType));
+            throw new LocalizedException(__("Invalid data type '%1' or profile type '%2'", $dataType, $profileType));
         }
         return $tabs->children();
     }
@@ -201,6 +181,7 @@ class Config extends Base
      */
     public function getRowTypeColumns($rowType)
     {
+        $this->_loadData();
         if (empty($this->_rowTypeColumns[$rowType])) {
             $node = $this->getNode("row_types/$rowType/columns");
             if (!$node) {
@@ -229,15 +210,4 @@ class Config extends Base
         return empty($a['col']) || empty($b['col']) || $a['col'] == $b['col'] ? 0 : ($a['col'] < $b['col'] ? -1 : 1);
     }
 
-    /**
-     * @return bool
-     */
-    protected function _useCache()
-    {
-        if (null === $this->_useCache) {
-            $this->_useCache = $this->_cacheState->isEnabled(self::CACHE_TAG);
-        }
-
-        return $this->_useCache;
-    }
 }

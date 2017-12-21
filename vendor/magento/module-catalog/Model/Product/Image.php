@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Catalog\Model\Product;
@@ -8,16 +8,14 @@ namespace Magento\Catalog\Model\Product;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Image as MagentoImage;
-use Magento\Catalog\Model\Product\Image\ParamsBuilder;
-use Magento\Catalog\Model\Product\Image\SizeCache;
 
 /**
- * @SuppressWarnings(PHPMD.TooManyFields)
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @method string getFile()
  * @method string getLabel()
  * @method string getPosition()
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Image extends \Magento\Framework\Model\AbstractModel
 {
@@ -139,29 +137,21 @@ class Image extends \Magento\Framework\Model\AbstractModel
     protected $_viewFileSystem;
 
     /**
-     * Core file storage database
-     *
      * @var \Magento\MediaStorage\Helper\File\Storage\Database
      */
     protected $_coreFileStorageDatabase = null;
 
     /**
-     * Core store config
-     *
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $_scopeConfig;
 
     /**
-     * Catalog product media config
-     *
      * @var \Magento\Catalog\Model\Product\Media\Config
      */
     protected $_catalogProductMediaConfig;
 
     /**
-     * Store manager
-     *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
@@ -182,16 +172,8 @@ class Image extends \Magento\Framework\Model\AbstractModel
     private $imageAsset;
 
     /**
-     * @var ParamsBuilder
-     */
-    private $paramsBuilder;
-
-    /**
-     * @var SizeCache
-     */
-    private $sizeCache;
-
-    /**
+     * Constructor
+     *
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
@@ -205,10 +187,8 @@ class Image extends \Magento\Framework\Model\AbstractModel
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
-     * @param \Magento\Catalog\Model\View\Asset\ImageFactory $assetImageFactory
-     * @param \Magento\Catalog\Model\View\Asset\PlaceholderFactory $assetPlaceholderFactory
-     * @param ParamsBuilder $paramsBuilder
-     * @param SizeCache $sizeCache
+     * @param \Magento\Catalog\Model\View\Asset\ImageFactory|null $viewAssetImageFactory
+     * @param \Magento\Catalog\Model\View\Asset\PlaceholderFactory|null $viewAssetPlaceholderFactory
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
@@ -226,10 +206,8 @@ class Image extends \Magento\Framework\Model\AbstractModel
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = [],
-        \Magento\Catalog\Model\View\Asset\ImageFactory $assetImageFactory = null,
-        \Magento\Catalog\Model\View\Asset\PlaceholderFactory $assetPlaceholderFactory = null,
-        ParamsBuilder $paramsBuilder = null,
-        SizeCache $sizeCache = null
+        \Magento\Catalog\Model\View\Asset\ImageFactory $viewAssetImageFactory = null,
+        \Magento\Catalog\Model\View\Asset\PlaceholderFactory $viewAssetPlaceholderFactory = null
     ) {
         $this->_storeManager = $storeManager;
         $this->_catalogProductMediaConfig = $catalogProductMediaConfig;
@@ -240,20 +218,10 @@ class Image extends \Magento\Framework\Model\AbstractModel
         $this->_assetRepo = $assetRepo;
         $this->_viewFileSystem = $viewFileSystem;
         $this->_scopeConfig = $scopeConfig;
-        $this->viewAssetImageFactory = $assetImageFactory;
-        if ($this->viewAssetImageFactory == null) {
-            $this->viewAssetImageFactory = ObjectManager::getInstance()->get(
-                \Magento\Catalog\Model\View\Asset\ImageFactory::class
-            );
-        }
-        $this->viewAssetPlaceholderFactory = $assetPlaceholderFactory;
-        if ($this->viewAssetPlaceholderFactory == null) {
-            $this->viewAssetPlaceholderFactory = ObjectManager::getInstance()->get(
-                \Magento\Catalog\Model\View\Asset\PlaceholderFactory::class
-            );
-        }
-        $this->paramsBuilder = $paramsBuilder ?: ObjectManager::getInstance()->get(ParamsBuilder::class);
-        $this->sizeCache = $sizeCache ?: ObjectManager::getInstance()->get(SizeCache::class);
+        $this->viewAssetImageFactory = $viewAssetImageFactory ?: ObjectManager::getInstance()
+            ->get(\Magento\Catalog\Model\View\Asset\ImageFactory::class);
+        $this->viewAssetPlaceholderFactory = $viewAssetPlaceholderFactory ?: ObjectManager::getInstance()
+            ->get(\Magento\Catalog\Model\View\Asset\PlaceholderFactory::class);
     }
 
     /**
@@ -320,7 +288,7 @@ class Image extends \Magento\Framework\Model\AbstractModel
      */
     public function setKeepAspectRatio($keep)
     {
-        $this->_keepAspectRatio = (bool)$keep;
+        $this->_keepAspectRatio = $keep && $keep !== 'false';
         return $this;
     }
 
@@ -330,7 +298,7 @@ class Image extends \Magento\Framework\Model\AbstractModel
      */
     public function setKeepFrame($keep)
     {
-        $this->_keepFrame = (bool)$keep;
+        $this->_keepFrame = $keep && $keep !== 'false';
         return $this;
     }
 
@@ -340,7 +308,7 @@ class Image extends \Magento\Framework\Model\AbstractModel
      */
     public function setKeepTransparency($keep)
     {
-        $this->_keepTransparency = (bool)$keep;
+        $this->_keepTransparency = $keep && $keep !== 'false';
         return $this;
     }
 
@@ -350,7 +318,7 @@ class Image extends \Magento\Framework\Model\AbstractModel
      */
     public function setConstrainOnly($flag)
     {
-        $this->_constrainOnly = (bool)$flag;
+        $this->_constrainOnly = $flag && $flag !== 'false';
         return $this;
     }
 
@@ -475,7 +443,15 @@ class Image extends \Magento\Framework\Model\AbstractModel
      */
     protected function _rgbToString($rgbArray)
     {
-        return $this->paramsBuilder->rgbToString($rgbArray);
+        $result = [];
+        foreach ($rgbArray as $value) {
+            if (null === $value) {
+                $result[] = 'null';
+            } else {
+                $result[] = sprintf('%02s', dechex($value));
+            }
+        }
+        return implode($result);
     }
 
     /**
@@ -520,7 +496,7 @@ class Image extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
-     * @deprecated
+     * @deprecated 101.1.0
      * @return bool|string
      */
     public function getNewFile()
@@ -665,7 +641,6 @@ class Image extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
-     * Save image file
      * @return $this
      */
     public function saveFile()
@@ -676,12 +651,6 @@ class Image extends \Magento\Framework\Model\AbstractModel
         $filename = $this->getBaseFile() ? $this->imageAsset->getPath() : null;
         $this->getImageProcessor()->save($filename);
         $this->_coreFileStorageDatabase->saveFile($filename);
-        $this->sizeCache->save(
-            $this->getWidth(),
-            $this->getHeight(),
-            $this->imageAsset->getPath()
-        );
-
         return $this;
     }
 
@@ -918,7 +887,6 @@ class Image extends \Magento\Framework\Model\AbstractModel
         } else {
             $image = $this->imageAsset->getPath();
         }
-
         return getimagesize($image);
     }
 
@@ -930,19 +898,28 @@ class Image extends \Magento\Framework\Model\AbstractModel
      */
     private function getMiscParams()
     {
-        return $this->paramsBuilder->build(
-            [
-                'type' => $this->getDestinationSubdir(),
-                'width' => $this->getWidth(),
-                'height' => $this->getHeight(),
-                'frame' => $this->_keepFrame,
-                'constrain' => $this->_constrainOnly,
-                'aspect_ratio' => $this->_keepAspectRatio,
-                'transparency' => $this->_keepTransparency,
-                'background' => $this->_backgroundColor,
-                'angle' => $this->_angle,
-                'quality' => $this->_quality
-            ]
-        );
+        $miscParams = [
+            'image_type' => $this->getDestinationSubdir(),
+            'image_height' => $this->getHeight(),
+            'image_width' => $this->getWidth(),
+            'keep_aspect_ratio' => ($this->_keepAspectRatio ? '' : 'non') . 'proportional',
+            'keep_frame' => ($this->_keepFrame ? '' : 'no') . 'frame',
+            'keep_transparency' => ($this->_keepTransparency ? '' : 'no') . 'transparency',
+            'constrain_only' => ($this->_constrainOnly ? 'do' : 'not') . 'constrainonly',
+            'background' => $this->_rgbToString($this->_backgroundColor),
+            'angle' => $this->_angle,
+            'quality' => $this->_quality,
+        ];
+
+        // if has watermark add watermark params to hash
+        if ($this->getWatermarkFile()) {
+            $miscParams['watermark_file'] = $this->getWatermarkFile();
+            $miscParams['watermark_image_opacity'] = $this->getWatermarkImageOpacity();
+            $miscParams['watermark_position'] = $this->getWatermarkPosition();
+            $miscParams['watermark_width'] = $this->getWatermarkWidth();
+            $miscParams['watermark_height'] = $this->getWatermarkHeight();
+        }
+
+        return $miscParams;
     }
 }

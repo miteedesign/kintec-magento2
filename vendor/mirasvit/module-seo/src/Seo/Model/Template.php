@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -291,5 +291,36 @@ class Template extends \Magento\Rule\Model\AbstractModel
         if ($this->getConditions()->validate($category)) {
             $this->categoryId[] = $category->getId();
         }
+    }
+
+    /**
+     * Retrieve rule combine conditions model
+     *
+     * @return \Magento\Rule\Model\Condition\Combine
+     */
+    public function getConditions()
+    {
+        if (empty($this->_conditions)) {
+            $this->_resetConditions();
+        }
+
+        // Load rule conditions if it is applicable
+        if ($this->hasConditionsSerialized()) {
+            $conditions = $this->getConditionsSerialized();
+            if (!empty($conditions)) {
+                $decode = json_decode($conditions);
+                if ($decode) { //M2.2 compatibility
+                    $conditions = $this->serializer->unserialize($conditions);
+                } else {
+                    $conditions = unserialize($conditions);
+                }
+                if (is_array($conditions) && !empty($conditions)) {
+                    $this->_conditions->loadArray($conditions);
+                }
+            }
+            $this->unsConditionsSerialized();
+        }
+
+        return $this->_conditions;
     }
 }

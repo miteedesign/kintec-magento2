@@ -95,7 +95,7 @@ $_dt = $block->getProfile()->getDataType();
 </fieldset>
 
 <script type="text/javascript">
-    require(["jquery", "jquery/validate", "jquery/ui"], function ($, Validate) {
+    require(["jquery", "jquery/validate", "jquery/ui", "urapidflow"], function ($, Validate) {
         var columnsFields = <?php echo \Zend\Json\Json::encode($_fields) ?>;
         var isExport = <?php echo $_isExport ? 'true' : 'false' ?>;
         var requiredField = <?php echo $_dt === 'catalog_product' ? '"sku"' : ($_dt === 'catalog_category' ? '"url_path"' : 'false') ?>;

@@ -13,7 +13,7 @@
 					<argument name="block_id" xsi:type="string">category_view_custom_block</argument>
 				</arguments>
 			</block>
-			<referenceBlock name="wishlist_sidebar" remove="true"/>
+			<!-- <referenceBlock name="wishlist_sidebar" remove="true"/> -->
         </referenceContainer>
     </body>
 </page>

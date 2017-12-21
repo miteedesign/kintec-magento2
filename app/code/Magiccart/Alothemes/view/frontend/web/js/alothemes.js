@@ -5,7 +5,7 @@
  * @license 	http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2014-06-30 14:27:05
- * @@Modify Date: 2016-05-07 19:29:56
+ * @@Modify Date: 2017-02-24 11:03:27
  * @@Function:
  */
 
@@ -24,6 +24,7 @@ function magicproduct(el, iClass) {
 		el.slick(options);
 	} else {
 		var responsive 	= options.responsive;
+		if(responsive == undefined) return;
 		var length = Object.keys(responsive).length;
 		jQuery.each( responsive, function( key, value ) { // data-responsive="[{"1":"1"},{"361":"1"},{"480":"2"},{"640":"3"},{"768":"3"},{"992":"4"},{"1200":"4"}]"
 			var col = 0;
@@ -47,7 +48,9 @@ function magicproduct(el, iClass) {
 
 require([
 	'jquery',
-	'slick',
+	'magiccart/slick',
+	'magiccart/fancybox',
+	'magiccart/zoom',
 	], function($){
 		(function($) {
 			
@@ -116,6 +119,14 @@ require([
 				}
 			}
 
+			if (typeof alo_timer_layout != 'undefined'){
+				$('.alo-count-down').timer({
+					classes	: '.countdown',
+					layout	: alo_timer_layout, 
+					timeout : alo_timer_timeout
+				});
+			}
+
 		})(jQuery);
 		/* End Timer */
 
@@ -170,53 +181,111 @@ require([
 
 			})('#backtotop');
 
-			// add Js
 
-			var $toggleTab  = $('.toggle-tab');
-			$toggleTab.click(function(){
-				$(this).parent().toggleClass('toggle-visible').find('.toggle-content').toggleClass('visible');
+			function _toggleJint(){
+				var $toggleTab  = $('.toggle-tab');
+				$toggleTab.click(function(){
+					$(this).parent().toggleClass('toggle-visible').find('.toggle-content').slideToggle(300).toggleClass('visible');
+				});
+				
+				$('.main').on("click", '.alo_qty_dec', function(){
+				    var input = $(this).parent().find('input');
+			        var value  = parseInt(input.val());
+			        if(value) input.val(value-1);
+				});
+			    $('.main').on("click", '.alo_qty_inc', function(){
+			        var input = $(this).parent().find('input');
+			        var value  = parseInt(input.val());
+			        input.val(value+1);
+			    });	
+			}
+
+			_toggleJint();
+
+			function _zoomJnit(){
+				if( $(window).width() < 768 ) return;
+			    var loaded = false;
+			    $('.product.media .gallery-placeholder').bind("DOMSubtreeModified",function(){
+			        $('.product.media .fotorama').on('fotorama:ready', function (e, fotorama, extra) {
+			            loaded = false;
+			            $('.product.media .fotorama').on('fotorama:load', function (e, fotorama, extra) {
+			                if(!loaded){
+			                    // $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+			                    $('.product.media .fotorama__stage .fotorama__active').addClass('zoomed').zoom({
+			                        touch:false
+			                    });
+			                    loaded = true;
+			                }
+			            });
+			            $('.product.media .fotorama').on('fotorama:showend', function (e, fotorama, extra) {
+			                // $('.product.media .fotorama__stage .fotorama__loaded--img').trigger('zoom.destroy');
+			                $('.product.media .fotorama__stage .fotorama__active').not('.zoomed').addClass('zoomed').zoom({
+			                    touch:false
+			                });
+			            });
+			        });
+			    });
+			}
+
+			_zoomJnit();
+
+			function _qsJnit(){
+
+				var obj = arguments[0];
+				if(!$('#quickview_handler').length){
+					var _qsHref = "<a id=\"quickview_handler\" href=\"#\" style=\"visibility:hidden;position:absolute;top:0;left:0\"></a>";
+					$(document.body).append(_qsHref);
+				}
+				var qsHandlerImg = $('#quickview_handler');
+				if(!obj.url){
+					var selectorObj = arguments[0];
+					$(obj.itemClass).click(function(){
+						qsHandlerImg.attr('href', $(this).data('url'));
+						qsHandlerImg.trigger('click');
+					});	
+				} else {
+					qsHandlerImg.attr('href', obj.url);
+					qsHandlerImg.trigger('click');
+				}
+		
+				qsHandlerImg.fancybox({
+					'titleShow'			: false,
+					'autoScale'			: false,
+					'transitionIn'		: 'none',
+					'transitionOut'		: 'none',
+					'autoDimensions'	: true,
+					//'maxHeight' 		:600,
+					'scrolling'     	: 'auto', // auto, yes, no
+					'centerOnScroll'	: true,
+					'padding' 			:0,
+	  				'margin'			:0,
+					'type'				: 'ajax',
+					'overlayColor'		: '#353535',//MC.Quickview.OVERLAYCOLOR,
+					beforeLoad : function(){ },
+					afterClose : function(){ },
+					beforeShow : function(){
+						var quickview = $('.fancybox-wrap');
+						quickview.find('.page-wrapper').width(1000);
+						quickview.trigger('contentUpdated');
+						$('.minicart-wrapper').on("DOMSubtreeModified",function(){
+							// $(this).off("DOMSubtreeModified");
+							$('.fancybox-close').trigger('click');
+							// $(this).closest('.minicart-wrapper').addClass('active').find('.mage-dropdown-dialog').slideDown().delay(1000).slideUp();
+    					});
+						$('head').append('<style type="text/css">.fotorama--fullscreen {z-index: 10100 !important}</style>');
+						// _zoomJint();
+					},
+					
+				});
+			}
+
+			_qsJnit({
+				url : '',
+				itemClass : '.quickview.autoplay',
 			});
-			
-			$('.main').on("click", '.alo_qty_dec', function(){
-			    var input = $(this).parent().find('input');
-		        var value  = parseInt(input.val());
-		        if(value) input.val(value-1);
-			});
-		    $('.main').on("click", '.alo_qty_inc', function(){
-		        var input = $(this).parent().find('input');
-		        var value  = parseInt(input.val());
-		        input.val(value+1);
-		    });
 
-			/* elevator click*/ 
-			// (function(selector){
-			// 	var $megashop = $(selector);
-			// 	var length = $megashop.length;
-			// 	$megashop.each(function(index, el) {
-			// 		var elevator = $(this).find('.floor-elevator');
-			// 		elevator.attr('id', 'elevator-' +index);
-			// 		var bntUp 	= elevator.find('.btn-elevator.up');
-			// 		var bntDown = elevator.find('.btn-elevator.down');
-			// 		bntUp.attr('href', '#elevator-' + (index-1));
-			// 		bntDown.attr('href', '#elevator-' +(index+1));
-			// 		if(!index) bntUp.addClass('disabled');
-			// 		if(index == length-1) bntDown.addClass('disabled');
-			// 		elevator.find('.btn-elevator').click(function(e) {
-			// 			 e.preventDefault();
-			// 		    var target = this.hash;
-			// 		    if($(document).find(target).length <=0){
-			// 		        return false;
-			// 		    }
-			// 		    var $target = $(target);
-			// 		    $('html, body').stop().animate({
-			// 		        'scrollTop': $target.offset().top-50
-			// 		    }, 500);
-			// 		    return false;
-			// 		});
-			// 	});
+			$.fn.quickview = _qsJnit;
 
-			// })('.megashop');
-			
 		});
 
 	})(jQuery);	

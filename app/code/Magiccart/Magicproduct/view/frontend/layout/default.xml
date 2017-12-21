@@ -16,6 +16,6 @@
         <link src="Magiccart_Magicproduct::js/slick.js"/> -->
         <css src="Magiccart_Magicproduct::css/slick.css" />
         <css src="Magiccart_Magicproduct::css/slick-theme.css" />
-        <!--<css src="Magiccart_Magicproduct::css/magicproduct.css" />-->
+        <css src="Magiccart_Magicproduct::css/magicproduct.css" />
     </head>
 </page>

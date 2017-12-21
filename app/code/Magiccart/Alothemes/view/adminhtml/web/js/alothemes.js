@@ -29,7 +29,7 @@ require([
 				}
 				var e = document.getElementsByTagName('script');
 				for(var i=0; i<e.length; i+=1) {
-					if(e[i].src && /(^|\/)alothemes\.js([?#].*)?$/i.test(e[i].src)) {
+					if(e[i].src && /(^|\/)alothemes.*\.js([?#].*)?$/i.test(e[i].src)) {
 						var src = new URI(e[i].src);
 						var srcAbs = src.toAbsolute(base);
 						srcAbs.path = srcAbs.path.replace(/[^\/]+$/, ''); // remove filename
@@ -146,18 +146,6 @@ require([
 				}
 
 			};
-			$images = getDirMcolorpicker()+ 'images/';
-			// console.log($images);
-			$.fn.mColorPicker.init.replace = true ; //false;//".color, .alo-color, .mc-color";
-			$.fn.mColorPicker.defaults.imageFolder = $images;
-			$.fn.mColorPicker.init.allowTransparency = true;
-			$.fn.mColorPicker.init.showLogo = false;
-
-			$(".color, .alo-color, .mc-color").attr("data-hex", true).width("116px").mColorPicker(); //$(".color").mColorPicker();
-		  	jQuery(document).on({ 
-		  		mouseover: function() {jQuery.fn.mColorPicker.events(); $('#mColorPickerWrapper').hide()} 
-		  	});
-		  	$('body').click(function(event) {$('#mColorPicker').hide();});
 
 			var color = '#row_alodesign_base_color, #row_alodesign_header_color, #row_alodesign_left_color, #row_alodesign_right_color, #row_alodesign_content_color, #row_alodesign_footer_color, #row_alodesign_custom_color';
 			var background = '#row_alodesign_base_background, #row_alodesign_header_background, #row_alodesign_left_background, #row_alodesign_right_background, #row_alodesign_content_background, #row_alodesign_footer_background, row_alodesign_custom_background';
@@ -176,21 +164,34 @@ require([
 		    		$(this).find(".grid, .design_theme_ua_regexp").width("800px");
 		    		$(this).find("button").parent().hide();
 			    	var container = readonly.parent().parent();
-			    	container.parent().parent().find('thead tr:last-child').hide();
+			    	container.parent().parent().find('thead tr th:last-child').hide();
 			    	// container.children(':last-child').hide();
 			    	var title = container.children(':first-child');
-			    	var inputs = title.find('input');
-			    	inputs.each(function(index, el) {
+			    	title.find('input').each(function(index, el) {
+			    		$(this).addClass('hidden');
 				    	$(this).parent().append('<p style="width: 200px">' + $(this).val() + '</P>');	   		
 			    	});
-			    	inputs.hide();
 			    	readonly.each(function(index, el) {
-				    	if($(this).val() =='') $(this).parent().children().hide();	   		
+				    	if($(this).val() =='') $(this).removeClass('alo-color').addClass('hidden');	   		
 			    	});
 		    	}else {
 		    		$(this).find(".grid, .design_theme_ua_regexp").width("1125px");
 		    	}
 		    });
+
+			$images = getDirMcolorpicker()+ 'images/';
+			// console.log($images);
+			$.fn.mColorPicker.init.replace = true ; //false;//".color, .alo-color, .mc-color";
+			$.fn.mColorPicker.defaults.imageFolder = $images;
+			$.fn.mColorPicker.init.allowTransparency = true;
+			$.fn.mColorPicker.init.showLogo = false;
+
+			$(".color, .alo-color, .mc-color").attr("data-hex", true).width("116px").mColorPicker(); //$(".color").mColorPicker();
+		  	jQuery(document).on({ 
+		  		mouseover: function() {jQuery.fn.mColorPicker.events(); $('#mColorPickerWrapper').hide()} 
+		  	});
+		  	$('body').click(function(event) {$('#mColorPicker').hide();});
+
 			$fonts = $('select.mc-fonts');
 			$size  = $('select.font-size', $fonts.parent().parent().parent());
 			$size.change(function(){$fonts.trigger("click")});

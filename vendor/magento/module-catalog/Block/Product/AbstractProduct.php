@@ -1,16 +1,17 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Catalog\Block\Product;
 
-use Magento\Framework\App\ObjectManager;
-
 /**
  * Class AbstractProduct
+ * @api
+ * @deprecated 101.1.0
  * @SuppressWarnings(PHPMD.NumberOfChildren)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ * @since 100.0.2
  */
 class AbstractProduct extends \Magento\Framework\View\Element\Template
 {
@@ -97,15 +98,17 @@ class AbstractProduct extends \Magento\Framework\View\Element\Template
     protected $stockRegistry;
 
     /**
+     * @var ImageBuilder
+     * @since 101.1.0
+     */
+    protected $imageBuilder;
+
+    /**
      * @param Context $context
      * @param array $data
-     * @param ImageBlockBuilder|null $imageBlockBuilder
      */
-    public function __construct(
-        Context $context,
-        array $data = [],
-        ImageBlockBuilder $imageBlockBuilder = null
-    ) {
+    public function __construct(\Magento\Catalog\Block\Product\Context $context, array $data = [])
+    {
         $this->_imageHelper = $context->getImageHelper();
         $this->imageBuilder = $context->getImageBuilder();
         $this->_compareProduct = $context->getCompareProduct();
@@ -117,10 +120,6 @@ class AbstractProduct extends \Magento\Framework\View\Element\Template
         $this->_mathRandom = $context->getMathRandom();
         $this->reviewRenderer = $context->getReviewRenderer();
         $this->stockRegistry = $context->getStockRegistry();
-        $this->assign(
-            'imageBlockBuilder',
-            $imageBlockBuilder ?: ObjectManager::getInstance()->get(ImageBlockBuilder::class)
-        );
         parent::__construct($context, $data);
     }
 
@@ -134,7 +133,7 @@ class AbstractProduct extends \Magento\Framework\View\Element\Template
      */
     public function getAddToCartUrl($product, $additional = [])
     {
-        if ($product->getTypeInstance()->hasRequiredOptions($product)) {
+        if (!$product->getTypeInstance()->isPossibleBuyFromList($product)) {
             if (!isset($additional['_escape'])) {
                 $additional['_escape'] = true;
             }

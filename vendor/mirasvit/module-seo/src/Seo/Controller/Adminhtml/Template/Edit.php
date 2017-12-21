@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -34,8 +34,6 @@ class Edit extends \Mirasvit\Seo\Controller\Adminhtml\Template
         if ($model->getId()) {
             $this->_initAction();
             $resultPage->getConfig()->getTitle()->prepend(__("Edit Template '%1'", $model->getName()));
-            $this->_addContent($resultPage->getLayout()->createBlock('Mirasvit\Seo\Block\Adminhtml\Template\Edit'))
-                ->_addLeft($resultPage->getLayout()->createBlock('Mirasvit\Seo\Block\Adminhtml\Template\Edit\Tabs'));
 
             return $resultPage;
         } else {

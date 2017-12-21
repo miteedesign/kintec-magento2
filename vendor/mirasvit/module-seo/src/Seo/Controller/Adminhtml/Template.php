@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -45,15 +45,18 @@ abstract class Template extends \Magento\Backend\App\Action
     protected $resultFactory;
 
     /**
+     * @param \Mirasvit\Seo\Api\Service\CompatibilityServiceInterface $compatibilityService
      * @param \Mirasvit\Seo\Model\TemplateFactory $templateFactory
      * @param \Magento\Framework\Registry         $registry
      * @param \Magento\Backend\App\Action\Context $context
      */
     public function __construct(
+        \Mirasvit\Seo\Api\Service\CompatibilityServiceInterface $compatibilityService,
         \Mirasvit\Seo\Model\TemplateFactory $templateFactory,
         \Magento\Framework\Registry $registry,
         \Magento\Backend\App\Action\Context $context
     ) {
+        $this->compatibilityService = $compatibilityService;
         $this->templateFactory = $templateFactory;
         $this->registry = $registry;
         $this->context = $context;

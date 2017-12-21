@@ -24,13 +24,11 @@ if(!count($brands)) return;
 <script type="text/javascript">
     require([
         'jquery',
-        'slick',
+        'magiccart/slick',
         'alothemes',
         ], function($){
-            (function($) {
-                var shopbrand  = $('.<?php echo $selector ?> .shopbrand');
-                if(shopbrand.length) $('head').append(magicproduct(shopbrand, '.item'));
-            })(jQuery); 
+            var shopbrand  = $('.<?php echo $selector ?> .shopbrand');
+            if(shopbrand.length) $('head').append(magicproduct(shopbrand, '.item'));
     });
 </script>
 

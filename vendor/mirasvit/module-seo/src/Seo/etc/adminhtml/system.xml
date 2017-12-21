@@ -13,7 +13,7 @@
                     <backend_model>\Mirasvit\Seo\Model\Config\Backend\Canonical</backend_model>
                 </field>
                 <field id="is_longest_canonical_url" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use longest product url as canonical</label>
+                    <label>Use longest product URL as canonical</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
                         <field id="is_add_canonical_url">1</field>
@@ -55,7 +55,7 @@
                     </depends>
                 </field>
                 <field id="canonical_url_ignore_pages" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Don't use canonical urls on pages</label>
+                    <label>Don't use canonical URLs on pages</label>
                     <depends>
                         <field id="is_add_canonical_url">1</field>
                     </depends>
@@ -63,7 +63,7 @@
                 <field id="noindex_pages2" translate="label" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Robots Meta Header</label>
                     <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\NoindexPages</frontend_model>
-                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
                 </field>
                 <field id="https_noindex_pages" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Robots Meta Header for HTTPS</label>
@@ -95,7 +95,7 @@
                 <field id="alternate_configurable" translate="label" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Configurate alternate manually</label>
                     <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\Alternate</frontend_model>
-                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
                     <depends>
                         <field id="is_alternate_hreflang">2</field>
                     </depends>
@@ -103,7 +103,7 @@
                 <field id="configurable_hreflang_x_default" translate="label" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Add hreflang hreflang x-default (not necessary)</label>
                     <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Alternate\AlternateXDefault</frontend_model>
-                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <backend_model>Mirasvit\Seo\Model\Config\Backend\ArraySerialized</backend_model>
                     <depends>
                         <field id="is_alternate_hreflang">2</field>
                     </depends>
@@ -116,7 +116,7 @@
                     </depends>
                 </field>
                 <field id="is_hreflang_cut_category_additional_data" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Cut category additional data for alternate url</label>
+                    <label>Cut category additional data for alternate URL</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
                         <field id="is_alternate_hreflang" separator="|">1|2</field>
@@ -213,14 +213,19 @@
                 <!--&lt;!&ndash;</field>&ndash;&gt;-->
             </group>
             <group id="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="900">
-                <label>Product Images Settings</label>
-                <!--<field id="is_enable_image_friendly_urls" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">-->
-                    <!--<label>Enable SEO-friendly URLs for Product Images</label>-->
-                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
-                <!--</field>-->
-                <!--<field id="image_url_template" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">-->
-                    <!--<label>Template for URL key of Product Images</label>-->
-                <!--</field>-->
+                <label>Images Settings</label>
+                <field id="is_enable_image_friendly_url" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable SEO-friendly URLs for Product Images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[<b>Flush all cache to apply SEO-friendly URLs for Product Images</b>]]></comment>
+                </field>
+                <field id="image_url_template" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Template for URL key of Product Images</label>
+                    <comment><![CDATA[If empty will be used [product_name]]]></comment>
+                    <depends>
+                        <field id="is_enable_image_friendly_url">1</field>
+                    </depends>
+                </field>
                 <field id="is_enable_image_alt" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enable generation of Product Images Alt and Title</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -238,20 +243,13 @@
                     <label>Show Info</label>
                     <source_model>\Mirasvit\Seo\Model\Config\Source\Info</source_model>
                 </field>
-                <!-- <field id="alt_link_info" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Show empty or missing links of alt tags</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <field id="info_position" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SEO Toolbar position</label>
+                    <source_model>\Mirasvit\Seo\Model\Config\Source\InfoPosition</source_model>
                     <depends>
                         <field id="info" separator="|">1|2</field>
                     </depends>
                 </field>
-                <field id="templates_rewrite_info" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Show SEO Templates and Rewrite Info</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="info" separator="|">1|2</field>
-                    </depends>
-                </field> -->
                 <field id="allowed_ip" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show info only for</label>
                     <depends>
@@ -261,7 +259,6 @@
                 <field id="bypass_cookie_button" translate="button_label comment" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                         <button_label>Set cookie</button_label>
                         <frontend_model>\Mirasvit\Seo\Block\Adminhtml\System\Config\Cookie</frontend_model>
-                        <!-- <comment>Save configuration before push the button</comment> -->
                         <depends>
                             <field id="info">2</field>
                         </depends>

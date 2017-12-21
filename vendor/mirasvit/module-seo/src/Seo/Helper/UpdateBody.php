@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -44,9 +44,9 @@ class UpdateBody extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function replaceMetaDescription(&$body, $seoMetaDescription)
     {
-       $pattern = '/<meta name="description" content="(.*?)"\\/>/ims';
-       $replacement = '<meta name="description" content="' . $seoMetaDescription . '"/>';
-       $body = preg_replace($pattern, $replacement, $body, 1);
+        $pattern = '/<meta name="description" content="(.*?)"\\/>/ims';
+        $replacement = '<meta name="description" content="' . $seoMetaDescription . '"/>';
+        $body = preg_replace($pattern, $replacement, $body, 1);
     }
 
     /**
@@ -57,9 +57,9 @@ class UpdateBody extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function replaceMetaKeywords(&$body, $seoMetaKeywords)
     {
-       $pattern = '/<meta name="keywords" content="(.*?)"\\/>/ims';
-       $replacement = '<meta name="keywords" content="' . $seoMetaKeywords . '"/>';
-       $body = preg_replace($pattern, $replacement, $body, 1);
+        $pattern = '/<meta name="keywords" content="(.*?)"\\/>/ims';
+        $replacement = '<meta name="keywords" content="' . $seoMetaKeywords . '"/>';
+        $body = preg_replace($pattern, $replacement, $body, 1);
     }
 
     /**
@@ -70,9 +70,9 @@ class UpdateBody extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function replaceMetaTitle(&$body, $seoMetaTitle)
     {
-       $pattern = '/<title>(.*?)<\\/title>/ims';
-       $replacement = '<title>' . $seoMetaTitle . '</title>';
-       $body = preg_replace($pattern, $replacement, $body, 1);
+        $pattern = '/<title>(.*?)<\\/title>/ims';
+        $replacement = '<title>' . $seoMetaTitle . '</title>';
+        $body = preg_replace($pattern, $replacement, $body, 1);
     }
 
 
@@ -117,8 +117,21 @@ class UpdateBody extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function replaceRobots(&$body, $robots)
     {
-       $pattern = '/<meta name="robots" content="(.*?)"\\/>/ims';
-       $replacement = '<meta name="robots" content="' . $robots . '"/>';
-       $body = preg_replace($pattern, $replacement, $body, 1);
+        $pattern = '/<meta name="robots" content="(.*?)"\\/>/ims';
+        $replacement = '<meta name="robots" content="' . $robots . '"/>';
+        $body = preg_replace($pattern, $replacement, $body, 1);
+    }
+
+    /**
+     * @param string $body
+     * @param string $canonicalTag
+     * @return void
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function addCanonicalTag(&$body, $canonicalTag)
+    {
+        $pattern = '/<link  rel="stylesheet" type="text\\/css"/ims';
+        $replacement = $canonicalTag . ' <link  rel="stylesheet" type="text/css"';
+        $body = preg_replace($pattern, $replacement, $body, 1);
     }
 }

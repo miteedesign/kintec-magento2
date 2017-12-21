@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Wishlist\Controller\Index;
@@ -128,7 +128,7 @@ class Add extends \Magento\Wishlist\Controller\AbstractIndex
                 $referer = $this->_redirect->getRefererUrl();
             }
 
-            $this->_objectManager->get('Magento\Wishlist\Helper\Data')->calculate();
+            $this->_objectManager->get(\Magento\Wishlist\Helper\Data::class)->calculate();
 
             $this->messageManager->addComplexSuccessMessage(
                 'addProductSuccessMessage',
@@ -147,12 +147,8 @@ class Add extends \Magento\Wishlist\Controller\AbstractIndex
                 __('We can\'t add the item to Wish List right now.')
             );
         }
-        if($this->_customerSession->isLoggedIn()) {
-           $resultRedirect->setPath($this->_redirect->getRefererUrl());
-        }
-        else
+
         $resultRedirect->setPath('*', ['wishlist_id' => $wishlist->getId()]);
-        
         return $resultRedirect;
     }
 }

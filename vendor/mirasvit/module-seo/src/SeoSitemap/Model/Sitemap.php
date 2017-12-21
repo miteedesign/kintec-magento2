@@ -9,13 +9,14 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
 
 
 namespace Mirasvit\SeoSitemap\Model;
+use Magento\Framework\Model\AbstractModel;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -123,6 +124,8 @@ class Sitemap  extends \Magento\Sitemap\Model\Sitemap
      */
     protected function _initSitemapItems()
     {
+        $this->getPreparedSitemapPath();
+
         /** @var $helper \Magento\Sitemap\Helper\Data */
         $helper = $this->_sitemapData;
         $storeId = $this->getStoreId();
@@ -164,7 +167,19 @@ class Sitemap  extends \Magento\Sitemap\Model\Sitemap
             if ($categoryItems = $blogMxSitemap->getCategoryItems()) {
                 $this->_sitemapItems[] = $categoryItems;
             }
-            if ($postItems = $blogMxSitemap->getPostItems()) {
+            if ($postItems = $blogMxSitemap->getPostItems($storeId)) {
+                $this->_sitemapItems[] = $postItems;
+            }
+        }
+
+        if ($this->moduleManager->isEnabled('Mirasvit_Kb')
+            && interface_exists('\Mirasvit\Kb\Api\Data\SitemapInterface')) {
+            $kbSitemap = $this->objectManager->get('\Mirasvit\Kb\Api\Data\SitemapInterface');
+            $this->_sitemapItems[] = $kbSitemap->getBlogItem($storeId);
+            if ($categoryItems = $kbSitemap->getCategoryItems($storeId)) {
+                $this->_sitemapItems[] = $categoryItems;
+            }
+            if ($postItems = $kbSitemap->getPostItems($storeId)) {
                 $this->_sitemapItems[] = $postItems;
             }
         }
@@ -187,6 +202,93 @@ class Sitemap  extends \Magento\Sitemap\Model\Sitemap
                 self::CLOSE_TAG_KEY => '</urlset>',
             ],
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isKeepSitemapInPubFolder()
+    {
+        if (isset($_SERVER['SCRIPT_FILENAME'])
+            && strpos($_SERVER['SCRIPT_FILENAME'], '/pub/index.php') !== false) {
+             return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Add pub in path
+     *
+     * @return string
+     */
+    public function getPreparedSitemapPath()
+    {
+        $path = $this->getSitemapPath();
+        if ($this->isKeepSitemapInPubFolder()
+            && strpos($path, '/pub/') === false) {
+            $path = '/pub' . $this->getSitemapPath();
+            $this->setData('sitemap_path', $path);
+        }
+
+        return $path;
+    }
+
+    /**
+     * Check sitemap file location and permissions
+     *
+     * @return \Magento\Framework\Model\AbstractModel
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function beforeSave()
+    {
+        $path = $this->getPreparedSitemapPath();
+
+        /**
+         * Check path is allow
+         */
+        if ($path && preg_match('#\.\.[\\\/]#', $path)) {
+            throw new \Magento\Framework\Exception\LocalizedException(__('Please define a correct path.'));
+        }
+        /**
+         * Check exists and writable path
+         */
+        if (!$this->_directory->isExist($path)) {
+            throw new \Magento\Framework\Exception\LocalizedException(
+                __(
+                    'Please create the specified folder "%1" before saving the sitemap.',
+                    $this->_escaper->escapeHtml($this->getSitemapPath())
+                )
+            );
+        }
+
+        if (!$this->_directory->isWritable($path)) {
+            throw new \Magento\Framework\Exception\LocalizedException(
+                __('Please make sure that "%1" is writable by the web-server.', $this->getSitemapPath())
+            );
+        }
+        /**
+         * Check allow filename
+         */
+        if (!preg_match('#^[a-zA-Z0-9_\.]+$#', $this->getSitemapFilename())) {
+            throw new \Magento\Framework\Exception\LocalizedException(
+                __(
+                    'Please use only letters (a-z or A-Z), numbers (0-9) or underscores (_)'
+                    . ' in the filename. No spaces or other characters are allowed.'
+                )
+            );
+        }
+        if (!preg_match('#\.xml$#', $this->getSitemapFilename())) {
+            $this->setSitemapFilename($this->getSitemapFilename() . '.xml');
+        }
+
+        if ($this->isKeepSitemapInPubFolder()) {
+            $path = str_replace('/pub/', '/', $path);
+        }
+
+        $this->setSitemapPath(rtrim(str_replace(str_replace('\\', '/', $this->_getBaseDir()), '', $path), '/') . '/');
+
+        return AbstractModel::beforeSave();
     }
 
     /**
@@ -231,6 +333,7 @@ class Sitemap  extends \Magento\Sitemap\Model\Sitemap
         foreach ($this->_sitemapItems as $sitemapItem) {
             $changefreq = $sitemapItem->getChangefreq();
             $priority = $sitemapItem->getPriority();
+
             foreach ($sitemapItem->getCollection() as $item) {
                 if ($this->seoSitemapData->checkArrayPattern($item->getUrl(), $excludedlinks)) {
                     continue;
@@ -281,5 +384,24 @@ class Sitemap  extends \Magento\Sitemap\Model\Sitemap
         $this->save();
 
         return $this;
+    }
+
+    /**
+     * Get media url
+     *
+     * @param string $url
+     * @return string
+     */
+    protected function _getMediaUrl($url)
+    {
+        if (strpos($url, 'http://') !== false
+            || strpos($url, 'https://') !== false) {
+                $urlExploded = explode('://', $url);
+                $urlExploded[1] = str_replace('//', '/', $urlExploded[1]);
+                $url = implode('://', $urlExploded);
+
+                return $url;
+        }
+        return $this->_getUrl($url, \Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
     }
 }

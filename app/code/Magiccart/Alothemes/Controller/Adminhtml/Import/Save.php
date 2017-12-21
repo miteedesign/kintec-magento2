@@ -6,7 +6,7 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
- * @@Modify Date: 2016-05-06 16:19:41
+ * @@Modify Date: 2017-02-14 21:19:51
  * @@Function:
  */
 
@@ -55,7 +55,8 @@ class Save extends \Magiccart\Alothemes\Controller\Adminhtml\Action
             if( isset($request['page'])  && $request['page'] )    $this->ImportPage(isset($request['overwrite_page']));
             if( isset($request['config'])  && $request['config'] )  $this->ImportSystem($scope);
             $this->ImportMagicmenu();
-            $this->ImportMagicproduct();            
+            $this->ImportMagicproduct();
+            $this->ImportMagicslider();             
         } else {
             $this->messageManager->addSuccess(__('This feature not available.'));
         }
@@ -289,5 +290,45 @@ class Save extends \Magiccart\Alothemes\Controller\Adminhtml\Action
                 $this->messageManager->addError(__('Can not import file "%1".<br/>"%2"', $backupFilePath, $e->getMessage()));
         }
     }
+
+    public function ImportMagicslider()
+    {
+        $fileName = 'magicslider.xml';
+        $filePath = $this->_filePath .$fileName;
+        $backupFilePath = $this->_dir->getAbsolutePath($filePath);
+        $storeIds = $this->_store;
+        try{
+            if (!is_readable($backupFilePath)) throw new \Exception(__("Can't read data file: %1", $backupFilePath));
+            $xmlObj = new \Magento\Framework\Simplexml\Config($backupFilePath);
+            $num = 0;
+            $magicproduct = $xmlObj->getNode('magicslider');
+            if($magicproduct){
+                foreach ($magicproduct->children() as $item){
+                    //Check if Magicproduct already exists
+                    $collection = $this->_objectManager->create('Magiccart\Magicslider\Model\ResourceModel\Magicslider\Collection');
+                    $oldMenus   =  $collection->addFieldToFilter('identifier', $item->identifier)->load();
+                    //If items can be overwritten
+                    $overwrite = false; // get in cfg
+                    if ($overwrite){
+                        if (count($oldMenus) > 0){
+                            foreach ($oldMenus as $old) $old->delete();
+                        }
+                    }else {
+                        if (count($oldMenus) > 0){
+                            continue;
+                        }
+                    }
+                    $model = $this->_objectManager->create('Magiccart\Magicslider\Model\Magicslider');   
+                    $model->setData($item->asArray())->save();
+                    $num++;
+                }               
+            }
+
+            $this->messageManager->addSuccess(__('Import (%1) Item(s) in file "%2".', $num, $backupFilePath));
+
+        } catch (\Exception $e) {
+                $this->messageManager->addError(__('Can not import file "%1".<br/>"%2"', $backupFilePath, $e->getMessage()));
+        }
+	}
 
 }

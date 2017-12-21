@@ -12,7 +12,7 @@ class MassStatus extends AbstractProfile
     {
         $profileIds = $this->getRequest()->getParam('profiles');
         if (!is_array($profileIds)) {
-            $this->messageManager->addError(__('Please select profile(s)'));
+            $this->messageManager->addErrorMessage(__('Please select profile(s)'));
         } else {
             try {
                 foreach ($profileIds as $profileId) {
@@ -22,11 +22,11 @@ class MassStatus extends AbstractProfile
                         ->setIsMassupdate(true)
                         ->save();
                 }
-                $this->messageManager->addSuccess(
+                $this->messageManager->addSuccessMessage(
                     __('Total of %1 record(s) were successfully updated', count($profileIds))
                 );
             } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             }
         }
         $this->_redirect('*/*/index');

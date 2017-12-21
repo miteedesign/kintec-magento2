@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,7 +20,7 @@ namespace Mirasvit\Seo\Block\Adminhtml;
 class Redirect extends \Magento\Backend\Block\Widget\Grid\Container
 {
     /**
-     *
+     * @return void
      */
     protected function _construct()
     {
@@ -28,6 +28,12 @@ class Redirect extends \Magento\Backend\Block\Widget\Grid\Container
         $this->_blockGroup = 'Mirasvit_Seo';
         $this->_headerText = __('Redirect Manager');
         $this->_addButtonLabel = __('Add New Redirect');
+
+        $this->buttonList->add('import', [
+            'label' => __('Import/Export Redirects'),
+            'onclick' => "setLocation('" . $this->getUrl('seo/redirectImportExport/index') . "')",
+        ]);
+
         parent::_construct();
     }
 
@@ -39,42 +45,4 @@ class Redirect extends \Magento\Backend\Block\Widget\Grid\Container
         return $this->getUrl('*/*/add');
     }
 
-    /**
-     * Add custom Add button.
-     *
-     * @return void
-     */
-    protected function _addNewButton()
-    {
-        $addButtonProps = [
-            'id' => 'add_new_redirect',
-            'label' => __('Add Redirect'),
-            'class' => 'add',
-            'button_class' => '',
-            'class_name' => 'Magento\Backend\Block\Widget\Button\SplitButton',
-            'options' => $this->getAddNewButtonOptions(),
-        ];
-        $this->buttonList->add('add_new', $addButtonProps);
-    }
-
-    /**
-     * Retrieve options for 'Add Redirect' split button
-     *
-     * @return array
-     */
-    protected function getAddNewButtonOptions()
-    {
-        $splitButtonOptions = [];
-        $splitButtonOptions['add'] = [
-            'label' => __('Add Redirect'),
-            'onclick' => "setLocation('" . $this->getUrl('seo/redirect/add') . "')",
-            'default' => true,
-        ];
-        $splitButtonOptions['import'] = [
-            'label' => __('Import/Export Redirects'),
-            'onclick' => "setLocation('" . $this->getUrl('seo/redirectImportExport/index') . "')",
-        ];
-
-        return $splitButtonOptions;
-    }
 }

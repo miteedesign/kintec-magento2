@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -40,10 +40,21 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
     protected $context;
 
     /**
+     * @var \Magento\Store\Model\Information
+     */
+    protected $_storeInfo;
+
+    /**
+     * @var \Magento\Store\Model\Store
+     */
+    protected $store;
+
+    /**
      * @param \Mirasvit\Seo\Model\Config                       $config
      * @param \Magento\Framework\Locale\ListsInterface         $localeLists
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Mirasvit\Seo\Helper\Data                        $seoData
+     * @param \Magento\Store\Model\Information                 $_storeInfo
      * @param array                                            $data
      */
     public function __construct(
@@ -51,6 +62,7 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
         \Magento\Framework\Locale\ListsInterface $localeLists,
         \Magento\Framework\View\Element\Template\Context $context,
         \Mirasvit\Seo\Helper\Data $seoData,
+        \Magento\Store\Model\Information $storeInfo,
         array $data = []
     ) {
         $this->config = $config;
@@ -58,6 +70,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
         $this->assetRepo = $context->getAssetRepository();
         $this->context = $context;
         $this->seoData = $seoData;
+        $this->_storeInfo = $storeInfo;
+        $this->store = $this->context->getStoreManager()->getStore();
         parent::__construct($context, $data);
     }
 
@@ -66,7 +80,7 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function isOrganizationSnippets()
     {
-        return $this->config->isOrganizationSnippetsEnabled();
+        return $this->config->isOrganizationSnippetsEnabled($this->store->getStoreId());
     }
 
     /**
@@ -74,10 +88,14 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getName()
     {
-        if ($this->config->getNameOrganizationSnippets()) {
-            $name = $this->config->getManualNameOrganizationSnippets();
+        if ($this->config->getNameOrganizationSnippets($this->store->getStoreId())) {
+            $name = $this->config->getManualNameOrganizationSnippets($this->store->getStoreId());
         } else {
-            $name = trim($this->context->getScopeConfig()->getValue('general/store_information/name'));
+            if ($storeName = $this->_storeInfo->getStoreInformationObject($this->store)->getName()) {
+                $name = $storeName;
+            } else {
+                $name = trim($this->context->getScopeConfig()->getValue('general/store_information/name'));
+            }
         }
 
         if ($name) {
@@ -92,8 +110,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getCountryAddress()
     {
-        if ($this->config->getCountryAddressOrganizationSnippets()) {
-            $countryAddress = $this->config->getManualCountryAddressOrganizationSnippets();
+        if ($this->config->getCountryAddressOrganizationSnippets($this->store->getStoreId())) {
+            $countryAddress = $this->config->getManualCountryAddressOrganizationSnippets($this->store->getStoreId());
         } else {
             $countryAddress = trim($this->localeLists
                 ->getCountryTranslation($this->context
@@ -113,8 +131,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getAddressLocality()
     {
-        if ($this->config->getLocalityAddressOrganizationSnippets()) {
-            $addressLocality = $this->config->getManualLocalityAddressOrganizationSnippets();
+        if ($this->config->getLocalityAddressOrganizationSnippets($this->store->getStoreId())) {
+            $addressLocality = $this->config->getManualLocalityAddressOrganizationSnippets($this->store->getStoreId());
         } else {
             $addressLocality = trim($this->context->getScopeConfig()->getValue('general/store_information/city'));
         }
@@ -131,8 +149,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getPostalCode()
     {
-        if ($this->config->getPostalCodeOrganizationSnippets()) {
-            $postalCode = $this->config->getManualPostalCodeOrganizationSnippets();
+        if ($this->config->getPostalCodeOrganizationSnippets($this->store->getStoreId())) {
+            $postalCode = $this->config->getManualPostalCodeOrganizationSnippets($this->store->getStoreId());
         } else {
             $postalCode = trim($this->context->getScopeConfig()->getValue('general/store_information/postcode'));
         }
@@ -149,8 +167,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getStreetAddress()
     {
-        if ($this->config->getStreetAddressOrganizationSnippets()) {
-            $streetAddress = $this->config->getManualStreetAddressOrganizationSnippets();
+        if ($this->config->getStreetAddressOrganizationSnippets($this->store->getStoreId())) {
+            $streetAddress = $this->config->getManualStreetAddressOrganizationSnippets($this->store->getStoreId());
         } else {
             $streetAddress = trim($this->context->getScopeConfig()->getValue('general/store_information/street_line1').
                 ' '.$this->context->getScopeConfig()->getValue('general/store_information/street_line2'));
@@ -168,8 +186,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getTelephone()
     {
-        if ($this->config->getTelephoneOrganizationSnippets()) {
-            $telephone = $this->config->getManualTelephoneOrganizationSnippets();
+        if ($this->config->getTelephoneOrganizationSnippets($this->store->getStoreId())) {
+            $telephone = $this->config->getManualTelephoneOrganizationSnippets($this->store->getStoreId());
         } else {
             $telephone = trim($this->context->getScopeConfig()->getValue('general/store_information/phone'));
         }
@@ -186,7 +204,7 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getFaxNumber()
     {
-        if ($faxNumber = $this->config->getManualFaxnumberOrganizationSnippets()) {
+        if ($faxNumber = $this->config->getManualFaxnumberOrganizationSnippets($this->store->getStoreId())) {
             return "\"faxNumber\": \"$faxNumber\",";
         }
 
@@ -198,8 +216,8 @@ class OrganizationSnippets extends \Magento\Framework\View\Element\Template
      */
     public function getEmail()
     {
-        if ($this->config->getEmailOrganizationSnippets()) {
-            $email = $this->config->getManualEmailOrganizationSnippets();
+        if ($this->config->getEmailOrganizationSnippets($this->store->getStoreId())) {
+            $email = $this->config->getManualEmailOrganizationSnippets($this->store->getStoreId());
         } else {
             $email = trim($this->context->getScopeConfig()->getValue('trans_email/ident_general/email'));
         }

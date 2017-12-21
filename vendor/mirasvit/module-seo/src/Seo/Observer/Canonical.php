@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -18,6 +18,7 @@
 namespace Mirasvit\Seo\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
+use Mirasvit\Seo\Model\Config as Config;
 
 /**
  * @SuppressWarnings(PHPMD)
@@ -120,7 +121,8 @@ class Canonical implements ObserverInterface
         \Magento\Framework\Registry                                                         $registry,
         \Mirasvit\Seo\Helper\Data                                                           $seoData,
         \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteCollection                        $urlRewrite,
-        \Mirasvit\Seo\Helper\UrlPrepare                                                     $urlPrepare
+        \Mirasvit\Seo\Helper\UrlPrepare                                                     $urlPrepare,
+        \Mirasvit\Seo\Api\Service\CanonicalRewrite\CanonicalRewriteServiceInterface         $canonicalRewriteService
     ) {
         $this->config = $config;
         $this->productTypeFactory = $productTypeFactory;
@@ -137,6 +139,7 @@ class Canonical implements ObserverInterface
         $this->fullAction = $this->request->getFullActionName();
         $this->urlRewrite = $urlRewrite;
         $this->urlPrepare = $urlPrepare;
+        $this->canonicalRewriteService = $canonicalRewriteService;
     }
 
     /**
@@ -154,6 +157,18 @@ class Canonical implements ObserverInterface
     }
 
     /**
+     * @return string|bool
+     */
+    public function getCanonicalRewrite()
+    {
+        if ($canonicalRewriteRule = $this->canonicalRewriteService->getCanonicalRewriteRule()) {
+            return $canonicalRewriteRule->getData('canonical');
+        }
+
+        return false;
+    }
+
+    /**
      * @return $this|mixed|string
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity) 
@@ -163,6 +178,10 @@ class Canonical implements ObserverInterface
     {
         if (!$this->config->isAddCanonicalUrl() || $this->isIgnoredCanonical()) {
             return false;
+        }
+
+        if ($canonicalRewrite = $this->getCanonicalRewrite()) {
+            return $canonicalRewrite;
         }
 
         $productActions = [
@@ -248,6 +267,28 @@ class Canonical implements ObserverInterface
         $page = (int) $this->request->getParam('p');
         if ($page > 1 && $this->config->isPaginatedCanonical()) {
             $canonicalUrl .= "?p=$page";
+        }
+
+        $canonicalUrl = $this->getPreparedTrailingCanonical($canonicalUrl);
+
+        return $canonicalUrl;
+    }
+
+    /**
+     * Get Canonical with prepared Trailing slash (depending on Trailing slash config)
+     *
+     * @param string $canonicalUrl
+     * @return string
+     */
+    protected function getPreparedTrailingCanonical($canonicalUrl)
+    {
+        if ($this->config->getTrailingSlash() == Config::TRAILING_SLASH
+            && substr($canonicalUrl, -1) != '/'
+            && strpos($canonicalUrl, '?') === false) {
+            $canonicalUrl = $canonicalUrl . '/';
+        } elseif ($this->config->getTrailingSlash() == Config::NO_TRAILING_SLASH
+            && substr($canonicalUrl, -1) == '/') {
+            $canonicalUrl = substr($canonicalUrl, 0, -1);
         }
 
         return $canonicalUrl;

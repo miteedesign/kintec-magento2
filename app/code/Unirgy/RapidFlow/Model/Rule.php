@@ -100,7 +100,7 @@ class Rule extends AbstractModel
 
     /**
      * @param Profile $profile
-     * @return bool
+     * @return int[]
      */
     public function getProductIds($profile)
     {

@@ -9,13 +9,15 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
 
 
 namespace Mirasvit\Seo\Block\Adminhtml\Template\Edit\Tab;
+
+use Mirasvit\Seo\Model\Config as Config;
 
 class Rule extends \Magento\Backend\Block\Widget\Form implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
@@ -48,6 +50,11 @@ class Rule extends \Magento\Backend\Block\Widget\Form implements \Magento\Backen
      * @var \Magento\Backend\Block\Widget\Context
      */
     protected $context;
+
+    /**
+     * @var string
+     */
+    protected $_nameInLayout = 'conditions_serialized';
 
     /**
      * @param \Magento\Backend\Block\Widget\Form\Renderer\Fieldset $widgetFormRendererFieldset
@@ -117,53 +124,75 @@ class Rule extends \Magento\Backend\Block\Widget\Form implements \Magento\Backen
         $model = $this->registry->registry('current_template_model');
 
         $form = $this->formFactory->create();
-        $form->setHtmlIdPrefix('rule_');
+        $type = $model->getRuleType();
+        switch ($type) {
+            case Config::PRODUCTS_RULE:
+                $formName = 'seo_template_product_form';
+                break;
 
-        $fieldset = $form->addFieldset('rules_processing', [
-            'legend' => __('Rules Processing'),
-        ]);
+            case Config::CATEGORIES_RULE:
+                $formName = 'seo_template_category_form';
+                break;
 
-        $fieldset->addField('stop_rules_processing', 'select', [
-            'name' => 'stop_rules_processing',
-            'label' => __('Stop Further Rules Processing'),
-            'options' => ['1' => __('Yes'), '0' => __('No')],
-            'value' => $model->getStopRulesProcessing(),
-        ]);
+            case Config::RESULTS_LAYERED_NAVIGATION_RULE:
+                $formName = 'seo_template_layered_navigation_form';
+                break;
 
-        $fieldset->addField('apply_for_child_categories', 'select', [
-            'name'      => 'apply_for_child_categories',
-            'label'     => ('Apply to child categories'),
-            'options'   => ['1' => __('Yes'), '0' => __('No')],
-            'value'     => $model->getApplyForChildCategories(),
-            'note'     => 'If category is set in Conditions, template will also be applied to all child categories.',
-        ]);
+            default:
+                $formName = 'rule_';
+                break;
+        }
+        $form->setHtmlIdPrefix($formName);
+        $fieldsetName = 'rule_conditions_fieldset';
 
         $renderer = $this->widgetFormRendererFieldset
             ->setTemplate('Magento_CatalogRule::promo/fieldset.phtml')
             ->setNewChildUrl($this->backendUrlManager
-                ->getUrl('*/template/newConditionHtml/form/rule_conditions_fieldset'));
+                ->getUrl('*/template/newConditionHtml/form/rule_conditions_fieldset'), ['form_name' => $fieldsetName])
+                ->setFieldSetId($fieldsetName);
 
         // use ruletype with Conditions Combination
         if (($url = $renderer->getData('new_child_url'))
             && ($ruletype = $model->getRuleType())) {
-                $renderer->setData('new_child_url', $url . '?ruletype=' . $ruletype);
+                $renderer->setData('new_child_url', $url . '?ruletype=' . $ruletype . '&ruleform=' . $formName);
         }
 
-        $fieldset = $form->addFieldset('conditions_fieldset', [
+        $fieldset = $form->addFieldset($fieldsetName, [
             'legend' => __(
                 'Conditions (leave blank for all elements, depending from rule type)'
             ), ])->setRenderer($renderer);
 
+            $model->getConditions()->setFormName($formName);
             $fieldset->addField('conditions', 'text', [
             'name' => 'conditions',
             'label' => __('Conditions'),
             'title' => __('Conditions'),
             'required' => true,
+            'data-form-part' => $formName,
             ])->setRule($model->getRule())->setRenderer($this->conditions);
 
             $form->setValues($model->getData());
+            $this->setConditionFormName($model->getConditions(), $formName);
             $this->setForm($form);
 
+
             return parent::_prepareForm();
+    }
+
+    /**
+     * Handles addition of form name to condition and its conditions.
+     *
+     * @param \Magento\Rule\Model\Condition\AbstractCondition $conditions
+     * @param string $formName
+     * @return void
+     */
+    private function setConditionFormName(\Magento\Rule\Model\Condition\AbstractCondition $conditions, $formName)
+    {
+        $conditions->setFormName($formName);
+        if ($conditions->getConditions() && is_array($conditions->getConditions())) {
+            foreach ($conditions->getConditions() as $condition) {
+                $this->setConditionFormName($condition, $formName);
+            }
+        }
     }
 }

@@ -155,64 +155,6 @@ class GridProduct extends \Magento\Catalog\Block\Product\AbstractProduct
 
     }
 
-    public function getFeaturedoneProducts()
-    {
-
-        // // cach 1 
-        // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        // //$data= array();
-        // //$this->_objectManager->create($this->_instanceName, $data);
-        // $collection = $objectManager->create('\Magento\Catalog\Model\ResourceModel\Product\Collection');
-
-        // // Cach 2
-        // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        // /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $manager */
-        // $manager = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
-        // $collection = $manager->create();
-        
-        $collection = $this->_productCollectionFactory->create();
-        $collection->setVisibility($this->_catalogProductVisibility->getVisibleInCatalogIds());
-        $collection->addAttributeToFilter('featuredone', '1')
-                    ->addStoreFilter()
-                    ->addAttributeToSelect('*')
-                    ->addMinimalPrice()
-                    ->addFinalPrice()
-                    ->addTaxPercents()
-                    ->setPageSize($this->_limit)->setCurPage(1);;
-
-        return $collection;
-
-    }
-
-    public function getFeaturedtwoProducts()
-    {
-
-        // // cach 1 
-        // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        // //$data= array();
-        // //$this->_objectManager->create($this->_instanceName, $data);
-        // $collection = $objectManager->create('\Magento\Catalog\Model\ResourceModel\Product\Collection');
-
-        // // Cach 2
-        // $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        // /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $manager */
-        // $manager = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Product\CollectionFactory');
-        // $collection = $manager->create();
-        
-        $collection = $this->_productCollectionFactory->create();
-        $collection->setVisibility($this->_catalogProductVisibility->getVisibleInCatalogIds());
-        $collection->addAttributeToFilter('featuredtwo', '1')
-                    ->addStoreFilter()
-                    ->addAttributeToSelect('*')
-                    ->addMinimalPrice()
-                    ->addFinalPrice()
-                    ->addTaxPercents()
-                    ->setPageSize($this->_limit)->setCurPage(1);;
-
-        return $collection;
-
-    }
-
     public function getLatestProducts(){
 
         $collection = $this->_productCollectionFactory->create();

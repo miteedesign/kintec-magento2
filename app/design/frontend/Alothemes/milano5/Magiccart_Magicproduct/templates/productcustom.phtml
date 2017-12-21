@@ -48,14 +48,12 @@ if($numTabs): ?>
 <script type="text/javascript">
 	require([
 		'jquery',
-		'slick',
+		'magiccart/slick',
 		'magicproduct'
-		], function($){
-			(function($) {
-				jQuery(".<?php echo $selector?>").magicproduct({
-					selector : ".<?php echo $selector?>", // Selector product grid
-				});
-			})(jQuery);	
+		], function($, slick, magicproduct){
+			$(".<?php echo $selector?>").magicproduct({
+				selector : ".<?php echo $selector?>", // Selector product grid
+			});
 	});
 </script>
 

@@ -9,8 +9,14 @@
     <preference for="Magento\Wishlist\Controller\Index\Add" type="Custom\Changes\Controller\Wishlist\Add" />
 
     <preference for="Magento\Catalog\Pricing\Render" type="Custom\Changes\Pricing\Render" />
-    <preference for="Magento\CatalogSearch\Model\Layer\Filter\Attribute" type="Custom\Changes\Model\CatalogSearch\Layer\Filter\Attribute" />
+    <!--
+	<preference for="Magento\CatalogSearch\Model\Layer\Filter\Attribute" type="Custom\Changes\Model\CatalogSearch\Layer\Filter\Attribute" />
+	-->
     <preference for="Magento\Sales\Model\Order" type="Custom\Changes\Model\Sales\Order" />
-    <preference for="Magento\Swatches\Block\Product\Renderer\Listing\Configurable" type="Custom\Changes\Block\Swatches\Product\Renderer\Listing\Configurable" />
+    
+	<preference for="Magento\Swatches\Block\Product\Renderer\Listing\Configurable" type="Custom\Changes\Block\Swatches\Product\Renderer\Listing\Configurable" />
     <preference for="Magento\Swatches\Block\Product\Renderer\Configurable" type="Custom\Changes\Block\Swatches\Product\Renderer\Configurable" />
+	
+	<preference for="Magiccart\Magicproduct\Model\System\Config\Types" type="Custom\Changes\Model\Magiccart\Magicproduct\System\Config\Types" />
+	<preference for="Magiccart\Magicproduct\Block\Product\GridProduct" type="Custom\Changes\Block\Magiccart\Magicproduct\Product\GridProduct" />
 </config>

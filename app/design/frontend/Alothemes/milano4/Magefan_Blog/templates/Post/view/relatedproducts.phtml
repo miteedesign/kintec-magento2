@@ -160,13 +160,11 @@ if ($exist = $block->getItems()->getSize() && $this->displayProducts()) {
 <script type="text/javascript">
     require([
         'jquery',
-        'slick',
+        'magiccart/slick',
         'alothemes',
         ], function($){
-            (function($) {
-                var relatedProducts  = $('.post-view .product-items');
-                if(relatedProducts.length) $('head').append(magicproduct(relatedProducts, '.item'));
-            })(jQuery); 
+            var relatedProducts  = $('.post-view .product-items');
+            if(relatedProducts.length) $('head').append(magicproduct(relatedProducts, '.item'));
     });
 </script>
 

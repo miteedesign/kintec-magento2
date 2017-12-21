@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -34,12 +34,6 @@ class Add extends \Mirasvit\Seo\Controller\Adminhtml\Redirect
         $this->_initAction();
 
         $resultPage->getConfig()->getTitle()->prepend(__('Add Redirect'));
-
-        $resultPage->getLayout()
-            ->getBlock('head')
-            ;
-
-        $this->_addContent($resultPage->getLayout()->createBlock('\Mirasvit\Seo\Block\Adminhtml\Redirect\Edit'));
 
         return $resultPage;
     }

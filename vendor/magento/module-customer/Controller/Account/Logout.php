@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Customer\Controller\Account;
@@ -44,7 +44,7 @@ class Logout extends \Magento\Customer\Controller\AbstractAccount
     /**
      * Retrieve cookie manager
      *
-     * @deprecated
+     * @deprecated 100.1.0
      * @return PhpCookieManager
      */
     private function getCookieManager()
@@ -58,7 +58,7 @@ class Logout extends \Magento\Customer\Controller\AbstractAccount
     /**
      * Retrieve cookie metadata factory
      *
-     * @deprecated
+     * @deprecated 100.1.0
      * @return CookieMetadataFactory
      */
     private function getCookieMetadataFactory()
@@ -87,15 +87,6 @@ class Logout extends \Magento\Customer\Controller\AbstractAccount
 
         /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
-        if (isset($_SERVER['HTTP_COOKIE'])) {
-            $cookies = explode(';', $_SERVER['HTTP_COOKIE']);
-            foreach($cookies as $cookie) {
-                $parts = explode('=', $cookie);
-                $name = trim($parts[0]);
-                setcookie($name, '', time()-1000);
-                setcookie($name, '', time()-1000, '/');
-            }
-        }
         $resultRedirect->setPath('*/*/logoutSuccess');
         return $resultRedirect;
     }

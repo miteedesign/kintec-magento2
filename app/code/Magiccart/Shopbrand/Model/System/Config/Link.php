@@ -22,4 +22,4 @@ class Link implements \Magento\Framework\Option\ArrayInterface
 			array('value' => 2,				'label' => __('Advanced Search Results')),
 		);
 	}
-}
+}

@@ -67,7 +67,7 @@ class Definition
      */
     public function setFactory($factory)
     {
-        if (is_string($factory) && strpos($factory, '::') !== false) {
+        if (is_string($factory) && false !== strpos($factory, '::')) {
             $factory = explode('::', $factory, 2);
         }
 
@@ -148,7 +148,7 @@ class Definition
      *
      * @return $this
      *
-     * @throws InvalidArgumentException In case the decorated service id and the new decorated service id are equals.
+     * @throws InvalidArgumentException in case the decorated service id and the new decorated service id are equals
      */
     public function setDecoratedService($id, $renamedId = null, $priority = 0)
     {
@@ -265,6 +265,13 @@ class Definition
         return $this;
     }
 
+    /**
+     * Sets the properties to define when creating the service.
+     *
+     * @param array $properties
+     *
+     * @return $this
+     */
     public function setProperties(array $properties)
     {
         $this->properties = $properties;
@@ -272,11 +279,24 @@ class Definition
         return $this;
     }
 
+    /**
+     * Gets the properties to define when creating the service.
+     *
+     * @return array
+     */
     public function getProperties()
     {
         return $this->properties;
     }
 
+    /**
+     * Sets a specific property.
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return $this
+     */
     public function setProperty($name, $value)
     {
         $this->properties[$name] = $value;
@@ -299,7 +319,7 @@ class Definition
     }
 
     /**
-     * Sets a specific argument.
+     * Replaces a specific argument.
      *
      * @param int   $index
      * @param mixed $argument
@@ -757,7 +777,7 @@ class Definition
      *
      * @return $this
      *
-     * @throws InvalidArgumentException When the message template is invalid.
+     * @throws InvalidArgumentException when the message template is invalid
      */
     public function setDeprecated($status = true, $template = null)
     {
@@ -854,7 +874,7 @@ class Definition
     }
 
     /**
-     * Sets autowired.
+     * Enables/disables autowiring.
      *
      * @param bool $autowired
      *

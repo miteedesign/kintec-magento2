@@ -4,14 +4,13 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::marketing">
-                    <resource id="Magento_Backend::marketing_seo">
-                            <resource id="Mirasvit_SeoAutolink::seoautolink" title="SEO" sortOrder="71">
+                            <resource id="Mirasvit_SeoAutolink::seoautolink" title="Mirasvit SeoAutolink" sortOrder="71">
                                 <resource id="Mirasvit_SeoAutolink::seoautolink_autolinks" title="Auto Links">
                                     <resource id="Mirasvit_SeoAutolink::seoautolink_link" title="Management" sortOrder="10"/>
                                     <resource id="Mirasvit_SeoAutolink::seoautolink_autolinks_seoautolinkimport" title="Import" sortOrder="20"/>
                                     <resource id="Mirasvit_SeoAutolink::seoautolink_autolinks_seoautolinksettings" title="Settings" sortOrder="30"/>
+                                    <resource id="Mirasvit_Seo::seoautolink_link" title="Autolinks" sortOrder="40"/>
                                 </resource>
-                            </resource>
                     </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">

@@ -7,7 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-	    <referenceBlock name="header.links">
+	    <!-- <referenceBlock name="links.header">
 		    <block class="Magento\Framework\View\Element\Template" name="catalog.compare.link" before="-"
                    template="Magento_Catalog::product/compare/link.phtml">
                 <arguments>
@@ -38,15 +38,17 @@
 		    <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link"
            template="account/link/authorization.phtml"/>
 			
-		 </referenceBlock>
-		<!--<referenceContainer name="after.body.start">
-            <block class="Magiccart\Alothemes\Block\Themecfg" name="custom_head" template="html/head.phtml" before="-"/>
-        </referenceContainer>-->
+		 </referenceBlock> -->
 		<referenceContainer name="page.wrapper">
 			<block class="Magento\Theme\Block\Html\Header" name="alothemes_header" template="html/header.phtml" before="-">
-				<block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+				 <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
                     <arguments>
-                        <argument name="css_class" xsi:type="string">links</argument>
+                        <argument name="css_class" xsi:type="string">header links</argument>
+                    </arguments>
+                </block>
+				<block class="Magento\Framework\View\Element\Html\Links" name="links.header">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">links header</argument>
                     </arguments>
                 </block>
 				<block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
@@ -57,6 +59,11 @@
                     </arguments>
                 </block>
                 <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml"/>
+				<block class="Magento\Theme\Block\Html\Header" name="welcometop" template="html/welcome.phtml" as="welcometop">
+					 <arguments>
+					  <argument name="show_part" xsi:type="string">welcome</argument>
+					 </arguments>
+				</block>
             </block>
 		</referenceContainer>
 
@@ -69,7 +76,7 @@
 		<move element="skip_to_content" destination="alothemes_header"/>
 		<container name="page.wrapper" as="page_wrapper" htmlTag="div" htmlClass="page-wrapper">
             <container name="global.notices" as="global_notices" before="-"/>
-            <container name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="page-main-pal container">
+            <container name="main.content.fix" htmlTag="main" htmlId="maincontent" htmlClass="page-main-pal container">
                 <container name="columns.top" label="Before Main Columns"/>
                 <container name="columns" htmlTag="div" htmlClass="alocolumns">
                     <container name="main" label="Main Content Container" htmlTag="div" htmlClass="column main"/>
@@ -111,6 +118,7 @@
                 </block>
             </container>
         </referenceContainer>
+		<referenceContainer name="main.content" remove="true"/>
 		<referenceContainer name="header.container" remove="true"/>
         <referenceContainer name="header.panel" remove="true"/>
         <referenceContainer name="header-wrapper" remove="true"/>

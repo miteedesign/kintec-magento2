@@ -141,9 +141,10 @@ abstract class AbstractProfile extends Action
     protected function _pipeFile($filePath, $filename, $contentType = 'application/octet-stream')
     {
         if (!is_readable($filePath)) {
-            header('HTTP/1.1 404 Not Found');
-            echo '<h1>Not found</h1>';
-            exit;
+            throw new \InvalidArgumentException('404: No such file or directory', 404);
+//            header('HTTP/1.1 404 Not Found');
+//            echo '<h1>Not found</h1>';
+//            exit;
         }
 
         header('HTTP/1.1 200 OK');
@@ -165,7 +166,7 @@ abstract class AbstractProfile extends Action
     protected function _checkIssues()
     {
         $issue1 = $this->_checkEavAttributeIssue();
-        $warn = __("This will modify your database, are you sure?");
+        $warn = __('This will modify your database, are you sure?');
         if ($issue1) {
             // add warning message with link to fix
             $this->messageManager->addWarning(__("Core Eav Model has potential bug. Click <a href='%1' onclick='return confirm(\"%2\")'>here</a>, to  fix it.",
@@ -226,7 +227,7 @@ abstract class AbstractProfile extends Action
                 ->where("e.entity_type_code='catalog_product'")
                 ->where("a.backend_model='catalog/product_attribute_backend_price'");
 
-            $sql = sprintf("SELECT count(*) FROM %s WHERE store_id!=0 AND attribute_id IN (%s)",
+            $sql = sprintf('SELECT count(*) FROM %s WHERE store_id!=0 AND attribute_id IN (%s)',
                            $resource->getTable('catalog_product_entity') . '_decimal', $delAttrIdsSel);
             try {
                 $stmt = $conn->query($sql);

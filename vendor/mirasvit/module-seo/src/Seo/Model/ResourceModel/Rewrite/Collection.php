@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,8 +20,9 @@ namespace Mirasvit\Seo\Model\ResourceModel\Rewrite;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
-     * Constructor method.
+     * @var string
      */
+    protected $_idFieldName = 'rewrite_id'; //use in massaction
 
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
@@ -129,6 +130,22 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     public function addEnableFilter($status = 1)
     {
         $this->getSelect()->where('main_table.is_active = ?', $status);
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function addStoreColumn()
+    {
+        $this->getSelect()
+            ->columns(
+                ['store_id' => new \Zend_Db_Expr(
+                    "(SELECT GROUP_CONCAT(store_id) FROM `{$this->getTable('mst_seo_rewrite_store')}`
+                    AS `seo_rewrite_store_table`
+                    WHERE main_table.rewrite_id = seo_rewrite_store_table.rewrite_id)")]
+            );
 
         return $this;
     }

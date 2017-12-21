@@ -16,7 +16,7 @@
 	        <resource id="Magento_Backend::admin">
 	        	<resource id="Magiccart_Testimonial::magiccart" title="Magiccart" sortOrder="10">
 	        	    <resource id="Magiccart_Testimonial::testimonial" title="Testimonial" sortOrder="10">
-	        	        <resource id="Magiccart_Testimonial::testimonial_testimonial" title="Testimonial" sortOrder="10" />
+	        	        <resource id="Magiccart_Testimonial::testimonial_index" title="Testimonial" sortOrder="10" />
 	        	    </resource>
 	        	</resource>
 	            <resource id="Magento_Backend::stores">

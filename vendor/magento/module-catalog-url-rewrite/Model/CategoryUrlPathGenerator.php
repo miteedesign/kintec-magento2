@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\CatalogUrlRewrite\Model;
@@ -27,10 +27,14 @@ class CategoryUrlPathGenerator
      */
     protected $categoryUrlSuffix = [];
 
-    /** @var \Magento\Framework\App\Config\ScopeConfigInterface */
+    /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
     protected $scopeConfig;
 
-    /** @var \Magento\Store\Model\StoreManagerInterface */
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
     protected $storeManager;
 
     /**
@@ -113,7 +117,6 @@ class CategoryUrlPathGenerator
      */
     protected function getCategoryUrlSuffix($storeId = null)
     {
-        return '';
         if ($storeId === null) {
             $storeId = $this->storeManager->getStore()->getId();
         }

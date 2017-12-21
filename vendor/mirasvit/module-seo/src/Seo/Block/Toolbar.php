@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,6 +20,7 @@ use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Mirasvit\Seo\Helper\Data as DataHelper;
 use Mirasvit\Seo\Helper\Analyzer;
+use Mirasvit\Seo\Api\Config\InfoInterface;
 
 /**
  * @method $this setBody($body)
@@ -48,15 +49,18 @@ class Toolbar extends Template
     protected $context;
 
     /**
+     * @param InfoInterface $info
      * @param DataHelper $dataHelper
      * @param Analyzer   $analyzer
      * @param Context    $context
      */
     public function __construct(
+        InfoInterface $info,
         DataHelper $dataHelper,
         Analyzer $analyzer,
         Context $context
     ) {
+        $this->info = $info;
         $this->dataHelper = $dataHelper;
         $this->analyzer = $analyzer;
         $this->context = $context;
@@ -111,5 +115,18 @@ class Toolbar extends Template
                 'data'  => $this->analyzer->getImagesStatus($this->getBody()),
             ]
         ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getPosition()
+    {
+        $position = $this->info->getPosition();
+        $positionStyle = 'right: 1rem !important;';
+        if ($position == InfoInterface::INFO_POSITION_LEFT) {
+            $positionStyle = "left: 1rem !important; right: auto;";
+        }
+        return $positionStyle;
     }
 }

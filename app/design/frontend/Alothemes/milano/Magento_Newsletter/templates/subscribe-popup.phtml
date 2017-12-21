@@ -21,10 +21,9 @@ $urlMedia = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterfac
             data-mage-init='{"validation": {"errorClass": "mage-error"}}'
             id="newsletter-validate-detail">
 			<div class="block-content">
-				<?php //echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('newletter_text')->toHtml();?>
 				<div class="form-subscribe-header block-title">
                     <label for="newsletter"><?php echo __('newsletter') ?></label>
-                </div>
+					</div>
 				<span><?php echo __('Subscribe now to get') ?></span>
                 <span class="saleoff"><?php echo __('20%') ?></span>
                 <span><?php echo __('off on any product!') ?></span>
@@ -50,13 +49,12 @@ $urlMedia = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterfac
     </div>
 </div>
 <script type="text/javascript">
-	require(['jquery', 'mage/cookies', 'magiccart/fancybox'], 
-		function($){
-		(function($) {
+	require(['jquery', 'jquery/jquery.cookie', 'magiccart/fancybox'], 
+		function($, cookie, fancybox){
 			if(!parseInt(Themecfg.newsletter.enabled)) return;
-	        // $.mage.cookies.set('popupNewsletterOff': undefined); // for Test
+	        
 	        (function(selector){
-	            var popupCookie = $.mage.cookies.get('popupNewsletterOff');
+	            var popupCookie = $.cookie('popupNewsletterOff');
 	            var overlay = Themecfg.newsletter.overlayColor;
 	            if(!popupCookie || popupCookie == 'undefined'){
 	                var $content = $(selector);
@@ -79,7 +77,7 @@ $urlMedia = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterfac
 	                        padding: '0px',
 	                        openEffect: 'elastic',
 	                        closeEffect: 'elastic',
-	                        // showCloseButton: false,
+	                        
 	                        centerOnScroll: true,
 	                        type: 'inline',
 	                        overlayColor: overlay,
@@ -89,36 +87,34 @@ $urlMedia = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterfac
 	                if(Themecfg.newsletter.autoClose > 0) setTimeout(function(){$.fancybox.close()}, timeClose);
 	                $('.subscribe-bottom input', popup).on('click', function(){
 	                    if($(this).parent().find('input:checked').length){
-	                        $.mage.cookies.set('popupNewsletterOff', true);
+	                        $.cookie('popupNewsletterOff', true);
 	                    } else {
-	                        $.mage.cookies.set('popupNewsletterOff', undefined);
+	                        $.cookie('popupNewsletterOff', undefined);
 	                    }
 	                });
-	                if(Themecfg.newsletter.firstOnly > 0) $.mage.cookies.set('popupNewsletterOff', true);
+	                if(Themecfg.newsletter.firstOnly > 0) $.cookie('popupNewsletterOff', true);
 	                popup.find('.actions button').on('click', function(){
-	                    $.mage.cookies.set('popupNewsletterOff', true);
-	                    $.mage.cookies.set('popupNewsletterMessages', true);
+	                    $.cookie('popupNewsletterOff', true);
+	                    $.cookie('popupNewsletterMessages', true);
 	                });
 	            } else {
-	                var messages = $.mage.cookies.get('popupNewsletterMessages');
-	                if(messages){
-	                    var $messages = $('.messages').attr('id', 'popupNewsletterMessages').wrap( "<div></div>" );
+	                if($.cookie('popupNewsletterMessages')){
+	                    var $messages = $('.messages').css('min-width', '400px').attr('id', 'popupNewsletterMessages').wrap( "<div></div>" );
 	                    $messages.fancybox({
 	                        padding: '0px',
 	                        transitionIn: 'fade',
 	                        transitionOut: 'fade',
-	                        // showCloseButton: false,
+	                        
 	                        centerOnScroll: true,
 	                        type: 'inline',
 	                        overlayColor: overlay,
 	                        href : '#popupNewsletterMessages',
 	                    }).trigger('click');
-	                    $.mage.cookies.defaults({'popupNewsletterMessages' : undefined});
+	                    $.cookie('popupNewsletterMessages', '');
 	                }
 	            }
 
 	        })(".block-subscribe.popup");
-		})(jQuery);	
 	});
 </script>
 

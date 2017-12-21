@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,6 +20,12 @@ namespace Mirasvit\Seo\Model\ResourceModel\Template;
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection implements
     \Magento\Framework\Option\ArrayInterface
 {
+    /**
+     * Use in mass action
+     * @var string
+     */
+    protected $_idFieldName = 'template_id';
+
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
@@ -153,4 +159,22 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function addStoreColumn()
+    {
+        $this->getSelect()
+            ->columns(
+                ['store_id' => new \Zend_Db_Expr(
+                    "(SELECT GROUP_CONCAT(store_id) FROM `{$this->getTable('mst_seo_template_store')}`
+                    AS `seo_template_store_table`
+                    WHERE main_table.template_id = seo_template_store_table.template_id)")]
+            );
+
+        return $this;
+    }
+
+
 }

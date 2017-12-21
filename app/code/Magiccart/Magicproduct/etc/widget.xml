@@ -6,7 +6,7 @@
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-02-23 18:59:34
- * @@Modify Date: 2016-03-31 08:41:43
+ * @@Modify Date: 2016-12-17 10:35:35
  * @@Function:
  */ -->
  
@@ -42,23 +42,6 @@
                 <label translate="true">Template</label>
                 <options>
                     <option name="default" value="category.phtml" selected="true">
-                        <label translate="true">Default</label>
-                    </option>
-                </options>
-            </parameter>
-		</parameters>
-	</widget>
-	<widget id="magiccart_miscellaneous" class="Magiccart\Magicproduct\Block\Widget\Miscellaneous">
-		<label translate="true">Magicproduct Miscellaneous Widget</label>
-		<description>Magicproduct Miscellaneous</description>
-		<parameters>
-			<parameter name="identifier" xsi:type="select" source_model="Magiccart\Magicproduct\Model\Widget\Config\Category" required="true" visible="true" sort_order="10" >
-				<label translate="true">Identifier</label>
-			</parameter>
-            <parameter name="template" xsi:type="select" required="true" visible="true">
-                <label translate="true">Template</label>
-                <options>
-                    <option name="default" value="miscellaneous.phtml" selected="true">
                         <label translate="true">Default</label>
                     </option>
                 </options>

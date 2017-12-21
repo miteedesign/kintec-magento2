@@ -65,7 +65,7 @@ class Fixed
 
     protected function _getSeqIdBySku($sku)
     {
-        if(!$this->_rapidFlowHelper->hasMageFeature(self::ROW_ID)){
+        if (!$this->_rapidFlowHelper->hasMageFeature(self::ROW_ID)) {
             return $this->_getIdBySku($sku);
         }
         if (empty($this->_skuSeq[$sku])) {

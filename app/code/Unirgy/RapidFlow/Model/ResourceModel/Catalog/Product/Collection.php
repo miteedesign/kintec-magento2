@@ -32,6 +32,7 @@ use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
 use Magento\Framework\Data\Collection\EntityFactory;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
@@ -124,7 +125,11 @@ class Collection
      */
     public function addAttributeToJoin($attributeCode, $joinType = 'inner')
     {
-        $this->_addAttributeJoin($attributeCode, $joinType);
+        if (isset($this->_joinAttributes[$attributeCode]) || $this->getEntity() instanceof \Magento\Eav\Model\Entity\AbstractEntity) {
+            $this->_addAttributeJoin($attributeCode, $joinType);
+        } else {
+            $this->_addAttributeJoinOverride($attributeCode, $joinType);
+        }
         return $this;
     }
 
@@ -136,5 +141,53 @@ class Collection
     public function getAttributeTableAlias($attributeCode)
     {
         return $this->_getAttributeTableAlias($attributeCode);
+    }
+
+    protected function _addAttributeJoinOverride($attributeCode, $joinType)
+    {
+        $attrTable = $this->_getAttributeTableAlias($attributeCode);
+        $entity = $this->getEntity();
+        $fKey = 'e.' . $entity->getEntityIdField();
+        $pKey = $attrTable . '.' . $entity->getEntityIdField();
+        $attribute = $entity->getAttribute($attributeCode);
+
+        if (!$attribute) {
+            throw new LocalizedException(__('Invalid attribute name: %1', $attributeCode));
+        }
+
+        if ($attribute->getBackend()->isStatic()) {
+            $attrFieldName = $attrTable . '.' . $attribute->getAttributeCode();
+        } else {
+            $attrFieldName = $attrTable . '.value';
+        }
+        $connection = $this->getConnection();
+
+        $fKey = $connection->quoteColumnAs($fKey, null);
+        $pKey = $connection->quoteColumnAs($pKey, null);
+
+        $condArr = ["{$pKey} = {$fKey}"];
+        if (!$attribute->getBackend()->isStatic()) {
+            $condArr[] = $this->getConnection()->quoteInto(
+                $connection->quoteColumnAs("{$attrTable}.attribute_id", null) . ' = ?',
+                $attribute->getId()
+            );
+        }
+
+        /**
+         * process join type
+         */
+        $joinMethod = $joinType === 'left' ? 'joinLeft' : 'join';
+
+        $this->_joinAttributeToSelect($joinMethod, $attribute, $attrTable, $condArr, $attributeCode, $attrFieldName);
+
+        $this->removeAttributeToSelect($attributeCode);
+        $this->_filterAttributes[$attributeCode] = $attribute->getId();
+
+        /**
+         * Fix double join for using same as filter
+         */
+        $this->_joinFields[$attributeCode] = ['table' => '', 'field' => $attrFieldName];
+
+        return $this;
     }
 }

@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -17,14 +17,48 @@
 
 namespace Mirasvit\Seo\Controller\Adminhtml\Redirect;
 
+use Magento\Ui\Component\MassAction\Filter;
+use Mirasvit\Seo\Model\ResourceModel\Rewrite\CollectionFactory;
+
 class MassDisable extends \Mirasvit\Seo\Controller\Adminhtml\Redirect
 {
+    /**
+     * @param \Mirasvit\Seo\Model\RedirectFactory $redirectFactory
+     * @param \Magento\Framework\Registry         $registry
+     * @param \Magento\Backend\App\Action\Context $context
+     */
+    public function __construct(
+        \Mirasvit\Seo\Model\RedirectFactory $redirectFactory,
+        \Magento\Framework\Registry $registry,
+        \Magento\Backend\App\Action\Context $context,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    ) {
+        parent::__construct($redirectFactory, $registry, $context);
+        $this->filter = $filter;
+        $this->collectionFactory = $collectionFactory;
+    }
+
     /**
      * @return void
      */
     public function execute()
     {
-        $ids = $this->getRequest()->getParam('redirect_id');
+        $ids = [];
+
+        if ($this->getRequest()->getParam('redirect_id')) {
+            $ids = $this->getRequest()->getParam('redirect_id');
+        }
+
+        if ($this->getRequest()->getParam(Filter::SELECTED_PARAM)) {
+            $ids = $this->getRequest()->getParam(Filter::SELECTED_PARAM);
+        }
+
+        if (!$ids) {
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
+            $ids = $collection->getAllIds();
+        }
+
         if (!is_array($ids)) {
             $this->messageManager->addError(__('Please select item(s)'));
         } else {

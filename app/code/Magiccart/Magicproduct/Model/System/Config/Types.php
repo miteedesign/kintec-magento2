@@ -18,8 +18,6 @@ class Types implements \Magento\Framework\Option\ArrayInterface
     const ALL        = '0';
     const BEST 		 = 'bestseller';
     const FEATURED 	 = 'featured';
-    const FEATUREDONE   = 'featuredone';
-    const FEATUREDTWO   = 'featuredtwo';
     const LATEST     = 'latest';
     const MOSTVIEWED = 'mostviewed';
     const NEWPRODUCT = 'new';
@@ -33,8 +31,6 @@ class Types implements \Magento\Framework\Option\ArrayInterface
         return [
             self::BEST =>   __('Best Seller'),
             self::FEATURED =>   __('Featured Products'),
-            self::FEATUREDONE =>   __('Women\'s Styles'),
-            self::FEATUREDTWO =>   __('Men\'s Styles'),
             self::LATEST   =>  __('Latest Products'),
             // self::MOSTVIEWED => __('Most Viewed'),
             self::NEWPRODUCT => __('New Products'),
@@ -48,8 +44,6 @@ class Types implements \Magento\Framework\Option\ArrayInterface
         return [
             [ 'value' =>  self::BEST, 'label' =>   __('Best Seller') ],
             [ 'value' =>  self::FEATURED, 'label' =>   __('Featured Products') ],
-            [ 'value' =>  self::FEATUREDONE, 'label' =>   __('Women\'s Styles') ],
-            [ 'value' =>  self::FEATUREDTWO, 'label' =>   __('Men\'s Styles') ],
             [ 'value' =>  self::LATEST, 'label' =>   __('Latest Products') ],
             // [ 'value' =>  self::MOSTVIEWED, 'label' =>   __('Most Viewed') ],
             [ 'value' =>  self::NEWPRODUCT, 'label' =>   __('New Products') ],
@@ -64,8 +58,6 @@ class Types implements \Magento\Framework\Option\ArrayInterface
             [ 'value' =>  self::ALL, 'label' =>   __('All') ],
             [ 'value' =>  self::BEST, 'label' =>   __('Best Seller') ],
             [ 'value' =>  self::FEATURED, 'label' =>   __('Featured Products') ],
-            [ 'value' =>  self::FEATUREDONE, 'label' =>   __('Women\'s Styles') ],
-            [ 'value' =>  self::FEATUREDTWO, 'label' =>   __('Men\'s Styles') ],
             [ 'value' =>  self::LATEST, 'label' =>   __('Latest Products') ],
             // [ 'value' =>  self::MOSTVIEWED, 'label' =>   __('Most Viewed') ],
             [ 'value' =>  self::NEWPRODUCT, 'label' =>   __('New Products') ],

@@ -38,12 +38,16 @@ class Edit extends AbstractProfile
         parent::__construct($context, $profile, $catalogHelper, $resource);
     }
 
+    /**
+     * @return Page
+     * @throws \Exception
+     */
     public function execute()
     {
-        $id = $this->getRequest()->getParam('id');
+        $id = (int) $this->getRequest()->getParam('id');
         $model = $this->_profile->load($id)->factory();
 
-        if ($model->getId() || $id == 0) {
+        if ($id === 0 || $model->getId()) {
             $data = $this->_getSession()->getFormData(true);
             if (!empty($data)) {
                 $model->setData($data);
@@ -56,7 +60,7 @@ class Edit extends AbstractProfile
             $page->addBreadcrumb(__('RapidFlow Profile Manager'), __('RapidFlow Profile Manager'));
             $page->addBreadcrumb(__('New Profile'), __('New Profile'));
             $page->getConfig()->getTitle()->prepend(__('RapidFlow'));
-            $profileName = $model->getTitle()?:__("New");
+            $profileName = $model->getTitle() ?: __('New');
             $page->getConfig()->getTitle()->prepend($profileName);
 
 //            $layout->getBlock('head')
@@ -66,9 +70,8 @@ class Edit extends AbstractProfile
 //            $page->addContent($page->getLayout()->createBlock('Unirgy\RapidFlow\Block\Adminhtml\Profile\Edit'))
 //                ->addLeft($page->getLayout()->createBlock('Unirgy\RapidFlow\Block\Adminhtml\Profile\Edit\Tabs'));
             return $page;
-        } else {
-            $this->messageManager->addError(__('Profile does not exist'));
-            $this->_redirect('*/*/');
         }
+        $this->messageManager->addErrorMessage(__('Profile does not exist'));
+        return $this->_redirect('*/*/');
     }
 }

@@ -1,0 +1,13 @@
+{
+    "name": "custom/milano",
+    "description": "N/A",
+    "type": "magento2-theme",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [ "registration.php" ]
+    }
+}

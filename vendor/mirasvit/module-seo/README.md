@@ -1,3 +1,273 @@
+## 2.0.11
+*(2017-10-31)*
+
+#### Fixed
+* Fixed compilation error.
+
+---
+
+## 2.0.10
+*(2017-10-19)*
+
+#### Features
+* SEO-friendly URLs for Product Images
+
+---
+
+## 2.0.9
+*(2017-10-17)*
+
+#### Fixed
+* Fix setup:di:compile error
+
+---
+
+## 2.0.8
+*(2017-10-17)*
+
+#### Fixed
+* Template rule compatibility (magento 2.2)
+
+---
+
+## 2.0.7
+*(2017-10-13)*
+
+#### Fixed
+* Fixed setup:di:compile error
+* Fixed an error with serializer (magento 2.2)
+* Fixed an error if rule enabled
+
+---
+
+## 2.0.6
+*(2017-10-10)*
+
+#### Fixed
+* Fixed an error:"Unknown module(s): 'Mirasvit_SeoFilter'"
+
+---
+
+## 2.0.5
+*(2017-10-09)*
+
+#### Features
+* Seo filters
+* Canonical rewrite
+
+#### Fixed
+* Patch to prevent "Exception [#0](http://some.issue.tracker.com/0) (Exception): Warning: Invalid argument supplied for foreach()" for some stores
+* Fixed an error if use setup::install
+
+#### Documentation
+* Documentation improvement
+
+---
+
+## 2.0.4
+*(2017-09-29)*
+
+#### Fixed
+* Fixed an error with rules (magento 2.2)
+
+---
+
+## 2.0.3
+*(2017-09-27)*
+
+#### Fixed
+* Magento 2.2 compatibility
+
+---
+
+## 2.0.2
+*(2017-09-25)*
+
+#### Fixed
+* Disable command
+
+---
+
+## 2.0.1
+*(2017-09-18)*
+
+#### Improvements
+* Manual links
+
+#### Fixed
+* Fixed Mirasvit Blog sitemap for multistores
+* Fixed Mirasvit Kb sitemap for multistores
+* Fixed sitemap generation by cron
+* Fix alternate tags issue
+* Compatibility with Codazon Fastest theme
+
+---
+
+## 2.0.0
+*(2017-08-30)*
+
+#### Improvements
+* Refactoring
+
+---
+
+## 1.0.80
+*(2017-08-30)*
+
+#### Improvements
+* Refactoring
+
+---
+
+## 1.0.79
+*(2017-08-30)*
+
+#### Improvements
+* Refactoring
+
+---
+
+## 1.0.78
+*(2017-08-29)*
+
+#### Fixed
+* Fixed incorrect canonical if Trailing slash enabled
+* Fixed an error (for Magento 2.0.x)
+
+---
+
+## 1.0.77
+*(2017-08-15)*
+
+#### Fixed
+* Fixed sitemap folder
+
+#### Documentation
+* Online manual enhancement
+
+---
+
+## 1.0.76
+*(2017-08-14)*
+
+#### Improvements
+* User interface minor improvement
+
+#### Fixed
+* Fixed alternate tags bug
+
+---
+
+## 1.0.75
+*(2017-08-03)*
+
+#### Fixed
+* Minor Mirasvit Knowledge Base compatibility
+
+---
+
+## 1.0.74
+*(2017-08-01)*
+
+#### Improvements
+* Added ability to define unique Organization snippets information for different store views
+* Added ability to define SEO Toolbar position
+
+---
+
+## 1.0.73
+*(2017-07-28)*
+
+#### Improvements
+* Mirasvit Knowledge Base sitemap
+
+#### Fixed
+* fixed missing Opengraph tags for Home page
+* Fixed missing Rich Snippets Breadcrumbs of BreadcrumbList type on product pages
+* Fixed an issue of duplicating Hreflang locale code on product pages(for some stores)
+
+---
+
+## 1.0.72
+*(2017-07-27)*
+
+#### Fixed
+* Fixed incorrect meta tags for layered navigation
+
+---
+
+## 1.0.71
+*(2017-07-24)*
+
+#### Improvements
+* User Interface adjustments
+
+#### Documentation
+* Online User Manual updated
+
+---
+
+## 1.0.70
+*(2017-07-21)*
+
+#### Improvements
+* compatibility with Page Cache Warmer version 1.0.33
+
+---
+
+## 1.0.69
+*(2017-07-13)*
+
+#### Improvements
+* Canonical for Magefan_Blog
+
+#### Fixed
+* Fixed sitemap issue
+* Fixed an issue with incorrect links limit per page
+
+---
+
+## 1.0.68
+*(2017-06-23)*
+
+#### Fixed
+* Fixed an issue with incorrect links limit per page
+
+---
+
+## 1.0.67
+*(2017-06-23)*
+
+#### Fixed
+* Fixed error when apply product url key template
+
+---
+
+## 1.0.66
+*(2017-06-22)*
+
+#### Fixed
+* Fixed caching issue
+
+---
+
+## 1.0.65
+*(2017-06-20)*
+
+#### Documentation
+* Online User Manual updated
+
+---
+
+## 1.0.64
+*(2017-06-16)*
+
+#### Fixed
+* "The filter must be an object. Please set a correct filter" error fixed(for some stores)
+* Performance issue fixed for attributes block on product view page
+
+---
+
 ## 1.0.63
 *(2017-05-31)*
 

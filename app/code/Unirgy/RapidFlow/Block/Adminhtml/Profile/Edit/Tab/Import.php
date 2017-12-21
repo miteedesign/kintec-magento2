@@ -23,6 +23,7 @@ use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Framework\Data\Form as DataForm;
 use Magento\Framework\Data\FormFactory;
 use Magento\Framework\Registry;
+use Magento\Framework\View\LayoutFactory;
 use Unirgy\RapidFlow\Helper\Data as HelperData;
 use Unirgy\RapidFlow\Model\Source;
 
@@ -42,17 +43,23 @@ class Import extends Generic
      * @var Registry
      */
     protected $_magentoFrameworkRegistry;
+    /**
+     * @var LayoutFactory
+     */
+    private $layoutFactory;
 
     public function __construct(Context $context,
                                 Registry $registry,
                                 FormFactory $formFactory,
                                 HelperData $rapidFlowHelper,
                                 Source $rapidFlowSource,
+                                LayoutFactory $layoutFactory,
                                 array $data = []
     )
     {
         $this->_rapidFlowHelper = $rapidFlowHelper;
         $this->_rapidFlowSource = $rapidFlowSource;
+        $this->layoutFactory = $layoutFactory;
 
         parent::__construct($context, $registry, $formFactory, $data);
     }
@@ -104,26 +111,54 @@ class Import extends Generic
         ]);
 
         $fieldset->addField('import_same_as_default', 'select', [
-            'label' => __('If store values the same as default'),
+            'label' => __('If store values the same as global values'),
             'name' => 'options[import][store_value_same_as_default]',
             'values' => $source->setPath('store_value_same_as_default')->toOptionArray(),
             'value' => $profile->getData('options/import/store_value_same_as_default'),
             'comment' => __('Affects only updated values'),
         ]);
 
+        $fieldset->addField('import_empty_value_strategy', 'select', [
+            'label' => __('Empty values strategy'),
+            'name' => 'options[import][empty_value_strategy]',
+            'values' => $source->setPath('empty_value_strategy')->toOptionArray(),
+            'value' => $profile->getData('options/import/empty_value_strategy'),
+        ]);
+
         $fieldset->addField('import_stock_zero_out', 'select', [
-            'label' => __('If stock qty is 0, mark product as Out of stock'),
+            'label' => __('If stock qty is less than configured minimum qty, mark product as Out of stock'),
             'name' => 'options[import][stock_zero_out]',
             'values' => $source->setPath('yesno')->toOptionArray(),
             'value' => $profile->getData('options/import/stock_zero_out'),
         ]);
-        $fieldset->addField('increment_url_key', 'select', [
+
+        $enableUrlKeyIncrementField = $fieldset->addField('increment_url_key', 'select', [
             'label' => __('Try to auto increment duplicate url_key'),
             'name' => 'options[import][increment_url_key]',
             'values' => $source->setPath('yesno')->toOptionArray(),
             'value' => $profile->getData('options/import/increment_url_key'),
-            'comment' => __("Has any effect only for Magento EE 1.13 and up.")
         ]);
+
+        // add dependency fields for each sales type option to select import/export columns
+        $el = $fieldset->addField('increment_url_key_limit', 'text', [
+            'label' => __('Key suffix limit'),
+            'name' => 'options[import][increment_url_key_limit]',
+            'value' => $profile->getData('options/import/increment_url_key_limit'),
+            'note' => __('If empty, 100 will be used.'),
+        ]);
+
+        $enableUrlKeyIncrementFieldName = $enableUrlKeyIncrementField->getName();
+        /** @var \Magento\Backend\Block\Widget\Form\Element\Dependence $dependenceBlock */
+        $dependenceBlock          = $this->layoutFactory->create()->createBlock(Form\Element\Dependence::class);
+
+        $dependenceBlock->addFieldMap($enableUrlKeyIncrementField->getHtmlId(), $enableUrlKeyIncrementFieldName);
+
+        $dependenceBlock->addFieldMap($el->getHtmlId(), $el->getName())
+            ->addFieldDependence($el->getName(),
+                $enableUrlKeyIncrementFieldName,
+                '1');
+
+        $this->addChild('form_after', $dependenceBlock);
 
         $fieldset->addField('import_reindex_type', 'select', [
             'label' => __('Reindex type'),
@@ -147,6 +182,13 @@ class Import extends Generic
             'values' => $source->setPath('yesno')->toOptionArray(),
             'value' => $profile->getData('options/import/image_files_remote'),
             'note' => __('Might not work for dynamically generated remote images'),
+        ]);
+
+        $fieldset->addField('import_image_files_remote_batch', 'select', [
+            'label' => __('Batch downloading remote HTTP images'),
+            'name' => 'options[import][image_files_remote_batch]',
+            'values' => $source->setPath('yesno')->toOptionArray(),
+            'value' => $profile->getData('options/import/image_files_remote_batch'),
         ]);
 
         $fieldset->addField('import_image_remote_subfolder_level', 'select', [

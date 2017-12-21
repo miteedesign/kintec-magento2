@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -95,7 +95,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         }
 
         if ($duplicate) {
-            foreach($duplicate as $storeId => $duplicateData) {
+            foreach ($duplicate as $storeId => $duplicateData) {
                 $storeCategories = '(' . implode(',', array_keys($duplicateData)) . ')';
                 $where[] = "(store_id = $storeId AND entity_id IN $storeCategories)";
             }
@@ -144,7 +144,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             ]);
 
         $this->addColumn('url_key', [
-                'header' => __('Url key'),
+                'header' => __('URL key'),
                 'index' => 'request_path',
                 'renderer' => 'Mirasvit\Seo\Block\Adminhtml\Duplicateinfo\Renderer\UrlKey',
                 'filter' => false,

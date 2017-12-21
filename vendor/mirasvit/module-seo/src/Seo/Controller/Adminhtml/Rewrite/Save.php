@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -25,10 +25,9 @@ class Save extends \Mirasvit\Seo\Controller\Adminhtml\Rewrite
     public function execute()
     {
         if ($data = $this->getRequest()->getParams()) {
-            $_model = $this->rewriteFactory->create();
-
-            $_model->setData($data)
-                ->setId($this->getRequest()->getParam('id'));
+            $data = $this->prepareStoreIds($data);
+            $_model = $this->_initModel();
+            $_model->setData($data);
 
             try {
                 $_model->save();
@@ -54,5 +53,21 @@ class Save extends \Mirasvit\Seo\Controller\Adminhtml\Rewrite
         }
         $this->messageManager->addError(__('Unable to find rewrite to save'));
         $this->_redirect('*/*/');
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    protected function prepareStoreIds($data)
+    {
+        if (isset($data['use_config']['stores'])
+            && $data['use_config']['stores'] == 'true') {
+            $data['stores'] = [0];
+        } elseif (isset($data['store_id'])) {
+            $data['stores'] = $data['store_id'];
+        }
+
+        return $data;
     }
 }

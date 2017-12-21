@@ -8,6 +8,9 @@ use Unirgy\RapidFlow\Model\ResourceModel\Profile as ProfileResource;
 
 class Fixissues extends AbstractProfile
 {
+    /**
+     * @throws \Zend_Db_Adapter_Exception
+     */
     public function execute()
     {
         $issueId = $this->getRequest()->getParam('id');
@@ -24,12 +27,12 @@ class Fixissues extends AbstractProfile
         }
 
         if ($fixed) {
-            $message = __("The problem has been fixed");
+            $message = __('The problem has been fixed');
         } else {
-            $message = __("The problem could not be fixed");
+            $message = __('The problem could not be fixed');
         }
 
-        $this->messageManager->addNotice($message);
+        $this->messageManager->addNoticeMessage($message);
         $this->_forward('index');
 
         //var_dump($issueId);
@@ -55,7 +58,6 @@ class Fixissues extends AbstractProfile
 
     /**
      * @return bool
-     * @throws \Zend_Db_Adapter_Exception
      */
     protected function _fixWebsitePriceInGlobalScope()
     {

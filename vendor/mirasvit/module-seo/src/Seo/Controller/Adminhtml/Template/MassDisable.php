@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -17,14 +17,53 @@
 
 namespace Mirasvit\Seo\Controller\Adminhtml\Template;
 
+use Magento\Ui\Component\MassAction\Filter;
+use Mirasvit\Seo\Model\ResourceModel\Template\CollectionFactory;
+
 class MassDisable extends \Mirasvit\Seo\Controller\Adminhtml\Template
 {
+    /**
+     * @param \Mirasvit\Seo\Api\Service\CompatibilityServiceInterface $compatibilityService
+     * @param \Mirasvit\Seo\Model\TemplateFactory $templateFactory
+     * @param \Magento\Framework\Registry         $registry
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param Filter $filter
+     * @param CollectionFactory $collectionFactory
+     */
+    public function __construct(
+        \Mirasvit\Seo\Api\Service\CompatibilityServiceInterface $compatibilityService,
+        \Mirasvit\Seo\Model\TemplateFactory $templateFactory,
+        \Magento\Framework\Registry $registry,
+        \Magento\Backend\App\Action\Context $context,
+        Filter $filter,
+        CollectionFactory $collectionFactory
+    ) {
+        parent::__construct($compatibilityService, $templateFactory, $registry, $context);
+        $this->compatibilityService = $compatibilityService;
+        $this->filter = $filter;
+        $this->collectionFactory = $collectionFactory;
+    }
+
     /**
      * @return void
      */
     public function execute()
     {
-        $ids = $this->getRequest()->getParam('template_id');
+        $ids = [];
+
+        if ($this->getRequest()->getParam('template_id')) {
+            $ids = $this->getRequest()->getParam('template_id');
+        }
+
+        if ($this->getRequest()->getParam(Filter::SELECTED_PARAM)) {
+            $ids = $this->getRequest()->getParam(Filter::SELECTED_PARAM);
+        }
+
+        if (!$ids) {
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
+            $ids = $collection->getAllIds();
+        }
+
         if (!is_array($ids)) {
             $this->messageManager->addError(__('Please select item(s)'));
         } else {

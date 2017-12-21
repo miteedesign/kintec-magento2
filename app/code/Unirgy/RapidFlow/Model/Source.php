@@ -20,6 +20,7 @@ namespace Unirgy\RapidFlow\Model;
 use Magento\Catalog\Model\Category;
 use Magento\Eav\Model\Config as ModelConfig;
 use Magento\Eav\Model\Entity\Attribute\Set;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Store\Model\Store;
 use Magento\Store\Model\StoreManager;
 use Magento\Store\Model\StoreManagerInterface;
@@ -407,8 +408,16 @@ class Source extends AbstractSource
                 ];
                 break;
 
+            case 'empty_value_strategy':
+                $options = [
+                    '' => 'Use default value for new rows, leave existing row value intact',
+                    #'default' => 'Use default value if exists',
+                    'empty' => 'Set empty value always',
+                ];
+                break;
+
             default:
-                throw new \Exception(__('Invalid request for source options: ' . $this->getData('path')));
+                throw new LocalizedException(__('Invalid request for source options: ' . $this->getData('path')));
         }
 
         if ($selector) {

@@ -1,0 +1,28 @@
+/* Block: index */
+.cms-index-index .alo-blog {margin: 0 0 90px;}
+.alo-blog .block-recent-posts .block-title {margin: 0 0 50px;position: relative;text-align: center;}
+.alo-blog .block-recent-posts .block-title:before {background-color: #dddddd;bottom: -20px; content: "";height: 1px;left: 0;margin: 0 auto;position: absolute;right: 0;width: 70px;}
+.alo-blog .block-recent-posts .block-title strong{color: #333;display: inline-block;font-size: 20px;margin: 0; position: relative;text-transform: uppercase;line-height: 20px;font-weight: normal;letter-spacing: 1px;}
+.alo-blog .widget.block-recent-posts .block-content .item{padding: 0;}
+.blog_short_text{padding:45px 0 0 17px;}
+.alo-blog .blog-image.al-style-2::before{right: -15px;left: auto;}
+.alo-blog .blog-image.al-style-2::after{right: -15px;left: auto;}
+.alo-blog .slick-list .slick-slide > div:last-child .item .blog-image:before,
+.alo-blog .slick-list .slick-slide > div:last-child .item .blog-image:after{right: auto;left: -15px;}
+.alo-blog .blog-image,.alo-blog .blog_short_text{width: 48%;float: left;}
+.alo-blog .slick-list .slick-slide > div:last-child .item .post-description{margin-top: 20px;}
+.alo-blog .slick-list .slick-slide > div:last-child .item .blog-image{float: right;}
+.alo-blog .slick-list .slick-slide > div:last-child .item .blog_short_text{text-align: right;padding:45px 17px 0 0px;}
+.post-info a.post-item-link{display: block;font-size: 20px;font-weight: bold;letter-spacing: 1px;line-height: 23px;text-transform: uppercase;}
+.post-posed-date{margin: 0 0 25px; padding: 0px;position: relative;}
+.post-posed-date:before{content: "";position: absolute;bottom: -10px;left: 0;width: 70px;height: 1px;background-color: #e3e3e3;}
+.alo-blog .slick-list .slick-slide > div:last-child .item .post-posed-date::before{left: auto;right: 0;}
+.post-posed-date span{font-size: 14px;text-transform: uppercase;color: #888;padding: 0;font-weight: normal;}
+.alo-blog .block-recent-posts .post-info .post-read-more {color: #888888;display: block;margin: 15px 0 0;padding: 0;text-transform: capitalize;font-size: 13px;}
+.alo-blog .block-recent-posts .post-info .post-read-more:hover{color: #ff5555;}
+.post-read-more .fa {padding-left: 5px;}
+
+/* Block:Blog  Font*/
+.post-posed-date span ,.post-info a.post-item-link,.post-list .post-header .post-title a,.post-list .post-content .post-read-more,.post-view .post-header .post-title a,.alo-blog .block-recent-posts .block-title strong,.post-bottom .block.related .block-title strong{
+    font-family: "Montserrat",sans-serif;
+}

@@ -1,3 +1,36 @@
+===== 2017-11-10 3.0.30 =====
+
+  * Fixed 2.2.x compilation without db access
+
+===== 2017-11-06 3.0.29 =====
+
+  * Fixed recognizing B2B as EE
+
+===== 2017-11-01 3.0.28 =====
+
+  * Added import option for multi-thread batch downloading remote images to improve performance
+  * Added import option for empty values strategy and special "#EMPTY#" entry to force empty value
+  * Fixed handling attributes with custom backend_table
+  * Fixed RF Config Cache issue in magento 2.2
+  * Fixed getConnection method visibility issue in magento 2.2
+
+===== 2017-10-04 3.0.27 =====
+
+  * added product extra profile events
+
+===== 2017-09-30 3.0.26 =====
+
+  * fixed issues with EE staging feature
+
+====== 2017-09-13 3.0.25 =====
+
+  * fixed issue with new valid values equaling 0
+
+===== 2017-07-28 3.0.24 =====
+
+  * added configuration to set url increment limit
+  * passing profile store id when updating category urls to enable category url generation for non default stores
+
 ===== 2017-04-19 3.0.23 =====
 
   * changed query to table CATALOG_PRODUCT_ENTITY_MEDIA_GALLERY to speed it up

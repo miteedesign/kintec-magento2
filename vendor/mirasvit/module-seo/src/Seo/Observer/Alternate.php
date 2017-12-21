@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -112,9 +112,9 @@ class Alternate implements ObserverInterface
         }
         $pageConfig = $this->context->getPageConfig();
         $type = 'alternate';
-        $hreflang = false;
         $addLocaleCodeAutomatical = $this->alternateConfig->isHreflangLocaleCodeAddAutomatical();
         foreach ($storeUrls as $storeId => $url) {
+            $hreflang = false;
             $storeCode = $this->url->getStores()[$storeId]->getConfig(Data::XML_PATH_DEFAULT_LOCALE);
             if ($this->alternateConfig->getAlternateHreflang($storeId) == AlternateConfig::ALTERNATE_CONFIGURABLE) {
                 $hreflang = $this->alternateConfig->getAlternateManualConfig($storeId, true);

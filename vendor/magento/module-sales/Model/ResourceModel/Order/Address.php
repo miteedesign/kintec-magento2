@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 namespace Magento\Sales\Model\ResourceModel\Order;
@@ -90,7 +90,7 @@ class Address extends SalesResource implements OrderAddressResourceInterface
             'region_id' => __('State/Province'),
             'street' => __('Street Address'),
             'telephone' => __('Phone Number'),
-            'postcode' => __('Postal Code'),
+            'postcode' => __('Zip/Postal Code'),
         ];
         asort($attributes);
         return $attributes;

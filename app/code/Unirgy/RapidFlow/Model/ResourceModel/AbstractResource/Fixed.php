@@ -108,6 +108,11 @@ class Fixed
 
         $this->_prepareRowTypeData();
 
+        $eventVars = [
+            'profile' => &$this->_profile,
+            'skus' => &$this->_skus,
+        ];
+
         $this->_profile->activity('Importing');
 #memory_get_usage(true);
         if ($benchmark) $this->_logger->debug("============================= IMPORT START: " . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
@@ -136,11 +141,15 @@ class Fixed
 #memory_get_usage(true);
             if ($benchmark) $this->_logger->debug("_importProcessNewData: " . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
 
+            $this->_eventManager->dispatch('urapidflow_product_extra_import_after_fetch', ['vars' => $eventVars]);
+
             $this->_checkLock();
 
             $this->_importSaveRows();
 
             $this->_refreshHasOptionsRequiredOptions($this->_newRefreshHoRoPids);
+
+            $this->_eventManager->dispatch('urapidflow_product_extra_import_after_save', array('vars' => $eventVars));
 
 #memory_get_usage(true);
             if ($benchmark) $this->_logger->debug("_importSaveRows: " . memory_get_usage(true) . ', ' . memory_get_peak_usage(true));
@@ -429,7 +438,7 @@ class Fixed
         $row = $result->fetch();
         $columns = [];
         if ($row) {
-            $columns = $this->_rapidFlowConfig->getRowTypeColumns($rowType);
+            $columns = $this->getRowTypeColumns($rowType);
             $header = array_keys($columns);
             array_unshift($header, '##' . $rowType);
             $profile->ioWriteHeader($header);
@@ -495,5 +504,14 @@ class Fixed
             throw new LocalizedException(__('Invalid store'));
         }
         return $this->_storeIds && !in_array($storeId, $this->_storeIds);
+    }
+
+    /**
+     * @param $rowType
+     * @return array
+     */
+    protected function getRowTypeColumns($rowType)
+    {
+        return $this->_rapidFlowConfig->getRowTypeColumns($rowType);
     }
 }

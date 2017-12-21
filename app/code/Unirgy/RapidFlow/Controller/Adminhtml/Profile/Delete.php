@@ -17,10 +17,10 @@ class Delete extends AbstractProfile
                 $model->setId($id)
                     ->delete();
 
-                $this->messageManager->addSuccess(__('Profile was successfully deleted'));
+                $this->messageManager->addSuccessMessage(__('Profile was successfully deleted'));
                 return $this->_redirect('*/*/');
             } catch (\Exception $e) {
-                $this->messageManager->addError($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
                 return $this->_redirect('*/*/edit', ['id' => $id]);
             }
         }

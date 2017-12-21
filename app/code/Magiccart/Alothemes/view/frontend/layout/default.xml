@@ -29,11 +29,12 @@
     </default> -->
     <head>
         <link src="Magiccart_Alothemes::css/plugins/jquery.fancybox.css"/>
-        <link src="Magiccart_Alothemes::css/plugins/meanmenu.min.css"/>
-        <!--<link src="Magiccart_Alothemes::css/default.css"/>
-        <link src="Magiccart_Alothemes::css/default.css"/>-->
-        <!-- <link src="jquery.js"/> 
-        <link src="Magiccart_Alothemes::js/alothemes.js"/>-->
+        <link src="Magiccart_Alothemes::css/default.css"/>
+        <link src="Magiccart_Alothemes::css/default.css"/>
+        <css src="mage/gallery/gallery.css"/>
+		<css src="Magento_Swatches::css/swatches.css"/>
+        <!-- <link src="jquery.js"/> -->
+        <!-- <link src="Magiccart_Alothemes::js/alothemes.js"/> -->
     </head>
 	<body>
 	   <referenceBlock name="head.additional">

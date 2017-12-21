@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 
@@ -11,7 +11,6 @@ use Magento\Framework\Encryption\Encryptor;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Framework\View\Asset\ContextInterface;
 use Magento\Framework\View\Asset\LocalInterface;
-use Magento\Framework\View\Asset\Repository;
 
 /**
  * A locally available image file asset that can be referred with a file path
@@ -20,11 +19,6 @@ use Magento\Framework\View\Asset\Repository;
  */
 class Image implements LocalInterface
 {
-    /**
-     * @var string
-     */
-    private $placeholder = 'Magento_Catalog::images/product/placeholder/%s.jpg';
-
     /**
      * @var string
      */
@@ -58,18 +52,12 @@ class Image implements LocalInterface
     private $encryptor;
 
     /**
-     * @var Repository
-     */
-    private $assetRepo;
-
-    /**
      * Image constructor.
      *
      * @param ConfigInterface $mediaConfig
      * @param ContextInterface $context
      * @param EncryptorInterface $encryptor
      * @param string $filePath
-     * @param Repository $assetRepo
      * @param array $miscParams
      */
     public function __construct(
@@ -77,7 +65,6 @@ class Image implements LocalInterface
         ContextInterface $context,
         EncryptorInterface $encryptor,
         $filePath,
-        Repository $assetRepo,
         array $miscParams = []
     ) {
         $this->mediaConfig = $mediaConfig;
@@ -85,7 +72,6 @@ class Image implements LocalInterface
         $this->filePath = $filePath;
         $this->miscParams = $miscParams;
         $this->encryptor = $encryptor;
-        $this->assetRepo = $assetRepo;
     }
 
     /**
@@ -93,10 +79,6 @@ class Image implements LocalInterface
      */
     public function getUrl()
     {
-        if (!$this->getFilePath()) {
-            return $this->getDefaultPlaceHolderUrl();
-        }
-
         return $this->context->getBaseUrl() . $this->getRelativePath(DIRECTORY_SEPARATOR);
     }
 
@@ -113,11 +95,7 @@ class Image implements LocalInterface
      */
     public function getPath()
     {
-        if (!$this->getFilePath()) {
-            $asset = $this->assetRepo->createAsset($this->getPlaceHolder());
-            return $asset->getSourceFile();
-        }
-        return $this->getRelativePath($this->context->getPath());
+        return $this->getAbsolutePath($this->context->getPath());
     }
 
     /**
@@ -198,23 +176,18 @@ class Image implements LocalInterface
     }
 
     /**
-     * Get placeholder for asset creation
+     * Generate absolute path
      *
+     * @param string $result
      * @return string
      */
-    private function getPlaceHolder()
+    private function getAbsolutePath($result)
     {
-        return sprintf($this->placeholder, $this->miscParams['image_type']);
-    }
-
-    /**
-     * Return default placeholder URL
-     *
-     * @return string
-     */
-    private function getDefaultPlaceHolderUrl()
-    {
-        return $this->assetRepo->getUrl($this->getPlaceHolder());
+        $prefix = (substr($result, 0, 1) == DIRECTORY_SEPARATOR) ? DIRECTORY_SEPARATOR : '';
+        $result = $this->join($result, $this->getModule());
+        $result = $this->join($result, $this->getMiscPath());
+        $result = $this->join($result, $this->getFilePath());
+        return $prefix . $result;
     }
 
     /**

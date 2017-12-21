@@ -105,7 +105,7 @@
 
 
 <script type="text/javascript">
-    require(["jquery"], function ($) {
+    require(["jquery", "urapidflow"], function ($) {
         var columnsFieldsIdx = {};
         columnsFieldsIdx['reindex'] = <?php echo \Zend\Json\Json::encode($block->getReindexColumnsFields()) ?>;
         columnsFieldsIdx['refresh'] = <?php echo \Zend\Json\Json::encode($block->getRefreshColumnsFields()) ?>;

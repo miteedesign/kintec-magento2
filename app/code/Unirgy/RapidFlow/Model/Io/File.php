@@ -19,6 +19,7 @@ namespace Unirgy\RapidFlow\Model\Io;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Filesystem\Driver\File as FileDriver;
+use Unirgy\RapidFlow\Exception;
 
 /**
  * Class File
@@ -138,20 +139,28 @@ class File extends AbstractIo
     /**
      * @param $filename
      * @return string
+     * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function getFilepath($filename)
     {
+        return rtrim($this->dir(), '/') . '/' . ltrim($filename, '/');
+    }
+
+    /**
+     * @return string
+     * @throws \Magento\Framework\Exception\FileSystemException
+     */
+    protected function dir()
+    {
         if (!$this->getBaseDir()) {
-            $this->setBaseDir($this->_directoryList->getPath('var') . ('urapidflow'));
+            $this->setBaseDir($this->_directoryList->getPath('var') . 'urapidflow');
         }
         $dir = $this->getBaseDir();
-        if ($dir) {
-            if (!$this->_fileDriver->isExists($dir)) {
-                $this->_fileDriver->createDirectory($dir, 0775);
-            }
+        if ($dir && !$this->_fileDriver->isExists($dir)) {
+            $this->_fileDriver->createDirectory($dir, 0775);
         }
-        $filepath = rtrim($dir, '/') . '/' . ltrim($filename, '/');
-        return $filepath;
+
+        return $dir;
     }
 
     public function reset()
@@ -170,5 +179,31 @@ class File extends AbstractIo
     public function __destruct()
     {
         $this->close();
+    }
+
+    public function rename($newName)
+    {
+        $oldName = $this->_filename;
+        if (!$this->isOpen()) {
+            throw new Exception(__('Cannot rename once file has been released.'));
+        }
+
+        $this->close();
+        $newName = $this->getFilepath($newName);
+
+        if (rename($oldName, $newName)) {
+            $this->_filename = $newName;
+
+            return true;
+        }
+
+        if (copy($oldName, $newName)) {
+            unlink($oldName);
+            $this->_filename = $newName;
+
+            return true;
+        }
+
+        throw new Exception(__('Failed to rename file %1', $newName));
     }
 }

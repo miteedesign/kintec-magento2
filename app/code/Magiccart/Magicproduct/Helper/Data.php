@@ -21,8 +21,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const GROUPS        = 'general';        // setup general
     const GROUPS_PLUS   = 'product';        // custom group
     const FEATURED      = 'featured';       // attribute featured
-    const FEATUREDONE      = 'featured_category_one';       // attribute featured
-    const FEATUREDTWO      = 'featured_category_two';       // attribute featured
 
     public function getConfig($cfg=null)
     {

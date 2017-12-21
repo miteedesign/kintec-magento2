@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -20,6 +20,9 @@ namespace Mirasvit\Seo\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Mirasvit\Seo\Model\Config as Config;
 
+/**
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
+ */
 class Opengraph implements ObserverInterface
 {
     /**
@@ -73,6 +76,11 @@ class Opengraph implements ObserverInterface
     protected $objectManager;
 
     /**
+     * @var \Magento\Store\Model\Information
+     */
+    protected $_storeInfo;
+
+    /**
      * @param \Magento\Catalog\Model\ProductFactory      $productFactory
      * @param \Mirasvit\Seo\Model\Config                 $config
      * @param \Magento\Catalog\Helper\Image              $catalogImage
@@ -82,6 +90,7 @@ class Opengraph implements ObserverInterface
      * @param \Magento\Framework\Registry                $registry
      * @param \Magento\Backend\Model\Auth                $auth
      * @param \Magento\Framework\ObjectManagerInterface  $objectManager
+     * @param \Magento\Store\Model\Information  $_storeInfo
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
@@ -94,7 +103,8 @@ class Opengraph implements ObserverInterface
         \Magento\Framework\Registry $registry,
         \Magento\Backend\Model\Auth $auth,
         \Mirasvit\Seo\Api\Config\BlogMxInterface $blogMx,
-        \Magento\Framework\ObjectManagerInterface $objectManager
+        \Magento\Framework\ObjectManagerInterface $objectManager,
+        \Magento\Store\Model\Information $storeInfo
     ) {
         $this->productFactory = $productFactory;
         $this->config = $config;
@@ -106,6 +116,7 @@ class Opengraph implements ObserverInterface
         $this->auth = $auth;
         $this->blogMx = $blogMx;
         $this->objectManager = $objectManager;
+        $this->_storeInfo = $storeInfo;
     }
 
     /**
@@ -114,7 +125,7 @@ class Opengraph implements ObserverInterface
      *
      * @return bool|\Magento\Framework\App\Response\Http
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     *  @SuppressWarnings(PHPMD.NPathComplexity)
+     *   @SuppressWarnings(PHPMD.NPathComplexity)
      */
     public function modifyHtmlResponse($e, $response = false)
     {
@@ -149,6 +160,7 @@ class Opengraph implements ObserverInterface
         $fullActionCode = $this->seoData->getFullActionCode();
         if (($this->config->getCategoryOpenGraph() && $fullActionCode == 'catalog_category_view')
             || ($this->config->isCmsOpenGraphEnabled() && $fullActionCode == 'cms_page_view')
+            || ($this->config->isCmsOpenGraphEnabled() && $fullActionCode == 'cms_index_index')
             || ($this->blogMx->isOgEnabled() && in_array($fullActionCode, $this->blogMx->getActions())) ) {
             $tags[] = $label;
             $tags[] = $this->createMetaTag('type', 'website');
@@ -177,8 +189,8 @@ class Opengraph implements ObserverInterface
                         $tags['image'] = $this->createMetaTag('image', $featuredImageUrl);
             }
 
-            if ($this->storeManager->getStore()->getName() != 'Default Store View') {
-                $tags[] = $this->createMetaTag('site_name', $this->storeManager->getStore()->getName());
+            if ($storeName = $this->_storeInfo->getStoreInformationObject($this->storeManager->getStore())->getName()) {
+                $tags[] = $this->createMetaTag('site_name', $storeName);
             }
             preg_match('/meta name\\=\\"description\\" content\\=\\"(.*?)\\"\\/\\>/i', $body, $descriptionArray);
             if (isset($descriptionArray[1])) {

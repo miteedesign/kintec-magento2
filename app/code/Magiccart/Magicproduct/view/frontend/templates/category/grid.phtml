@@ -113,6 +113,10 @@ $_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
                             <?php endif; ?>
                             <?php if ($showWishlist || $showCompare): ?>
                                 <div data-role="add-to-links" class="actions-secondary"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
+
+                                    <a class="quickview <?php echo $_product->getTypeId() ?>" href="javascript:jQuery.fn.quickview({url:'<?php echo $this->getUrl('alothemes/product/view', array('id' => $_product->getId(), '_type' => 'direct_link') ) ?>'});"><i class="icon-magnifier icons"></i><?php echo __('Quick View')?>
+                                                    </a>
+
                                     <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
                                         <a href="#"
                                            class="action towishlist"

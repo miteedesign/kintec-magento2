@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright © 2016 Magento. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
 ?>
@@ -9,23 +9,9 @@ $required = '';
 if ($block->hasRequiredOptions()) {
     $required = ' data-hasrequired="' . __('* Required Fields') . '"';
 }
-
-$_product = $block->getProduct();
-$fitvalue = $_product->getResource()->getAttribute('fit')->getFrontend()->getValue($_product)
-
 ?>
-<div class="product-options-wrapper" id="product-options-wrapper"<?php /* @escapeNotVerified */ echo $required; ?>>
+<div class="product-options-wrapper" id="product-options-wrapper"<?= /* @escapeNotVerified */ $required ?>>
     <div class="fieldset" tabindex="0">
-        <?php echo $block->getChildHtml('', true);?>
+        <?= $block->getChildHtml('', true) ?>
     </div>
-
-    <?php if($fitvalue) { ?>
-	    <div class="fieldset fit-size">
-	    	<?php if($fitvalue != 'No') { ?>
-	    		<strong>Fit:</strong> <?php echo $fitvalue; ?>
-	    	<?php } ?>
-	    </div>
-	<?php } else { 
-			
-	} ?>
 </div>

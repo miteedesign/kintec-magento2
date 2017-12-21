@@ -154,6 +154,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             $model->setStoreId($this->_storeManager->getStore(true)->getId());
         }
 
+        $fieldset->addField('order', 'text',
+            [
+                'label' => __('Order'),
+                'title' => __('Order'),
+                'name' => 'order',
+            ]
+        );
+
         $fieldset->addField('status', 'select',
             [
                 'label' => __('Status'),

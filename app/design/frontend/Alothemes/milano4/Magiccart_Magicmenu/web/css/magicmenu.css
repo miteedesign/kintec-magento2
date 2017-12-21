@@ -5,7 +5,7 @@
  * @license 	http://www.magiccart.net/license-agreement.html
  * @Author:Magiccart<team.magiccart@gmail.com>
  * @@Create Date:2014-04-26 11:18:55
- * @@Modify Date: 2016-05-06 18:47:53
+ * @@Modify Date: 2017-02-22 15:44:42
  * @@Function:*/
 .nav-sections-item-content .magicmenu{position:relative;text-align: center;display:block;}
 .magicmenu .nav-desktop{position:static;margin:0;padding:0;}
@@ -28,7 +28,7 @@
 .magicmenu .nav-desktop .level0.dropdown > .level0{  border-style: solid ;border-width: 0 1px 1px 1px;box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);margin-top: 25px;padding:0 0 0px 30px;position:absolute;z-index:99999;display:block;opacity:0;top:59px;visibility:hidden;transition: visibility 180ms ease 0s, opacity 180ms ease 0s, margin 180ms ease 0s;-webkit-transition: visibility 180ms ease 0s, opacity 180ms ease 0s, margin 180ms ease 0s;-o-transition: visibility 180ms ease 0s, opacity 180ms ease 0s, margin 180ms ease 0s;}
 .magicmenu .nav-desktop .level0:hover .level-top-mega,
 .magicmenu .nav-desktop .level0.dropdown:hover > .level0{opacity:1;top:59px;visibility:visible;margin-top: 0;}
-.header-container-fixed .magicmenu .nav-desktop .level0:hover .level-top-mega{top:50px;}
+.header-container-fixed .magicmenu .nav-desktop .level0:hover .level-top-mega,.header-container-fixed .magicmenu .nav-desktop .level0.dropdown:hover > .level0{top:49px;}
 .magicmenu .nav-desktop .level0.home .level-top-mega{padding: 30px;text-align: left;width: 200px;}
 .magicmenu .nav-desktop .level0.home .level-top-mega a{line-height: 30px;}
 .magicmenu .nav-desktop .level0 .level-top-mega .menuextra,.magicmenu .nav-desktop .level0 .level-top-mega .custom-width,.magicmenu .nav-desktop .level0 .level-top-mega .extramenu{background-color:#ffffff;border:1px solid #ececec}
@@ -80,7 +80,7 @@
 .magicmenu .nav-desktop .level0.dropdown .hasChild,
 .vmagicmenu .vmagicmenu-narrow .level0.dropdown .hasChild {position: relative;margin: 0;}
 .magicmenu .nav-desktop .level0.dropdown .hasChild > a:before,
-.vmagicmenu .vmagicmenu-narrow .level0.dropdown .hasChild > a:before{ content: "";display: block;line-height: 32px;font-size: 14px;position: absolute;right: 15px;text-align: right;font-family: FontAwesome;}
+.vmagicmenu .vmagicmenu-narrow .level0.dropdown .hasChild > a:before{ content: "\f105";display: block;line-height: 32px;font-size: 14px;position: absolute;right: 15px;text-align: right;font-family: FontAwesome;}
 .magicmenu .nav-desktop .level0.dropdown .hasChild ul,
 .vmagicmenu .vmagicmenu-narrow .level0.dropdown .hasChild ul {position: absolute;left: 100%;top: 0;opacity: 0;visibility: hidden;box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);padding: 20px 0px;min-width: 200px;z-index: 1;}
 .magicmenu .nav-desktop .level0.dropdown .hasChild:hover > ul,
@@ -91,7 +91,7 @@
 	ul leve2
 **/
 .magicmenu .nav-desktop .level0 .level-top-mega .children ul.level1 .hasChild{position: relative;}
-.magicmenu .nav-desktop .level0 .level-top-mega .children ul.level1 .hasChild:before{content: "";display: block;line-height: 32px;font-size: 14px;position: absolute;right: 30px;text-align: right;font-family: FontAwesome;}
+.magicmenu .nav-desktop .level0 .level-top-mega .children ul.level1 .hasChild:before{content: "\f105";display: block;line-height: 32px;font-size: 14px;position: absolute;right: 30px;text-align: right;font-family: FontAwesome;}
 .magicmenu .nav-desktop .level0 .level-top-mega .children ul.level1 .hasChild ul { position: absolute;left: 100%;opacity: 0;visibility: hidden;top:0;background-color: #fff;box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);padding: 5px 0 5px 30px;min-width: 200px;z-index: 1;}
 .magicmenu .nav-desktop .level0 .level-top-mega .children ul.level1 .hasChild:hover > ul{opacity: 1;left: 90%;visibility: visible;}
 
@@ -184,6 +184,7 @@ a.meanmenu-reveal{display:none}
 .mean-container .mean-nav ul li a.mean-expand:hover{background:#444;color:#fff}
 .mean-container .mean-push{float:left;width:100%;padding:0;margin:0;clear:both}
 .mean-nav .wrapper{width:100%;padding:0;margin:0}
+.nav-sections-item-content .mean-container .mean-nav ul li a span.icon-home{display: none;}
 /* Fix for box sizing on Foundation Framework etc. */
 .mean-container .mean-bar,.mean-container .mean-bar *{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}
 .mean-remove{display:none!important}
@@ -194,7 +195,7 @@ a.meanmenu-reveal{display:none}
 }
 
 /* Update */
-.magicmenu .nav-desktop .level0.hasChild .level-top:after{content: "";font-family: "FontAwesome";font-size: 14px;margin-left: 5px;opacity: 0.3;vertical-align: 0;}
+.magicmenu .nav-desktop .level0.hasChild .level-top:after{content: "\f107";font-family: "FontAwesome";font-size: 14px;margin-left: 5px;opacity: 0.3;vertical-align: 0;}
 .magicmenu .nav-desktop .level0 .level-top > span{display: inline-block;}
 .magicmenu .nav-desktop .level0 .cat_label.Sale, .mean-container .mean-nav ul li a span.cat_label.Sale{background-color: #dc1212;}
 .magicmenu .nav-desktop .level0 .cat_label:before{border-width: 0px 0px 10px 10px;left: -6px;top: 3px;right: auto;border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #dc1212;}

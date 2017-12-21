@@ -23,6 +23,7 @@
 				   <ul class="level1">
 						<li class="level2"><a href="marco-lightweight-active.html"><span>Product with Related</span></a></li>
 						<li class="level2"><a href="fusce-nec-facilisi.html"><span>Product with Upsell</span></a></li>
+                                                <li class="level2"><a href="the-net-bag-in-navy.html"><span>Product with Video</span></a></li>
 				  </ul>
 				</li>
 			</ul>
@@ -36,37 +37,8 @@
       <identifier><![CDATA[home-slide4]]></identifier>
       <content><![CDATA[<!-- home slide-->
 <div class="slide-showcase alo-block-slide">
-<div class="container">
-<div class="home-slider row" data-slides-to-show="1" data-slides-to-scroll="1" data-fade="false" data-dots="true" data-arrows="false" data-easing="linear" data-autoplay="false" >
-	<div class="item"> 
-		<a href="#"> <img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo4/slidev4_01.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide">
-			    <h3 class="caption1">new</h3>
-				<h3 class="caption2">fashion</h3>
-				<h3 class="caption3"><strong>&amp;</strong>style</h3>
-			</div>
-		</div>
-	</div>
-	<div class="item"> 
-		<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo4/slidev4_02.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide text-slide2">
-				<h3 class="caption1">Lookbook</h3>
-				<h3 class="caption2">real man</h3>
-			</div>
-		</div>
-	</div>
-	<div class="item"> 
-		<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo4/slidev4_03.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide text-slide2">
-				<h3 class="caption1">spring</h3>
-				<h3 class="caption2">collection</h3>
-			</div>
-		</div>
-	</div>
-</div>
+<div class="container1">
+<div class="alo-magicslider home-slider">{{widget type="Magiccart\Magicslider\Block\Widget\Slider" identifier="slide4" template="magicslider.phtml"}}</div>
 </div>
 </div>]]></content>
       <is_active><![CDATA[1]]></is_active>

@@ -4,36 +4,10 @@
     <item>
       <title><![CDATA[home slide1]]></title>
       <identifier><![CDATA[home-slide1]]></identifier>
-      <content><![CDATA[<div class="home-slider" data-slides-to-show="1" data-slides-to-scroll="1" data-fade="false" data-dots="true" data-arrows="false" data-speed="400" data-autoplay-speed="6000" data-easing="linear" data-autoplay="true" >
-	<div class="item"> 
-		<a href="#"> <img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo1/slide1.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide">
-				<h3 class="caption1">new</h3>
-				<h3 class="caption2">fashion</h3>
-				<h3 class="caption3"><strong>&amp;</strong>style</h3>
-			</div>
-		</div>
-	</div>
-	<div class="item"> 
-		<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo1/slide2_1.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide text-slide2">
-				<h3 class="caption1">Lookbook</h3>
-				<h3 class="caption2">real man</h3>
-			</div>
-		</div>
-	</div>
-	<div class="item"> 
-		<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo1/slide3_2.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide text-slide2">
-				<h3 class="caption1">spring</h3>
-				<h3 class="caption2">collection</h3>
-			</div>
-		</div>
-	</div>
-</div>]]></content>
+      <content><![CDATA[<div class="alo-magicslider">{{widget type="Magiccart\Magicslider\Block\Widget\Slider" identifier="slide1" class="home-slider" template="magicslider.phtml"}}</div>
+
+
+]]></content>
       <is_active><![CDATA[1]]></is_active>
     </item>
     <item>
@@ -156,6 +130,20 @@
 <li><a href="#">Accessibility</a></li>
 <li><a href="#">Store Directory</a></li>
 </ul>
+</div>
+</div>
+</div>
+</div>]]></content>
+      <is_active><![CDATA[1]]></is_active>
+    </item>
+    <item>
+      <title><![CDATA[testimonial]]></title>
+      <identifier><![CDATA[testimonial]]></identifier>
+      <content><![CDATA[<div class="block-static bg-parallax block_testimonials">
+<div class="container">
+<div class="main">
+<div class="row">
+<div class="testimonials col-lg-12">{{widget type="Magiccart\Testimonial\Block\Widget\Testimonial" template="testimonial.phtml"}}</div>
 </div>
 </div>
 </div>

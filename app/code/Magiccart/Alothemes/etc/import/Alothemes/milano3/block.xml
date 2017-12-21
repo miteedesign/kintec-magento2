@@ -81,36 +81,7 @@
     <item>
       <title><![CDATA[home slide3]]></title>
       <identifier><![CDATA[home-slide3]]></identifier>
-      <content><![CDATA[<div class="home-slider" data-slides-to-show="1" data-slides-to-scroll="1" data-fade="false" data-dots="true" data-arrows="false" data-easing="linear" data-autoplay="false" >
-	<div class="item"> 
-		<a href="#"> <img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo3/slidev3_01.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide text-slide2">
-				<h3 class="caption1">spring</h3>
-				<h3 class="caption2">collection</h3>
-			</div>
-		</div>
-	</div>
-	<div class="item"> 
-		<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo3/slidev3_02.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide text-slide2">
-				<h3 class="caption1">Lookbook</h3>
-				<h3 class="caption2">real man</h3>
-			</div>
-		</div>
-	</div>
-	<div class="item"> 
-		<a href="#"><img class="img-responsive-normal" src="{{media url="wysiwyg/alothemes/static/demo3/slidev3_03.jpg"}}" alt="magicslider" /></a>
-		<div class="container figcaption">
-			<div class="text-slide">
-				<h3 class="caption1">new</h3>
-				<h3 class="caption2">fashion</h3>
-				<h3 class="caption3"><strong>&amp;</strong>style</h3>
-			</div>
-		</div>
-	</div>
-</div>]]></content>
+      <content><![CDATA[<div class="alo-magicslider home-slider">{{widget type="Magiccart\Magicslider\Block\Widget\Slider" identifier="slide3" template="magicslider.phtml"}}</div>]]></content>
       <is_active><![CDATA[1]]></is_active>
     </item>
     <item>

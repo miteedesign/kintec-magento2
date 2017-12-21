@@ -19,39 +19,11 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $customerSession = $objectManager->get('Magento\Customer\Model\Session');
 $isLoggedIn = $customerSession->isLoggedIn();
 
-/** @var \Magento\Framework\App\CacheInterface $cache */
-$cache = $objectManager->get('Magento\Framework\App\CacheInterface');
-
-
-if($menu=$cache->load('custom_top_menu1')){
-	$menu = json_decode($menu,true);
-}
-else{
-	
-	$menu = $this->_sysCfg->topmenu;
-	try{
-		$cache->save(json_encode($menu), 'custom_top_menu1', ['BLOCK_HTML'], 99999);
-	}
-	catch(\Exception $e){
-		 die($e->getMessage());
-
-	}
-}
-
+$menu = $this->_sysCfg->topmenu;
 if(!$menu['enabled']) return;
 
 // drawMainMenu vs DrowMobileMenu
-
-
-if($menuHtml=$cache->load('custom_top_mainmenu1')){
-	$menuHtml = json_decode($menuHtml,true);
-}
-else{
-	$menuHtml = $this->drawMainMenu();
-	$cache->save(json_encode($menuHtml), 'custom_top_mainmenu1', ['BLOCK_HTML'], 99999);
-}
-
-
+$menuHtml = $this->drawMainMenu();
 $mobileMenu = $menuHtml['mobile'];
 $desktop 	= $menuHtml['desktop'];
 $ids  = explode(',', $menu['notIncludeNav']);
@@ -71,10 +43,9 @@ $drawExtraMenu = $menu['extraCat'] ? $this->drawExtraMenu() : '';
 		<?php echo $drawMainMenu ?>
 		<?php echo $drawExtraMenu ?>
 	</ul>
-</div>
-<nav class="navigation" role="navigation">
-	<ul class="nav-mobile" data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
-		<?php if( $isLoggedIn ) { ?>
+	<div class="navigation-mobile">
+		<ul class="nav-mobile">
+			<?php if( $isLoggedIn ) { ?>
 		    <li>
 				<a href="<?php echo $this->getUrl('customer/account/'); ?>" title="<?php echo __('My account') ?>"><?php echo __('My account') ?>
 				</a>
@@ -94,8 +65,14 @@ $drawExtraMenu = $menu['extraCat'] ? $this->drawExtraMenu() : '';
 				</a>
 			</li>
 		 <?php }  ?>
-		<?php echo $mobileMenu ?>
-		<?php echo $drawExtraMenu ?>
+			<?php echo $drawHomeMenu ?>
+			<?php echo $mobileMenu ?>
+			<?php echo $drawExtraMenu ?>
+		</ul>		
+	</div>
+</div>
+<nav class="navigation" role="navigation">
+	<ul class="nav-mobile" data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
 	</ul>
 </nav>
 

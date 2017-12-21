@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-core
- * @version   1.2.27
+ * @version   1.2.40
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -34,8 +34,8 @@ class License
     const EDITION_EE = 'EE';
     const EDITION_CE = 'CE';
 
-    const STATUS_ACTIVE  = 'active';
-    const STATUS_LOCKED  = 'locked';
+    const STATUS_ACTIVE = 'active';
+    const STATUS_LOCKED = 'locked';
     const STATUS_INVALID = 'invalid';
 
     /**
@@ -102,21 +102,18 @@ class License
     }
 
     /**
-     * License status
-     *
      * @param string $className
-     *
-     * @return true|string
+     * @return bool|string
      */
-    public function getStatus($className = '')
+    public function load($className = '')
     {
         $module = $this->getModuleByClass($className);
-        if ($module == 'Mirasvit_Blog') {
+
+        if ($module == 'Mirasvit_Blog' || $module == 'Mirasvit_Demo') {
             return true;
         }
 
         $moduleDir = $this->getModuleDirByClass($className);
-
         if (!$moduleDir) {
             return true;
         }
@@ -126,30 +123,43 @@ class License
             if (count($license) == 2) {
                 $this->license = $license[0];
                 $this->key = $license[1];
-            } else {
-                return "Wrong license information";
+
+                return $this->license;
             }
-        } else {
-            return true;
-            //return "License not found";
         }
 
-        $data = $this->getFlagData($this->license);
+        return false;
+    }
 
-        if (!$data) {
+    /**
+     * License status
+     *
+     * @param string $className
+     *
+     * @return true|string
+     */
+    public function getStatus($className = '')
+    {
+        if ($this->load($className) === true) {
+            return true;
+        }
+
+        if (strpos($this->getDomain(), 'mirasvit.com') > 0) {
+            return true;
+        }
+
+        if (!$this->license) {
+            return "License not found";
+        }
+
+        if ($this->isNeedUpdate()) {
             $this->request();
             $data = $this->getFlagData($this->license);
-        }
 
-        if ($data && isset($data['status'])) {
-            if ($data['status'] === self::STATUS_ACTIVE) {
-                if (abs(time() - $data['time']) > 24 * 60 * 60) {
-                    $this->request();
-                }
-            } else {
-                $this->request();
-                $data = $this->getFlagData($this->license);
-
+            if (isset($data['status']) && $data['status'] === self::STATUS_ACTIVE) {
+                return true;
+            }
+            if (isset($data['message'])) {
                 return $data['message'];
             }
         }
@@ -164,6 +174,7 @@ class License
     private function getModuleDirByClass($className)
     {
         $module = $this->getModuleByClass($className);
+
         if ($module) {
             return $this->dirReader->getModuleDir("", $module);
         }
@@ -192,7 +203,7 @@ class License
      *
      * @return $this
      */
-    public function request()
+    private function request()
     {
         $params = [];
         $params['v'] = 3;
@@ -204,7 +215,7 @@ class License
         $params['k'] = $this->key;
         $params['uid'] = $this->getUID();
 
-        $result = $this->sendRequest('http://mirasvit.com/lc/check/', $params);
+        $result = $this->sendRequest('https://lc.mirasvit.com/lc/check/', $params);
 
         $result['time'] = time();
         $this->saveFlagData($this->license, $result);
@@ -213,13 +224,65 @@ class License
     }
 
     /**
+     * @return string
+     */
+    public function getRequestUrl()
+    {
+        $params = [];
+        $params['v'] = 3;
+        $params['d'] = $this->getDomain();
+        $params['ip'] = $this->getIP();
+        $params['mv'] = $this->getVersion();
+        $params['me'] = $this->getEdition();
+        $params['l'] = $this->license;
+        $params['k'] = $this->key;
+        $params['uid'] = $this->getUID();
+
+        $query = http_build_query($params);
+
+        return 'https://lc.mirasvit.com/lc/check/?' . $query;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNeedUpdate()
+    {
+        $data = $this->getFlagData($this->license);
+
+        if (!$data) {
+            return true;
+        }
+
+        if ($data && isset($data['status'])) {
+            if ($data['status'] === self::STATUS_ACTIVE) {
+                if (abs(time() - $data['time']) > 24 * 60 * 60) {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLicense()
+    {
+        return $this->license;
+    }
+
+    /**
      * Save request result to flag
      *
      * @param string $license
-     * @param array  $data
+     * @param array $data
      * @return $this
      */
-    protected function saveFlagData($license, $data)
+    private function saveFlagData($license, $data)
     {
         $flag = $this->flagFactory->create(['data' => ['flag_code' => "m" . $license]])
             ->loadSelf();
@@ -236,7 +299,7 @@ class License
      * @param string $license
      * @return array
      */
-    protected function getFlagData($license)
+    private function getFlagData($license)
     {
         $flag = $this->flagFactory->create(['data' => ['flag_code' => "m" . $license]])
             ->loadSelf();
@@ -253,13 +316,26 @@ class License
     }
 
     /**
+     * Remove flag data
+     *
+     * @return void
+     */
+    public function clear()
+    {
+        $flag = $this->flagFactory->create(['data' => ['flag_code' => "m" . $this->license]])
+            ->loadSelf();
+
+        $flag->delete();
+    }
+
+    /**
      * Send http request
      *
      * @param string $endpoint
-     * @param array  $params
+     * @param array $params
      * @return array
      */
-    public function sendRequest($endpoint, $params)
+    private function sendRequest($endpoint, $params)
     {
         $curl = $this->curlFactory->create();
         $config = ['timeout' => 10];

@@ -36,7 +36,7 @@
 ?>
 <?php
 	$timer = $this->_themeCfg['timer'];
-	if(!$timer['enabled']) return;
+	// if(!$timer['enabled']) return;
 	$layout = '<span class="day">%%D%%</span><span class class="colon">:</span><span class="hour">%%H%%</span><span class="colon">:</span><span class="min">%%M%%</span><span class="colon">:</span><span class="sec">%%S%%</span>';	
 	if($timer['caption']){
 		$layout = '<div class="timer-box"><span class="day">%%D%%</span><span class="title">' . __('Days') . '</span></div><div class="timer-box"><span class="hour">%%H%%</span><span class="title">' . __('Hrs')  . '</span></div><div class="timer-box"><span class="min">%%M%%</span><span  class="title">' . __('Mins') . '</span></div><div class="timer-box"><span class="sec">%%S%%</span><span  class="title">' . __('Secs') . '</span></div>';
@@ -45,17 +45,6 @@
 <script type="text/javascript">
 var alo_timer_layout 	= '<?php echo $layout ?>';
 var alo_timer_timeout 	= '<span class="timeout"><?php echo __('Time out!')?></span>';
-require([
-    'jquery',
-    'alothemes',
-    ], function($){
-		(function($) {
-			$('.alo-count-down').timer({
-				classes	: '.countdown',
-				layout	: alo_timer_layout, 
-				timeout : alo_timer_timeout
-			});
-		})(jQuery);
-});
+require(['jquery','magiccart/slick','alothemes',]);
 </script>
 

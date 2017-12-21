@@ -46,7 +46,7 @@ $_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
     ?>
     <div class="products wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?> products-<?php /* @escapeNotVerified */ echo $viewMode; ?>">
         <?php $iterator = 1; ?>
-        <ol class="products list items product-items featured-items">
+        <ol class="products list items product-items">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product): ?>
                 <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
@@ -96,6 +96,10 @@ $_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
                                             <?php endif; ?>
                                             <?php if ($showWishlist || $showCompare): ?>
                                                 <div data-role="add-to-links" class="actions-secondary add-to-links"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
+                                                
+                                                    <a class="quickview <?php echo $_product->getTypeId() ?>" href="javascript:jQuery.fn.quickview({url:'<?php echo $this->getUrl('alothemes/product/view', array('id' => $_product->getId(), '_type' => 'direct_link') ) ?>'});"><i class="icon-magnifier icons"></i><?php echo __('Quick View')?>
+                                                    </a>
+
                                                     <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
                                                         <a href="#"
                                                            class="action towishlist"
@@ -138,13 +142,11 @@ $_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
                         <?php echo $showReview ? $block->getReviewsSummaryHtml($_product, $templateType) : ''; ?>
                         <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
                         <?php echo $block->getProductDetailsHtml($_product); ?>
-                        <?php echo $this->getLayout()->createBlock("Magento\Swatches\Block\Product\Renderer\Listing\Configurable")->setProduct($_product)->setTemplate("Magento_Swatches::product/listing/renderer.phtml")->toHtml();?>
                     </div>
                 </div>
                 <?php echo($iterator == count($_productCollection)+1) ? '</li>' : '' ?>
             <?php endforeach; ?>
         </ol>
-        
     </div>
     <?php // echo $block->getToolbarHtml() ?>
     <?php if (!$block->isRedirectToCartEnabled()) : ?>
@@ -156,10 +158,5 @@ $_aloHelper = $this->helper('Magiccart\Alothemes\Helper\Data');
         }
         </script>
     <?php endif; ?>
-<?php endif; ?>
-<?php if($this->getTypeFilter()=='featuredone'): ?>
-<p class="text-center"><a class="landing-page-cta" href="/womens">Shop Womens</a></p>
-<?php else: ?>
-<p class="text-center"><a class="landing-page-cta" href="/mens">Shop Mens</a></p>
 <?php endif; ?>
 </div>

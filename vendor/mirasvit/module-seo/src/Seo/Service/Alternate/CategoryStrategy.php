@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -89,6 +89,7 @@ class CategoryStrategy implements \Mirasvit\Seo\Api\Service\Alternate\StrategyIn
      */
     public function getAlternateUrl($storeUrls)
     {
+        $currentBaseUrl = $this->context->getUrlBuilder()->getBaseUrl();
         foreach ($this->url->getStores() as $storeId => $store) {
             $currentUrl = $this->context->getUrlBuilder()->getCurrentUrl();
             $category = $this->categoryCollectionFactory->create()
@@ -96,7 +97,6 @@ class CategoryStrategy implements \Mirasvit\Seo\Api\Service\Alternate\StrategyIn
                 ->addFieldToFilter('is_active', ['eq' => '1'])
                 ->addFieldToFilter('entity_id', ['eq' => $this->registry->registry('current_category')->getId()])
                 ->getFirstItem();
-
             if ($category->hasData() && ($currentCategory = $this->categoryFactory
                     ->create()
                     ->setStoreId($store->getId())
@@ -104,6 +104,8 @@ class CategoryStrategy implements \Mirasvit\Seo\Api\Service\Alternate\StrategyIn
             ) {
                 $storeBaseUrl = $store->getBaseUrl();
                 $currentCategoryUrl = $currentCategory->getUrl();
+                //ned for situation like https://example.com/eu/ and https://example.com/
+                $currentCategoryUrl = str_replace($currentBaseUrl, $storeBaseUrl, $currentCategoryUrl);
                 // correct suffix for every store can't be added, because magento works incorrect,
                 // maybe after magento fix (if need)
                 if (strpos($currentCategoryUrl, $storeBaseUrl) === false) {

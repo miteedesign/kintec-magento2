@@ -9,7 +9,7 @@
  *
  * @category  Mirasvit
  * @package   mirasvit/module-seo
- * @version   1.0.63
+ * @version   2.0.11
  * @copyright Copyright (C) 2017 Mirasvit (https://mirasvit.com/)
  */
 
@@ -35,8 +35,6 @@ class Add extends \Mirasvit\Seo\Controller\Adminhtml\Template
 
         $resultPage->getConfig()->getTitle()->prepend(__('Add Template'));
 
-        $this->_addContent($resultPage->getLayout()->createBlock('\Mirasvit\Seo\Block\Adminhtml\Template\Edit'))
-            ->_addLeft($resultPage->getLayout()->createBlock('\Mirasvit\Seo\Block\Adminhtml\Template\Edit\Tabs'));
 
         return $resultPage;
     }

@@ -6,7 +6,7 @@
  * @license   http://www.magiccart.net/license-agreement.html
  * @Author: Magiccart<team.magiccart@gmail.com>
  * @@Create Date: 2016-02-28 10:10:00
- * @@Modify Date: 2016-06-08 14:35:59
+ * @@Modify Date: 2017-05-11 14:22:17
  * @@Function:
  */
 namespace Magiccart\Magicmenu\Block;
@@ -76,6 +76,14 @@ class Menu extends \Magento\Catalog\Block\Navigation
 
     public $_sysCfg;
 
+    protected $_urlMedia;
+
+    protected $_dirMedia;
+
+    protected $_recursionLevel;
+
+    protected $extData = array();
+
     /**
      * magicmenu collection factory.
      *
@@ -118,6 +126,22 @@ class Menu extends \Magento\Catalog\Block\Navigation
 
         parent::__construct($context, $categoryFactory, $productCollectionFactory, $layerResolver, $httpContext, $catalogCategory, $registry, $flatState, $data);
 
+        $this->_urlMedia = $this->_storeManager->getStore()->getBaseUrl(
+                \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
+            );
+
+        $this->_dirMedia = $this->getMediaDirectory()->getAbsolutePath();
+
+        $this->_recursionLevel = max(
+            0,
+            (int)$context->getScopeConfig()->getValue(
+                'catalog/navigation/max_depth',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            )
+        );
+
+
+
     }
 
     public function getIsHomePage()
@@ -132,12 +156,7 @@ class Menu extends \Magento\Catalog\Block\Navigation
 
     public function getLogo()
     {
-        $src = $this->_scopeConfig->getValue(
-            'design/header/logo_src',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
-        $logo = '<li class="level0 logo display"><a class="level-top" href="'.$this->getHomeUrl().'"><img alt="logo" src="' .$this->getSkinUrl($src). '"></a></li>';
-        return $logo;
+        return $this->getLayout()->createBlock('Magento\Theme\Block\Html\Header\Logo')->toHtml();
     }
 
     public function getRootName()
@@ -151,7 +170,7 @@ class Menu extends \Magento\Catalog\Block\Navigation
         if($this->hasData('homeMenu')) return $this->getData('homeMenu');
         $drawHomeMenu = '';
         $active = ($this->getIsHomePage()) ? ' active' : '';
-        $drawHomeMenu .= '<li class="level0 home' . $active . '">';
+        $drawHomeMenu .= '<li class="level0 dropdown home' . $active . '">';
         $drawHomeMenu .= '<a class="level-top" href="'.$this->getBaseUrl().'"><span class="icon-home fa fa-home"></span><span class="icon-text">' .__('Home') .'</span>';
         $drawHomeMenu .= '</a>';
         if($this->_sysCfg->topmenu['demo']){
@@ -170,13 +189,13 @@ class Menu extends \Magento\Catalog\Block\Navigation
                             }
                         }                     
                         if($store){
-                            if( $store->getCode() == $currentStore->getCode() )  $demo .= '<div><a href="' .$store->getBaseUrl(). '"><span class="demo-home">'. $group->getName(). '</span></a></div>';
-                            else $demo .= '<div><a href="'.$store->getBaseUrl(). 'stores/store/switch/?___store=' .$store->getCode(). '"><span class="demo-home">'. $group->getName(). '</span></a></div>';
+                            if( $store->getCode() == $currentStore->getCode() )  $demo .= '<li class="level1"><a href="' .$store->getBaseUrl(). '"><span class="demo-home">'. $group->getName(). '</span></a></li>';
+                            else $demo .= '<li class="level1"><a href="'.$store->getBaseUrl(). 'stores/store/switch/?___store=' .$store->getCode(). '"><span class="demo-home">'. $group->getName(). '</span></a></li>';
                         }
                     }
                 }
             }
-            if($demo) $drawHomeMenu .= '<div class="level-top-mega">' .$demo .'</div>';           
+            if($demo) $drawHomeMenu .= '<ul class="level0 submenu">' .$demo .'</ul>';           
         }
 
         $drawHomeMenu .= '</li>';
@@ -187,93 +206,100 @@ class Menu extends \Magento\Catalog\Block\Navigation
     public function drawMainMenu()
     {
         if($this->hasData('mainMenu')) return $this->getData('mainMenu');
-        // Mage::log('your debug', null, 'yourlog.log');
         $desktopHtml = array();
-		$mobileHtml  = array();
-		$rootCatId = $this->_storeManager->getStore()->getRootCategoryId();
+        $mobileHtml  = array();
+        $rootCatId = $this->_storeManager->getStore()->getRootCategoryId();
         $catListTop = $this->getChildExt($rootCatId);
         $contentCatTop  = $this->getContentCatTop();
-        $extData    = array();
+
         foreach ($contentCatTop as $ext) {
-            $extData[$ext->getCatId()] = $ext->getData();
+            $this->extData[$ext->getCatId()] = $ext->getData();
         }
-        $i = 1; $last = count($catListTop);
+        $last = count($catListTop);
         $dropdownIds = explode(',', $this->_sysCfg->general['dropdown']);
-        foreach ($catListTop as $catTop) :
-			$idTop    = $catTop->getEntityId();
-            $hasChild = $catTop->hasChildren() ? ' hasChild parent' : '';
+        foreach ($catListTop as $catTop){
+            $idTop    = $catTop->getEntityId();
+            $urlTop      =  '<a class="level-top" href="' .$catTop->getUrl(). '">' .$this->getThumbnail($catTop). '<span>' .__($catTop->getName()) . $this->getCatLabel($catTop). '</span><span class="boder-menu"></span></a>';
+
+            $classTop   = $this->isCategoryActive($idTop) ? ' active' : '';
             $isDropdown = in_array($idTop, $dropdownIds) ? ' dropdown' : '';
-            $active   = $this->isCategoryActive($idTop) ? ' active' : '';
-            $urlTop      =  '<a class="level-top" href="' .$catTop->getUrl(). '">' .$this->getThumbnail($catTop). '<span>' .__($catTop->getName()) . $this->getCatLabel($catTop). '</span><span class="boder-menu"></span><i class="menu-expander fa fa-plus-square-o" aria-hidden="true"></i></a>';
-            $classTop    = ($i == 1) ? 'first' : ($i == $last ? 'last' : '');
-            $classTop   .= $active . $hasChild .$isDropdown;
-
             // drawMainMenu
-            if($isDropdown){ // Draw Dropdown Menu
-				$childHtml = $this->getTreeCategoriesExt($idTop); // include magic_label
-                $desktopHtml[$idTop] = '<li class="level0 nav-' .$i. ' cat ' . $classTop . '">' . $urlTop . $childHtml . '</li>';
-                $mobileHtml[$idTop]  = '<li class="level0 nav-' .$i. ' '.$classTop.'">' . $urlTop . $childHtml . '</li>';
-                $i++;
-                continue;
-            }
-			// Draw Mega Menu 
-            $data =''; $options='';
-            if(isset($extData[$idTop])) $data   = $extData[$idTop];
-            $blocks = array('top'=>'', 'left'=>'', 'right'=>'', 'bottom'=>'');
-            if($data){
-                foreach ($blocks as $key => $value) {
-                    $proportion = $key .'_proportion';
-                    $weight = (isset($data[$proportion])) ? $data[$proportion]:'';
-                    $html = $this->getStaticBlock($data[$key]);
-                    if($html) $blocks[$key] = "<div class='mage-column mega-block-$key'>".$html.'</div>';
-                }
-                $remove = array('top'=>'', 'left'=>'', 'right'=>'', 'bottom'=>'', 'cat_id'=>'');
-                foreach ($remove as $key => $value) {
-                    unset($data[$key]);
-                }
-                $opt     = json_encode($data);
-                $options = $opt ? " data-options='$opt'" : '';
+            $options  = '';
+            if($this->_recursionLevel == 1){
+                $menu = array('desktop' => '', 'mobile' => '');               
+            }else {
+                if($isDropdown){
+                    $classTop .= $isDropdown;
+                    $childHtml = $this->getTreeCategoriesExt($idTop); // include magic_label
+                    // $childHtml = $this->getTreeCategoriesExtra($idTop); // include magic_label and Maximal Depth
+                    $menu = array('desktop' => $childHtml, 'mobile' => $childHtml);
+                } else { // Draw Mega Menu
+                    $idTop    = $catTop->getEntityId();
+                    $data     = isset($this->extData[$idTop]) ? $this->extData[$idTop] : '';
+                    $blocks   = array('top'=>'', 'left'=>'', 'right'=>'', 'bottom'=>'');
+                    if($data){
+                        foreach ($blocks as $key => $value) {
+                            $proportion = $key .'_proportion';
+                            $html = $this->getStaticBlock($data[$key]);
+                            if($html) $blocks[$key] = "<div class='mage-column mega-block-$key'>".$html.'</div>';
+                        }
+                        $remove = array('top'=>'', 'left'=>'', 'right'=>'', 'bottom'=>'', 'cat_id'=>'');
+                        foreach ($remove as $key => $value) {
+                            unset($data[$key]);
+                        }
+                        $opt     = json_encode($data);
+                        $options = $opt ? " data-options='$opt'" : '';
+                    }
+                    $menu = $this->getMegamenu($catTop, $blocks);
+                }               
             }
 
-			$desktopTmp = $mobileTmp  = '';
-			if($hasChild || $blocks['top'] || $blocks['left'] || $blocks['right'] || $blocks['bottom']) :
-				$desktopTmp .= '<div class="level-top-mega">';  /* Wrap Mega */
-					$desktopTmp .='<div class="content-mega">';  /*  Content Mega */
-						$desktopTmp .= $blocks['top'];
-						$desktopTmp .= '<div class="content-mega-horizontal">';
-							$desktopTmp .= $blocks['left'];
-							if($hasChild) :
-								$desktopTmp .= '<ul class="level0 mage-column cat-mega">';
-								$mobileTmp .= '<ul class="submenu">';
-								$childTop  = $this->getChildExt($idTop);
-								foreach ($childTop as $child) {
-									$id = $child->getId();
-									$class = ' level1';
-									$class .= $this->isCategoryActive($child->getId()) ? ' active' : '';
-									$url =  '<a href="'. $child->getUrl().'"><span>'.__($child->getName()) . $this->getCatLabel($child) . '</span></a>';
-									$childHtml = $this->getTreeCategoriesExt($id); // include magic_label
-									// $childHtml = $this->getTreeCategoriesExtra($id); // include magic_label
-									$desktopTmp .= '<li class="children' . $class . '">' . $this->getImage($child) . $url . $childHtml . '</li>';
-									$mobileTmp  .= '<li class="' . $class . '">' . $url . $childHtml . '</li>';
-								}
-								$desktopTmp .= '<li>'  .$blocks['bottom']. '</li>';
-								$desktopTmp .= '</ul>'; // end cat-mega
-								$mobileTmp .= '</ul>';
-							endif;
-							$desktopTmp .= $blocks['right'];
-						$desktopTmp .= '</div>';
-						//$desktopTmp .= $blocks['bottom'];
-					$desktopTmp .= '</div>';  /* End Content mega */
-				$desktopTmp .= '</div>';  /* Warp Mega */
-			endif;
-            $desktopHtml[$idTop] = '<li class="level0 nav-' .$i. ' cat ' . $classTop . '"' . $options .'>' .$urlTop . $desktopTmp . '</li>';
-            $mobileHtml[$idTop]  = '<li class="level0 nav-' .$i. ' '. $classTop . '">' . $urlTop . $mobileTmp . '</li>';
-            $i++;
-        endforeach;
+            if($menu['desktop']) $classTop .= ' hasChild parent';
+
+            $desktopHtml[$idTop] = '<li class="level0 cat ' . $classTop . '"' . $options .'>' . $urlTop . $menu['desktop'] . '</li>';
+            $mobileHtml[$idTop]  = '<li class="level0 cat ' . $classTop . '">' . $urlTop . $menu['mobile'] . '</li>';            
+        }
         $menu['desktop'] = $desktopHtml;
         $menu['mobile'] = implode("\n", $mobileHtml);
         $this->setData('mainMenu', $menu);
         return $menu;
+    }
+
+    public function getMegamenu($catTop, $blocks)
+    {
+        // Draw Mega Menu 
+        $idTop    = $catTop->getEntityId();
+        $hasChild = $catTop->hasChildren();
+        $desktopTmp = $mobileTmp  = '';
+        if($hasChild || $blocks['top'] || $blocks['left'] || $blocks['right'] || $blocks['bottom']) :
+            $desktopTmp .= '<div class="level-top-mega">';  /* Wrap Mega */
+                $desktopTmp .='<div class="content-mega">';  /*  Content Mega */
+                    $desktopTmp .= $blocks['top'];
+                    $desktopTmp .= '<div class="content-mega-horizontal">';
+                        $desktopTmp .= $blocks['left'];
+                        if($hasChild) :
+                            $desktopTmp .= '<ul class="level0 mage-column cat-mega">';
+                            $mobileTmp .= '<ul class="submenu">';
+                            $childTop  =  $this->getChildExt($idTop);
+                            foreach ($childTop as $child) {
+                                $class = $this->isCategoryActive($child->getId()) ? ' level1 active' : ' level1';
+                                $url =  '<a href="'. $child->getUrl().'"><span>'.__($child->getName()) . $this->getCatLabel($child) . '</span></a>';
+                                $childHtml = ($this->_recursionLevel != 2 ) ? $this->getTreeCategoriesExt($child->getId()) : ''; // include magic_label
+                                // $childHtml = ($this->_recursionLevel != 2 ) ? $this->getTreeCategoriesExtra($child->getId()) : ''; // include magic_label and Maximal Depth
+                                $desktopTmp .= '<li class="children' . $class . '">' . $this->getImage($child) . $url . $childHtml . '</li>';
+                                $mobileTmp  .= '<li class="' . $class . '">' . $url . $childHtml . '</li>';
+                            }
+                            $desktopTmp .= '<li>'  .$blocks['bottom']. '</li>';
+                            $desktopTmp .= '</ul>'; // end cat-mega
+                            $mobileTmp .= '</ul>';
+                        endif;
+                        $desktopTmp .= $blocks['right'];
+                    $desktopTmp .= '</div>';
+                    //$desktopTmp .= $blocks['bottom'];
+                $desktopTmp .= '</div>';  /* End Content mega */
+            $desktopTmp .= '</div>';  /* Warp Mega */
+        endif;
+        return array('desktop' => $desktopTmp, 'mobile' => $mobileTmp);
     }
 
     public function drawExtraMenu()
@@ -307,7 +333,7 @@ class Menu extends \Magento\Catalog\Block\Navigation
     public function getChildExt($parentId)
     {
         $collection = $this->_categoryInstance->getCollection()
-                        ->addAttributeToSelect(array('entity_id','name','magic_label','url_path','magic_image','magic_thumbnail'))
+                        ->addAttributeToSelect(array('entity_id','name','magic_label','url_path'))
                         ->addAttributeToFilter('parent_id', $parentId)
                         ->addAttributeToFilter('include_in_menu', 1)
                         ->addIsActiveFilter()
@@ -350,22 +376,22 @@ class Menu extends \Magento\Catalog\Block\Navigation
                         ->addAttributeToSelect(array('name','magic_label','url_path'))
                         ->addAttributeToFilter('include_in_menu', 1)
                         ->addAttributeToFilter('parent_id', $parentId)
-						->addIsActiveFilter()
+                        ->addIsActiveFilter()
                         ->addAttributeToSort('position', 'asc'); 
         $html = '';
         foreach($categories as $category)
         {
             $level = $category->getLevel();
-            $childHtml = $this->getTreeCategoriesExt($category->getId());
+            $childHtml = ( $this->_recursionLevel == 0 || ($level -1 < $this->_recursionLevel) ) ? $this->getTreeCategoriesExt($category->getId()) : '';
             $childClass = $childHtml ? ' hasChild parent' : '';
             $childClass .= $this->isCategoryActive($category->getId()) ? ' active' : '';
-            $html .= '<li class="level' .($level -2) .$childClass. '"><a href="' . $category->getUrl(). '"><span>' .$category->getName() . $this->getCatLabel($category) . "</span></a>\n" . $childHtml . '</li>';
+            $html .= '<li class="level' . ($level -2) . $childClass . '"><a href="' . $category->getUrl() . '"><span>' . $category->getName() . $this->getCatLabel($category) . "</span></a>\n" . $childHtml . '</li>';
         }
         if($html) $html = '<ul class="level'.($level -3).' submenu">' .$html. '</ul>';
         return $html;
     }
 
-    public function  getTreeCategoriesExtra($parentId) // include Magic_Label
+    public function  getTreeCategoriesExtra($parentId) // include Magic_Label and Maximal Depth
     {
         $html = '';
         $categories = $this->_categoryInstance->getCategories($parentId);
@@ -373,13 +399,14 @@ class Menu extends \Magento\Catalog\Block\Navigation
             $cat = $this->_categoryInstance->load($category->getId());
             $count = $cat->getProductCount();
             $level = $cat->getLevel();
-            $childClass = $category->hasChildren() ? ' hasChild parent' : '';
+            $childHtml = ( $this->_recursionLevel == 0 || ($level -1 < $this->_recursionLevel) ) ? $this->getTreeCategoriesExtra($category->getId()) : '';
+            $childClass  =  $childHtml ? ' hasChild parent' : '';
             $childClass .= $this->isCategoryActive($category->getId()) ? ' active' : '';
-            $html .= '<li class="level' .($level -2) .$childClass. '"><span class="alo-expand"><a href="' . $cat->getUrl(). '"><span>' .$cat->getName() . "(".$count.")" . $this->getCatLabel($cat). "</span></a>\n";
-            if($childClass) $html .=  $this->getTreeCategories($category->getId());
+            $html .= '<li class="level' . ($level -2) . $childClass . '"><a href="' . $this->getCategoryUrl($category) . '"><span>' . $cat->getName() . "(".$count.")" . $this->getCatLabel($cat) . "</span></a>\n";
+            $html .= $childHtml;
             $html .= '</li>';
         }
-        $html = '<ul class="level' .($level -3). ' submenu">' . $html . '</ul>';
+        if($html) $html = '<ul class="level' .($level -3). ' submenu">' . $html . '</ul>';
         return  $html;
     }
 
@@ -395,26 +422,29 @@ class Menu extends \Magento\Catalog\Block\Navigation
 
     public function getImage($object)
     {
-        $url = false;
+        $url = '';
         $image = $object->getMagicImage();
         if ($image) {
-            $url = $this->_storeManager->getStore()->getBaseUrl(
-                \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-            ) . 'catalog/category/' . $image;
+            $url = $this->_urlMedia . 'catalog/category/' . $image;
+        }else {
+            $image = $this->_dirMedia . 'magiccart/magicmenu/images/' . $object->getId() .'.png';
+            if(file_exists($image)) $url = $this->_urlMedia . 'magiccart/magicmenu/images/' . $object->getId() .'.png';
         }
         if($url) return '<a class="a-image" href="' .$object->getUrl(). '"><img class="img-responsive" alt="' .$object->getName(). '" src="'.$url.'"></a>';
     }
 
     public function getThumbnail($object)
     {
-        $url = false;
+        $url = '';
         $image = $object->getMagicThumbnail();
         if ($image) {
-            $url = $this->_storeManager->getStore()->getBaseUrl(
-                \Magento\Framework\UrlInterface::URL_TYPE_MEDIA
-            ) . 'catalog/category/' . $image;
+            $url = $this->_urlMedia . 'catalog/category/' . $image;
+        }else {
+            $image = $this->_dirMedia . 'magiccart/magicmenu/thumbnail/' . $object->getId() .'.png';
+            if(file_exists($image)) $url = $this->_urlMedia . 'magiccart/magicmenu/thumbnail/' . $object->getId() .'.png';
         }
         if($url) return '<img class="img-responsive" alt="' .$object->getName(). '" src="'.$url.'">';
     }
 
 }
+
