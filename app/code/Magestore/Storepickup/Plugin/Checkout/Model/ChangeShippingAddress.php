@@ -67,8 +67,11 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
         $cartId,
         \Magento\Checkout\Api\Data\ShippingInformationInterface $addressInformation
     ) {
+        /*
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customerSession = $objectManager->get('Magento\Customer\Model\Session');*/
 
-        if($addressInformation->getShippingMethodCode()=="storepickup"){
+        if($addressInformation->getShippingMethodCode()=="storepickup" /*&& !$customerSession->isLoggedIn()*/){
             //print_r($addressInformation->getShippingAddress()->getData());
             $storepickup_session = $this->_checkoutSession->getData('storepickup_session');
             $datashipping = [];
@@ -97,9 +100,12 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
                 unset($datashipping['telephone']);
             }
 
-            $datashipping['save_in_address_book'] = 1;
+			$datashipping['save_in_address_book'] = 0;
+            $datashipping['shipping_method'] = 'storepickup_storepickup';
             //var_dump($datashipping);die();
             $addressInformation->getShippingAddress()->addData($datashipping);
+
+           
             //var_dump($addressInformation->getShippingAddress()->getData());
             $quoteIdMask = $this->quoteIdMaskFactory->create()->load($cartId, 'masked_id');
             return $this->shippingInformationManagement->saveAddressInformation(
@@ -109,6 +115,7 @@ class ChangeShippingAddress extends \Magento\Checkout\Model\GuestShippingInforma
         }else{
             
             $data = $addressInformation->getShippingAddress()->getData();
+            
             if(!isset($data['firstname']) || $data['firstname']=='First Name' || $data['firstname']==''){
                 try{
                     throw new \Magento\Framework\Exception\LocalizedException('Please fill all shiping details.');
